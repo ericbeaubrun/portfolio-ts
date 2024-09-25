@@ -1,0 +1,120 @@
+{
+  "title ": "Compétences Techniques",
+
+  "frontend": {
+    "competence1": {
+      "startYear": "2019",
+      "name": "HTML",
+      "description": "Je maîtrise la structure des pages web, l'utilisation des balises, et les bonnes pratiques pour créer des documents HTML valides. Je suis également capable de structurer des pages complexes en veillant à l'accessibilité et à la compatibilité avec différents navigateurs."
+    },
+    "competence2": {
+      "startYear": "2019",
+      "name": "CSS",
+      "description": "Je sais développer et améliorer l'apparence d'un site web selon des besoins spécifiques. Bien que je ne sois pas Web-Designer, je maîtrise les bases du CSS, la création de mises en page responsive, et la réalisation d'animations simples pour rendre les interfaces utilisateurs plus dynamiques."
+    },
+    "competence3": {
+      "startYear": "2023",
+      "name": "JavaScript",
+      "description": "Ayant un niveau intermédiaire en JavaScript, je maîtrise la manipulation du DOM, la gestion des événements, et l'implémentation de fonctionnalités interactives. Je suis à l'aise avec la création de scripts pour améliorer l'expérience utilisateur sur les sites web."
+    },
+    "competence4": {
+      "startYear": "2023",
+      "name": "React",
+      "description": "Formé en autodidacte, je maîtrise les aspects techniques de React, y compris la création de composants réutilisables et l'utilisation des hooks basiques. Je suis à l'aise pour construire des interfaces utilisateur dynamiques et maintenables en suivant les bonnes pratiques de développement."
+    },
+    "competence5": {
+      "startYear": "2024",
+      "name": "Vite",
+      "description": "J'ai appris à utiliser Vite pour optimiser le processus de développement front-end."
+    },
+    "competence6": {
+      "startYear": "2024",
+      "name": "Sass",
+      "description": "J'utilise Sass pour écrire des styles CSS plus maintenables et modulaires."
+    },
+    "competence7": {
+      "startYear": "2024",
+      "name": "TypeScript",
+      "description": "Je suis capable de typer mon code JavaScript avec TypeScript, ce qui améliore la fiabilité et la maintenabilité de mes projets front-end."
+    }
+  },
+  "backend": {
+    "competence1": {
+      "startYear": "2021",
+      "name": "Java",
+      "description": "Je maîtrise particulièrement ce langage, ayant travaillé sur plusieurs projets professionnels et académiques.      Je suis capable de développer des applications complexes, qu'elles soient web ou de bureau, en appliquant les bonnes pratiques de programmation telles que les principes SOLID, tout en optimisant la performance et la maintenabilité du code."
+    },
+    "competence2": {
+      "startYear": "2020",
+      "name": "Python",
+      "description": "Je maîtrise Python pour le développement de scripts, la création d'interfaces graphiques, l'extraction et le traitement de données, ainsi que pour l'automatisation de tâches. Mon expérience comprend également la manipulation de bibliothèques populaires et l'écriture de code propre et maintenable."
+    },
+    "competence3": {
+      "startYear": "2024",
+      "name": "Spring",
+      "description": "Formé en autodidacte, j'ai acquis une solide compréhension des concepts de base de Spring, y compris le modèle MVC, Spring Data, Spring Security et la création d'API REST. Je suis à l'aise avec le développement d'applications Java robustes et sécurisées."
+    },
+    "competence4": {
+      "startYear": "2021",
+      "name": "PHP",
+      "description": "Je sais utiliser PHP pour développer des sites web dynamiques simples. Cependant, mes connaissances en PHP sont basiques car j'ai eu peu d'occasion de l'utiliser durant mes projets académiques et professionnels."
+    },
+    "competence5": {
+      "startYear": "2020",
+      "name": "C",
+      "description": "Durant ma scolarité universitaire, j'ai beaucoup utilisé le langage C. Je suis à l'aise avec les pointeurs, la gestion de la mémoire, ainsi que les principes d'algorithmie et les structures de données. Mon expertise en C me permet de comprendre les concepts fondamentaux de la programmation bas niveau."
+    },
+    "competence6": {
+      "startYear": "2024",
+      "name": "MySQL",
+      "description": "Je sais créer et manipuler des bases de données relationnelles en utilisant des requêtes SQL efficaces pour mettre en place des applications CRUD avec des langages comme Java, Node.js ou PHP. Mon expérience comprend également l'optimisation des requêtes pour des performances accrues."
+    },
+    "competence7": {
+      "startYear": "2023",
+      "name": "PostgreSQL",
+      "description": "Je suis capable de créer et gérer des bases de données relationnelles avec PostgreSQL, en utilisant des requêtes SQL avancées pour concevoir et maintenir des applications CRUD."
+    },
+    "competence8": {
+      "startYear": "2024",
+      "name": "Node.js",
+      "description": "En cours de formation, je sais déjà mettre en place le backend d'un site web avec Node.js, y compris la gestion des routes, la manipulation des bases de données, et l'intégration d'API REST."
+    }
+  },
+  "softwares": {
+    "competence1": {
+      "startYear": "2022",
+      "name": "Git",
+      "description": "Je maîtrise Git pour la gestion de versions, permettant une collaboration fluide et efficace sur des projets en équipe."
+    },
+    "competence2": {
+      "startYear": "2024",
+      "name": "Figma",
+      "description": "Je sais utiliser Figma pour maquetter la conception graphique d'interfaces utilisateur principalement pour du Web et Mobile."
+    },
+    "competence3": {
+      "startYear": "2022",
+      "name": "IntelliJ",
+      "description": "J'utilise IntelliJ pour le développement Java, en exploitant ses outils de débogage et ses fonctionnalités avancées  pour améliorer ma productivité."
+    },
+    "competence4": {
+      "startYear": "2022",
+      "name": "WebStorm",
+      "description": "WebStorm est mon environnement de développement principal pour le développement en JavaScript et TypeScript."
+    },
+    "competence5": {
+      "startYear": "2022",
+      "name": "Notion",
+      "description": "Je suis à l'aise avec Notion pour organiser mon travail, gérer mes projets, prendre des notes, et collaborer avec les équipes de développeur. C'est mon outil favori pour rester productif et organisé."
+    },
+    "competence6": {
+      "startYear": "2021",
+      "name": "Photoshop",
+      "description": "Je sais utiliser Photoshop pour la création et l'édition d'images, y compris la retouche photo, la conception graphique, et la préparation des visuels pour le web."
+    },
+    "competence7": {
+      "startYear": "2021",
+      "name": "Premiere Pro",
+      "description": "Je maîtrise Premiere Pro pour le montage vidéo et l'intégration d'effets visuels. Je suis capable de produire des vidéos professionnelles pour divers projets."
+    }
+  }
+}

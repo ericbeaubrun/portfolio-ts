@@ -1,0 +1,40 @@
+{
+  "name": "portfolio-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^11.5.6",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-locomotive-scroll": "^0.2.2",
+    "react-scroll": "^1.9.0",
+    "react-slick": "^0.30.2",
+    "react-vertical-timeline-component": "^3.6.0",
+    "sass": "^1.79.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-scroll": "^1.8.10",
+    "@types/react-slick": "^0.23.13",
+    "@types/react-vertical-timeline-component": "^3.3.6",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1"
+  }
+}

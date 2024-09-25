@@ -1,0 +1,4 @@
+.image {
+    filter: grayscale(100%); /* Initialement en noir et blanc */
+    transition: filter 0.4s ease-in-out; /* Optionnel pour un effet de lissage */
+}

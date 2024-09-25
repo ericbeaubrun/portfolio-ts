@@ -1,0 +1,19 @@
+@import "src/config.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  color: $text_color_dark;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: $background_color;
+  margin: 0;
+  //font-family: 'Exo', sans-serif;
+  font-family: $font
+}

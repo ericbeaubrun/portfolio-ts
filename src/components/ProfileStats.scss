@@ -1,0 +1,43 @@
+@import "src/config.scss";
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 0;
+  flex-wrap: wrap;
+}
+
+.stats-container div {
+  text-align: center;
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: $TEXT_COLOR_DARK;
+}
+
+.stats-container p {
+  font-size: 1.0rem;
+  color: #666;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .stats-container {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 530px) {
+  .stats-container p {
+    font-size: 1.5rem;
+  }
+}
+

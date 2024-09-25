@@ -1,0 +1,68 @@
+@import "src/config.scss";
+
+
+#button-container {
+  justify-content: space-around;
+  align-items: center;
+  background-color: #d9d4cd;
+  //background-color: burlywood;
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  //height: 100vh;
+  max-width: 50%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  height: 5rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  border: none;
+  //box-shadow: 5px 5px 0px black;
+  //font-size: 1.3rem;
+  //text-transform: uppercase;
+  //letter-spacing: 0.1rem;
+  transition: width 0.5s ease, height 0.5s ease, border-radius 0.7s ease,
+  font-size 0.4s ease;
+  user-select: none;
+  width: 35rem;
+
+}
+
+.button.bigWidth {
+  padding-bottom: 2rem;
+  width: 35rem;
+  height: 28rem;
+  text-align: center;
+  max-width: 92vw;
+}
+
+//.button:active {
+//  transition: all 0.2s ease;
+  //transform: scale(0.95) translateY(1%);
+//}
+
+.button {
+  /* autres styles existants */
+  -webkit-tap-highlight-color: transparent; /* Supprime l'effet de surlignage lors de l'appui */
+}
+
+@media(max-width: 900px) {
+  #button-container {
+    max-width: 100%;
+  }
+
+  .button.bigWidth {
+    padding-bottom: 2rem;
+    width: 90vwm;
+    max-width: 92vw;
+  }
+}
+

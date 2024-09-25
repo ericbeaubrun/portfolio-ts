@@ -1,0 +1,34 @@
+{
+  "title": "Étudiant Développeur Full Stack",
+  "subtitle": "Eric ADELAIDE-BEAUBRUN",
+  "introduction": {
+    "title": "Bienvenue sur mon portfolio !",
+    "paragraph1": "Je m'appelle Eric, j'ai 23 ans et je suis passionné par l'informatique depuis plus d'une dizaine d'années. Actuellement titulaire d'une licence en informatique, j'ai pu explorer de nombreux domaines telle que le web, le logiciel, le réseau, la data, l'intelligence artificielle et bien d'autres encore...",
+    "paragraph2": "Mon objectif est de devenir développeur full stack, spécialisé dans le développement web (Java/Python/Angular/React), tout en explorant également les domaines de la cybersécurité, du DevOps et du développement d'applications mobiles."
+  },
+  "hover_picture_text": "Être développeur, c’est pour moi l’occasion de constamment faire face à de nouveaux défis. Chaque projet me pousse à me surpasser et à viser l’excellence. Ce que j'apprécie, c'est résoudre des problèmes et découvrir des nouvelles technologies, mais ce qui me motive le plus, c'est travailler à plusieurs et échanger avec les autres.",
+
+  "passion1": "Ma passion pour le développement est apparue au lycée quand j'ai appris à programmer sur ma calculatrice. J'ai fait mes premières créations, allant de simples petits programmes à des jeux plus complexes comme le Puissance 4. C'est cette expérience qui m'a donnée l'envie de m'améliorer et de poursuivre mes études en informatique.",
+  "parcours": {
+    "container1": {
+      "date": "Juin 2020",
+      "title": "Baccalauréat scientifique",
+      "description": "Obtention de mon BAC qui m'a permis d'obtenir de solides bases en mathématiques."
+    },
+    "container2": {
+      "date": "Septembre 2020",
+      "title": "Admission à l'université",
+      "description": "Intégration du parcours licence Maths, Informatique, Physique et Ingénierie à Cergy-Pontoise où j'ai travaillé sur de nombreux projets."
+    },
+    "container3": {
+      "date": "Avril 2024",
+      "title": "Stage en entreprise",
+      "description": "Réalisation d’un stage passionnant dans le domaine du Web-Mining en tant que développeur Java au sein d'idIA-Tech."
+    },
+    "container4": {
+      "date": "Juin 2024",
+      "title": "Licence Générale",
+      "description": "Obtention de mon diplôme BAC+3 en Informatique."
+    }
+  }
+}

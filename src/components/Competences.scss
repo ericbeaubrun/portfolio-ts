@@ -1,0 +1,103 @@
+@import "src/config.scss";
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  padding: 20px;
+  padding-top: 200px;
+  //background-color: transparent;
+  background-color: $background_color_wave;
+  position: relative;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+
+.service-card {
+  min-width: 350px;
+  width: 25%;
+  background: $background_color_wave;
+  padding: 20px;
+
+  border-radius: 8px;
+
+  h3 {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .uiux-icon {
+    background-image: url('https://cdn-icons-png.freepik.com/512/8297/8297437.png?ga=GA1.1.37000543.1724316368');
+  }
+
+  .webdev-icon {
+    background-image: url('https://cdn-icons-png.freepik.com/512/8297/8297437.png?ga=GA1.1.37000543.1724316368');
+  }
+
+  .appdev-icon {
+    background-image: url('https://cdn-icons-png.freepik.com/512/8297/8297437.png?ga=GA1.1.37000543.1724316368');
+  }
+}
+
+.separator {
+  width: 4px;
+  background-color: #c0c0c0;
+  height: auto;
+  margin: 0 10px;
+  align-self: stretch;
+}
+
+.svg-animation-container {
+  width: 50%;
+  background-color: red;
+}
+
+.competences-container {
+  display: flex;
+}
+
+@media(max-width: 900px) {
+  .separator {
+    display: none;
+  }
+
+  .services-card {
+    padding-right: 1vw;
+    padding-left: 1vw;
+  }
+}
+
+.competences-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#button-container, .svg-animation-container {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+}
+
+.svg-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+

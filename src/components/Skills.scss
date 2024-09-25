@@ -1,0 +1,145 @@
+@import "src/config.scss";
+
+$MAX_WIDTH: 600px;
+
+$SELECTION_COLOR : #fdfdfc;
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.skills-title {
+  //padding-top: 10vh;
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+  color: $text_color_dark;
+  z-index: auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  //width: 93%;
+  width: 90vw;
+  max-width: 520px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 3px;
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  color: #555;
+  z-index: auto;
+}
+
+.skills-container {
+  .skill-card {
+
+    &.selected {
+      background-color: white;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+      .skill-icon {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .skill-details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    width: 100vw;
+    //min-width: 320px;
+    max-width: 400px;
+
+
+    .skill-details-title {
+      font-size: 1.1rem;
+      color: #555;
+      z-index: auto;
+      font-style: normal;
+      //font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .skill-experience {
+      margin-bottom: 10px;
+    }
+
+    .skill-details-description {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding-top: 50px;
+  }
+
+  .skills-title {
+    font-size: 1.75rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+  }
+
+  .skill-card {
+    padding: 12px;
+  }
+
+  .skill-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .skill-name {
+    font-size: 1.05rem;
+  }
+}
+
+.skill-details-title {
+  font-size: 1.5rem;
+  color:$text_color_dark;
+}
+
+.skill-experience {
+  //font-weight: bold;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.skill-details-description {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
