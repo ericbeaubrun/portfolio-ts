@@ -2,14 +2,13 @@ import './App.scss'
 import {Element} from 'react-scroll';
 import Navbar from "./components/Navbar.tsx";
 import Presentation from "./components/Presentation.tsx";
-import {LocomotiveScrollProvider} from "react-locomotive-scroll";
 import {useEffect, useRef} from "react";
 import Competences from "./components/Competences.tsx";
 import Timeline from "./components/Timeline.tsx";
 import Lenis from 'lenis';
 import ScrollProgressCircle from "./utils/ScrollProgressCircle.tsx";
 import CardContainer from "./components/ProjectCarousel.tsx";
-import DashedLine from "./components/DashedLine.tsx";
+import AnimatedText from "./components/AnimatedText.tsx";
 
 function App() {
 
@@ -26,37 +25,16 @@ function App() {
     }, [])
 
     return (
-        <LocomotiveScrollProvider
-            // options={{
-            // smooth: true,
-            // ... all available Locomotive Scroll instance options
-            // smartphone: {
-            //     smooth: true,
-            // },
-            // tablet: {
-            //     smooth: true,
-            // },
-            // el: containerRef.current,
-            // }}
-            // watch={
-            //     [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-            // ]
-            // }
-            containerRef={containerRef}
-        >
+        <div ref={containerRef}>
+            <header>
+                <ScrollProgressCircle/>
+                <Navbar/>
+            </header>
 
-
-            <main ref={containerRef}>
-                <header>
-                    <ScrollProgressCircle/>
-                    <Navbar/>
-                </header>
-
+            <main>
                 <Element name="presentation" className="section">
                     <Presentation/>
+
                 </Element>
 
                 <Element name="competences" className="section">
@@ -69,32 +47,34 @@ function App() {
                 </Element>
 
                 <Element name="projets" className="section">
-                    <DashedLine direction={"right"}/>
+                    {/*<DashedLine direction={"right"}/>*/}
                     <section id="projets">
                         {/*<h1 className="projects-title">Mes Projets</h1>*/}
-                        <CardContainer/>
-
+                        {/*<CardContainer/>*/}
                         {/*<CircleCarousel/>*/}
                     </section>
-                    <DashedLine direction={"left"}/>
+                    {/*<DashedLine direction={"left"}/>*/}
                 </Element>
 
                 <Element name="experiences" className="section">
                     <section id="experiences">
-                        <Timeline/>
+                        {/*<Timeline/>*/}
                     </section>
                 </Element>
-
-                <footer>
-                    <Element name="contact" className="section">
-                        <section id="contact">
-                        </section>
-                    </Element>
-                </footer>
             </main>
-        </LocomotiveScrollProvider>
+
+            <footer>
+                <Element name="contact" className="section">
+                    <section id="contact">
+                    </section>
+                </Element>
+            </footer>
+        </div>
+
+
     )
 }
+
 
 export default App
 

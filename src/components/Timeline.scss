@@ -10,3 +10,96 @@
 //  //height: 100%;
 //  object-fit: cover;
 //}
+
+
+/*# sourceMappingURL=Timeline.css.map */
+.vertical-timeline-element--work .vertical-timeline-element-content {
+  border-top: 3px solid #2196f3;
+}
+
+.vertical-timeline-element--education .vertical-timeline-element-content {
+  border-top: 3px solid #f32821;
+}
+
+
+.ResumeProjectsBlock-technologies {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.timeline-competence-container {
+  color: rgba(0, 0, 0, 0.87);
+  height: 32px;
+  cursor: default;
+  border: none;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  font-size: 0.8125rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 16px;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #e0e0e0;
+  outline: 0;
+  padding: 10px;
+  margin: 2px;
+
+}
+
+.timeline-competence {
+  color: inherit;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  outline: none;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  user-select: none;
+  border-radius: 0;
+  vertical-align: middle;
+  justify-content: center;
+  -moz-appearance: none;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ResumeProjectsBlock-links {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.timeline-button {
+  color: rgba(0, 0, 0, 0.87);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  min-height: 36px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.4em;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.jss48 {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.vertical-timeline-element {
+  height: 40vh;
+}

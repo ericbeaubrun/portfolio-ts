@@ -1,10 +1,10 @@
-import './Timeline.css';  // Assurez-vous d'inclure les styles de base
+import './Timeline.scss';  // Assurez-vous d'inclure les styles de base
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import content from '../content/presentation.json';
-import graduationIcon from '../assets/graduation-cap-icon.svg'
-import cyIcon from '../assets/cy.svg';
-import idiatechIcon from '../assets/idia-tech.svg';
+import idiatechIcon from '../assets/timeline/idia-tech.svg';
+import graduationIcon from '../assets/timeline/graduation.svg';
+import cyIcon from '../assets/timeline/cy.svg';
 // import {color} from "framer-motion";
 // const CustomIcon = (className, icon) => {
 //     return (
@@ -15,12 +15,14 @@ import idiatechIcon from '../assets/idia-tech.svg';
 
 const Timeline = () => {
 
+    const cySkills = ["Java", "PHP", "HTML/CSS", "JavaScript","SQL",];
+    const idiatechSkills = ["Java", "PHP", "HTML/CSS", "JavaScript","SQL",];
+
     return (
         <>
-            <VerticalTimeline lineColor={"red"}>
-
+            <VerticalTimeline lineColor={"#4d4c49"}>
                 <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
+                    className="vertical-timeline-element--education"
                     contentArrowStyle={{borderRight: '10px solid  white'}}
                     date={content.parcours.container1.date}
                     iconStyle={{
@@ -29,13 +31,24 @@ const Timeline = () => {
                     }}
                     icon={
                         <div className="timeline-icon-container">
-                            <img className="timeline-icon" src={"../content/presentation.json"} alt={"test"}/>
+                            <img className="timeline-icon" src={graduationIcon} alt={"test"}/>
                         </div>
                     }
                 >
+
                     <h3 className="vertical-timeline-element-title">{content.parcours.container1.title}</h3>
                     <h4 className="vertical-timeline-element-subtitle">{}</h4>
                     <p> {content.parcours.container1.description}</p>
+                    <div className="ResumeProjectsBlock-links">
+                        <a tabIndex="0"
+                           className="timeline-competence timeline-button jss42 jss48"
+                           role="button" target="_blank"
+                           href="http://leo-pole.fr/">
+                            <span className="jss41">Visit website</span>
+                            <span className="jss67"></span>
+                        </a>
+                    </div>
+
                 </VerticalTimelineElement>
 
                 <VerticalTimelineElement
@@ -54,13 +67,20 @@ const Timeline = () => {
                         </div>
                     }
                 >
+                    <div className="ResumeProjectsBlock-technologies">
+                        {cySkills.map((skill, index) => (
+                            <div key={index} role="button" className="timeline-competence-container">
+                                <span className="jss91">{skill}</span>
+                            </div>
+                        ))}
+                    </div>
                     <h3 className="vertical-timeline-element-title">{content.parcours.container2.title}</h3>
                     <h4 className="vertical-timeline-element-subtitle">{}</h4>
                     <p> {content.parcours.container2.description}</p>
                 </VerticalTimelineElement>
 
                 <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
+                    className="vertical-timeline-element--work"
                     date={content.parcours.container3.date}
                     contentArrowStyle={{borderRight: '10px  solid  white'}}
 
@@ -78,6 +98,13 @@ const Timeline = () => {
                         </div>
                     }
                 >
+                    <div className="ResumeProjectsBlock-technologies">
+                        {idiatechSkills.map((skill, index) => (
+                            <div key={index} role="button" className="timeline-competence-container">
+                                <span className="jss91">{skill}</span>
+                            </div>
+                        ))}
+                    </div>
                     <h3 className="vertical-timeline-element-title">{content.parcours.container3.title}</h3>
                     <h4 className="vertical-timeline-element-subtitle">{}</h4>
                     <p> {content.parcours.container3.description}</p>
@@ -102,10 +129,10 @@ const Timeline = () => {
                     <h4 className="vertical-timeline-element-subtitle">{}</h4>
                     <p> {content.parcours.container4.description}</p>
                 </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    iconStyle={{background: 'rgb(16, 204, 82)', color: '#fff'}}
-                    // icon={<img src={graduationIcon} alt={"test"}/>}
-                />
+                {/*<VerticalTimelineElement*/}
+                {/*    iconStyle={{background: 'rgb(16, 204, 82)', color: '#fff'}}*/}
+                {/*    // icon={<img src={graduationIcon} alt={"test"}/>}*/}
+                {/*/>*/}
             </VerticalTimeline>
         </>
 

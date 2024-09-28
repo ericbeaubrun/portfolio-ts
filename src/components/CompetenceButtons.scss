@@ -1,19 +1,28 @@
 @import "src/config.scss";
 
 
-#button-container {
+.button-container, .reverse-button-container  {
   justify-content: space-around;
   align-items: center;
-  background-color: #d9d4cd;
+  //background-color: #d9d4cd;
   //background-color: burlywood;
   display: flex;
-
-  flex-wrap: wrap;
   gap: 10px;
   padding-top: 100px;
   padding-bottom: 100px;
   //height: 100vh;
-  max-width: 50%;
+  max-width: 55%;
+  width: 600px;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  background-color: transparent;
+}
+
+@media(max-width: 1200px) {
+  .button-container, .reverse-button-container  {
+    max-width: 100%;
+  }
 }
 
 .button {
@@ -22,7 +31,7 @@
   justify-content: center;
   background: white;
   height: 5rem;
-  border-radius: 5rem;
+  border-radius: 2rem;
   cursor: pointer;
   border: none;
   //box-shadow: 5px 5px 0px black;
@@ -34,35 +43,45 @@
   user-select: none;
   width: 35rem;
 
+  text-align: center;
+  font-size: 2rem;
+  //transition: transform 0.7s ease;
+  font-family: $font;
+  padding: 10px 20px;
+  //font-weight: 600;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
 
 .button.bigWidth {
   padding-bottom: 2rem;
   width: 35rem;
-  height: 28rem;
+  //height: 28rem;
+  height: 21.5rem;
   text-align: center;
   max-width: 92vw;
 }
 
-//.button:active {
-//  transition: all 0.2s ease;
-  //transform: scale(0.95) translateY(1%);
-//}
-
 .button {
-  /* autres styles existants */
-  -webkit-tap-highlight-color: transparent; /* Supprime l'effet de surlignage lors de l'appui */
+  -webkit-tap-highlight-color: transparent;
+}
+.button, .bigWidth {
 }
 
 @media(max-width: 900px) {
-  #button-container {
+  .button-container {
     max-width: 100%;
   }
 
-  .button.bigWidth {
+  .button, .bigWidth {
     padding-bottom: 2rem;
     width: 90vwm;
     max-width: 92vw;
   }
 }
 
+
+.reverse-button-container {
+  flex-wrap: wrap-reverse;
+}

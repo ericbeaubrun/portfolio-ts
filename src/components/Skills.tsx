@@ -97,7 +97,14 @@ export const Skills = ({title, skills}) => {
 
     return (
         <div className="skills-container">
-            <h2 className="skills-title">{title}</h2>
+            <motion.div
+                initial={{opacity: 0, scale: 0.8}}
+                animate={{opacity: 1, scale: 1}}
+                transition={{delay: 0.14, duration: 0.35, ease: 'easeOut'}}
+            >
+                <h2 className="skills-title">{title}</h2>
+
+            </motion.div>
 
             <div className="skills-grid">
                 {skills.map((skill) => (

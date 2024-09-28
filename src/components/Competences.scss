@@ -5,8 +5,7 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-around;
-  padding: 20px;
-  padding-top: 200px;
+  padding-top: 25vh;
   //background-color: transparent;
   background-color: $background_color_wave;
   position: relative;
@@ -19,7 +18,6 @@
   width: 25%;
   background: $background_color_wave;
   padding: 20px;
-
   border-radius: 8px;
 
   h3 {
@@ -34,19 +32,21 @@
   }
 
   .icon {
-    width: 50px;
-    height: 50px;
+    //width: 50px;
+    //height: 50px;
+    width: 75px;
+    height: 75px;
     margin-bottom: 15px;
     background-size: cover;
     background-position: center;
   }
 
   .uiux-icon {
-    background-image: url('https://cdn-icons-png.freepik.com/512/8297/8297437.png?ga=GA1.1.37000543.1724316368');
+    background-image: url('src/assets/erp.gif');
   }
 
   .webdev-icon {
-    background-image: url('https://cdn-icons-png.freepik.com/512/8297/8297437.png?ga=GA1.1.37000543.1724316368');
+    background-image: url('src/assets/api.gif');
   }
 
   .appdev-icon {
@@ -64,12 +64,15 @@
 
 .svg-animation-container {
   width: 50%;
-  background-color: red;
 }
 
 .competences-container {
+  justify-content: center;
   display: flex;
+  background-color: #d9d4cd;
+  //height: 200vh;
 }
+
 
 @media(max-width: 900px) {
   .separator {
@@ -85,6 +88,8 @@
 .competences-container {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 25vh;
+  padding-bottom: 25vh;
 }
 
 #button-container, .svg-animation-container {
