@@ -349,56 +349,54 @@
 
 
 /* Style de base pour mobile */
-#presentation {
-  text-align: center;
-  background-color: #f0f0f0;
-}
-
-.left-section {
-}
 
 
-.presentation-subtitle {
-  font-size: 18px;
-  color: #555;
-}
 
-.presentation-paragraph {
-  font-size: 16px;
-  line-height: 1.5;
-  width: 100%;
-}
-
-
-.cta {
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-
-#profile-picture {
-  width: 150px;
-  height: auto;
-  border-radius: 50%;
-  margin-top: 20px;
-}
-
-.rotating-rectangle {
-  width: 50px;
-  height: 100px;
-  animation: rotate 10s infinite linear;
-}
-
-
-/* Media query pour mobile */
 @media (max-width: 768px) {
+
+  #presentation {
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+
+  .presentation-subtitle {
+    font-size: 18px;
+    color: #555;
+  }
+
+
+
+  .cta {
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+
+  .rotating-rectangle {
+    width: 50px;
+    height: 100px;
+    animation: rotate 10s infinite linear;
+  }
+
+  .presentation-paragraph {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  #profile-picture {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-top: 20px;
+  }
 
 
   .presentation-title {
