@@ -1,0 +1,39 @@
+@import "../../../config.scss";
+
+.project-card__section {
+  margin-bottom: 24px;
+  padding-bottom: 29px;
+}
+
+.project-card__badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 29px;
+}
+
+.project-card__badge {
+  color: rgba(0, 0, 0, 0.87);
+  height: 30px;
+  cursor: default;
+  border: none;
+  display: inline-flex;
+  outline: none;
+  font-size: 0.85rem;
+  font-family: $font;
+  font-weight: 500;
+  white-space: nowrap;
+  align-items: center;
+  border-radius: 16px;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #ddd;
+  padding: 10px;
+  margin: 2px;
+}
+
+@media (max-width: 600px) {
+  .project-card__badge {
+    font-size: 12px;
+  }
+}

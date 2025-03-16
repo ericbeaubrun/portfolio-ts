@@ -1,0 +1,49 @@
+$border-radius: 16px;
+
+.language-toggle {
+  position: relative;
+  width: 70px;
+  height: 32px;
+  background-color: #4d4239;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  color: #7c6d61;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 2;
+  user-select: none;
+  transition: color 0.3s;
+  padding-bottom: 2px;
+}
+
+.toggle-option.active {
+  color: #4d4239;
+}
+
+.toggle-slider {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: $border-radius;
+  transition: transform 0.3s;
+  z-index: 1;
+  border: #4d4239 solid 3px;
+}
+
+.toggle-slider.left {
+  transform: translateX(0);
+}
+
+.toggle-slider.right {
+  transform: translateX(100%);
+}
+

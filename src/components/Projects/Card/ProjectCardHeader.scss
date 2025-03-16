@@ -1,0 +1,48 @@
+@import "../../../config.scss";
+
+.project-card__header {
+  padding-top: 26px;
+  overflow: visible;
+}
+
+.project-card__icon {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: -50px;
+  left: -18px;
+  margin-right: 10px;
+  z-index: 1;
+}
+
+.project-title-container {
+  display: flex;
+}
+
+.project-card__title {
+  font-size: 2rem;
+  color: #333;
+  margin: 0 0 0 -15px;
+}
+
+.project-card__date {
+  font-style: italic;
+  font-size: 1rem;
+  color: #888;
+}
+
+.project-card__description {
+  font-size: 1.25rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  .project-card__title {
+    font-size: 24px;
+  }
+  .project-card__header {
+    padding: 16px;
+  }
+}

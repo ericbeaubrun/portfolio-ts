@@ -1,0 +1,193 @@
+@import "../../config";
+
+$background_color: black;
+$text_color: white;
+
+.footer {
+  position: relative;
+  margin-top: 300px;
+  padding: 3rem 0;
+  color: $text_color;
+  background: $background_color;
+  margin-top: auto;
+
+  &__copyrights {
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba($text_color, 0.2);
+
+    p {
+      display: flex;
+
+      a {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  @keyframes parralax_droit {
+    0% {
+      background-position: 260px;
+    }
+    100% {
+      background-position: -5000vw;
+    }
+  }
+
+  @keyframes parralax_gauche {
+    0% {
+      background-position: 260px;
+    }
+    100% {
+      background-position: 5000vw;
+    }
+  }
+
+  &__parralax {
+    position: absolute;
+    left: 0;
+    top: -300px;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+
+    &-premierplan {
+      background-position: 260px;
+    }
+
+    &-premierplan, &-secondplan {
+      position: absolute;
+      inset: 0;
+      background-repeat: repeat-x;
+      background-position-y: 100%;
+    }
+
+    &-premierplan {
+      animation: parralax_droit 600s linear infinite;
+    }
+
+    &-secondplan {
+      animation: parralax_gauche 600s linear infinite;
+    }
+
+    &-premierplan {
+      background-image: url('../../assets/footer_premier_plan.png');
+      animation-duration: 500s;
+    }
+
+    &-secondplan {
+      background-image: url('../../assets/footer_second_plan.png');
+      animation-duration: 600s;
+    }
+  }
+}
+
+.footer__content {
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  // Section des liens
+  .footer-links-container {
+    flex: 1;
+    margin-bottom: 2vh;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 1rem;
+
+        a {
+          color: $text_color;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  // Section carte et adresse
+  .footer-map-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: $text_color;
+    margin-bottom: 2vh;
+
+
+    .footer-address {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .footer-map {
+      width: 100%;
+      margin-top: 1rem;
+
+      iframe {
+        border-radius: 8px;
+      }
+    }
+  }
+
+  // Section formulaire/bouton
+  .footer-form-btn-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .footer-button {
+      background-color: #1a1a1a;
+      color: $text_color;
+      border: 1px solid $text_color;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+}
+
+h3.footer-coord {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+li.footer-coord {
+  padding-left: 3px;
+}
+
+@media (max-width: 1111px) {
+  .footer__content {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 10px;
+  }
+
+
+  .footer-links-container,
+  .footer-map-container,
+  .footer-form-btn-container {
+    width: 100%;
+  }
+}
+

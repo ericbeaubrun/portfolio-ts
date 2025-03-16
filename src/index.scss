@@ -1,4 +1,4 @@
-@import "src/config.scss";
+@import "config.scss";
 
 * {
   margin: 0;
@@ -16,4 +16,8 @@ body {
   margin: 0;
   //font-family: 'Exo', sans-serif;
   font-family: $font
+}
+
+.shadowed {
+  box-shadow: 5px 5px 0px black;
 }

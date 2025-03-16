@@ -1,28 +1,106 @@
 import './App.scss'
 import {Element} from 'react-scroll';
-import Navbar from "./components/Navbar.tsx";
-import Presentation from "./components/Presentation.tsx";
-import {useEffect, useRef} from "react";
-import Competences from "./components/Competences.tsx";
-import Timeline from "./components/Timeline.tsx";
+import {animateScroll} from 'react-scroll';
+import {MutableRefObject, useEffect, useRef, useState} from "react";
+import Navbar from "./components/Navbar/Navbar.tsx";
+import Presentation from "./components/Presentation/Presentation.tsx";
+import Services from "./components/Competences/Services.tsx";
 import Lenis from 'lenis';
-import ScrollProgressCircle from "./utils/ScrollProgressCircle.tsx";
-import CardContainer from "./components/ProjectCarousel.tsx";
-import AnimatedText from "./components/AnimatedText.tsx";
+import ScrollProgressCircle from "./components/ScrollProgressCircle.tsx";
+import Footer from "./components/Footer/Footer.tsx";
+import ProfileStats from "./components/ProfileStats.tsx";
+import SkillsSection from "./components/Competences/SkillsSection.tsx";
+import ScrollingText from "./components/Competences/ScrollingText.tsx";
+import GithubButton from "./components/GithubButton.tsx";
+import "./Carousel.scss";
+import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
 
-function App() {
+const App = () => {
 
-    const containerRef = useRef(null);
+    // let observer: IntersectionObserver;
+
+    useEffect(() => {
+        const sections = document.querySelectorAll('.section'); // Select the parent divs
+
+        const handleScroll = () => {
+            let maxVisibleSectionId = '';
+            let maxVisibleArea = 0;
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+
+                const sectionElement = section.querySelector('section');
+
+                const sectionId = sectionElement?.getAttribute('id') || '';
+
+                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+                const visibleArea = Math.max(0, visibleHeight);
+
+                if (visibleArea > maxVisibleArea) {
+                    maxVisibleArea = visibleArea;
+                    maxVisibleSectionId = sectionId;
+                }
+            });
+
+            const navItems = document.querySelectorAll('[data-target]');
+            navItems.forEach(navItem => {
+                navItem.classList.remove('active');
+            });
+
+            if (maxVisibleSectionId) {
+                const navItem = document.querySelector(`[data-target="${maxVisibleSectionId}"]`);
+                if (navItem) {
+                    navItem.classList.add('active');
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
+    useEffect(() => {
+        const saveScrollPosition = () => {
+            sessionStorage.setItem("scrollPosition", String(window.scrollY));
+        };
+
+        window.addEventListener("beforeunload", saveScrollPosition);
+
+        return () => {
+            window.removeEventListener("beforeunload", saveScrollPosition);
+        };
+    }, []);
+
+    useEffect(() => {
+        const savedPosition = sessionStorage.getItem("scrollPosition");
+
+        if (savedPosition) {
+            animateScroll.scrollTo(parseInt(savedPosition), {
+                duration: 1000,
+                smooth: "easeInOutQuart",
+            });
+        }
+    }, []);
+
+    const containerRef: MutableRefObject<null> = useRef(null);
     useEffect(() => {
         const lenis = new Lenis()
 
-        function raf(time: number) {
+        const raf = (time: number) => {
             lenis.raf(time)
             requestAnimationFrame(raf)
-        }
+        };
 
         requestAnimationFrame(raf)
     }, [])
+
 
     return (
         <div ref={containerRef}>
@@ -32,50 +110,55 @@ function App() {
             </header>
 
             <main>
-                <Element name="presentation" className="section">
-                    <Presentation/>
-
-                </Element>
-
-                <Element name="competences" className="section">
-                    <section id="competences">
-                        <Competences/>
-                        {/*<div className="colored-background">*/}
-                        {/*    <CompetenceButtons/>*/}
-                        {/*</div>*/}
+                <Element name="presentation">
+                    <section id="presentation">
+                        <Presentation/>
                     </section>
                 </Element>
 
-                <Element name="projets" className="section">
-                    {/*<DashedLine direction={"right"}/>*/}
+
+                <Element name="services">
+                    <section id="services">
+                        <Services/>
+                    </section>
+                </Element>
+
+                <Element name="projets" >
+
                     <section id="projets">
-                        {/*<h1 className="projects-title">Mes Projets</h1>*/}
-                        {/*<CardContainer/>*/}
-                        {/*<CircleCarousel/>*/}
+
+                        <ProjectCardContainer/>
+                        {/*<ShowMoreButton/>*/}
+                        <GithubButton/>
+                        <ProfileStats/>
                     </section>
-                    {/*<DashedLine direction={"left"}/>*/}
                 </Element>
 
-                <Element name="experiences" className="section">
-                    <section id="experiences">
-                        {/*<Timeline/>*/}
+                <Element name="competences">
+                    <section id="competences">
+                        <ScrollingText
+                            text={"ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | " +
+                                "Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/"}
+                            speed={2.5} direction={'right'}/>
+                        <SkillsSection/>
+                        <ScrollingText
+                            text={"ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | " +
+                                "Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/"}
+                            speed={2.5} direction={'left'}/>
                     </section>
                 </Element>
             </main>
 
             <footer>
-                <Element name="contact" className="section">
+                <Element name="contact">
                     <section id="contact">
+                        <Footer/>
                     </section>
                 </Element>
             </footer>
         </div>
+    );
+};
 
-
-    )
-}
-
-
-export default App
-
+export default App;
 

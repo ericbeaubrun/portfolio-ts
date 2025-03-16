@@ -1,0 +1,67 @@
+@import "../../config";
+
+.scrolling-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  background: #d9d4cd;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-bottom: 60px;
+  margin-top: 40px;
+
+}
+
+.scrolling-wrapper.scroll-left {
+  transform: rotate(4deg);
+}
+
+.scrolling-wrapper.scroll-right {
+  transform: rotate(4deg);
+}
+
+.scrolling-content {
+  display: flex;
+  white-space: nowrap;
+  position: absolute;
+}
+
+.scrolling-content.scroll-left {
+  animation: scroll-left linear infinite;
+}
+
+.scrolling-content.scroll-right {
+  animation: scroll-right linear infinite;
+}
+
+.scrolling-content span {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: auto;
+  white-space: nowrap;
+  padding-bottom: 3px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

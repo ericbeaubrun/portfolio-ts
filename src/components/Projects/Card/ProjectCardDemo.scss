@@ -1,0 +1,149 @@
+@import "../../../config.scss";
+
+$iframe_radius: 7px;
+
+.click-to-interact-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: $iframe_radius;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.35);
+    #click-to-interact-text {
+      display: none;
+    }
+  }
+}
+
+// TODO : BUG FIX
+.demo-active {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.015);
+  }
+}
+
+.demo-iframe-expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  transition: width 0.65s;
+}
+
+.full-page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.demo-iframe-container {
+  position: relative;
+  //z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.demo-iframe {
+  border: 4px solid #636363;;
+  //border: none;
+  transition: width 0.7s;
+  border-radius: $iframe_radius;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-preview-button {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20vh;
+  right: 15vw;
+  z-index: 101;
+  border: none;
+  font-size: 2rem;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.view-mode-buttons {
+  position: fixed;
+  top: 40vh;
+  top: 30vh;
+  right: 15vw;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 200;
+
+  button {
+    background-color: #e5e1d6;
+    border: none;
+    font-size: 1rem;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    border-radius: 50%;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #e5e1d6;
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.full-page-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+}
+
+.close-preview-button {
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  .close-preview-icon {
+    width: 64px;
+    height: 64px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "nav": [
+    {
+      "title": "Présentation",
+      "subtitle": "Parcours et Objectifs"
+    },
+    {
+      "title": "Spécialité",
+      "subtitle": "Services Proposés"
+    },
+    {
+      "title": "Projets",
+      "subtitle": "Mes Créations"
+    },
+    {
+      "title": "Compétences",
+      "subtitle": "Technologies Maitrisées"
+    },
+    {
+      "title": "Contact",
+      "subtitle": "Me Joindre"
+    }
+  ],
+  "title": "Étudiant Développeur Full Stack",
+  "subtitle": "Eric ADELAIDE-BEAUBRUN",
+  "introduction": {
+    "p1": "Je m'appelle Eric, j'ai 23 ans et je suis passionné par l'informatique depuis plus d'une dizaine d'années. Actuellement titulaire d'une licence en informatique, ",
+    "p2": "Mon objectif est de devenir développeur full stack, spécialisé dans le développement web (Java/Python/Angular/React)."
+  },
+  "services": [
+    {
+      "title": "UI/UX Design",
+      "p": "An effective UI/UX is what captures attention and spreads a clear message. "
+    },
+    {
+      "title": "Web Development",
+      "p": "If you are looking for a developer who'll take over the research and development of your website"
+    },
+    {
+      "title": "App Development",
+      "p": "If you are looking for a user-friendly app that will attract more mobile users"
+    }
+  ],
+  "skills": {
+    "Langages": {
+      "ts": "Typescript",
+      "java": "Java",
+      "py": "Python"
+    },
+    "Front-End": {
+      "react": "React",
+      "next": "Next.js"
+    },
+    "Back-End": {
+      "nodejs": "Node.js",
+      "express": "Express.js"
+    },
+    "Bases de Données": {
+      "postgres": "PostgreSQL",
+      "mysql": "MySQL",
+      "mongodb": "MongoDB"
+    },
+    "Design": {
+      "ps": "Photoshop",
+      "figma": "Figma"
+    },
+    "Autres Outils": {
+      "git": "Git",
+      "notion": "Notion"
+    }
+  },
+  "projects-title" : "projets",
+  "projects": [
+    {
+      "title": "Jeu de Plateau Stratégique Multijoueur",
+      "name": "Conquete",
+      "date": "Janvier 2022",
+      "desc": "Création d'un jeu de plateau stratégique en Java. Chaque joueur contrôle un territoire délimité par des cases de sa couleur, et doit gérer l’or, construire des structures et commander des soldats. Le système de jeu inclut une économie basée sur les ressources acquises et l'or gagné à chaque tour.",
+      "gh": "https://github.com/ericbeaubrun/conquete",
+      "demo": "http://localhost:5174/",
+      "skills": [
+        "Java",
+        "JUnit",
+        "Intelligence Artificielle",
+        "Conception UI/UX"
+      ],
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": "./src/assets/conquete.png"
+    },
+    {
+      "title": "Simulateur de Trafic Aérien",
+      "name": "Aérien",
+      "date": "Janvier 2024",
+      "desc": "Ce simulateur a pour objectif de modéliser les déplacements et interactions des avions dans un espace aérien prédéfinit. Développé en Java, il utilise le multithreading pour gérer les avions simultanément. La simulation est représentée dans une interface graphique 2D où l'utilisateur peut observer les trajectoires des avions, les données des aéroports, ainsi que des informations en temps réel sur la position, la vitesse et l'altitude des appareils.",
+      "gh": "https://github.com/ericbeaubrun/aerien",
+      "demo": "http://localhost:5174",
+      "skills": [
+        "Java",
+        "Multithreading",
+        "Conception UI/UX"
+      ],
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": "./src/assets/conquete.png"
+    },
+    {
+      "title": "Application Pédagogique pour les Étudiants",
+      "name": "Librairie",
+      "date": "Octobre 2023",
+      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. Le jeu est structuré en chapitres et niveaux avec une difficulté progressive, abordant des notions telles que les types de données, les boucles, les variables et les conditions. L’utilisateur code directement dans un éditeur intégré au jeu.",
+      "gh": "https://github.com/ericbeaubrun/learn_py_app",
+      "demo": "http://localhost:5174",
+      "skills": [
+        "Python",
+        "PyQT6",
+        "CSS",
+        "JSON",
+        "Conception UI/UX",
+        "Sécurité"
+      ],
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": "./src/assets/conquete.png"
+    }
+  ],
+  "stats": [
+    {
+      "num": 3,
+      "text": "Ans de formation"
+    },
+    {
+      "num": 8,
+      "text": "Projets réalisés"
+    },
+    {
+      "num": 1,
+      "text": "Stage effectué"
+    }
+  ],
+  "timeline": [
+    {
+      "title": "Baccalauréat scientifique",
+      "subtitle": "...",
+      "date": "Juin 2020",
+      "desc": "Obtention de mon BAC qui m'a permis d'obtenir de solides bases en mathématiques.",
+      "skills": []
+    },
+    {
+      "title": "Admission à l'université",
+      "subtitle": "CY Paris Université",
+      "date": "Septembre 2021",
+      "desc": "Intégration du parcours licence Maths, Informatique, Physique et Ingénierie à Cergy-Pontoise où j'ai travaillé sur de nombreux projets.",
+      "skills": [
+        "Java",
+        "PHP",
+        "HTML/CSS",
+        "JavaScript",
+        "SQL"
+      ]
+    },
+    {
+      "title": "Stage en entreprise",
+      "subtitle": "Chez idIA-Tech",
+      "date": "Avril 2024",
+      "desc": "Réalisation d’un stage passionnant dans le domaine du Web-Mining en tant que développeur Java au sein d'idIA-Tech.",
+      "skills": [
+        "Java",
+        "PHP",
+        "HTML/CSS",
+        "JavaScript",
+        "SQL"
+      ]
+    },
+    {
+      "title": "Licence Générale",
+      "subtitle": "",
+      "date": "Juin 2024",
+      "desc": "Obtention de mon diplôme BAC+3 en Informatique.",
+      "skills": []
+    },
+    {
+      "title": "Equipié Polyvalent",
+      "subtitle": "Chez McDonald's Dammarie-Les-Lys",
+      "date": "Octobre 2024",
+      "desc": "...",
+      "skills": []
+    }
+  ],
+  "footer": [
+    {
+      "title": "Mes Coordonnées",
+      "email": "e.adelaide.beaubrun@gmail.com",
+      "tel": "+33 6 43 41 40 79",
+      "github": "github.com/ericbeaubrun/",
+      "linkedin": "linkedin.com/in/eric-adelaide-beaubrun/"
+    },
+    {
+      "address": "Le Mée-sur-Seine (77350)"
+    },
+    {
+      "title": "Formulaire de Contact",
+      "btn": "Me contacter"
+    },
+    {
+      "paragraph": "Réalisé avec ❤\uFE0F par "
+    }
+  ],
+  "source-code": "Code Source",
+  "see-more": "En savoir plus...",
+  "see-more-gh": "Découvrir d'autres projets",
+  "hide": "Cacher",
+  "read-more": "Lire la suite"
+}
+
+
+
+

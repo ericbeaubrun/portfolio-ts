@@ -1,0 +1,58 @@
+@import "../../../config.scss";
+
+$padding-bottom: 40px;
+
+.project-card__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $padding-bottom;
+  padding-top: 49px;
+}
+
+.project-card__button {
+  display: flex;
+  align-items: center;
+  background: #302921;
+  background: #333333;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  //width: 150px;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-radius: 7px;
+  transition: background 0.3s;
+  align-content: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #5b5b5b;
+  }
+}
+
+.project-card-link__icon {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+#github-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+
+}
+
+@media (max-width: 600px) {
+  .project-card__footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card__footer {
+    padding: 16px;
+  }
+}

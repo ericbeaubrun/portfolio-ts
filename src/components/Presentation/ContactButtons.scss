@@ -1,0 +1,165 @@
+@import "../../config";
+
+.header-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 82px;
+  height: 82px;
+  //border-radius: 50px;
+  border-radius: 20px;
+  border: 2px solid $component_color;
+  background-color: $component_color;
+  color: #3e3e3e;
+  transition: width 0.7s;
+  position: relative;
+  overflow: hidden;
+}
+
+.presentation-button-container {
+  display: flex;
+  z-index: 1;
+  gap: 20px;
+  padding-top: 100px;
+  position: relative;
+  background-color: transparent;
+}
+
+.header-contact-button:hover {
+  width: 225px;
+  width: 200px;
+  transition: width 0.65s;
+}
+
+.header-contact-button-icon {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+  opacity: 0.75;
+}
+
+.header-contact-button:hover .header-contact-button-icon {
+  transform: translateX(-58px);
+}
+
+.header-contact-button:hover .presentation-button-text {
+  transform: translateX(42px);
+}
+
+.presentation-button-text {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  font-size: 1.65rem;
+  transition: transform 1.4s ease;
+  font-family: $font;
+  padding: 10px 20px;
+  padding-left:5px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.header-contact-button:hover .presentation-button-text {
+  opacity: 1;
+  transition: opacity 0.65s;
+}
+
+
+@media (max-width: 1200px) {
+
+  .header-contact-button:hover .header-contact-button-icon {
+    transform: translateX(-55px);
+  }
+
+  .header-contact-button:hover .presentation-button-text {
+    transform: translateX(30px);
+  }
+
+  .header-contact-button {
+    width: 70px;
+    height: 70px;
+  }
+
+  .header-contact-button:hover {
+    width: 200px;
+  }
+
+  .header-contact-button-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .presentation-button-text {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-contact-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header-contact-button:hover {
+    width: 180px;
+  }
+
+  .header-contact-button-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .presentation-button-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 500px) {
+
+  span.presentation-button-text{
+  display: none;
+  }
+
+  .header-contact-button {
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .header-contact-button:hover {
+    //background-color: darken($component_color, 5%); TODO
+    background-color: scale-color($component_color, $lightness: -5%);
+
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-contact-button-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .presentation-button-text {
+    font-size: 1.4rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .header-contact-button:hover .header-contact-button-icon {
+    transform: none;
+  }
+
+  .header-contact-button:hover .presentation-button-text {
+    transform: none;
+    opacity: 1;
+  }
+}
+
