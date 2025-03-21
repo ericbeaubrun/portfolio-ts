@@ -71,13 +71,9 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="footer-form-btn-container">
-                        {/*<h3 className="footer-contact-btn">{content.footer[2].title}</h3>*/}
-                        {/*<button className="footer-button" type="button">*/}
-                        {/*    {content.footer[2].btn}*/}
-                        {/*</button>*/}
-                        <ContactFormModal/>
-                    </div>
+                    {/*<div className="footer-form-btn-container">*/}
+                    {/*    <ContactFormModal/>*/}
+                    {/*</div>*/}
                 </div>
 
                 <div className="footer__copyrights">

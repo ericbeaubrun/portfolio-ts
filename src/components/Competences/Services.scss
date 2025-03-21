@@ -4,13 +4,14 @@
   display: flex;
   flex-wrap: wrap;
   //gap: 10px;
-  gap: 0;
+  gap: 2.5vw ;
 
-  justify-content: space-around;
+  //justify-content: space-around;
+  justify-content: center;
   background-color: $background_color_wave;
   position: relative;
   padding: 16vh 2.5vw 16vh 2.5vw;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .service-card {
@@ -126,7 +127,6 @@
 
   .service-card {
     margin: 0 10px;
-
   }
 }
 
@@ -134,10 +134,12 @@
   .services-container {
     display: flex;
     justify-content: space-between;
+    justify-content: center;
   }
 
   .service-card {
     width: 28%;
+    max-width: 705px;
   }
 }
 

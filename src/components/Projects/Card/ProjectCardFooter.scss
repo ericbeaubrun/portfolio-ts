@@ -4,9 +4,15 @@ $padding-bottom: 40px;
 
 .project-card__footer {
   display: flex;
-  justify-content: space-between;
   padding-bottom: $padding-bottom;
   padding-top: 49px;
+  justify-content: space-between;
+  max-width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+  padding-left: 5px;
+  padding-right: 5px;
+
 }
 
 .project-card__button {
@@ -17,16 +23,14 @@ $padding-bottom: 40px;
   color: white;
   text-decoration: none;
   padding: 8px 12px;
-  //width: 150px;
   font-weight: 500;
   font-size: 1.25rem;
   border-radius: 7px;
   transition: background 0.3s;
   align-content: center;
   justify-content: center;
-
   &:hover {
-    background-color: #5b5b5b;
+    background-color: #383838;
   }
 }
 
@@ -43,16 +47,23 @@ $padding-bottom: 40px;
   height: 20px;
   width: 20px;
   margin-right: 8px;
-
 }
+
 
 @media (max-width: 600px) {
   .project-card__footer {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .project-card__footer {
     padding: 16px;
+  }
+
+  .project-card__button {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
   }
 }

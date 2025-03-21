@@ -4,6 +4,7 @@ export const NextArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
             {/*&rarr;*/}
             {/*&#9658;*/}
             &#9654;
+
         </div>
     );
 };

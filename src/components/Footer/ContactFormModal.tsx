@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import './ContactFormModal.scss';
 import emailjs from 'emailjs-com';
+import '../Button.scss'
+import {useLanguage} from "../Utils/LanguageContext.tsx";
 
 type FormData = {
     name: string;
@@ -9,6 +11,7 @@ type FormData = {
 };
 
 const ContactFormModal = () => {
+    const {content} = useLanguage();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -46,9 +49,14 @@ const ContactFormModal = () => {
 
     return (
         <div className="contact-container">
-            <button className="contact-button" onClick={() => setIsModalOpen(true)}>
-                Contactez-moi
-            </button>
+            <div className="button-container">
+                <button onClick={() => {setIsModalOpen(true)}} className="shadowed contact-button">
+                    <div className="text">
+                        {content["see-more-gh"]}
+                    </div>
+                    <div className="wave-btn"></div>
+                </button>
+            </div>
 
             {isModalOpen && (
                 <div className="modal-overlay" onClick={closeModal}>

@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .contact-button {
   width: 250px;
   height: 100px;
   background: #f6f5f2;
+  background: #3f3f3f;
   border: 0.5mm solid black;
   border-radius: 5mm;
   cursor: pointer;
@@ -31,7 +31,6 @@
 }
 
 .contact-button {
-  color: black;
   border: none;
   border-radius: 8px;
   text-decoration: none;

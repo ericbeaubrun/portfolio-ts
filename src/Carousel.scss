@@ -29,24 +29,24 @@
   background-color: white;
 }
 
-.custom-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #574f49;
-  color: #fff;
-  padding-left: 7px;
-  cursor: pointer;
-  z-index: 10;
-  height: 100px;
-  width: 30px;
-  justify-content: center;
-  align-content: center;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #eae9e5;
-}
+//.custom-arrow {
+//  position: absolute;
+//  top: 50%;
+//  transform: translateY(-50%);
+//  background-color: #574f49;
+//  color: #fff;
+//  padding-left: 7px;
+//  cursor: pointer;
+//  z-index: 10;
+//  height: 100px;
+//  width: 30px;
+//  justify-content: center;
+//  align-content: center;
+//  border-radius: 4px;
+//  font-size: 15px;
+//  font-weight: bold;
+//  color: #eae9e5;
+//}
 
 
 .slick-dots {
@@ -166,5 +166,58 @@
 
   .slick-slide {
     padding: 0 5px;
+  }
+}
+
+
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(87, 79, 73, 0.8); /* Fond semi-transparent */
+  color: #fff;
+  padding: 10px; /* Ajustement du padding */
+  cursor: pointer;
+  z-index: 10;
+  height: 60px; /* Hauteur réduite pour mobile */
+  width: 30px; /* Largeur réduite pour mobile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 20px; /* Taille de la flèche légèrement augmentée */
+  font-weight: bold;
+  color: #eae9e5;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout de transition */
+}
+
+.custom-arrow:hover {
+  background-color: rgba(87, 79, 73, 1); /* Fond plus opaque au survol */
+  transform: translateY(-50%) scale(1.1); /* Légère augmentation de taille au survol */
+}
+
+.next-arrow {
+  right: 10px;
+}
+
+.prev-arrow {
+  left: 10px;
+}
+
+/* Ajustements pour les écrans mobiles */
+@media (max-width: 768px) {
+  .custom-arrow {
+    height: 50px; /* Hauteur encore plus réduite pour les petits écrans */
+    width: 25px; /* Largeur encore plus réduite pour les petits écrans */
+    font-size: 18px; /* Taille de la flèche réduite pour les petits écrans */
+  }
+
+  .next-arrow {
+    right: 5px; /* Position ajustée pour les petits écrans */
+  }
+
+  .prev-arrow {
+    left: 5px; /* Position ajustée pour les petits écrans */
   }
 }

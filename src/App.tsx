@@ -1,7 +1,7 @@
 import './App.scss'
 import {Element} from 'react-scroll';
 import {animateScroll} from 'react-scroll';
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import {MutableRefObject, useEffect, useRef} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import Services from "./components/Competences/Services.tsx";
@@ -14,6 +14,7 @@ import ScrollingText from "./components/Competences/ScrollingText.tsx";
 import GithubButton from "./components/GithubButton.tsx";
 import "./Carousel.scss";
 import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
+import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
 
 const App = () => {
 
@@ -110,31 +111,28 @@ const App = () => {
             </header>
 
             <main>
-                <Element name="presentation">
+                <Element name="presentation" className="section">
                     <section id="presentation">
                         <Presentation/>
                     </section>
                 </Element>
 
 
-                <Element name="services">
+                <Element name="services" className="section">
                     <section id="services">
                         <Services/>
                     </section>
                 </Element>
 
-                <Element name="projets" >
-
+                <Element name="projets" className="section">
                     <section id="projets">
-
                         <ProjectCardContainer/>
                         {/*<ShowMoreButton/>*/}
-                        <GithubButton/>
                         <ProfileStats/>
                     </section>
                 </Element>
 
-                <Element name="competences">
+                <Element name="competences" className="section">
                     <section id="competences">
                         <ScrollingText
                             text={"ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | " +
@@ -145,12 +143,13 @@ const App = () => {
                             text={"ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | " +
                                 "Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/"}
                             speed={2.5} direction={'left'}/>
+                        <ContactFormModal/>
                     </section>
                 </Element>
             </main>
 
             <footer>
-                <Element name="contact">
+                <Element name="contact" className="section">
                     <section id="contact">
                         <Footer/>
                     </section>

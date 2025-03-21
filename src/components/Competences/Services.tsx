@@ -40,7 +40,7 @@ const Services: React.FC = () => {
             initial={{opacity: 0, y: -40}}
             whileInView={{opacity: 1, y: 0}}
             transition={{duration: 0.6, delay: animationDelay}}
-            viewport={{once: true, amount: 0.5}}
+            viewport={{once: false, amount: 0.5}}
             className="service-card"
             key={service.title}
         >
@@ -55,7 +55,7 @@ const Services: React.FC = () => {
             initial={{opacity: 0, y: -60}}
             whileInView={{opacity: 1, y: 0}}
             transition={{duration: 0.5, delay: animationDelay}}
-            viewport={{once: true, amount: 0.5}}
+            viewport={{once: false, amount: 0.5}}
             className="separator"
             key={`separator-${animationDelay}`}
         />

@@ -71,9 +71,10 @@ interface BannerProps {
 
 const bounceEffect = {
     hidden: {opacity: 0, y: -75},
-    visible: (delay: number) => ({
+    visible: ([delay, rotation]: [number, number]) => ({
         opacity: 1,
         y: 0,
+        rotate:rotation,
         transition: {
             type: "spring",
             stiffness: 200,
@@ -86,12 +87,12 @@ const bounceEffect = {
 
 const colors = ["#796d61", "#8c7763", "#59524b", "#806954", "#796f67", "#645547"];
 
-const rotations = [5.3, 7.5, 4.5, 6.7, 5.7, 7.2];
+const rotations = [2.3, -3.5, 2.5, -3.7, 2.7, -3.2];
 
 const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; index: number }) => {
     const ref = useRef<HTMLDivElement>(null);
-    // const isInView = useInView(ref, { once: true });
-    const isInView = useInView(ref, {once: false});
+    const isInView = useInView(ref, { once: false });
+    // const isInView = useInView(ref, {once: false});
     // const rotation = (Math.random() * 10 - 5).toFixed(2) + "deg";
     const backgroundColor = colors[index % colors.length];
     const rotation = rotations[index % rotations.length];
@@ -100,15 +101,15 @@ const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; i
         <motion.div
             ref={ref}
             className="banner-letter shadowed"
-            custom={delay}
+            custom={[delay, rotation]}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={bounceEffect}
             // whileHover={{rotate: parseFloat(rotation) * 2}}
-            whileHover={{rotate: rotation}}
+            whileHover={{rotate: -rotation}}
             style={{
-                backgroundColor,
-                transform: `rotate(${rotation})`,
+                backgroundColor: backgroundColor,
+                // transform: `rotate(${rotation})`,
                 zIndex: 1+index,
             }}
         >

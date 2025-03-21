@@ -13,12 +13,15 @@
     .progress-bg {
       fill: none;
       stroke: #fff;
+      stroke: #e6e6e6;
+      stroke: #796f67;
       stroke-width: 2;
     }
 
     .progress-indicator {
       fill: none;
       stroke: #b9b9b9;
+      stroke: #e6e6e6;
       stroke-width: 2;
       transition: stroke-dashoffset 0.2s ease-out;
     }

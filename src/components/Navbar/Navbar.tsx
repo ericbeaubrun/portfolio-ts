@@ -27,7 +27,6 @@ const Navbar = () => {
     const renderNavItems = (closeOnClick: boolean = false) => {
         return navItems.map(({target, title, subtitle}) => {
 
-
             const handleClick = () => {
                 if (closeOnClick) toggleMenu();
             };
