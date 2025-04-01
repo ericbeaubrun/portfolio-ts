@@ -64,7 +64,8 @@ $iframe_radius: 7px;
 }
 
 .demo-iframe {
-  border: 4px solid #636363;;
+  //border: 4px solid #636363;;
+  border: 4px solid #dddddd;;
   //border: none;
   transition: width 0.7s;
   border-radius: $iframe_radius;

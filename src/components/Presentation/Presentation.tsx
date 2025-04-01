@@ -13,7 +13,6 @@ const Presentation = () => {
     const refP = useRef<HTMLParagraphElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const rectangleRef = useRef<HTMLDivElement>(null);
-
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
     const {content} = useLanguage();

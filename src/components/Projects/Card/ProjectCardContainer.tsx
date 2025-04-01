@@ -3,25 +3,13 @@ import {useLanguage} from "../../Utils/LanguageContext.tsx";
 import {useEffect, useRef, useState} from "react";
 import './ProjectCardContainer.scss';
 import BubbleBackground from "../BubbleBackground.tsx";
-import ProjectSubMap from "../ProjectSubMap.tsx";
 import Banner from "../Banner.tsx";
-import pIcon from "../../../assets/letters/p.png";
-import rIcon from "../../../assets/letters/r.png";
-import oIcon from "../../../assets/letters/o.png";
-import jIcon from "../../../assets/letters/j.png";
-import eIcon from "../../../assets/letters/e.png";
-import cIcon from "../../../assets/letters/c.png";
-import tIcon from "../../../assets/letters/t.png";
-import sIcon from "../../../assets/letters/s.png";
 import {Element} from "react-scroll";
 import ProjectCard from "./ProjectCard.tsx";
-import ScrollingLine from "./ProgressLine.tsx";
-import ProgressLine from "./ProgressLine.tsx";
 
 const ProjectCardContainer = () => {
     const [activeDemo, setActiveDemo] = useState<string | null>(null);
     const isMobile = useIsMobile();
-    const bannerLetters = [pIcon, rIcon, oIcon, jIcon, eIcon, cIcon, tIcon, sIcon];
     const {content} = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
     const [, setContainerHeight] = useState(0);
@@ -67,7 +55,7 @@ const ProjectCardContainer = () => {
 
     return (
         <div className="project-cards-container" ref={containerRef}>
-            {/*<BubbleBackground/>*/}
+            <BubbleBackground/>
 
             {/*{!isMobile && (*/}
             {/*    <ProjectSubMap projects={content.projects} isVisible={isVisible}/>*/}
@@ -87,10 +75,16 @@ const ProjectCardContainer = () => {
                         position: 'relative'
                     }}
                 >
-                    <ProgressLine
-                        rotation={index % 2 === 0 ? 2 : -2}
-                        direction={index % 2 === 0 ? "left" : "right"}
-                    />
+                    {/*<ProgressLine*/}
+                    {/*    rotation={index % 2 === 0 ? 2 : -2}*/}
+                    {/*    direction={index % 2 === 0 ? "left" : "right"}*/}
+                    {/*/>*/}
+                    {/*<ProgressLine*/}
+                    {/*    rotation={0}*/}
+                    {/*    direction={index % 2 === 0 ? "right" : "left"}*/}
+                    {/*    offset={0}*/}
+                    {/*/>*/}
+
                     <ProjectCard
                         name={project.name}
                         githubLink={project.gh}

@@ -1,13 +1,16 @@
 import './Navbar.scss';
 import {Link} from 'react-scroll';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import HamburgerButton from "./HamburgerButton.tsx";
 import {AnimatePresence, motion} from "framer-motion";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import LanguageSwitcher from "../Utils/LanguageSwitcher.tsx";
 import {useIsMobile} from "../Utils/MobileContext.tsx";
+import Lenis from "lenis";
 
-const Navbar = () => {
+
+const Navbar = ({lenis}: { lenis: Lenis }) => {
+
     const isMobile = useIsMobile();
     const {content} = useLanguage();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -24,13 +27,20 @@ const Navbar = () => {
         {target: "contact", title: content.nav[4].title, subtitle: content.nav[4].subtitle},
     ];
 
+
     const renderNavItems = (closeOnClick: boolean = false) => {
+
+        const handleClick = () => {
+            lenis.stop();
+            if (closeOnClick) {
+                toggleMenu();
+            }
+            setTimeout(() => {
+                lenis.start();
+            }, DURATION);
+        };
+
         return navItems.map(({target, title, subtitle}) => {
-
-            const handleClick = () => {
-                if (closeOnClick) toggleMenu();
-            };
-
             return (
                 <Link
                     key={target}

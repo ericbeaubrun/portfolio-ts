@@ -1,7 +1,7 @@
 import './App.scss'
 import {Element} from 'react-scroll';
 import {animateScroll} from 'react-scroll';
-import {MutableRefObject, useEffect, useRef} from "react";
+import React, {MutableRefObject, useEffect, useRef} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import Services from "./components/Competences/Services.tsx";
@@ -11,17 +11,31 @@ import Footer from "./components/Footer/Footer.tsx";
 import ProfileStats from "./components/ProfileStats.tsx";
 import SkillsSection from "./components/Competences/SkillsSection.tsx";
 import ScrollingText from "./components/Competences/ScrollingText.tsx";
-import GithubButton from "./components/GithubButton.tsx";
 import "./Carousel.scss";
 import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
 import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
+import {useIsMobile} from "./components/Utils/MobileContext.tsx";
+
 
 const App = () => {
 
-    // let observer: IntersectionObserver;
+
+    const lenis = new Lenis()
+    const isMobile = useIsMobile();
 
     useEffect(() => {
-        const sections = document.querySelectorAll('.section'); // Select the parent divs
+
+        const raf = (time: number) => {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        };
+
+        requestAnimationFrame(raf)
+    }, [])
+
+
+    useEffect(() => {
+        const sections = document.querySelectorAll('.section');
 
         const handleScroll = () => {
             let maxVisibleSectionId = '';
@@ -91,23 +105,23 @@ const App = () => {
     }, []);
 
     const containerRef: MutableRefObject<null> = useRef(null);
-    useEffect(() => {
-        const lenis = new Lenis()
-
-        const raf = (time: number) => {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        };
-
-        requestAnimationFrame(raf)
-    }, [])
+    // useEffect(() => {
+    //     const lenis = new Lenis()
+    //
+    //     const raf = (time: number) => {
+    //         lenis.raf(time)
+    //         requestAnimationFrame(raf)
+    //     };
+    //
+    //     requestAnimationFrame(raf)
+    // }, [])
 
 
     return (
         <div ref={containerRef}>
             <header>
-                <ScrollProgressCircle/>
-                <Navbar/>
+                {!isMobile && (<ScrollProgressCircle lenis={lenis}/>)}
+                <Navbar lenis={lenis}/>
             </header>
 
             <main>
@@ -139,10 +153,6 @@ const App = () => {
                                 "Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/"}
                             speed={2.5} direction={'right'}/>
                         <SkillsSection/>
-                        <ScrollingText
-                            text={"ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | " +
-                                "Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/"}
-                            speed={2.5} direction={'left'}/>
                         <ContactFormModal/>
                     </section>
                 </Element>

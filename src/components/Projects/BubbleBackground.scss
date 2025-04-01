@@ -11,7 +11,9 @@
 }
 
 .bubble {
+    border-radius: 14px;
     position: absolute;
     background-color: #625955;
+    background-color: #544c44;
     will-change: transform;
 }

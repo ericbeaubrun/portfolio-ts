@@ -5,6 +5,8 @@ import ProjectCardSkills from './ProjectCardSkills';
 import ProjectCardFooter from './ProjectCardFooter';
 import {useIsMobile} from "../../Utils/MobileContext.tsx";
 import './ProjectCard.scss';
+import ProgressLine from "./ProgressLine.tsx";
+import ProjectImageCarousel from "./ProjectImageCarousel.tsx";
 
 interface ProjectCardProps {
     name: string;
@@ -44,8 +46,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
     // const formatDemoLink = (link: string) => link.replace(/^https?:\/\//, '');
 
+
+    // const test = ['https://picsum.photos/400/300', 'https://picsum.photos/650/300', 'https://picsum.photos/600/250','https://picsum.photos/600/400', 'https://picsum.photos/550/300', 'https://picsum.photos/620/250','https://picsum.photos/600/320', 'https://picsum.photos/650/300', 'https://picsum.photos/600/250'];
+    const test = ['https://raw.githubusercontent.com/ericbeaubrun/portfolio/master/public/resources/projects/aerien2.gif','https://github.com/ericbeaubrun/portfolio/raw/master/public/resources/projects/aerien1.gif', 'https://github.com/ericbeaubrun/portfolio/raw/master/public/resources/projects/aerien1.gif', 'https://github.com/ericbeaubrun/portfolio/raw/master/public/resources/projects/aerien1.gif']
     return (
         <div className="project-card" style={offsetStyle}>
+            <ProgressLine offset={-4} startFromCenter={true}/>
 
             <ProjectCardHeader icon={icon} title={title} date={date} description={description}/>
 
@@ -63,11 +69,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         {/*<div className={"demo-link-container"}>*/}
                         {/*    <a className={"demo-link"} href={demoLink}>{formatDemoLink(demoLink)}</a>*/}
                         {/*</div>*/}
-                        <ProjectCardDemo
-                            name={name}
-                            demoLink={demoLink}
-                            isMobile={isMobile}
-                            setActiveDemo={setActiveDemo}/>
+
+                        <ProjectImageCarousel images={test} />
+
+                        {/*<ProjectCardDemo*/}
+                        {/*    name={name}*/}
+                        {/*    demoLink={demoLink}*/}
+                        {/*    isMobile={isMobile}*/}
+                        {/*    setActiveDemo={setActiveDemo}*/}
+                        {/*/>*/}
                     </>
                 )}
 
