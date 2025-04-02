@@ -24,21 +24,21 @@
   "title": "Étudiant Développeur Full Stack",
   "subtitle": "Eric ADELAIDE-BEAUBRUN",
   "introduction": {
-    "p1": "Moi c’est Eric, j’ai 23 ans. Après une licence en informatique, je me suis tourné vers le développement full-stack, avec un intérêt particulier pour React, Next.js et Express.js.",
-    "p2": "Souriant et toujours partant pour de nouveaux défis, j’adore explorer les technos et apprendre en construisant des projets."
+    "p1": "Souriant et enthousiaste, ce que j’aime c’est relever des défis et comprendre comment les choses fonctionnent. Après avoir terminé ma licence en informatique, j’ai choisi de me spécialiser dans le développeur full-stack avec React, Next.js et Express.",
+    "p2": "Mon ambition : créer et évoluer chaque jour pour tendre vers l’excellence."
   },
   "services": [
     {
-      "title": "UI/UX Design",
-      "p": "An effective UI/UX is what captures attention and spreads a clear message. "
+      "title": "API REST",
+      "p": "Je développe des systèmes qui permettent d’échanger facilement des informations avec d’autres services."
     },
     {
-      "title": "Web Development",
-      "p": "If you are looking for a developer who'll take over the research and development of your website"
+      "title": "Conception UI/UX",
+      "p": "Je crée des designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
     },
     {
-      "title": "App Development",
-      "p": "If you are looking for a user-friendly app that will attract more mobile users"
+      "title": "Déploiement",
+      "p": "Je mets en place des outils qui permettent de mettre à jour un site ou une app facilement."
     }
   ],
   "skills": {
