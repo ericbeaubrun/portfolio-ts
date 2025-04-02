@@ -32,16 +32,16 @@ const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({ images }) =
         centerMode: true,
         adaptiveHeight: true,
         centerPadding: '0px',
-        arrows: false,
+        arrows: true,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         slidesToShow: 3,
         afterChange: (index: number) => setCurrentSlide(index),
-        responsive: [
-            { breakpoint: 1200, settings: { slidesToShow: 3 } },
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 768, settings: { slidesToShow: 1 } }
-        ]
+        // responsive: [
+        //     { breakpoint: 1200, settings: { slidesToShow: 3 } },
+        //     { breakpoint: 1024, settings: { slidesToShow: 2 } },
+        //     { breakpoint: 768, settings: { slidesToShow: 1 } }
+        // ]
     };
 
     return (

@@ -7,15 +7,15 @@ import {useIsMobile} from "../Utils/MobileContext.tsx";
 
 export function SkillsSection() {
 
-    const iconsRoot = "src/assets/skills/";
+    const ROOT = "src/assets/skills/";
 
     const categoryIcons = [
-        iconsRoot + "language.svg",
-        iconsRoot + "frontend.svg",
-        iconsRoot + "backend.svg",
-        iconsRoot + "database.svg",
-        iconsRoot + "design.svg",
-        iconsRoot + "others.svg",
+        ROOT + "language.svg",
+        ROOT + "frontend.svg",
+        ROOT + "backend.svg",
+        ROOT + "database.svg",
+        ROOT + "design.svg",
+        ROOT + "others.svg",
     ];
 
     const {content} = useLanguage();

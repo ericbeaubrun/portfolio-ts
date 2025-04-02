@@ -1,6 +1,4 @@
 import './Skills.scss';
-import {motion, useInView} from 'framer-motion';
-import {useRef} from "react";
 
 
 interface SkillList {
