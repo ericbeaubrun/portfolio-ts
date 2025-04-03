@@ -29,14 +29,17 @@
   },
   "services": [
     {
+      "icon": "uiux-icon",
       "title": "REST API",
       "p": "Development of systems that allow information to be easily exchanged with other departments."
     },
     {
+      "icon": "webdev-icon",
       "title": "UI/UX Design",
       "p": "Creating simple, clear and modern designs so users can find what they are looking for in just a few clicks."
     },
     {
+      "icon": "webdev-icon",
       "title": "Deployment",
       "p": "Implementing tools that allow you to easily update a site or app."
     }
@@ -49,13 +52,11 @@
     },
     "Front-End": {
       "react": "React",
-      "next": "Next.js",
-      "jquery": "JQuery"
+      "next": "Next.js"
     },
     "Back-End": {
       "nodejs": "Node.js",
-      "express": "Express.js",
-      "firebase": "Firebase"
+      "express": "Express.js"
     },
     "Databases": {
       "postgres": "PostgreSQL",
@@ -64,12 +65,10 @@
     },
     "Design": {
       "ps": "Photoshop",
-      "figma": "Figma",
-      "blender": "blender"
+      "figma": "Figma"
     },
     "Other Tools": {
       "git": "Git",
-      "idea": "Intellij",
       "notion": "Notion"
     }
   },
@@ -140,15 +139,15 @@
   "stats": [
     {
       "num": 3,
-      "text": "Years of experience"
+      "text": "Years of code"
     },
     {
       "num": 8,
-      "text": "Projects completed"
+      "text": "Projects"
     },
     {
       "num": 1,
-      "text": "Internships completed"
+      "text": "Internships"
     }
   ],
   "footer": [

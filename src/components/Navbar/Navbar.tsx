@@ -1,6 +1,6 @@
 import './Navbar.scss';
 import {Link} from 'react-scroll';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import HamburgerButton from "./HamburgerButton.tsx";
 import {AnimatePresence, motion} from "framer-motion";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
@@ -8,23 +8,28 @@ import LanguageSwitcher from "../Utils/LanguageSwitcher.tsx";
 import {useIsMobile} from "../Utils/MobileContext.tsx";
 import Lenis from "lenis";
 
-
+interface NavItem {
+    title: string;
+    subtitle: string;
+}
 const Navbar = ({lenis}: { lenis: Lenis }) => {
 
     const isMobile = useIsMobile();
-    const {content} = useLanguage();
     const [menuOpen, setMenuOpen] = useState(false);
     const DURATION = 500;
     const OFFSET = 0;
+    const {content} = useLanguage();
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
 
+    const nav = (content as { nav: NavItem[] }).nav;
+
     const navItems = [
-        {target: "presentation", title: content.nav[0].title, subtitle: content.nav[0].subtitle},
-        {target: "services", title: content.nav[1].title, subtitle: content.nav[1].subtitle},
-        {target: "projets", title: content.nav[2].title, subtitle: content.nav[2].subtitle},
-        {target: "competences", title: content.nav[3].title, subtitle: content.nav[3].subtitle},
-        {target: "contact", title: content.nav[4].title, subtitle: content.nav[4].subtitle},
+        {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
+        {target: "services", title: nav[1].title, subtitle: nav[1].subtitle},
+        {target: "projets", title: nav[2].title, subtitle: nav[2].subtitle},
+        {target: "competences", title: nav[3].title, subtitle: nav[3].subtitle},
+        {target: "contact", title: nav[4].title, subtitle: nav[4].subtitle},
     ];
 
 

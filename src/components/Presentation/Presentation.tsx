@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import {useEffect, useRef} from "react";
 import profilePicture from "../../assets/profile_picture.png";
 import arrowIcon from "../../assets/arrow_dark.png"; // <-- ajoutez votre icône ici
 import "./Presentation.scss";
@@ -16,6 +16,9 @@ const Presentation = () => {
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
     const {content} = useLanguage();
+
+    const presentationContent = (content as { title:string, subtitle:string, introduction: {p1:string, p2: string}});
+
 
     useEffect(() => {
         // Animation parallax au scroll
@@ -91,17 +94,17 @@ const Presentation = () => {
 
                 <div className="left-section">
                     <h1 ref={refH1} id="presentation-title">
-                        {content.title}
+                        {presentationContent.title}
                     </h1>
 
                     <h2 ref={refH2} id="presentation-subtitle">
-                        {content.subtitle}
+                        {presentationContent.subtitle}
                     </h2>
 
                     <p ref={refP} className="presentation-paragraph">
-                        {content.introduction.p1}
+                        {presentationContent.introduction.p1}
                         <br/>
-                        {content.introduction.p2}
+                        {presentationContent.introduction.p2}
                     </p>
 
                     <ContactButtons/>

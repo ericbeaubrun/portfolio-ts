@@ -1,6 +1,5 @@
 import React from 'react';
 import './ScrollingText.scss';
-import {useLanguage} from "../Utils/LanguageContext.tsx";
 
 interface ScrollingTextProps {
     text: string;

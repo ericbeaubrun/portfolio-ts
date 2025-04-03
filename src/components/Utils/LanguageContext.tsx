@@ -6,9 +6,10 @@ type Language = "fr" | "en";
 
 interface LanguageContextProps {
     language: Language;
-    content: typeof frContent;
+    content: Record<string, unknown>;
     toggleLanguage: () => void;
 }
+
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 

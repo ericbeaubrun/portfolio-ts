@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import './ContactFormModal.scss';
 import emailjs from 'emailjs-com';
 import '../Button.scss'
@@ -12,6 +12,7 @@ type FormData = {
 
 const ContactFormModal = () => {
     const {content} = useLanguage();
+    const contentBtn = (content as { "see-more-gh": string })["see-more-gh"];
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -20,7 +21,7 @@ const ContactFormModal = () => {
         message: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = e.target;
         setFormData({
             ...formData,
@@ -28,10 +29,9 @@ const ContactFormModal = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        emailjs.sendForm('service_n0ckxdy', 'template_q8yzqaj', e.target, 'mexDdWEEhs-E5pxJW')
+        emailjs.sendForm('service_n0ckxdy', 'template_q8yzqaj', e.target as HTMLFormElement, 'mexDdWEEhs-E5pxJW')
             .then((result) => {
                 console.log(result.text);
                 alert("Messsage envoyé avec succès !");
@@ -50,9 +50,11 @@ const ContactFormModal = () => {
     return (
         <div className="contact-container">
             <div className="button-container">
-                <button onClick={() => {setIsModalOpen(true)}} className="shadowed contact-button">
+                <button onClick={() => {
+                    setIsModalOpen(true)
+                }} className="shadowed contact-button">
                     <div className="text">
-                        {content["see-more-gh"]}
+                        {contentBtn}
                     </div>
                     <div className="wave-btn"></div>
                 </button>

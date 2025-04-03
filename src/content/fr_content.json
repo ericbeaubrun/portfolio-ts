@@ -29,14 +29,17 @@
   },
   "services": [
     {
+      "icon": "uiux-icon",
       "title": "API REST",
       "p": "Développement de systèmes permettant d’échanger facilement des informations avec d’autres services."
     },
     {
+      "icon": "webdev-icon",
       "title": "Conception UI/UX",
       "p": "Créations de designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
     },
     {
+      "icon": "webdev-icon",
       "title": "Déploiement",
       "p": "Mise en place des outils qui permettent de mettre à jour un site ou une app facilement."
     }

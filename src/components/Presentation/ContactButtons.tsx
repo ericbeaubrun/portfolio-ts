@@ -8,9 +8,10 @@ const ContactButtons = () => {
     const GH_URL = 'https://github.com/ericbeaubrun';
     const LINKEDIN_URL = 'https://www.linkedin.com/in/eric-adelaide-beaubrun/';
 
-    const refBtnLinkedin = useRef<HTMLHeadingElement>(null);
-    const refBtnGithub = useRef<HTMLHeadingElement>(null);
-    const refBtnCV = useRef<HTMLHeadingElement>(null);
+    const refBtnLinkedin = useRef<HTMLButtonElement>(null);
+    const refBtnGithub = useRef<HTMLButtonElement>(null);
+    const refBtnCV = useRef<HTMLButtonElement>(null);
+
 
     const openInTab: boolean = true;
 

@@ -117,7 +117,8 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                     className={isOverlayVisible ? 'demo-iframe-container demo-active' : 'demo-iframe-container'}
                 >
                     {isOverlayVisible && !isMobile && (
-                        <Link smooth={true} duration={DURATION} offset={OFFSET} className="project-link">
+                        // Test overlay to=""
+                        <Link to="" smooth={true} duration={DURATION} offset={OFFSET} className="project-link">
                             <div className='click-to-interact-btn' onClick={handleOverlayClick}>
                                 <span id='click-to-interact-text'>Click to interact</span>
                             </div>

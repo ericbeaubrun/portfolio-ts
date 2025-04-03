@@ -3,10 +3,16 @@ import {useEffect, useRef, useState} from "react";
 import CountUp from "react-countup";
 import {useLanguage} from "./Utils/LanguageContext.tsx";
 
+interface StatItem {
+    num: number;
+    text: string;
+}
 
 const ProfileStats = () => {
 
     const {content} = useLanguage();
+    const stats = (content as { stats: StatItem[] }).stats;
+
     const [startCount, setStartCount] = useState(false);
     const statsRef = useRef(null);
 
@@ -32,9 +38,11 @@ const ProfileStats = () => {
 
     return (
         <div className="stats-container" ref={statsRef}>
-            {content.stats.map((item, index) => (
-                <div className={"stat-square shadowed"} key={index}>
-                    {startCount && (<CountUp end={item.num} duration={4} delay={0.5} className="stats-number"/>)}
+            {stats.map((item, index) => (
+                <div className="stat-square shadowed" key={index}>
+                    {startCount && (
+                        <CountUp end={item.num} duration={4} delay={0.5} className="stats-number" />
+                    )}
                     <p>{item.text}</p>
                 </div>
             ))}

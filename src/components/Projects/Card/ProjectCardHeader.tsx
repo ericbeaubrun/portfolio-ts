@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProjectCardHeader.scss';
-import ProgressLine from "./ProgressLine.tsx";
 
 interface ProjectCardHeaderProps {
     icon: string;

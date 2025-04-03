@@ -38,6 +38,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
                                                  }) => {
 
+
+    void features;
+    void name;
+    void setActiveDemo;
+    void offsetDirection;
+
     const isMobile = useIsMobile();
 
     const offsetStyle = {

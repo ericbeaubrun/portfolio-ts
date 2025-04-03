@@ -7,9 +7,9 @@ import {useLanguage} from "../Utils/LanguageContext";
 import {useIsMobile} from "../Utils/MobileContext.tsx";
 
 interface Service {
-    iconClass: string;
     title: string;
-    description: string;
+    p: string;
+    icon: string;
 }
 
 const Services: React.FC = () => {
@@ -29,11 +29,13 @@ const Services: React.FC = () => {
 
     const ref1 = useRef<HTMLDivElement>(null);
 
-    const services: Service[] = content.services.map((service, index: number) => ({
-        iconClass: ["uiux-icon", "webdev-icon", "appdev-icon"][index],
-        title: service.title,
-        description: service.p,
-    }));
+
+    const services = (content as { services: Service[] }).services;
+    // const services: Service[] = content.services.map((service :Service, index: number) => ({
+    //     iconClass: ["uiux-icon", "webdev-icon", "appdev-icon"][index],
+    //     title: service.title,
+    //     description: service.p,
+    // }));
 
     const renderServiceCard = (service: Service, animationDelay: number) => (
         <motion.div
@@ -44,9 +46,9 @@ const Services: React.FC = () => {
             className="service-card"
             key={service.title}
         >
-            <div className={`icon ${service.iconClass}`}/>
+            <div className={`icon ${service.icon}`}/>
             <h3 className="service-title">{service.title}</h3>
-            <p className="service-paragraph">{service.description}</p>
+            <p className="service-paragraph">{service.p}</p>
         </motion.div>
     );
 
@@ -68,9 +70,9 @@ const Services: React.FC = () => {
                     <Slider {...carouselSettings}>
                         {services.map((service, index) => (
                             <div key={index} className="service-card">
-                                <div className={`icon ${service.iconClass}`}/>
+                                <div className={`icon ${service.icon}`}/>
                                 <h3 className="service-title">{service.title}</h3>
-                                <p className="service-paragraph">{service.description}</p>
+                                <p className="service-paragraph">{service.p}</p>
                             </div>
                         ))}
                     </Slider>

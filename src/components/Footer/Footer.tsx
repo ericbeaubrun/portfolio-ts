@@ -1,12 +1,37 @@
 import "./Footer.scss";
 import {FaMapMarkerAlt} from 'react-icons/fa';
-import { FaEnvelope, FaPhone, FaGithub, FaLinkedin, FaInfoCircle } from 'react-icons/fa';
-import ContactFormModal from "./ContactFormModal.tsx";
+import {FaEnvelope, FaPhone, FaGithub, FaLinkedin, FaInfoCircle} from 'react-icons/fa';
 import {useLanguage} from "../Utils/LanguageContext.tsx";
+
+interface FooterBlock0 {
+    title: string;
+    email: string;
+    tel: string;
+    github: string;
+    linkedin: string;
+}
+
+interface FooterBlock1 {
+    address: string;
+}
+
+interface FooterBlock2 {
+    title: string;
+    btn: string;
+}
+
+interface FooterBlock3 {
+    paragraph: string;
+}
+
+type FooterContent = [FooterBlock0, FooterBlock1, FooterBlock2, FooterBlock3];
+
 
 const Footer = () => {
 
-    const { content } = useLanguage();
+    const {content} = useLanguage();
+
+    const footer = (content as { footer: FooterContent }).footer;
 
     return (
         <footer className="footer">
@@ -19,23 +44,23 @@ const Footer = () => {
                     <div className="footer-links-container">
                         <h3 className="footer-coord">
                             <FaInfoCircle size={28} style={{color: '#fff', marginRight: '10px'}}/>
-                            {content.footer[0].title}
+                            {footer[0].title}
                         </h3>
                         <ul>
                             <li className="footer-coord">
                                 <FaEnvelope style={{marginRight: '8px'}}/>
-                                {content.footer[0].email}
+                                {footer[0].email}
                             </li>
 
                             <li className="footer-coord">
                                 <FaPhone style={{marginRight: '8px'}}/>
-                                {content.footer[0].tel}
+                                {footer[0].tel}
                             </li>
 
                             <li className="footer-coord">
                                 <FaGithub style={{marginRight: '8px'}}/>
                                 <a href="https://github.com/ericbeaubrun" target="_blank" rel="noopener noreferrer">
-                                    {content.footer[0].github}
+                                    {footer[0].github}
                                 </a>
                             </li>
 
@@ -43,7 +68,7 @@ const Footer = () => {
                                 <FaLinkedin style={{marginRight: '8px'}}/>
                                 <a href="https://www.linkedin.com/in/eric-adelaide-beaubrun/" target="_blank"
                                    rel="noopener noreferrer">
-                                    {content.footer[0].linkedin}
+                                    {footer[0].linkedin}
                                 </a>
                             </li>
                         </ul>
@@ -52,7 +77,7 @@ const Footer = () => {
                     <div className="footer-map-container">
                         <div className="footer-address">
                             <FaMapMarkerAlt size={28} style={{color: '#fff', marginRight: '10px'}}/>
-                            <h3 className="footer-adr">{content.footer[1].address}</h3>
+                            <h3 className="footer-adr">{footer[1].address}</h3>
                         </div>
 
                         <div className="footer-map">
@@ -78,7 +103,7 @@ const Footer = () => {
 
                 <div className="footer__copyrights">
                     <p>
-                        {content.footer[3].paragraph}
+                        {footer[3].paragraph}
                     </p>
                 </div>
             </div>

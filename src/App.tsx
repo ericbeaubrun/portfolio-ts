@@ -1,7 +1,7 @@
 import './App.scss'
 import {Element} from 'react-scroll';
 import {animateScroll} from 'react-scroll';
-import React, {MutableRefObject, useEffect, useRef} from "react";
+import {MutableRefObject, useEffect, useRef} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import Services from "./components/Competences/Services.tsx";
@@ -22,6 +22,7 @@ const App = () => {
     const {content} = useLanguage();
     const lenis = new Lenis();
     const isMobile = useIsMobile();
+    const scrollingText = (content as { "scrolling-text": string })["scrolling-text"];
 
     useEffect(() => {
 
@@ -138,7 +139,7 @@ const App = () => {
                 <Element name="competences" className="section">
                     <section id="competences">
                         <ScrollingText
-                            text={content["scrolling-text"]}
+                            text={scrollingText}
                             speed={2.5} direction={'right'}/>
                         <SkillsSection/>
                         <ContactFormModal/>
