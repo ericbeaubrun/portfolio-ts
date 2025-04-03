@@ -45,6 +45,8 @@ const ContactButtons = () => {
         };
     }, []);
 
+    const ROOT = '/assets/';
+
     return (
         <div className="presentation-button-container">
 
@@ -52,7 +54,7 @@ const ContactButtons = () => {
                 onClick={() => openInTab ? window.open(LINKEDIN_URL) : window.location.href = LINKEDIN_URL}
                 ref={refBtnLinkedin}
                 className="shadowed header-contact-button">
-                <img src={"src/assets/linkedin.png"} alt="Linkedin Icon" className="header-contact-button-icon"/>
+                <img src={ROOT + "linkedin.png"} alt="Linkedin Icon" className="header-contact-button-icon"/>
                 <span className="presentation-button-text">LinkedIn</span>
             </button>
 
@@ -60,13 +62,13 @@ const ContactButtons = () => {
                 onClick={() => openInTab ? window.open(GH_URL, '_blank') : window.location.href = GH_URL}
                 ref={refBtnGithub}
                 className="shadowed header-contact-button">
-                <img src={"src/assets/github.png"} alt="Github Icon" className="header-contact-button-icon"/>
+                <img src={ROOT + "github.png"} alt="Github Icon" className="header-contact-button-icon"/>
                 <span className="presentation-button-text">GitHub</span>
             </button>
 
             <button onClick={() => openInTab ? window.open(CV_URL) : window.location.href = CV_URL} ref={refBtnCV}
                     className="shadowed header-contact-button">
-                <img src={"src/assets/cv.png"} alt="CV Icon" className="header-contact-button-icon"/>
+                <img src={ROOT + "cv.png"} alt="CV Icon" className="header-contact-button-icon"/>
                 <span className="presentation-button-text">CV&nbsp;(pdf)</span>
             </button>
 

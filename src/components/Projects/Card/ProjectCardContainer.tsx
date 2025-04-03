@@ -21,7 +21,7 @@ export interface Project {
 
 const ProjectCardContainer = () => {
 
-    const ROOT = './src/assets/projects/';
+    const ROOT = '/assets/projects/';
     const images = [
         [ROOT + 'conquete1.gif', ROOT + 'conquete2.gif', ROOT + 'conquete3.gif', ROOT + 'conquete4.gif', ROOT + 'conquete5.gif', ROOT + 'conquete6.gif'],
         [ROOT + 'learn_py1.gif', ROOT + 'learn_py2.gif', ROOT + 'learn_py3.gif', ROOT + 'learn_py2.gif'],

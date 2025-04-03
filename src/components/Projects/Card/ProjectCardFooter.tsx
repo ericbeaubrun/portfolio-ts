@@ -29,7 +29,7 @@
 // export default ProjectCardFooter;
 import React, {useRef} from "react";
 import {motion, useInView} from "framer-motion";
-import githubIcon from "../../../assets/github2.png";
+import githubIcon from "../../../../public/assets/github2.png";
 import "./ProjectCardFooter.scss";
 
 interface ProjectCardFooterProps {

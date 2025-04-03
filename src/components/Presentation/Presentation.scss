@@ -5,7 +5,7 @@
 }
 
 .wave {
-  background-image: url('src/assets/wave.svg');
+  background-image: url('../../../public/assets/wave.svg');
   background-repeat: no-repeat;
   background-position: center;
   height: 102px;
@@ -15,7 +15,7 @@
 }
 
 .wave-reverse {
-  background-image: url('src/assets/wave_reverse.svg');
+  background-image: url('../../../public/assets/wave_reverse.svg');
   background-repeat: no-repeat;
   background-position: center top;
   //height: 120px;

@@ -71,12 +71,12 @@ $text_color: white;
     }
 
     &-premierplan {
-      background-image: url('../../assets/footer_premier_plan.png');
+      background-image: url('../../../public/assets/footer_premier_plan.png');
       animation-duration: 500s;
     }
 
     &-secondplan {
-      background-image: url('../../assets/footer_second_plan.png');
+      background-image: url('../../../public/assets/footer_second_plan.png');
       animation-duration: 600s;
     }
   }

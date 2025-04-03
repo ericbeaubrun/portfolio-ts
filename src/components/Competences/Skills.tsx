@@ -37,7 +37,7 @@ const Skills = ({title, skills, icon}: { title: string, skills: SkillList, icon:
                             <img
                                 // src={`https://skillicons.dev/icons?theme=light&i=${key}`}
                                 // src={`https://skillicons.dev/icons?theme=dark&i=${key}`}
-                                src={`src/assets/skills/dark/${key}.svg`}
+                                src={`/assets/skills/dark/${key}.svg`}
                                 // src={`src/assets/skills/light/${key}.svg`}
                                 alt={`${skillName} icon`}
                                 className='skill-icon'

@@ -92,7 +92,7 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "./src/assets/conquete.png"
+      "icon": "/assets/conquete.png"
     },
     {
       "title": "Educational App for Students",
@@ -114,7 +114,7 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "./src/assets/conquete.png"
+      "icon": "/assets/application_pedagogique.png"
     },
     {
       "title": "Air Traffic Simulator",
@@ -133,7 +133,7 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "./src/assets/conquete.png"
+      "icon": "/assets/aerien.png"
     }
   ],
   "stats": [

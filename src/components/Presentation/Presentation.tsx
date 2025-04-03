@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
-import profilePicture from "../../assets/profile_picture.png";
-import arrowIcon from "../../assets/arrow_dark.png"; // <-- ajoutez votre icône ici
+import profilePicture from "../../../public/assets/profile_picture.png";
+import arrowIcon from "../../../public/assets/arrow_dark.png"; // <-- ajoutez votre icône ici
 import "./Presentation.scss";
 import gsap from "gsap";
 import ContactButtons from "./ContactButtons.tsx";
