@@ -1,8 +1,8 @@
 {
   "nav": [
     {
-      "title": "Overview",
-      "subtitle": "Journey and Objectives"
+      "title": "Presentation",
+      "subtitle": "Overview"
     },
     {
       "title": "Specialty",
@@ -14,7 +14,7 @@
     },
     {
       "title": "Skills",
-      "subtitle": "Mastered Technologies"
+      "subtitle": "My Toolbox"
     },
     {
       "title": "Contact",
@@ -24,21 +24,21 @@
   "title": "Full Stack Developer Student",
   "subtitle": "Eric ADELAIDE-BEAUBRUN",
   "introduction": {
-    "p1": "My name is Eric, I am 23 years old and I have been passionate about computer science for over a decade. Currently, I hold a degree in computer science.",
-    "p2": "My goal is to become a full stack developer, specializing in web development (Java/Python/Angular/React), while also exploring cybersecurity, DevOps, and mobile app development."
+    "p1": "Welcome to my portfolio. Here you will find my personal and academic projects, developed since my early days.",
+    "p2": "I mainly design complete web applications with React, Express.js or Next.js, with the aim of specializing as a full stack developer."
   },
   "services": [
     {
+      "title": "REST API",
+      "p": "Development of systems that allow information to be easily exchanged with other departments."
+    },
+    {
       "title": "UI/UX Design",
-      "p": "An effective UI/UX is what captures attention and spreads a clear message. I ensure the design is innovative and neat with all of this."
+      "p": "Creating simple, clear and modern designs so users can find what they are looking for in just a few clicks."
     },
     {
-      "title": "Web Development",
-      "p": "If you are looking for a developer who will take over the research and development of your website, I am a well-established professional to help you with this."
-    },
-    {
-      "title": "App Development",
-      "p": "If you are looking for a user-friendly app that will attract more mobile users, I can help you design and build a platform with the latest and trendiest look and feel."
+      "title": "Deployment",
+      "p": "Implementing tools that allow you to easily update a site or app."
     }
   ],
   "skills": {
@@ -73,13 +73,13 @@
       "notion": "Notion"
     }
   },
-  "projects-title" : "projects",
+  "projects-title": "projects",
   "projects": [
     {
-      "title": "Multiplayer Strategic Board Game",
-      "name": "Library",
+      "title": "Multiplayer Strategy Board Game",
+      "name": "Conquete",
       "date": "January 2022",
-      "desc": "Created a strategic board game in Java. Each player controls a territory defined by squares of their color and must manage gold, build structures, and command soldiers. The game system includes an economy based on resources acquired and gold earned each turn.",
+      "desc": "Creation of a strategic board game in Java, integrating AI for local multiplayer games, save game management, and generation of statistical graphs for the games.",
       "gh": "https://github.com/ericbeaubrun/conquete",
       "demo": "eric.adelaide-beaubrun.fr",
       "skills": [
@@ -96,29 +96,10 @@
       "icon": "./src/assets/conquete.png"
     },
     {
-      "title": "Air Traffic Simulator",
-      "name": "Library",
-      "date": "January 2024",
-      "desc": "This simulator aims to model the movements and interactions of airplanes within a predefined airspace. Developed in Java, it uses multithreading to manage planes simultaneously. The simulation is represented in a 2D graphical interface where the user can observe flight paths, airport data, and real-time information on aircraft position, speed, and altitude.",
-      "gh": "https://github.com/ericbeaubrun/aerien",
-      "demo": "eric.adelaide-beaubrun.fr",
-      "skills": [
-        "Java",
-        "Multithreading",
-        "UI/UX Design"
-      ],
-      "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
-      ],
-      "icon": "./src/assets/conquete.png"
-    },
-    {
       "title": "Educational App for Students",
-      "name": "Library",
+      "name": "PythonApp",
       "date": "October 2023",
-      "desc": "Developed an interactive app in Python to teach programming to students. The game is structured in chapters and levels with progressive difficulty, covering concepts such as data types, loops, variables, and conditions. The user codes directly in an editor integrated into the game.",
+      "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
       "demo": "eric.adelaide-beaubrun.fr",
       "skills": [
@@ -135,11 +116,30 @@
         "API Integration"
       ],
       "icon": "./src/assets/conquete.png"
+    },
+    {
+      "title": "Air Traffic Simulator",
+      "name": "Aeerial",
+      "date": "January 2024",
+      "desc": "Development of an air traffic simulator in Java, including a real-time configurable graphical interface and using advanced concepts such as trajectory calculation and collision avoidance (multithreading).",
+      "gh": "https://github.com/ericbeaubrun/aerien",
+      "demo": "eric.adelaide-beaubrun.fr",
+      "skills": [
+        "Java",
+        "Multithreading",
+        "UI/UX Design"
+      ],
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": "./src/assets/conquete.png"
     }
   ],
   "stats": [
     {
-      "num": 4,
+      "num": 3,
       "text": "Years of experience"
     },
     {
@@ -147,57 +147,8 @@
       "text": "Projects completed"
     },
     {
-      "num": 2,
+      "num": 1,
       "text": "Internships completed"
-    }
-  ],
-  "timeline": [
-    {
-      "title": "Baccalauréat scientifique",
-      "subtitle": "...",
-      "date": "Juin 2020",
-      "desc": "Obtention de mon BAC qui m'a permis d'obtenir de solides bases en mathématiques.",
-      "skills": []
-    },
-    {
-      "title": "Admission à l'université",
-      "subtitle": "CY Paris Université",
-      "date": "Septembre 2021",
-      "desc": "Intégration du parcours licence Maths, Informatique, Physique et Ingénierie à Cergy-Pontoise où j'ai travaillé sur de nombreux projets.",
-      "skills": [
-        "Java",
-        "PHP",
-        "HTML/CSS",
-        "JavaScript",
-        "SQL"
-      ]
-    },
-    {
-      "title": "Stage en entreprise",
-      "subtitle": "Chez idIA-Tech",
-      "date": "Avril 2024",
-      "desc": "Réalisation d’un stage passionnant dans le domaine du Web-Mining en tant que développeur Java au sein d'idIA-Tech.",
-      "skills": [
-        "Java",
-        "PHP",
-        "HTML/CSS",
-        "JavaScript",
-        "SQL"
-      ]
-    },
-    {
-      "title": "Licence Générale",
-      "subtitle": "",
-      "date": "Juin 2024",
-      "desc": "Obtention de mon diplôme BAC+3 en Informatique.",
-      "skills": []
-    },
-    {
-      "title": "Equipié Polyvalent",
-      "subtitle": "Chez McDonald's Dammarie-Les-Lys",
-      "date": "Octobre 2024",
-      "desc": "...",
-      "skills": []
     }
   ],
   "footer": [
@@ -219,9 +170,10 @@
       "paragraph": "Réalisé avec ❤\uFE0F"
     }
   ],
+  "scrolling-text": "ux | Technologies | Frameworks | Libraries | Languages | Environments | Tools | Debugging | Testing | Deployment | Optimization | Content Management | Modeling | ui/",
   "source-code": "Source Code",
   "see-more": "See More...",
-  "see-more-gh": "Discover other projects",
+  "see-more-gh": "Contact me",
   "hide": "Hide",
   "read-more": "Read More"
 }

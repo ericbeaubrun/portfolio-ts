@@ -4,7 +4,8 @@
   right: 20px;
   width: 75px;
   height: 75px;
-  z-index: 10; // TODO 11
+  z-index: 10;
+  mix-blend-mode: difference;
 
   .progress-circle {
     width: 100%;
@@ -12,38 +13,37 @@
 
     .progress-bg {
       fill: none;
-      stroke: #fff;
       stroke: #e6e6e6;
-      stroke: #796f67;
+      //stroke: #213894;
       stroke-width: 2;
+      opacity: 0.2;
     }
 
     .progress-indicator {
       fill: none;
-      stroke: #b9b9b9;
-      stroke: #e6e6e6;
+      stroke: white;
+      //stroke: #15504b;
       stroke-width: 2;
       transition: stroke-dashoffset 0.2s ease-out;
+      mix-blend-mode: difference;
     }
   }
 
   .scroll-arrow {
-    color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
     cursor: pointer;
-    font-size: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    mix-blend-mode: difference;
 
     img {
-      transform: translate(0, 3px);
       width: 36px;
       height: 36px;
-      margin: 0 auto;
+      transform: translateY(3px);
     }
   }
 }

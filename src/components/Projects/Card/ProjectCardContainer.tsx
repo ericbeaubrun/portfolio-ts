@@ -8,6 +8,14 @@ import {Element} from "react-scroll";
 import ProjectCard from "./ProjectCard.tsx";
 
 const ProjectCardContainer = () => {
+
+    const ROOT = './src/assets/projects/';
+    const images = [
+        [ROOT + 'conquete1.gif', ROOT + 'conquete2.gif', ROOT + 'conquete3.gif', ROOT + 'conquete4.gif', ROOT + 'conquete5.gif', ROOT + 'conquete6.gif'],
+        [ROOT + 'learn_py1.gif', ROOT + 'learn_py2.gif', ROOT + 'learn_py3.gif', ROOT + 'learn_py2.gif'],
+        [ROOT + 'aerien1.gif', ROOT + 'aerien2.gif', ROOT + 'aerien3.gif', ROOT + 'aerien4.gif']
+    ]
+
     const [activeDemo, setActiveDemo] = useState<string | null>(null);
     const isMobile = useIsMobile();
     const {content} = useLanguage();
@@ -97,6 +105,7 @@ const ProjectCardContainer = () => {
                         features={project.features}
                         setActiveDemo={setActiveDemo}
                         offsetDirection={index % 2 === 0 ? "left" : "right"}
+                        images={images[index]}
                     />
 
                     {/*<ProgressLine rotation={5}/>*/}
@@ -107,75 +116,3 @@ const ProjectCardContainer = () => {
 };
 
 export default ProjectCardContainer;
-
-
-// import React, {useRef, useEffect} from "react";
-// import {useLanguage} from "../../Utils/LanguageContext.tsx";
-// import {useIsMobile} from "../../Utils/MobileContext.tsx";
-// import gsap from "gsap";
-// import {ScrollTrigger} from "gsap/ScrollTrigger";
-// import ProjectCard from "./ProjectCard.tsx";
-// import './ProjectCardContainer.scss';
-// import Banner from "../Banner.tsx";
-//
-// gsap.registerPlugin(ScrollTrigger);
-//
-// const ProjectCardContainer = () => {
-//     const containerRef = useRef<HTMLDivElement>(null);
-//     const {content} = useLanguage();
-//     const isMobile = useIsMobile();
-//
-//     useEffect(() => {
-//         if (!containerRef.current) return;
-//
-//         const cards = gsap.utils.toArray(".project-card") as HTMLElement[];
-//
-//         cards.forEach((card, index) => {
-//             gsap.fromTo(card, {
-//                 y: () => (index + 1) * 100, // Déplace chaque carte vers le bas pour l'empiler
-//                 scale: 1 - (index * 0.15), // Réduit l'échelle pour créer un effet de profondeur
-//             }, {
-//                 y: 0, // Ramène la carte à sa position d'origine
-//                 scale: 1, // Rétablit l'échelle d'origine
-//                 scrollTrigger: {
-//                     trigger: card,
-//                     start: "top bottom", // Déclenche l'animation lorsque le haut de la carte atteint le bas de la fenêtre
-//                     end: "top top", // Termine l'animation lorsque le haut de la carte atteint le haut de la fenêtre
-//                     scrub: true, // Rend l'animation fluide en fonction du scroll
-//                 },
-//             });
-//         });
-//
-//         // Nettoyage
-//         return () => {
-//             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//         };
-//     }, [content.projects]);
-//
-//     return (
-//         <div ref={containerRef} className="project-cards-container">
-//             <div className="projects-banner-container">
-//                 <Banner text={content["projects-title"]}/>
-//             </div>
-//             {content.projects.map((project, i) => (
-//                 <div key={i} className="card-wrapper" style={{height: "100vh"}}>
-//                     <ProjectCard
-//                         name={project.name}
-//                         githubLink={project.gh}
-//                         demoLink={project.demo}
-//                         icon={project.icon}
-//                         title={project.title}
-//                         date={project.date}
-//                         description={project.desc}
-//                         skills={project.skills}
-//                         features={project.features}
-//                         setActiveDemo={() => {
-//                         }}
-//                     />
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
-//
-// export default ProjectCardContainer;

@@ -24,21 +24,21 @@
   "title": "Étudiant Développeur Full Stack",
   "subtitle": "Eric ADELAIDE-BEAUBRUN",
   "introduction": {
-    "p1": "Souriant et enthousiaste, ce que j’aime c’est relever des défis et comprendre comment les choses fonctionnent. Après avoir terminé ma licence en informatique, j’ai choisi de me spécialiser dans le développeur full-stack avec React, Next.js et Express.",
-    "p2": "Mon ambition : créer et évoluer chaque jour pour tendre vers l’excellence."
+    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.",
+    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack."
   },
   "services": [
     {
       "title": "API REST",
-      "p": "Je développe des systèmes qui permettent d’échanger facilement des informations avec d’autres services."
+      "p": "Développement de systèmes permettant d’échanger facilement des informations avec d’autres services."
     },
     {
       "title": "Conception UI/UX",
-      "p": "Je crée des designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
+      "p": "Créations de designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
     },
     {
       "title": "Déploiement",
-      "p": "Je mets en place des outils qui permettent de mettre à jour un site ou une app facilement."
+      "p": "Mise en place des outils qui permettent de mettre à jour un site ou une app facilement."
     }
   ],
   "skills": {
@@ -69,13 +69,13 @@
       "notion": "Notion"
     }
   },
-  "projects-title" : "projets",
+  "projects-title": "projets",
   "projects": [
     {
       "title": "Jeu de Plateau Stratégique Multijoueur",
       "name": "Conquete",
       "date": "Janvier 2022",
-      "desc": "Création d'un jeu de plateau stratégique en Java. Chaque joueur contrôle un territoire délimité par des cases de sa couleur, et doit gérer l’or, construire des structures et commander des soldats. Le système de jeu inclut une économie basée sur les ressources acquises et l'or gagné à chaque tour.",
+      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
       "gh": "https://github.com/ericbeaubrun/conquete",
       "demo": "http://localhost:5174/",
       "skills": [
@@ -92,29 +92,10 @@
       "icon": "./src/assets/conquete.png"
     },
     {
-      "title": "Simulateur de Trafic Aérien",
-      "name": "Aérien",
-      "date": "Janvier 2024",
-      "desc": "Ce simulateur a pour objectif de modéliser les déplacements et interactions des avions dans un espace aérien prédéfinit. Développé en Java, il utilise le multithreading pour gérer les avions simultanément. La simulation est représentée dans une interface graphique 2D où l'utilisateur peut observer les trajectoires des avions, les données des aéroports, ainsi que des informations en temps réel sur la position, la vitesse et l'altitude des appareils.",
-      "gh": "https://github.com/ericbeaubrun/aerien",
-      "demo": "http://localhost:5174",
-      "skills": [
-        "Java",
-        "Multithreading",
-        "Conception UI/UX"
-      ],
-      "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
-      ],
-      "icon": "./src/assets/conquete.png"
-    },
-    {
       "title": "Application Pédagogique pour les Étudiants",
       "name": "Librairie",
       "date": "Octobre 2023",
-      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. Le jeu est structuré en chapitres et niveaux avec une difficulté progressive, abordant des notions telles que les types de données, les boucles, les variables et les conditions. L’utilisateur code directement dans un éditeur intégré au jeu.",
+      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
       "demo": "http://localhost:5174",
       "skills": [
@@ -124,6 +105,25 @@
         "JSON",
         "Conception UI/UX",
         "Sécurité"
+      ],
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": "./src/assets/conquete.png"
+    },
+    {
+      "title": "Simulateur de Trafic Aérien",
+      "name": "Aérien",
+      "date": "Janvier 2024",
+      "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
+      "gh": "https://github.com/ericbeaubrun/aerien",
+      "demo": "http://localhost:5174",
+      "skills": [
+        "Java",
+        "Multithreading",
+        "Conception UI/UX"
       ],
       "features": [
         "Responsive Design",
@@ -147,55 +147,6 @@
       "text": "Stage effectué"
     }
   ],
-  "timeline": [
-    {
-      "title": "Baccalauréat scientifique",
-      "subtitle": "...",
-      "date": "Juin 2020",
-      "desc": "Obtention de mon BAC qui m'a permis d'obtenir de solides bases en mathématiques.",
-      "skills": []
-    },
-    {
-      "title": "Admission à l'université",
-      "subtitle": "CY Paris Université",
-      "date": "Septembre 2021",
-      "desc": "Intégration du parcours licence Maths, Informatique, Physique et Ingénierie à Cergy-Pontoise où j'ai travaillé sur de nombreux projets.",
-      "skills": [
-        "Java",
-        "PHP",
-        "HTML/CSS",
-        "JavaScript",
-        "SQL"
-      ]
-    },
-    {
-      "title": "Stage en entreprise",
-      "subtitle": "Chez idIA-Tech",
-      "date": "Avril 2024",
-      "desc": "Réalisation d’un stage passionnant dans le domaine du Web-Mining en tant que développeur Java au sein d'idIA-Tech.",
-      "skills": [
-        "Java",
-        "PHP",
-        "HTML/CSS",
-        "JavaScript",
-        "SQL"
-      ]
-    },
-    {
-      "title": "Licence Générale",
-      "subtitle": "",
-      "date": "Juin 2024",
-      "desc": "Obtention de mon diplôme BAC+3 en Informatique.",
-      "skills": []
-    },
-    {
-      "title": "Equipié Polyvalent",
-      "subtitle": "Chez McDonald's Dammarie-Les-Lys",
-      "date": "Octobre 2024",
-      "desc": "...",
-      "skills": []
-    }
-  ],
   "footer": [
     {
       "title": "Mes Coordonnées",
@@ -215,6 +166,7 @@
       "paragraph": "Réalisé avec ❤\uFE0F le 16/03/2025"
     }
   ],
+  "scrolling-text": "ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/",
   "source-code": "Code Source",
   "see-more": "En savoir plus...",
   "see-more-gh": "Me contacter",
