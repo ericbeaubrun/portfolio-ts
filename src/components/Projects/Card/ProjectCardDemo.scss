@@ -34,6 +34,7 @@ $iframe_radius: 7px;
 
   &:hover {
     transform: scale(1.015);
+    transform: scale(1.012);
   }
 }
 
@@ -64,9 +65,7 @@ $iframe_radius: 7px;
 }
 
 .demo-iframe {
-  //border: 4px solid #636363;;
   border: 4px solid #dddddd;;
-  //border: none;
   transition: width 0.7s;
   border-radius: $iframe_radius;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

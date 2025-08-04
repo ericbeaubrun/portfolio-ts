@@ -1,26 +1,19 @@
 @import "../../../config.scss";
 
-$padding-bottom: 40px;
-
 .project-card__footer {
   display: flex;
-  padding-bottom: $padding-bottom;
-  padding-top: 49px;
   justify-content: space-between;
   max-width: 100%;
   overflow: hidden;
   flex-wrap: wrap;
-  padding-left: 5px;
-  padding-right: 5px;
-
+  padding: 49px 5px 40px;
 }
 
 .project-card__button {
   display: flex;
   align-items: center;
-  background: #302921;
   background: #333333;
-  color: white;
+  color: $component_color;
   text-decoration: none;
   padding: 8px 12px;
   font-weight: 500;

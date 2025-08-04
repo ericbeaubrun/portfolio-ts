@@ -1,3 +1,5 @@
+@import "../../config";
+
 .banner {
   display: flex;
   align-items: center;
@@ -57,11 +59,6 @@
     text-transform: uppercase;
   }
 
-  //.banner-image {
-  //width: 100px;
-  //height: 100px;
-  //}
-
   .images-container.left {
     position: absolute;
     left: 5%;
@@ -93,26 +90,17 @@
   gap: 7.5px;
 }
 
-
 .banner-letter {
   text-transform: uppercase;
-  border-radius: 15px;
   border-radius: 18px;
   font-size: 3.5rem;
   font-weight: bold;
-  display: inline-block;
   text-align: center;
-  color: white;
-  //color: #f1efec;
-  width: 5.75rem;
+  color: $component_color;
   width: 5.5rem;
-  height: 5.75rem;
   height: 5.5rem;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   margin: -10px;
-}
-
-.banner-letter {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +116,6 @@
     display: inline-block;
     text-align: center;
     color: white;
-    //color: #f1efec;
     width: 3.5rem;
     height: 3.5rem;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -139,7 +126,6 @@
     display: flex;
     gap: 11px;
   }
-
 }
 
 @media (max-width: 350px) {

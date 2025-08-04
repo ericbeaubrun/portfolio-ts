@@ -13,7 +13,7 @@ type SkillsMap = {
     [category: string]: SkillList;
 };
 
-export function SkillsSection() {
+export const SkillsSection = () => {
     const ROOT = "/assets/skills/";
 
     const categoryIcons = [
@@ -70,6 +70,6 @@ export function SkillsSection() {
             )}
         </section>
     );
-}
+};
 
 export default SkillsSection;

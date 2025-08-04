@@ -10,16 +10,16 @@ import ScrollProgressCircle from "./components/ScrollProgressCircle.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import ProfileStats from "./components/ProfileStats.tsx";
 import SkillsSection from "./components/Competences/SkillsSection.tsx";
-import ScrollingText from "./components/Competences/ScrollingText.tsx";
+// import ScrollingText from "./components/Competences/ScrollingText.tsx";
 import "./Carousel.scss";
 import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
 import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
 import {useIsMobile} from "./components/Utils/MobileContext.tsx";
-import {useLanguage} from "./components/Utils/LanguageContext.tsx";
+// import {useLanguage} from "./components/Utils/LanguageContext.tsx";
 
 const App = () => {
 
-    const {content} = useLanguage();
+    // const {content} = useLanguage();
     const lenis = new Lenis();
     const isMobile = useIsMobile();
     const scrollingText = (content as { "scrolling-text": string })["scrolling-text"];
@@ -138,9 +138,9 @@ const App = () => {
 
                 <Element name="competences" className="section">
                     <section id="competences">
-                        <ScrollingText
-                            text={scrollingText}
-                            speed={2.5} direction={'right'}/>
+                        {/*<ScrollingText*/}
+                        {/*    text={scrollingText}*/}
+                        {/*    speed={2.5} direction={'right'}/>*/}
                         <SkillsSection/>
                         <ContactFormModal/>
                     </section>
@@ -155,6 +155,23 @@ const App = () => {
                 </Element>
             </footer>
         </div>
+    );
+
+    return (
+        <Router>
+            <div className="app-container">
+                <CircleTransition 
+                  isActive={showCircleTransition} 
+                  duration={1.2} 
+                  color="#121212"
+                  startPosition={circlePosition}
+                />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                </Routes>
+            </div>
+        </Router>
     );
 };
 

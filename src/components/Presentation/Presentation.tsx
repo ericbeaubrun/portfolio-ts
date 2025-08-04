@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 import profilePicture from "../../../public/assets/profile_picture.png";
-import arrowIcon from "../../../public/assets/arrow_dark.png"; // <-- ajoutez votre icône ici
+import arrowIcon from "../../../public/assets/arrow_dark.png";
 import "./Presentation.scss";
 import gsap from "gsap";
 import ContactButtons from "./ContactButtons.tsx";
@@ -37,7 +37,7 @@ const Presentation = () => {
                 duration: 0.1,
             });
 
-            gsap.to(imageRef.current, {
+            gsap.to(imageRef.current?.parentElement, {
                 x: scrollY * 0.15,
                 // x: scrollY * 0.28, TODO
                 ease: "power2.out",
@@ -111,12 +111,14 @@ const Presentation = () => {
                 </div>
 
                 <div className="right-section">
-                    <img
-                        ref={imageRef}
-                        id="profile-picture"
-                        src={profilePicture}
-                        alt="Photos de profil"
-                    />
+                    <div className="profile-picture-container">
+                        <img
+                            ref={imageRef}
+                            id="profile-picture"
+                            src={profilePicture}
+                            alt="Photos de profil"
+                        />
+                    </div>
                 </div>
                 <div className="rotating-rectangle" ref={rectangleRef}/>
             </div>

@@ -64,7 +64,7 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
 
                 {(isHovered || isMobile || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON) && (
                     <motion.div className="scroll-arrow">
-                        <img src="../../public/assets/arrow.png" alt="arrow top"/>
+                        <img src="/assets/arrow.png" alt="arrow top"/>
                     </motion.div>
                 )}
             </motion.div>

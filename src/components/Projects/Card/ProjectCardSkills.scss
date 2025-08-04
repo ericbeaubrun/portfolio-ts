@@ -25,9 +25,10 @@
   white-space: nowrap;
   align-items: center;
   border-radius: 16px;
+  border-radius: 8px;
   justify-content: center;
   text-decoration: none;
-  background-color: #ddd;
+  background-color: $component_color;
   padding: 10px;
   margin: 2px;
 }

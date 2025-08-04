@@ -45,7 +45,7 @@ const buttonVariants = {
 
 const ProjectCardFooter: React.FC<ProjectCardFooterProps> = ({demoLink, githubLink}) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, {once: false, amount: 0.3});
+    const isInView = useInView(ref, {once: true, amount: 0.3});
 
     return (
         <div ref={ref} className="project-card__footer">
@@ -68,7 +68,8 @@ const ProjectCardFooter: React.FC<ProjectCardFooterProps> = ({demoLink, githubLi
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                Live Demo
+                {/*Go to the website*/}
+                {demoLink.replace("http://", "")}
             </motion.a>
 
             <motion.a
@@ -86,7 +87,7 @@ const ProjectCardFooter: React.FC<ProjectCardFooterProps> = ({demoLink, githubLi
                 }}
             >
                 <img id="github-icon" src={githubIcon} alt="GitHub icon"/>
-                Repository
+                GitHub
             </motion.a>
         </div>
     );

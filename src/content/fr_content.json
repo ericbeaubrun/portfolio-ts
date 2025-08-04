@@ -80,7 +80,7 @@
       "date": "Janvier 2022",
       "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
       "gh": "https://github.com/ericbeaubrun/conquete",
-      "demo": "http://localhost:5174/",
+      "demo": "http://eric.adelaide-beaubrun.fr",
       "skills": [
         "Java",
         "JUnit",
@@ -172,7 +172,7 @@
   "scrolling-text": "ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/",
   "source-code": "Code Source",
   "see-more": "En savoir plus...",
-  "see-more-gh": "Me contacter",
+  "see-more-gh": "Contacter",
   "hide": "Cacher",
   "read-more": "Lire la suite"
 }

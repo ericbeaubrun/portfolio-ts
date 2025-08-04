@@ -42,30 +42,32 @@ const Footer = () => {
             <div className="container">
                 <div className="footer__content">
                     <div className="footer-links-container">
+
                         <h3 className="footer-coord">
-                            <FaInfoCircle size={28} style={{color: '#fff', marginRight: '10px'}}/>
+                            <FaInfoCircle style={{color: '#f6f5f2', marginRight: '10px', width: '2.25rem', height: '2.25rem'}}/>
                             {footer[0].title}
                         </h3>
+
                         <ul>
                             <li className="footer-coord">
-                                <FaEnvelope style={{marginRight: '8px'}}/>
+                                <FaEnvelope style={{color: '#f6f5f2',marginRight: '8px', width: '1.5rem', height: '1.5rem'}}/>
                                 {footer[0].email}
                             </li>
 
                             <li className="footer-coord">
-                                <FaPhone style={{marginRight: '8px'}}/>
+                                <FaPhone style={{color: '#f6f5f2',marginRight: '8px', width: '1.5rem', height: '1.5rem'}}/>
                                 {footer[0].tel}
                             </li>
 
                             <li className="footer-coord">
-                                <FaGithub style={{marginRight: '8px'}}/>
+                                <FaGithub style={{color: '#f6f5f2',marginRight: '8px', width: '1.5rem', height: '1.5rem'}}/>
                                 <a href="https://github.com/ericbeaubrun" target="_blank" rel="noopener noreferrer">
                                     {footer[0].github}
                                 </a>
                             </li>
 
                             <li className="footer-coord">
-                                <FaLinkedin style={{marginRight: '8px'}}/>
+                                <FaLinkedin style={{color: '#f6f5f2',marginRight: '8px', width: '1.5rem', height: '1.5rem'}}/>
                                 <a href="https://www.linkedin.com/in/eric-adelaide-beaubrun/" target="_blank"
                                    rel="noopener noreferrer">
                                     {footer[0].linkedin}
@@ -76,7 +78,7 @@ const Footer = () => {
 
                     <div className="footer-map-container">
                         <div className="footer-address">
-                            <FaMapMarkerAlt size={28} style={{color: '#fff', marginRight: '10px'}}/>
+                            <FaMapMarkerAlt size={28} style={{color: '#f6f5f2', marginRight: '10px'}}/>
                             <h3 className="footer-adr">{footer[1].address}</h3>
                         </div>
 

@@ -1,7 +1,5 @@
 @import "../../../config.scss";
 
-$background_color: #c7c5c0;
-$background_color: #e6e6e6;
 $padding-bottom: 40px;
 $iframe_radius: 7px;
 
@@ -10,34 +8,26 @@ $iframe_radius: 7px;
   position: relative;
   padding-left: 2.5vw;
   padding-right: 2.5vw;
-  //width: 50vw;
   width: 80vw;
   max-width: 90%;
   border-radius: 18px;
-  //background-color: $background_color;
-  //background-color: #6b645e;
-  //background-color: #575451;
-  //background-color: #5e5955;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.20);
   transition: transform 0.2s;
   z-index: 10;
   font-family: $font;
-  //margin: 6vh auto 16vh;
-  //margin: 6vh auto 32vh;
-  margin: 6vh auto 0;
-  margin-bottom: 50vh;
+  margin: auto;
+  margin-bottom: 300px;
 
 }
 
 .project-card__content {
   font-size: 1rem;
-  //color: #555;
 }
 
 .line {
   border: none;
   height: 3px;
-  background-color: #dddddd;
+  background-color: $component_color;
   margin: 29px 0;
 }
 

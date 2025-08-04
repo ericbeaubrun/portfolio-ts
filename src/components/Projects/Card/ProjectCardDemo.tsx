@@ -21,7 +21,6 @@ const demoVariants = {
     },
 };
 
-
 const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobile, setActiveDemo}) => {
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(true);
@@ -92,7 +91,7 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
 
     // Référence pour détecter la visibilité de la démo
     const demoRef = useRef(null);
-    const isDemoInView = useInView(demoRef, {once: false, amount: 0.3});
+    const isDemoInView = useInView(demoRef, {once: true, amount: 0.3});
 
     return (
         <>
@@ -100,7 +99,8 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                 <>
                     <div className="full-page-overlay" onClick={leaveDemo}></div>
                     <button className="close-preview-button" onClick={leaveDemo}>
-                        <img className="close-preview-icon" src="../../../../public/assets/close_preview.png" alt="close demo icon"/>
+                        <img className="close-preview-icon" src="../../../../public/assets/close_preview.png"
+                             alt="close demo icon"/>
                     </button>
                 </>
             )}

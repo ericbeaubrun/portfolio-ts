@@ -8,9 +8,14 @@
 .project-card__icon {
   width: 100px;
   height: 100px;
-  position: relative;
   top: -50px;
   left: -18px;
+  position: relative;
+
+  top: -42px;
+  left: -20px;
+  width: 110px;
+  height: 110px;
   margin-right: 10px;
   z-index: 1;
 }
@@ -20,11 +25,7 @@
 }
 
 .project-card__title {
-  font-size: 2rem;
-  font-size: 3.5rem;
-  //color: #333; //TODO
-  //color: #e4e4e4;
-  //color: white;
+  font-size: 3rem;
   color: #f6f5f2;
   margin: 0 0 0 -15px;
   padding-bottom: 32px;
@@ -33,15 +34,11 @@
 .project-card__date {
   font-style: italic;
   font-size: 1rem;
-  //color: #888; //TODO
-  //color: #776d62;
   color: #aaa;
 }
 
 .project-card__description {
   font-size: 1.25rem;
-  //color: #555; //TODO
-  //color: #ddd;
   color: #ddd;
   margin: 0;
   line-height: 1.75;

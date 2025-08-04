@@ -1,23 +1,3 @@
-// import React from 'react';
-// import './ProjectCardSkills.scss';
-//
-// interface ProjectCardSkillsProps {
-//     skills: string[];
-// }
-//
-// const ProjectCardSkills: React.FC<ProjectCardSkillsProps> = ({skills}) => {
-//     return (
-//         <div className="project-card__section">
-//             <div className="project-card__badge-container">
-//                 {skills.map((skill, index) => (
-//                     <span key={index} className="project-card__badge">{skill}</span>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// };
-//
-// export default ProjectCardSkills;
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import "./ProjectCardSkills.scss";
@@ -52,7 +32,7 @@ const ProjectCardSkills: React.FC<ProjectCardSkillsProps> = ({ skills }) => {
                     <motion.span
                         key={index}
                         className="project-card__badge"
-                        custom={index * 0.1} // Décalage progressif de l'effet de rebond
+                        custom={index * 0.1}
                         initial="hidden"
                         animate={isInView ? "visible" : "hidden"}
                         variants={bounceEffect}

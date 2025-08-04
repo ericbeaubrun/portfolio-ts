@@ -39,16 +39,18 @@ const Services: React.FC = () => {
 
     const renderServiceCard = (service: Service, animationDelay: number) => (
         <motion.div
-            initial={{opacity: 0, y: -40}}
+            initial={{opacity: 1, y: -60}}
             whileInView={{opacity: 1, y: 0}}
-            transition={{duration: 0.6, delay: animationDelay}}
+            transition={{duration: 0.8, delay: animationDelay/3}}
             viewport={{once: false, amount: 0.5}}
             className="service-card"
             key={service.title}
         >
-            <div className={`icon ${service.icon}`}/>
-            <h3 className="service-title">{service.title}</h3>
-            <p className="service-paragraph">{service.p}</p>
+            {/*<div className="service-card">*/}
+                <div className={`icon ${service.icon}`}/>
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-paragraph">{service.p}</p>
+            {/*</div>*/}
         </motion.div>
     );
 
@@ -56,7 +58,7 @@ const Services: React.FC = () => {
         <motion.div
             initial={{opacity: 0, y: -60}}
             whileInView={{opacity: 1, y: 0}}
-            transition={{duration: 0.5, delay: animationDelay}}
+            transition={{duration: 0.8, delay: animationDelay/3}}
             viewport={{once: false, amount: 0.5}}
             className="separator"
             key={`separator-${animationDelay}`}
@@ -80,9 +82,9 @@ const Services: React.FC = () => {
                     <div ref={ref1} className="services-container">
                         {services.map((service, index) => (
                             <React.Fragment key={`service-${index}`}>
-                                {renderServiceCard(service, 0.2 + index * 0.2)}
+                                {renderServiceCard(service, 0.2 + index * 0.1)}
                                 {index < services.length - 1 && (
-                                    renderSeparator(0.3 + index * 0.2)
+                                    renderSeparator(0.3 + index * 0.1)
                                 )}
                             </React.Fragment>
                         ))}

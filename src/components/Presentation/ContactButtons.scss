@@ -28,8 +28,7 @@
 }
 
 .header-contact-button:hover {
-  width: 225px;
-  width: 200px;
+  //width: 200px;
   transition: width 0.65s;
 }
 
@@ -42,13 +41,39 @@
   opacity: 0.75;
 }
 
-.header-contact-button:hover .header-contact-button-icon {
-  transform: translateX(-58px);
-}
+//.header-contact-button:hover .header-contact-button-icon {
+//  transform: translateX(-58px);
+//}
 
 .header-contact-button:hover .presentation-button-text {
   transform: translateX(42px);
 }
+
+.linkedin-btn:hover {
+  width: 200px;
+}
+
+.linkedin-btn:hover .header-contact-button-icon {
+  transform: translateX(-54px);
+}
+
+.github-btn:hover {
+  width: 180px;
+}
+
+.github-btn:hover .header-contact-button-icon{
+  transform: translateX(-44px);
+
+}
+
+.cv-btn:hover {
+  width: 128px;
+}
+
+.cv-btn:hover .header-contact-button-icon{
+  transform: translateX(-17px);
+}
+
 
 .presentation-button-text {
   opacity: 0;
@@ -59,8 +84,7 @@
   font-size: 1.65rem;
   transition: transform 1.4s ease;
   font-family: $font;
-  padding: 10px 20px;
-  padding-left:5px;
+  padding: 10px 20px 10px 5px;
   font-weight: bold;
   border-radius: 20px;
   border: none;
@@ -124,8 +148,8 @@
 
 @media (max-width: 500px) {
 
-  span.presentation-button-text{
-  display: none;
+  span.presentation-button-text {
+    display: none;
   }
 
   .header-contact-button {
