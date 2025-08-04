@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './ContactFormModal.scss';
 import emailjs from 'emailjs-com';
-import '../Button.scss'
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 
 type FormData = {

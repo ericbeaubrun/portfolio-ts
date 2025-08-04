@@ -1,5 +1,196 @@
 @import '../../config';
-
+//
+//.button-container {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
+//
+//.contact-button {
+//  width: 250px;
+//  height: 100px;
+//  background: #f6f5f2;
+//  background: #3f3f3f;
+//  border: 0.5mm solid black;
+//  border-radius: 5mm;
+//  cursor: pointer;
+//  position: relative;
+//  overflow: hidden;
+//  transition: 0.3s;
+//}
+//.wave-btn {
+//  position: absolute;
+//  width: 100%;
+//  height: 50%;
+//  background: url(../../public/assets/wave3.svg);
+//  background-size: 200% 100%;
+//  top: 100%;
+//  left: 0;
+//  animation: wave-btn 2s linear infinite;
+//  transition: 0.5s;
+//}
+//
+//.contact-button {
+//  border: none;
+//  border-radius: 8px;
+//  text-decoration: none;
+//  font-size: 1.5rem;
+//  cursor: pointer;
+//}
+//
+//@keyframes wave-btn {
+//  from {
+//    background-position-x: 0;
+//  }
+//  to {
+//    background-position-x: 200%;
+//  }
+//}
+//.contact-button:hover .wave-btn {
+//  top: 50%;
+//}
+//
+//.text {
+//  position: relative;
+//  z-index: 1;
+//  font-family: $font;
+//  font-size: 1.5rem;
+//  font-weight: bold;
+//  mix-blend-mode: difference;
+//  color: white;
+//}
+//
+//.contact-container {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  z-index: 10;
+//}
+//
+//.contact-button {
+//  padding: 10px 20px;
+//  font-size: 16px;
+//  cursor: pointer;
+//  border: none;
+//  color: white;
+//  border-radius: 5px;
+//  transition: background-color 0.3s ease;
+//  background-color: #2d2d2d;;
+//}
+//
+//.contact-button:hover {
+//  //background-color: lighten(#2d2d2d,5%); TODO
+//  background-color: scale-color(#2d2d2d, $lightness: 5%);
+//}
+//
+//.contact-button:hover {
+//  transform: translateY(-3px);
+//  box-shadow: 8px 8px 0px black;
+//  transition: transform 0.2s ease, box-shadow 0.2s ease;
+//}
+//.contact-container {
+//  position: relative;
+//
+//  .button-container {
+//    display: flex;
+//    justify-content: center;
+//    margin-top: 20px;
+//  }
+//
+//  .modal-overlay {
+//    position: fixed;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    height: 100%;
+//    background-color: rgba(0, 0, 0, 0.5);
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    z-index: 100;
+//
+//    .modal-content {
+//      background-color: white;
+//      padding: 20px;
+//      border-radius: 10px;
+//      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//      max-width: 500px;
+//      width: 100%;
+//      position: relative;
+//
+//      .close-modal-button {
+//        position: absolute;
+//        top: 10px;
+//        right: 10px;
+//        background: none;
+//        border: none;
+//        font-size: 24px;
+//        cursor: pointer;
+//        color: #333;
+//
+//        &:hover {
+//          color: #000;
+//        }
+//      }
+//
+//      .contactForm {
+//        h2 {
+//          margin-bottom: 20px;
+//          font-size: 24px;
+//          color: #333;
+//        }
+//
+//        form {
+//          display: flex;
+//          flex-direction: column;
+//
+//          div {
+//            margin-bottom: 15px;
+//
+//            label {
+//              display: block;
+//              margin-bottom: 5px;
+//              font-weight: bold;
+//              color: #555;
+//            }
+//
+//            input, textarea {
+//              width: 100%;
+//              padding: 10px;
+//              border: 1px solid #ccc;
+//              border-radius: 5px;
+//              font-size: 16px;
+//
+//              &:focus {
+//                outline: none;
+//                border-color: #383838;
+//              }
+//            }
+//
+//            textarea {
+//              resize: vertical;
+//            }
+//          }
+//
+//          #form-submit-btn {
+//            padding: 10px 20px;
+//            background-color: #383838;
+//            color: white;
+//            border: none;
+//            border-radius: 5px;
+//            cursor: pointer;
+//            font-size: 16px;
+//            transition: background-color 0.3s ease;
+//
+//            &:hover {
+//              background-color: #383838;
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
 .contact-container {
   display: flex;
   justify-content: center;
@@ -19,92 +210,9 @@
 }
 
 .contact-button:hover {
-  //background-color: lighten(#2d2d2d,5%); TODO
   background-color: scale-color(#2d2d2d, $lightness: 5%);
 }
 
-//.modal-overlay {
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  right: 0;
-//  bottom: 0;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//}
-//
-//.modal-content {
-//  background: rgb(255, 255, 255,1);
-//  padding: 20px;
-//  border-radius: 8px;
-//  width: 90%;
-//  max-width: 500px;
-//  position: relative;
-//}
-//
-//.close-modal-button {
-//  position: absolute;
-//  top: 10px;
-//  right: 10px;
-//  background: transparent;
-//  border: none;
-//  font-size: 2rem;
-//  cursor: pointer;
-//  color: #333;
-//}
-//
-//.close-modal-button:hover {
-//  color: #000;
-//}
-//
-//.contactForm h2 {
-//  text-align: center;
-//  margin-bottom: 20px;
-//}
-//
-//.contactForm form {
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//.contactForm div {
-//  margin-bottom: 15px;
-//}
-//
-//.contactForm label {
-//  margin-bottom: 5px;
-//  font-weight: bold;
-//}
-//
-//.contactForm input,
-//.contactForm textarea {
-//  width: 100%;
-//  padding: 10px;
-//  font-size: 14px;
-//  border: 1px solid #ccc;
-//  border-radius: 4px;
-//}
-//
-//.contactForm textarea {
-//  resize: vertical;
-//  height: 100px;
-//}
-//
-//#form-submit-btn {
-//  padding: 10px;
-//  font-size: 16px;
-//  background-color: #4d4239;
-//  color: white;
-//  border: none;
-//  border-radius: 4px;
-//  cursor: pointer;
-//  transition: background-color 0.3s ease;
-//}
-//
-//#form-submit-btn:hover {
-//  background-color: #0056b3;
-//}
 .contact-button:hover {
   transform: translateY(-3px);
   box-shadow: 8px 8px 0px black;
@@ -117,8 +225,6 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-
-
   }
 
   .modal-overlay {
@@ -214,4 +320,63 @@
       }
     }
   }
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-button {
+  width: 250px;
+  height: 100px;
+  background: #3f3f3f;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.wave-btn {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: url(../../public/assets/wave3.svg);
+  background-size: 200% 100%;
+  top: 100%;
+  left: 0;
+  animation: wave-btn 2s linear infinite;
+  transition: 0.5s;
+}
+
+
+@keyframes wave-btn {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 200%;
+  }
+}
+
+.contact-button:hover .wave-btn {
+  top: 50%;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  font-family: $font;
+  font-size: 1.75rem;
+  //text-transform: uppercase;
+  font-weight: bold;
+  mix-blend-mode: difference;
+  color: white;
 }
