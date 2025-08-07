@@ -18,15 +18,9 @@
   background-image: url('../../../public/assets/wave_reverse.svg');
   background-repeat: no-repeat;
   background-position: center top;
-  //height: 120px;
   height: 144px;
   margin-top: -18px;
   margin-bottom: -50px;
-
-  //@media(min-width: 1150px) {
-  //  margin-top: -25px;
-  //}
-
   background-color: $background_color_2;
   position: relative;
 }
@@ -52,7 +46,6 @@
 #presentation-title {
   font-size: 4.5rem;
   padding-top: 10vh;
-  //margin-bottom: 20px;
   text-align: start;
   overflow: visible;
   width: 100%;
@@ -68,7 +61,6 @@
 
 .presentation-paragraph {
   color: #444;
-  //font-weight: 500;
   font-size: 1.5rem;
   text-align: start;
   width: 75%;
@@ -138,7 +130,6 @@
   display: block;
 
   &:hover {
-    //transform: scale(1.1);
     transform: scale(1.06);
   }
 }
@@ -271,7 +262,6 @@
 
   #presentation-subtitle {
     font-size: 1.25rem;
-    //font-size: 16px;
   }
 
   #presentation {

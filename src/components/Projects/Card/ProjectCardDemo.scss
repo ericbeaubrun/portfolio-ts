@@ -22,7 +22,7 @@ $iframe_radius: 7px;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.35);
-    #click-to-interact-text {
+    .click-to-interact-text {
       display: none;
     }
   }
@@ -33,7 +33,6 @@ $iframe_radius: 7px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    transform: scale(1.015);
     transform: scale(1.012);
   }
 }
@@ -59,7 +58,6 @@ $iframe_radius: 7px;
 
 .demo-iframe-container {
   position: relative;
-  //z-index: 100;
   display: flex;
   justify-content: center;
 }
@@ -108,7 +106,6 @@ $iframe_radius: 7px;
     width: 64px;
     height: 64px;
     cursor: pointer;
-    border-radius: 50%;
     border-radius: 20px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     display: flex;

@@ -1,5 +1,5 @@
 import {useEffect, useRef} from "react";
-import profilePicture from "../../../public/assets/profile_picture.png";
+import profilePicture from "../../../public/assets/profile_picture0.png";
 import arrowIcon from "../../../public/assets/arrow_dark.png";
 import "./Presentation.scss";
 import gsap from "gsap";
@@ -125,7 +125,6 @@ const Presentation = () => {
 
             <div className="wave"/>
 
-            {/* Indicateur de scroll */}
             <Link
                 to={"services"}
                 smooth={true}

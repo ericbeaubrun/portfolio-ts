@@ -8,19 +8,16 @@
   height: 4.5rem;
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
   margin-bottom: 60px;
   margin-top: 40px;
 
 }
 
 .scrolling-wrapper.scroll-left {
-  transform: rotate(-3deg);
   transform: rotate(0deg);
 }
 
 .scrolling-wrapper.scroll-right {
-  transform: rotate(3deg);
   transform: rotate(0);
 }
 

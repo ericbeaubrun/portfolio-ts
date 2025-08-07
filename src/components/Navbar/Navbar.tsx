@@ -32,7 +32,6 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
         {target: "contact", title: nav[4].title, subtitle: nav[4].subtitle},
     ];
 
-
     const renderNavItems = (closeOnClick: boolean = false) => {
 
         const handleClick = () => {

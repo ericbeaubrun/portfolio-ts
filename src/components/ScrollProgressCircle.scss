@@ -14,7 +14,6 @@
     .progress-bg {
       fill: none;
       stroke: #e6e6e6;
-      //stroke: #213894;
       stroke-width: 2;
       opacity: 0.2;
     }
@@ -22,7 +21,6 @@
     .progress-indicator {
       fill: none;
       stroke: white;
-      //stroke: #15504b;
       stroke-width: 2;
       transition: stroke-dashoffset 0.2s ease-out;
       mix-blend-mode: difference;
@@ -39,11 +37,13 @@
     justify-content: center;
     align-items: center;
     mix-blend-mode: difference;
+    will-change: opacity, transform;
 
     img {
       width: 36px;
       height: 36px;
-      transform: translateY(3px);
+      transform: translate(-18px, -18px);
+      will-change: transform;
     }
   }
 }

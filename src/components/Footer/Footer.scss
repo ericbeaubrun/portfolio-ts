@@ -5,7 +5,6 @@ $text_color: white;
 
 .footer {
   position: relative;
-  margin-top: 300px;
   padding: 3rem 0;
   color: $text_color;
   background: $background_color;
@@ -83,71 +82,160 @@ $text_color: white;
 }
 
 .footer__content {
-  padding: 5vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
+  padding: 3rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
   margin-top: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media (min-width: 768px) {
-    flex-direction: row;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
   }
 
   .footer-links-container {
-    flex: 1;
-    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      border-right: 1px solid rgba($text_color, 0.1);
+      padding-right: 2rem;
+    }
+
+    @media (max-width: 767px) {
+      border-bottom: 1px solid rgba($text_color, 0.1);
+      padding-bottom: 2rem;
+    }
 
     ul {
       list-style: none;
       padding: 0;
-
-      li {
-        margin-bottom: 1rem;
-
-        a {
-          color: $text_color;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
+      margin: 0;
     }
   }
 
   .footer-map-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     color: $text_color;
-    margin-bottom: 2vh;
 
+    @media (min-width: 768px) {
+      padding-left: 1rem;
+    }
 
     .footer-address {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 1.5rem;
       color: $component_color;
+
+      h3.footer-adr {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
     }
 
     .footer-map {
       width: 100%;
-      margin-top: 1rem;
+      height: 100%;
+      min-height: 200px;
+      display: flex;
+      align-items: stretch;
+
+      .map-container {
+        position: relative;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+      }
 
       iframe {
         border-radius: 8px;
+        flex-grow: 1;
+        min-height: 220px;
+        pointer-events: none;
+
+        @media (min-width: 992px) {
+          min-height: 250px;
+        }
+      }
+
+      .map-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        //z-index: 10;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .map-overlay-content {
+          text-align: center;
+          color: white;
+          padding: 1rem;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-size: 1.25rem;
+          font-weight: bold;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+
+          &:hover {
+            .click-to-interact-text {
+              display: none;
+            }
+          }
+
+        }
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
       }
     }
   }
 
   .footer-form-btn-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     .footer-button {
       background-color: #1a1a1a;
@@ -155,26 +243,87 @@ $text_color: white;
       border: 1px solid $text_color;
       padding: 10px 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      border-radius: 4px;
 
       &:hover {
         background-color: #333;
+        transform: translateY(-2px);
       }
     }
   }
 }
 
-h3.footer-coord {
+h3.footer-coord, h3.footer-adr {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
-  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  color: $component_color;
+  font-weight: 600;
+}
+
+
+li.footer-coord {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  color: $component_color;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateX(6px);
+  }
+
+  .coord-icon {
+    min-width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 8px;
+    color: $component_color;
+  }
+
+  a.footer-content {
+    font-size: 1rem;
+    text-decoration: none;
+    color: $text_color;
+  }
+
+  #footer-github:hover, #footer-linkedin:hover {
+    color: #6498e5;
+    text-decoration: underline;
+  }
+
+  #footer-email:hover, #footer-tel:hover {
+  }
+}
+
+
+.map-icon {
+  min-width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 8px;
   color: $component_color;
 }
 
-li.footer-coord {
-  padding-left: 3px;
+.title-icon {
+  min-width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 8px;
   color: $component_color;
+}
+
+
+h3.footer-coord {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  font-size: 1.5rem;
+  color: $component_color;
+
+  p.footer-content {
+    margin: 0;
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 1111px) {
@@ -184,12 +333,35 @@ li.footer-coord {
     padding: 10px;
   }
 
-
   .footer-links-container,
   .footer-map-container,
   .footer-form-btn-container {
     width: 100%;
+  }
 
+  h3.footer-coord {
+    font-size: 1.2rem;
+
+    .title-icon {
+      min-width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  li.footer-coord {
+    .coord-icon {
+      min-width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    a.footer-content {
+      font-size: 0.9rem;
+    }
   }
 }
 
+@media (min-width: 1112px) {
+  .footer-links-container {
+    padding-right: 2rem;
+  }
+}

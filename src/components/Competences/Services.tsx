@@ -29,6 +29,20 @@ const Services: React.FC = () => {
 
     const ref1 = useRef<HTMLDivElement>(null);
 
+    const bounceEffect = {
+        hidden: {opacity: 0, y: -85},
+        visible: (delay: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                duration: 0.175,
+                delay: delay,
+            },
+        }),
+    };
 
     const services = (content as { services: Service[] }).services;
     // const services: Service[] = content.services.map((service :Service, index: number) => ({
@@ -38,27 +52,43 @@ const Services: React.FC = () => {
     // }));
 
     const renderServiceCard = (service: Service, animationDelay: number) => (
-        <motion.div
-            initial={{opacity: 1, y: -60}}
-            whileInView={{opacity: 1, y: 0}}
-            transition={{duration: 0.8, delay: animationDelay/3}}
-            viewport={{once: false, amount: 0.5}}
-            className="service-card"
-            key={service.title}
-        >
-            {/*<div className="service-card">*/}
-                <div className={`icon ${service.icon}`}/>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-paragraph">{service.p}</p>
-            {/*</div>*/}
-        </motion.div>
+        <div className="service-card" key={service.title}>
+            <motion.div
+                className={`icon ${service.icon}`}
+                custom={animationDelay + 0.3}
+                initial="hidden"
+                whileInView="visible"
+                variants={bounceEffect}
+                viewport={{once: false, amount: 0.5}}
+            />
+            <motion.h3
+                className="service-title"
+                custom={animationDelay + 0.075}
+                initial="hidden"
+                whileInView="visible"
+                variants={bounceEffect}
+                viewport={{once: false, amount: 0.5}}
+            >
+                {service.title}
+            </motion.h3>
+            <motion.p
+                className="service-paragraph"
+                custom={animationDelay}
+                initial="hidden"
+                whileInView="visible"
+                variants={bounceEffect}
+                viewport={{once: false, amount: 0.5}}
+            >
+                {service.p}
+            </motion.p>
+        </div>
     );
 
     const renderSeparator = (animationDelay: number) => (
         <motion.div
-            initial={{opacity: 0, y: -60}}
+            initial={{opacity: 0, y: -80}}
             whileInView={{opacity: 1, y: 0}}
-            transition={{duration: 0.8, delay: animationDelay/3}}
+            transition={{duration: 0.2, delay: animationDelay/3}}
             viewport={{once: false, amount: 0.5}}
             className="separator"
             key={`separator-${animationDelay}`}
@@ -82,9 +112,9 @@ const Services: React.FC = () => {
                     <div ref={ref1} className="services-container">
                         {services.map((service, index) => (
                             <React.Fragment key={`service-${index}`}>
-                                {renderServiceCard(service, 0.2 + index * 0.1)}
+                                {renderServiceCard(service, 0.125 + index * 0.2)}
                                 {index < services.length - 1 && (
-                                    renderSeparator(0.3 + index * 0.1)
+                                    renderSeparator(2.75 + index * 0.5)
                                 )}
                             </React.Fragment>
                         ))}

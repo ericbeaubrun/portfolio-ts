@@ -29,7 +29,6 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
 
     const strokeDashoffset = useTransform(smoothScrollProgress, [0, 1], [100, 0]);
     const DURATION = 500;
-    // const handleClick =
 
     return (
         <Link to="presentation" smooth={true} duration={700} offset={0} onClick={
@@ -62,11 +61,25 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
                     />
                 </motion.svg>
 
-                {(isHovered || isMobile || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON) && (
-                    <motion.div className="scroll-arrow">
-                        <img src="/assets/arrow.png" alt="arrow top"/>
-                    </motion.div>
-                )}
+                <motion.div 
+                    className="scroll-arrow"
+                    initial="hidden"
+                    animate={isHovered || isMobile || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON ? "visible" : "hidden"}
+                    variants={{
+                        hidden: { opacity: 0, scale: 0.9, y: 10 },
+                        visible: {
+                            opacity: 1,
+                            scale: 1,
+                            y: 0,
+                            transition: {
+                                duration: 0.3,
+                                ease: "easeOut"
+                            }
+                        }
+                    }}
+                >
+                    <img src="/assets/arrow.png" alt="arrow top"/>
+                </motion.div>
             </motion.div>
         </Link>
     );

@@ -21,8 +21,8 @@
       "subtitle": "Me Joindre"
     }
   ],
-  "title": "Étudiant Développeur Full Stack",
-  "subtitle": "Eric ADELAIDE-BEAUBRUN",
+  "title": "Eric ADELAIDE-BEAUBRUN",
+  "subtitle": "Développeur Full-Stack (React/Node/Next)",
   "introduction": {
     "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.",
     "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack."
@@ -39,7 +39,7 @@
       "p": "Créations de designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
     },
     {
-      "icon": "webdev-icon",
+      "icon": "appdev-icon",
       "title": "Déploiement",
       "p": "Mise en place des outils qui permettent de mettre à jour un site ou une app facilement."
     }

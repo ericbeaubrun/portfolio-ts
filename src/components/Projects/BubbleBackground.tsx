@@ -9,7 +9,6 @@ const CONFIG = [
     {size: 20 * 1.5, left: "90%", top: "30vh", parallaxSpeed: 0.12, rotationSpeed: 0.05},
     {size: 30 * 1.5, left: "10%", top: "10vh", parallaxSpeed: 0.10, rotationSpeed: 0.06},
     {size: 40 * 1.5, left: "30%", top: "20vh", parallaxSpeed: 0.08, rotationSpeed: 0.03},
-    // {size: 25 * 1.5, left: "50%", top: "15vh", parallaxSpeed: 0.06, rotationSpeed: 0.05},
     {size: 35 * 1.5, left: "70%", top: "25vh", parallaxSpeed: 0.04, rotationSpeed: 0.07},
     {size: 15 * 1.5, left: "55%", top: "95vh", parallaxSpeed: 0.02, rotationSpeed: 0.04},
     {size: 30 * 1.5, left: "70%", top: "140vh", parallaxSpeed: 0.18, rotationSpeed: 0.02},

@@ -53,10 +53,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         // transform: offsetDirection === "right" ? "translateX(10%)" : "translateX(-10%)"
     };
 
-    const formatDemoLink = (link: string) => link.replace(/^https?:\/\//, '');
-
     return (
-        <div className="project-card" style={offsetStyle}>
+        <div className="shadowed project-card" style={offsetStyle}>
             <ProgressLine offset={-4} startFromCenter={true}/>
 
             <ProjectCardHeader icon={icon} title={title} date={date} description={description}/>
@@ -79,14 +77,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         )}
                     </>
                 )}
-
-                {/*{*/}
-                {/*    isMobile && (*/}
-                {/*        <>*/}
-                {/*        </>*/}
-                {/*    )*/}
-                {/*}*/}
-                {/*<hr className="line"/>*/}
             </div>
 
             <ProjectCardFooter demoLink={demoLink} githubLink={githubLink}/>

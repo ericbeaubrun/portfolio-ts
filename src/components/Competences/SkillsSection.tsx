@@ -14,18 +14,18 @@ type SkillsMap = {
 };
 
 export const SkillsSection = () => {
-    const ROOT = "/assets/skills/";
+    const root = "/assets/skills/";
 
     const categoryIcons = [
-        ROOT + "language.svg",
-        ROOT + "frontend.svg",
-        ROOT + "backend.svg",
-        ROOT + "database.svg",
-        ROOT + "design.svg",
-        ROOT + "others.svg",
+        root + "language.svg",
+        root + "frontend.svg",
+        root + "backend.svg",
+        root + "database.svg",
+        root + "design.svg",
+        root + "others.svg",
     ];
 
-    const { content } = useLanguage();
+    const {content} = useLanguage();
     const isMobile = useIsMobile();
 
     // On cast `content` en un objet qui a { skills: SkillsMap }

@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import './ProjectImagesCarousel.scss';

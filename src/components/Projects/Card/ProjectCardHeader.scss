@@ -6,12 +6,7 @@
 }
 
 .project-card__icon {
-  width: 100px;
-  height: 100px;
-  top: -50px;
-  left: -18px;
   position: relative;
-
   top: -42px;
   left: -20px;
   width: 110px;
@@ -52,7 +47,6 @@
     padding: 16px;
   }
 }
-
 
 @media (max-width: 600px) {
   .project-card__title {

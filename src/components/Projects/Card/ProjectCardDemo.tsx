@@ -89,7 +89,6 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
         } as React.CSSProperties;
     };
 
-    // Référence pour détecter la visibilité de la démo
     const demoRef = useRef(null);
     const isDemoInView = useInView(demoRef, {once: true, amount: 0.3});
 
@@ -105,7 +104,6 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                 </>
             )}
 
-            {/* Wrapper avec animation rebondissante */}
             <motion.div
                 ref={demoRef}
                 variants={demoVariants}
@@ -120,7 +118,7 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                         // Test overlay to=""
                         <Link to="" smooth={true} duration={DURATION} offset={OFFSET} className="project-link">
                             <div className='click-to-interact-btn' onClick={handleOverlayClick}>
-                                <span id='click-to-interact-text'>Click to interact</span>
+                                <span className='click-to-interact-text'>Click to interact</span>
                             </div>
                         </Link>
                     )}

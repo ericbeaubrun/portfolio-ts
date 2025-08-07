@@ -18,7 +18,6 @@ export interface Project {
     icon: string;
 }
 
-
 const ProjectCardContainer = () => {
 
     const ROOT = '/assets/projects/';
@@ -35,7 +34,6 @@ const ProjectCardContainer = () => {
     const [, setContainerHeight] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     void isVisible;
-    // let visibilityTimeout: NodeJS.Timeout | null = null;
     let visibilityTimeout: ReturnType<typeof setTimeout> | null = null;
 
     useEffect(() => {
@@ -81,12 +79,7 @@ const ProjectCardContainer = () => {
         <div className="project-cards-container" ref={containerRef}>
             <BubbleBackground/>
 
-            {/*{!isMobile && (*/}
-            {/*    <ProjectSubMap projects={content.projects} isVisible={isVisible}/>*/}
-            {/*)}*/}
-
             <div className="projects-banner-container">
-                {/*<Banner images={bannerLetters}/>*/}
                 <Banner text={content["projects-title"] as string}/>
             </div>
 
@@ -99,16 +92,6 @@ const ProjectCardContainer = () => {
                         position: 'relative'
                     }}
                 >
-                    {/*<ProgressLine*/}
-                    {/*    rotation={index % 2 === 0 ? 2 : -2}*/}
-                    {/*    direction={index % 2 === 0 ? "left" : "right"}*/}
-                    {/*/>*/}
-                    {/*<ProgressLine*/}
-                    {/*    rotation={0}*/}
-                    {/*    direction={index % 2 === 0 ? "right" : "left"}*/}
-                    {/*    offset={0}*/}
-                    {/*/>*/}
-
                     <ProjectCard
                         name={project.name}
                         githubLink={project.gh}
@@ -124,8 +107,6 @@ const ProjectCardContainer = () => {
                         images={images[index]}
                         hideMediaContent={false}
                     />
-
-                    {/*<ProgressLine rotation={5}/>*/}
                 </Element>
             ))}
         </div>

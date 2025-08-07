@@ -13,11 +13,13 @@ $line_width: 3px;
   background: transparent;
   font-weight: bold;
   text-align: center;
-  padding-top: 2vh;
   background: $background_color_dark;
   position: fixed;
-  top: 0;
   left: 50%;
+  padding-top: 23px;
+  padding-bottom: 48px;
+  height: 56px;
+
   transform: translateX(-50%);
   width: 100%;
   z-index: 13;
@@ -51,7 +53,7 @@ $line_width: 3px;
   background: transparent;
   max-height: 0;
   transform: translateY(20px);
-  -webkit-transform: translateY(20px);
+  //-webkit-transform: translateY(20px);
 }
 
 .navbar .linktext:after {
@@ -66,7 +68,7 @@ $line_width: 3px;
   font-size: 0.5em;
   color: $secondary_color;
   transform: translateY(30px);
-  -webkit-transform: translateY(30px);
+  //-webkit-transform: translateY(30px);
   opacity: 0;
 }
 
@@ -112,64 +114,12 @@ div.setting {
   top: -1.2vh;
   transform: scale(1.3);
   text-decoration: none;
-  -webkit-transform: scale(1.3);
+  //-webkit-transform: scale(1.3);
 }
 
 .navbar .item .linktext {
   cursor: pointer;
 }
-
-//.navbar .item.active[data-target="presentation"] .linktext {
-//  //color: #34a1b7;
-//  color: $main_text_color;
-//}
-//
-//.navbar .item[data-target="presentation"]::after {
-//  background: #34a1b7;
-//  background: #4c423a;
-//
-//}
-//
-//.navbar .item.active[data-target="competences"] .linktext {
-//  //color: #c50000;
-//  color: $main_text_color;
-//}
-//
-//.navbar .item[data-target="competences"]::after {
-//  //background: #c50000;
-//  background: #4c423a;
-//}
-//
-//.navbar .item.active[data-target="projets"] .linktext {
-//  //color: #cc930b;
-//  color: $main_text_color;
-//}
-//
-//.navbar .item[data-target="projets"]::after {
-//  background: #f7be42;
-//  background: #4c423a;
-//
-//}
-//
-//.navbar .item.active[data-target="services"] .linktext {
-//  //color: #3aa226;
-//  color: $main_text_color;
-//}
-//
-//.navbar .item[data-target="services"]::after {
-//  background: #4c423a;
-//
-//}
-//
-//.navbar .item.active[data-target="contact"] .linktext {
-//  //color: purple;
-//  color: $main_text_color;
-//}
-//
-//.navbar .item[data-target="contact"]::after {
-//  background: purple;
-//  background: #4c423a;
-//}
 
 .navbar {
   .hamburger-menu {
@@ -195,7 +145,7 @@ div.setting {
     flex-direction: column;
     background-color: rgba(229, 225, 214, 0.9);
     position: absolute;
-    top: 95px;
+    top: 82px;
     left: 0;
     width: 100%;
     padding: 10px;
@@ -218,8 +168,6 @@ div.setting {
 }
 
 .navbar .item:hover {
-  //color: $hover_line_color;
-  //transform: scale(1.05);
   transform: scale(1.05);
 }
 
@@ -228,7 +176,6 @@ div.setting {
 }
 
 .navbar .item::after {
-  //background: red;
   content: '';
   display: block;
   width: 0;
@@ -239,4 +186,11 @@ div.setting {
 
 .navbar .item:hover::after {
   width: 100%;
+}
+
+@media(max-width: 1111px) {
+  .navbar nav, {
+    height: 82px;
+    padding-top: 0;
+  }
 }

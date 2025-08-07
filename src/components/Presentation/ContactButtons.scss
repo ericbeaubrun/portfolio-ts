@@ -8,7 +8,6 @@
   cursor: pointer;
   width: 82px;
   height: 82px;
-  //border-radius: 50px;
   border-radius: 20px;
   border: 2px solid $component_color;
   background-color: $component_color;
@@ -28,7 +27,6 @@
 }
 
 .header-contact-button:hover {
-  //width: 200px;
   transition: width 0.65s;
 }
 
@@ -40,10 +38,6 @@
   z-index: 1;
   opacity: 0.75;
 }
-
-//.header-contact-button:hover .header-contact-button-icon {
-//  transform: translateX(-58px);
-//}
 
 .header-contact-button:hover .presentation-button-text {
   transform: translateX(42px);
@@ -73,7 +67,6 @@
 .cv-btn:hover .header-contact-button-icon{
   transform: translateX(-17px);
 }
-
 
 .presentation-button-text {
   opacity: 0;
@@ -159,9 +152,7 @@
   }
 
   .header-contact-button:hover {
-    //background-color: darken($component_color, 5%); TODO
     background-color: scale-color($component_color, $lightness: -5%);
-
     width: 50px;
     height: 50px;
   }

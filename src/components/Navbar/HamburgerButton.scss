@@ -1,5 +1,7 @@
 @import '../../config';
 
+$t: 0.5s;
+
 .box {
   border-radius: 2px;
   position: relative;
@@ -27,14 +29,13 @@ span.hamburger-line {
   border-radius: 3px;
   transition: all 0.2s;
   position: relative;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 span.hamburger-line + span.hamburger-line {
   margin-top: 3px;
 }
 
-$t : 0.5s;
 
 .active span:nth-child(1) {
   animation: top $t ease forwards;

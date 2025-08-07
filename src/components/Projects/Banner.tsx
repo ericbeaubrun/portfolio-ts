@@ -16,15 +16,12 @@ const bounceEffect = {
             type: "spring",
             stiffness: 200,
             damping: 11,
-            // duration: 0.8,
             duration: 0.2,
             delay: delay/2,
         },
     }),
 };
 
-// const colors = ["#796d61", "#8c7763", "#59524b", "#806954", "#796f67", "#645547"];
-// const colors = ["#796d61", "#645547", "#796d61", "#645547", "#796d61", "#645547"];
 const colors = ["#3c352f", "#312a25", "#3c352f", "#312a25", "#3c352f", "#312a25"];
 
 const rotations = [2.3, -3.5, 2.5, -3.7, 2.7, -3.2];
@@ -32,8 +29,6 @@ const rotations = [2.3, -3.5, 2.5, -3.7, 2.7, -3.2];
 const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; index: number }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: false });
-    // const isInView = useInView(ref, {once: false});
-    // const rotation = (Math.random() * 10 - 5).toFixed(2) + "deg";
     const backgroundColor = colors[index % colors.length];
     const rotation = rotations[index % rotations.length];
 
@@ -45,11 +40,9 @@ const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; i
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={bounceEffect}
-            // whileHover={{rotate: -rotation/2}}
             whileHover={{rotate: -rotation*2}}
             style={{
                 backgroundColor: backgroundColor,
-                // transform: `rotate(${rotation})`,
                 zIndex: 1+index,
             }}
         >

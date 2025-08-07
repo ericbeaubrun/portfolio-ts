@@ -10,7 +10,6 @@ interface LanguageContextProps {
     toggleLanguage: () => void;
 }
 
-
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({children}) => {

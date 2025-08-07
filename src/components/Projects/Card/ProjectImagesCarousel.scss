@@ -1,10 +1,8 @@
 .project-carousel-wrapper {
   position: relative;
   margin: 0 auto;
-  //padding: 2rem 1rem;
 
   .slick-slider {
-    width: 60%;
     width: 100%;
     margin: 0 auto;
   }
@@ -42,33 +40,13 @@
   }
 
   .slick-slide {
-    padding: 0 4px; // ou 2px selon le look que tu veux
+    padding: 0 4px;
   }
 
 
   .slick-slide {
-    padding: 0 4px; // ou 2px selon le look que tu veux
+    padding: 0 4px;
   }
-  //.slick-track {
-  //@media(min-width: 1000px) {
-  //  height: 200px;
-  //}
-  //
-  //@media(min-width: 1400px) {
-  //  height: 260px;
-  //}
-  //
-  //@media(min-width: 1800px) {
-  //  height: 320px;
-  //}
-  //@media(min-width: 2400px) {
-  //  height: 440px;
-  //}
-  //@media(min-width: 2800px) {
-  //  height: 540px;
-  //}
-  //width: 50%;
-  //}
 
   .slick-track {
     display: flex;

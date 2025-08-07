@@ -70,7 +70,6 @@ const ContactButtons = () => {
                     className="shadowed header-contact-button cv-btn">
                 <img src={ROOT + "cv.png"} alt="CV Icon" className="header-contact-button-icon "/>
                 <span className="presentation-button-text">CV</span>
-                {/*<span className="presentation-button-text">CV&nbsp;(pdf)</span>*/}
             </button>
 
         </div>

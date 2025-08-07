@@ -10,19 +10,15 @@ import ScrollProgressCircle from "./components/ScrollProgressCircle.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 import ProfileStats from "./components/ProfileStats.tsx";
 import SkillsSection from "./components/Competences/SkillsSection.tsx";
-import ScrollingText from "./components/Competences/ScrollingText.tsx";
 import "./Carousel.scss";
 import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
 import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
 import {useIsMobile} from "./components/Utils/MobileContext.tsx";
-import {useLanguage} from "./components/Utils/LanguageContext.tsx";
 
 const App = () => {
 
-    const {content} = useLanguage();
     const lenis = new Lenis();
     const isMobile = useIsMobile();
-    const scrollingText = (content as { "scrolling-text": string })["scrolling-text"];
 
     useEffect(() => {
 
@@ -131,16 +127,12 @@ const App = () => {
                 <Element name="projets" className="section">
                     <section id="projets">
                         <ProjectCardContainer/>
-                        {/*<ShowMoreButton/>*/}
                         <ProfileStats/>
                     </section>
                 </Element>
 
                 <Element name="competences" className="section">
                     <section id="competences">
-                        {/*<ScrollingText*/}
-                        {/*    text={scrollingText}*/}
-                        {/*    speed={2.5} direction={'right'}/>*/}
                         <SkillsSection/>
                         <ContactFormModal/>
                     </section>
