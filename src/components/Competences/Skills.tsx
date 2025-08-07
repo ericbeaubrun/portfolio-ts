@@ -1,6 +1,5 @@
 import './Skills.scss';
 
-
 interface SkillList {
     [key: string]: string;
 }
@@ -10,7 +9,7 @@ const Skills = ({title, skills, icon}: { title: string, skills: SkillList, icon:
     return (
         <div className='skills-container shadowed'>
             <div className="skill-cardHeader">
-                <img className="skill-category-icon" src={icon}/>
+                <img className="skill-category-icon" alt={icon} src={icon}/>
                 <h2 className="skills-title">{title}</h2>
             </div>
 

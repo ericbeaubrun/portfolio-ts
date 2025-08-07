@@ -20,14 +20,12 @@
   transition: 0.3s;
   border-radius: 8px;
   text-decoration: none;
-  cursor: pointer;
 }
-
 
 .contact-button:hover {
   background-color: scale-color(#2d2d2d, $lightness: 5%);
   transform: translateY(-3px);
-  box-shadow: 8px 8px 0px black;
+  box-shadow: 8px 8px 0 black;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
