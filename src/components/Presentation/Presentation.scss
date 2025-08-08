@@ -4,18 +4,27 @@
   background-color: #d9d4cd;
 }
 
+//.wave {
+//  background-image: url('/assets/wave.svg');
+//  background-repeat: no-repeat;
+//  background-position: center;
+//  height: 102px;
+//  margin-top: 0;
+//  margin-bottom: -2px;
+//  z-index: 1;
+//}
+
 .wave {
-  background-image: url('../../../public/assets/wave.svg');
+  background-image: url(/assets/wave.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  height: 102px;
+  background-position: bottom;
+  height: 140px;
   margin-top: 0;
-  margin-bottom: -2px;
-  z-index: 1;
+  margin-bottom: 0;
 }
 
 .wave-reverse {
-  background-image: url('../../../public/assets/wave_reverse.svg');
+  background-image: url('/assets/wave_reverse.svg');
   background-repeat: no-repeat;
   background-position: center top;
   height: 144px;

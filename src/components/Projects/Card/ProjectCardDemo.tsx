@@ -98,7 +98,7 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                 <>
                     <div className="full-page-overlay" onClick={leaveDemo}></div>
                     <button className="close-preview-button" onClick={leaveDemo}>
-                        <img className="close-preview-icon" src="../../../../public/assets/close_preview.png"
+                        <img className="close-preview-icon" src="/assets/close_preview.png"
                              alt="close demo icon"/>
                     </button>
                 </>
@@ -126,16 +126,16 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
                     {!isOverlayVisible && (
                         <div className="view-mode-buttons">
                             <button onClick={() => setViewMode('mobile')}>
-                                <img src="../../../../public/assets/mobile.png" alt="mobile icon"/>
+                                <img src="/assets/mobile.png" alt="mobile icon"/>
                             </button>
                             <button onClick={() => setViewMode('desktop')}>
-                                <img src="../../../../public/assets/desktop.png" alt="desktop icon"/>
+                                <img src="/assets/desktop.png" alt="desktop icon"/>
                             </button>
                             <button onClick={() => setIframeKey(prevKey => prevKey + 1)}>
-                                <img src="../../../../public/assets/refresh.png" alt="refresh icon"/>
+                                <img src="/assets/refresh.png" alt="refresh icon"/>
                             </button>
                             <button onClick={() => window.open(demoLink)}>
-                                <img src="../../../../public/assets/link.png" alt="full demo icon"/>
+                                <img src="/assets/link.png" alt="full demo icon"/>
                             </button>
                         </div>
                     )}
