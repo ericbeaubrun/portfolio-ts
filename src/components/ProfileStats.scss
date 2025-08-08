@@ -41,7 +41,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 0;
+  padding-top: 0 ;
 }
 
 .stat-square {
@@ -54,6 +54,16 @@
   background-color: $component_color;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: width 0.7s ease, height 0.7s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-square:hover {
+  width: 205px;
+  height: 160px;
+  transition: width 0.65s ease, height 0.65s ease;
 }
 
 .stats-number {
@@ -61,6 +71,11 @@
   font-weight: bold;
   color: black;
   margin: 0;
+  transition: transform 0.65s ease;
+}
+
+.stat-square:hover .stats-number {
+  transform: translateY(-8px);
 }
 
 .stat-square p {
@@ -68,6 +83,11 @@
   font-weight: 500;
   color: #333;
   text-align: center;
+  transition: transform 0.65s ease;
+}
+
+.stat-square:hover p {
+  transform: translateY(-3px);
 }
 
 @media (max-width: 1000px) {
@@ -83,6 +103,11 @@
     width: 120px;
     height: 120px;
     margin-bottom: 20px;
+  }
+
+  .stat-square:hover {
+    width: 140px;
+    height: 140px;
   }
 
   .stats-number {
@@ -115,6 +140,11 @@
 
   div.stat-square {
     width: 85px;
+    height: 100px;
+  }
+
+  .stat-square:hover {
+    width: 90px;
     height: 100px;
   }
 }

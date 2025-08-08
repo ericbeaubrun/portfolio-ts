@@ -14,12 +14,14 @@
       border-radius: 16px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
-
       &:hover {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       }
     }
   }
+
+
+
 
   .slick-slide {
     opacity: 0.3;
@@ -71,8 +73,6 @@
   }
 }
 
-
-
 .image-modal {
   position: fixed;
   top: 0;
@@ -98,3 +98,17 @@
     }
   }
 }
+
+
+.slick-active {
+  cursor: pointer;
+}
+
+.slick-center {
+  cursor: zoom-in;
+}
+
+.modal-content img {
+  cursor: zoom-out;
+}
+
