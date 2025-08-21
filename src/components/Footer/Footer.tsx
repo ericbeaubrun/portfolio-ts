@@ -16,16 +16,16 @@ interface FooterBlock1 {
     address: string;
 }
 
-interface FooterBlock2 {
-    title: string;
-    btn: string;
-}
+// interface FooterBlock2 {
+//     title: string;
+//     btn: string;
+// }
 
-interface FooterBlock3 {
+interface FooterBlock2 {
     paragraph: string;
 }
 
-type FooterContent = [FooterBlock0, FooterBlock1, FooterBlock2, FooterBlock3];
+type FooterContent = [FooterBlock0, FooterBlock1, FooterBlock2];
 
 
 const Footer = () => {

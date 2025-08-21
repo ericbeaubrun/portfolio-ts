@@ -9,7 +9,7 @@ interface ScrollingTextProps {
 
 const ScrollingText: React.FC<ScrollingTextProps> = ({ text, speed = 50 , direction='right'}) => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+    const [isHovering,] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const animationName = direction === 'left' ? 'scroll-left' : 'scroll-right';
@@ -34,15 +34,15 @@ const ScrollingText: React.FC<ScrollingTextProps> = ({ text, speed = 50 , direct
         };
     }, [isHovering]);
 
-    const handleMouseEnter = () => {
-        setIsHovering(true);
-        document.body.style.cursor = 'none';
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovering(false);
-        document.body.style.cursor = 'auto';
-    };
+    // const handleMouseEnter = () => {
+    //     setIsHovering(true);
+    //     document.body.style.cursor = 'none';
+    // };
+    //
+    // const handleMouseLeave = () => {
+    //     setIsHovering(false);
+    //     document.body.style.cursor = 'auto';
+    // };
 
     return (
         <div

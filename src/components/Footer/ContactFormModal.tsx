@@ -11,12 +11,13 @@ type FormData = {
 };
 
 interface ContactFormModalProps {
-    [key: string]: string;
+    btn: string;
+    send: string;
 }
 
 const ContactFormModal = () => {
     const {content} = useLanguage();
-    const contactFormContent = (content["contact-form"] as { contactFormContent: ContactFormModalProps });
+    const contactFormContent = content["contact-form"] as ContactFormModalProps;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>({

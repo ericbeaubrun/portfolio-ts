@@ -37,12 +37,13 @@ const Presentation = () => {
                 duration: 0.1,
             });
 
-            gsap.to(imageRef.current?.parentElement, {
-                x: scrollY * 0.15,
-                // x: scrollY * 0.28, TODO
-                ease: "power2.out",
-                duration: 0.5,
-            });
+            if (imageRef.current) {
+                gsap.to(imageRef.current?.parentElement, {
+                    x: scrollY * 0.15,
+                    ease: "power2.out",
+                    duration: 0.5,
+                });
+            }
 
             gsap.to(refP.current, {
                 y: -scrollY * 0.1,
@@ -53,7 +54,6 @@ const Presentation = () => {
             if (rectangleRef.current) {
                 gsap.to(rectangleRef.current, {
                     x: scrollY * 0.15,
-                    // x: scrollY * 0.2, TODO
                     ease: "power2.out",
                     duration: 0.5,
                 });
