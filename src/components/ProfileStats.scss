@@ -69,7 +69,7 @@
 .stats-number {
   font-size: 3rem;
   font-weight: bold;
-  color: black;
+  color: #333;
   margin: 0;
   transition: transform 0.65s ease;
 }
@@ -81,7 +81,7 @@
 .stat-square p {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #333;
+  color: #555;
   text-align: center;
   transition: transform 0.65s ease;
 }
@@ -106,8 +106,8 @@
   }
 
   .stat-square:hover {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
   }
 
   .stats-number {
@@ -144,7 +144,7 @@
   }
 
   .stat-square:hover {
-    width: 90px;
+    width: 85px;
     height: 100px;
   }
 }

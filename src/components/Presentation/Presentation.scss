@@ -4,23 +4,13 @@
   background-color: #d9d4cd;
 }
 
-//.wave {
-//  background-image: url('/assets/wave.svg');
-//  background-repeat: no-repeat;
-//  background-position: center;
-//  height: 102px;
-//  margin-top: 0;
-//  margin-bottom: -2px;
-//  z-index: 1;
-//}
-
 .wave {
   background-image: url(/assets/wave.svg);
   background-repeat: no-repeat;
   background-position: bottom;
-  height: 140px;
+  height: 144px;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: -1px;
 }
 
 .wave-reverse {
@@ -30,7 +20,7 @@
   height: 144px;
   margin-top: -18px;
   margin-bottom: -50px;
-  background-color: $background_color_2;
+  background-color: #2e2e2e;
   position: relative;
 }
 
@@ -91,7 +81,7 @@
     right: 0;
     width: 26vw;
     height: 250vh;
-    background-color: #4d4239;
+    background-color: rgb(33 33 33 / 93%);
     transform-origin: center;
   }
 }
@@ -135,11 +125,13 @@
   height: 100%;
   object-fit: cover;
   border-radius: 0;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, filter 0.5s ease;
   display: block;
+  filter: brightness(0.94);
 
   &:hover {
     transform: scale(1.06);
+    filter: brightness(1);
   }
 }
 

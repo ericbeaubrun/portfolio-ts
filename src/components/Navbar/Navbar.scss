@@ -14,6 +14,8 @@ $line_width: 3px;
   font-weight: bold;
   text-align: center;
   background: $background_color_dark;
+  background: #e6e1d5;
+  background: rgba(225, 223, 216, 1);
   position: fixed;
   left: 50%;
   padding-top: 23px;
@@ -23,6 +25,12 @@ $line_width: 3px;
   transform: translateX(-50%);
   width: 100%;
   z-index: 13;
+}
+
+@media(max-width: 1111px) {
+  .navbar nav {
+    background: rgba(225, 223, 216, 0.95);
+  }
 }
 
 .navbar .linktext {
@@ -53,7 +61,6 @@ $line_width: 3px;
   background: transparent;
   max-height: 0;
   transform: translateY(20px);
-  //-webkit-transform: translateY(20px);
 }
 
 .navbar .linktext:after {
@@ -68,7 +75,6 @@ $line_width: 3px;
   font-size: 0.5em;
   color: $secondary_color;
   transform: translateY(30px);
-  //-webkit-transform: translateY(30px);
   opacity: 0;
 }
 
@@ -92,8 +98,8 @@ div.setting {
   margin-left: 6vw;
   transform: translateY(-5px);
   background: transparent;
-  z-index: 2;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .navbar .item.active .linktext:before {
@@ -114,7 +120,6 @@ div.setting {
   top: -1.2vh;
   transform: scale(1.3);
   text-decoration: none;
-  //-webkit-transform: scale(1.3);
 }
 
 .navbar .item .linktext {
@@ -143,9 +148,9 @@ div.setting {
   .mobile-menu {
     display: flex;
     flex-direction: column;
-    background-color: rgba(229, 225, 214, 0.9);
+    background-color: rgba(225, 223, 216, 0.95);
     position: absolute;
-    top: 82px;
+    top: 81px;
     left: 0;
     width: 100%;
     padding: 10px;

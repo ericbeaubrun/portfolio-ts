@@ -36,15 +36,21 @@
   }
 
   .uiux-icon {
-    background-image: url('/assets/api.gif');
+    background-image: url('/assets/gif/api.gif');
   }
 
   .webdev-icon {
-    background-image: url('/assets/website.gif');
+    background-image: url('/assets/gif/website.gif');
   }
 
   .appdev-icon {
-    background-image: url('/assets/erp.gif');
+    background-image: url('/assets/gif/erp.gif');
+  }
+}
+
+@media(max-width: 1111px) {
+  .service-card {
+    padding: 28px 28px 0 28px;
   }
 }
 

@@ -80,7 +80,7 @@
       "date": "January 2022",
       "desc": "Creation of a strategic board game in Java, integrating AI for local multiplayer games, save game management, and generation of statistical graphs for the games.",
       "gh": "https://github.com/ericbeaubrun/conquete",
-      "demo": "eric.adelaide-beaubrun.fr",
+      "demo": "",
       "skills": [
         "Java",
         "JUnit",
@@ -100,7 +100,7 @@
       "date": "October 2023",
       "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
-      "demo": "eric.adelaide-beaubrun.fr",
+      "demo": "",
       "skills": [
         "Python",
         "PyQT6",
@@ -122,7 +122,7 @@
       "date": "January 2024",
       "desc": "Development of an air traffic simulator in Java, including a real-time configurable graphical interface and using advanced concepts such as trajectory calculation and collision avoidance (multithreading).",
       "gh": "https://github.com/ericbeaubrun/aerien",
-      "demo": "eric.adelaide-beaubrun.fr",
+      "demo": "",
       "skills": [
         "Java",
         "Multithreading",
@@ -152,9 +152,9 @@
   ],
   "footer": [
     {
-      "title": "My Contact Details",
+      "title": "Details",
       "email": "e.adelaide.beaubrun@gmail.com",
-      "tel": "+33 6 43 41 40 79",
+      "tel": "",
       "github": "github.com/ericbeaubrun/",
       "linkedin": "linkedin.com/in/eric-adelaide-beaubrun/"
     },
@@ -162,13 +162,14 @@
       "address": "Le Mée-sur-Seine (77350)"
     },
     {
-      "title": "Contact Form",
-      "btn": "Contact Me"
-    },
-    {
-      "paragraph": "Réalisé avec ❤\uFE0F"
+      "paragraph": "Last modified 20/08/2025"
     }
   ],
+  "contact-form": {
+    "title": "Contact Form",
+    "btn": "Contact Me",
+    "send": "Send"
+  },
   "scrolling-text": "ux | Technologies | Frameworks | Libraries | Languages | Environments | Tools | Debugging | Testing | Deployment | Optimization | Content Management | Modeling | ui/",
   "source-code": "Source Code",
   "see-more": "See More...",

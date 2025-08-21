@@ -24,7 +24,6 @@ const ProjectCardContainer = () => {
     const images = [
         [ROOT + 'conquete1.gif', ROOT + 'conquete2.gif', ROOT + 'conquete3.gif', ROOT + 'conquete4.gif', ROOT + 'conquete5.gif', ROOT + 'conquete6.gif'],
         // [ROOT + 'learn_py1.gif', ROOT + 'learn_py2.gif', ROOT + 'learn_py3.gif', ROOT + 'learn_py2.gif'],
-        [],
         [ROOT + 'aerien1.gif', ROOT + 'aerien2.gif', ROOT + 'aerien3.gif', ROOT + 'aerien4.gif']
     ]
 

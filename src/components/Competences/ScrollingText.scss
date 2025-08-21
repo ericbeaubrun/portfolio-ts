@@ -4,13 +4,42 @@
   overflow: hidden;
   position: relative;
   width: 100vw;
-  background: #d9d4cd;
-  height: 4.5rem;
+  background: #ece8e0;
+  color: #e3e0d9;
+  height: 20rem;
   display: flex;
   align-items: center;
   margin-bottom: 60px;
-  margin-top: 40px;
+  margin-top: 300px;
 
+  .custom-cursor {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    z-index: 10;
+    transition: transform 0.1s ease-out;
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+
+  .scrolling-content {
+    position: relative;
+    z-index: 1;
+
+    span {
+      color: #2e2e2e;
+      cursor: default;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(227, 224, 217, 0.3);
+    }
+  }
 }
 
 .scrolling-wrapper.scroll-left {
@@ -18,7 +47,7 @@
 }
 
 .scrolling-wrapper.scroll-right {
-  transform: rotate(0);
+  transform: rotate(0deg);
 }
 
 .scrolling-content {
@@ -37,7 +66,7 @@
 
 .scrolling-content span {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace, monospace;
-  font-size: 3rem;
+  font-size: 24rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;

@@ -80,7 +80,7 @@
       "date": "Janvier 2022",
       "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
       "gh": "https://github.com/ericbeaubrun/conquete",
-      "demo": "http://eric.adelaide-beaubrun.fr",
+      "demo": "",
       "skills": [
         "Java",
         "JUnit",
@@ -100,7 +100,7 @@
       "date": "Octobre 2023",
       "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
-      "demo": "http://localhost:5174",
+      "demo": "",
       "skills": [
         "Python",
         "PyQT6",
@@ -122,7 +122,7 @@
       "date": "Janvier 2024",
       "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
       "gh": "https://github.com/ericbeaubrun/aerien",
-      "demo": "http://localhost:5174",
+      "demo": "",
       "skills": [
         "Java",
         "Multithreading",
@@ -152,9 +152,9 @@
   ],
   "footer": [
     {
-      "title": "Mes Coordonnées",
+      "title": "Coordonnées",
       "email": "e.adelaide.beaubrun@gmail.com",
-      "tel": "+33 6 43 41 40 79",
+      "tel": "",
       "github": "github.com/ericbeaubrun/",
       "linkedin": "linkedin.com/in/eric-adelaide-beaubrun/"
     },
@@ -162,13 +162,14 @@
       "address": "Le Mée-sur-Seine (77350)"
     },
     {
-      "title": "Formulaire de Contact",
-      "btn": "Me contacter"
-    },
-    {
-      "paragraph": "Réalisé avec ❤\uFE0F le 16/03/2025"
+      "paragraph": "Dernières modifications le 20/08/2025"
     }
   ],
+  "contact-form": {
+    "title": "Formulaire de Contact",
+    "btn": "Contacter",
+    "send": "Envoyer"
+  },
   "scrolling-text": "ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/",
   "source-code": "Code Source",
   "see-more": "En savoir plus...",

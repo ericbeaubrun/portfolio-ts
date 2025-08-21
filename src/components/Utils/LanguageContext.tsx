@@ -12,10 +12,12 @@ interface LanguageContextProps {
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
+const DEFAULT_LANGUAGE: Language = "fr";
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const [language, setLanguage] = useState<Language>(() => {
         const savedLanguage = localStorage.getItem("language");
-        return (savedLanguage as Language) || "fr";
+        return (savedLanguage as Language) || DEFAULT_LANGUAGE;
     });
 
     useEffect(() => {

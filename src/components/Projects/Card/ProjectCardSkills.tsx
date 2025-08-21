@@ -36,7 +36,7 @@ const ProjectCardSkills: React.FC<ProjectCardSkillsProps> = ({ skills }) => {
                     return (
                         <motion.span
                             key={index}
-                            className="project-card__badge"
+                            className="shadowed project-card__badge"
                             custom={[index * 0.1, rotation]}
                             initial="hidden"
                             animate={isInView ? "visible" : "hidden"}

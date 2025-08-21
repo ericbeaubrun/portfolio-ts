@@ -59,7 +59,7 @@ const ProjectImageCarousel: React.FC<ProjectImageCarouselProps> = ({ images }) =
 
             {isModalOpen && modalImage && (
                 <div className="image-modal" onClick={() => setIsModalOpen(false)}>
-                    <div className="modal-content">
+                    <div className="modal-container">
                         <img src={modalImage} alt="Full size" />
                     </div>
                 </div>

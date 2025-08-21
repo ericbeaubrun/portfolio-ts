@@ -14,11 +14,16 @@ import "./Carousel.scss";
 import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
 import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
 import {useIsMobile} from "./components/Utils/MobileContext.tsx";
+import ScrollingText from "./components/Competences/ScrollingText.tsx";
 
 const App = () => {
 
     const lenis = new Lenis();
     const isMobile = useIsMobile();
+
+
+    // const {content} = useLanguage();
+    // const scrollingText = (content as { "scrolling-text": string })["scrolling-text"];
 
     useEffect(() => {
 
@@ -134,6 +139,10 @@ const App = () => {
                 <Element name="competences" className="section">
                     <section id="competences">
                         <SkillsSection/>
+                        <ScrollingText
+                            text={"..............................."}
+                            speed={1.75} direction={'right'}
+                        />
                         <ContactFormModal/>
                     </section>
                 </Element>

@@ -4,7 +4,7 @@ $border-radius: 16px;
   position: relative;
   width: 70px;
   height: 32px;
-  background-color: #4d4239;
+  background-color: #3e3d3d;
   border-radius: $border-radius;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@ $border-radius: 16px;
 .toggle-option {
   flex: 1;
   text-align: center;
-  color: #7c6d61;
+  color: #777676;
   font-size: 0.85rem;
   font-weight: bold;
   z-index: 2;
@@ -25,7 +25,7 @@ $border-radius: 16px;
 }
 
 .toggle-option.active {
-  color: #4d4239;
+  color: #3e3d3d;
 }
 
 .toggle-slider {
@@ -36,7 +36,7 @@ $border-radius: 16px;
   border-radius: $border-radius;
   transition: transform 0.3s;
   z-index: 1;
-  border: #4d4239 solid 3px;
+  border: #3e3d3d solid 3px;
 }
 
 .toggle-slider.left {

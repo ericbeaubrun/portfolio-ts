@@ -11,39 +11,43 @@ const bounceEffect = {
     visible: ([delay, rotation]: [number, number]) => ({
         opacity: 1,
         y: 0,
-        rotate:rotation,
+        rotate: rotation,
         transition: {
             type: "spring",
             stiffness: 200,
             damping: 11,
             duration: 0.2,
-            delay: delay/2,
+            delay: delay / 2,
         },
     }),
 };
 
-const colors = ["#3c352f", "#312a25", "#3c352f", "#312a25", "#3c352f", "#312a25"];
-
+// const color = "rgba(255, 255, 255, 0.01)";
+// const colors = [color, color, color, color, color, color];
 const rotations = [2.3, -3.5, 2.5, -3.7, 2.7, -3.2];
 
 const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; index: number }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: false });
-    const backgroundColor = colors[index % colors.length];
+    const isInView = useInView(ref, {once: false});
+    // const backgroundColor = colors[index % colors.length];
     const rotation = rotations[index % rotations.length];
 
     return (
         <motion.div
             ref={ref}
-            className="banner-letter shadowed"
+            className={"shadowed banner-letter " + (index % 2 === 0 ? "even-letter" : " odd-letter")}
             custom={[delay, rotation]}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={bounceEffect}
-            whileHover={{rotate: -rotation*2}}
+            whileHover={{
+                rotate: -rotation * 2,
+                backgroundColor: "rgba(255, 255, 255, 0.11)"
+
+            }}
             style={{
-                backgroundColor: backgroundColor,
-                zIndex: 1+index,
+                // backgroundColor: backgroundColor,
+                zIndex: 1 + index,
             }}
         >
             {letter}

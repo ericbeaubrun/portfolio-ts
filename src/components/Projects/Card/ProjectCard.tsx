@@ -80,6 +80,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
 
             <ProjectCardFooter demoLink={demoLink} githubLink={githubLink}/>
+
         </div>
     );
 };

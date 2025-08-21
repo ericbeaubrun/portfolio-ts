@@ -49,15 +49,15 @@ const Services: React.FC = () => {
                     <div ref={ref1} className="services-container">
                         {services.map((service, index) => (
                             <React.Fragment key={`service-${index}`}>
-                                <ServiceCard 
-                                    service={service} 
-                                    animationDelay={0.125 + index * 0.2} 
+                                <ServiceCard
+                                    service={service}
+                                    animationDelay={0.125 + index * 0.2}
                                     key={service.title}
                                 />
                                 {index < services.length - 1 && (
-                                    <Separator 
-                                        animationDelay={2.75 + index * 0.5} 
-                                        key={`separator-${index}`} 
+                                    <Separator
+                                        animationDelay={2.5 + index * 0.6}
+                                        key={`separator-${index}`}
                                     />
                                 )}
                             </React.Fragment>

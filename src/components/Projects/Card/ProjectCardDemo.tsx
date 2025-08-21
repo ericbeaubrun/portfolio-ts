@@ -97,7 +97,7 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
             {!isOverlayVisible && !isMobile && (
                 <>
                     <div className="full-page-overlay" onClick={leaveDemo}></div>
-                    <button className="close-preview-button" onClick={leaveDemo}>
+                    <button className="shadowed close-preview-button" onClick={leaveDemo}>
                         <img className="close-preview-icon" src="/assets/close_preview.png"
                              alt="close demo icon"/>
                     </button>
@@ -125,16 +125,16 @@ const ProjectCardDemo: React.FC<ProjectCardDemoProps> = ({name, demoLink, isMobi
 
                     {!isOverlayVisible && (
                         <div className="view-mode-buttons">
-                            <button onClick={() => setViewMode('mobile')}>
-                                <img src="/assets/mobile.png" alt="mobile icon"/>
+                            <button className= "shadowed" onClick={() => setViewMode(viewMode === 'mobile' ? 'desktop' : 'mobile')}>
+                                <img 
+                                    src={viewMode === 'mobile' ? "/assets/desktop.png" : "/assets/mobile.png"} 
+                                    alt={viewMode === 'mobile' ? "switch to desktop" : "switch to mobile"}
+                                />
                             </button>
-                            <button onClick={() => setViewMode('desktop')}>
-                                <img src="/assets/desktop.png" alt="desktop icon"/>
+                            <button className= "shadowed" onClick={() => setIframeKey(prevKey => prevKey + 1)}>
+                                <img src="/assets/reload.png" alt="refresh icon"/>
                             </button>
-                            <button onClick={() => setIframeKey(prevKey => prevKey + 1)}>
-                                <img src="/assets/refresh.png" alt="refresh icon"/>
-                            </button>
-                            <button onClick={() => window.open(demoLink)}>
+                            <button className= "shadowed" onClick={() => window.open(demoLink)}>
                                 <img src="/assets/link.png" alt="full demo icon"/>
                             </button>
                         </div>

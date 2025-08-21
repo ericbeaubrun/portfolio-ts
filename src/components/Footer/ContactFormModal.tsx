@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './ContactFormModal.scss';
 import emailjs from 'emailjs-com';
 import {useLanguage} from "../Utils/LanguageContext.tsx";
+import {motion, AnimatePresence} from 'framer-motion';
 
 type FormData = {
     name: string;
@@ -9,9 +10,13 @@ type FormData = {
     message: string;
 };
 
+interface ContactFormModalProps {
+    [key: string]: string;
+}
+
 const ContactFormModal = () => {
     const {content} = useLanguage();
-    const contentBtn = (content as { "see-more-gh": string })["see-more-gh"];
+    const contactFormContent = (content["contact-form"] as { contactFormContent: ContactFormModalProps });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -46,6 +51,7 @@ const ContactFormModal = () => {
         setIsModalOpen(false);
     };
 
+
     return (
         <div className="contact-container">
             <div className="button-container">
@@ -53,65 +59,115 @@ const ContactFormModal = () => {
                     setIsModalOpen(true)
                 }} className="shadowed contact-button">
                     <div className="text">
-                        {contentBtn}
+                        {contactFormContent.btn}
                     </div>
                     <div className="wave-btn"></div>
                 </button>
             </div>
 
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-modal-button" onClick={closeModal}>
-                            &times;
-                        </button>
-                        <div className="contactForm">
-                            <h2>Envoyer un message</h2>
-
-                            <form onSubmit={handleSubmit}>
-                                <div>
-                                    <label htmlFor="name">Nom complet</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        placeholder="Qui êtes-vous ?"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeholder="exemple@domaine.fr"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="message">Message :</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        placeholder="Votre message..."
-                                        required
-                                    />
-                                </div>
-                                <button id="form-submit-btn" type="submit">
-                                    &#x27A4;&nbsp;&nbsp;Envoyer&nbsp;
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <motion.div
+                        className="modal-overlay"
+                        onClick={closeModal}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                        transition={{duration: 0.3}}
+                    >
+                        <motion.div
+                            className="modal-content"
+                            onClick={(e) => e.stopPropagation()}
+                            initial={{scale: 0.7, opacity: 0, y: 50}}
+                            animate={{scale: 1, opacity: 1, y: 0}}
+                            exit={{scale: 0.7, opacity: 0, y: 50}}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30,
+                                duration: 0.4
+                            }}
+                        >
+                            <button className="close-modal-button" onClick={closeModal}>
+                                &times;
+                            </button>
+                            <motion.div
+                                className="contactForm"
+                                initial={{opacity: 0, y: 20}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{delay: 0.2, duration: 0.3}}
+                            >
+                                <form onSubmit={handleSubmit}>
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.9}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        transition={{
+                                            delay: 0.2,
+                                            duration: 0.3,
+                                            type: "spring",
+                                            stiffness: 200,
+                                            damping: 20
+                                        }}
+                                    >
+                                        <label htmlFor="email">Email</label>
+                                        <input
+                                            className={"shadowed"}
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder=""
+                                            required
+                                        />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{opacity: 0, scale: 0.9}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        transition={{
+                                            delay: 0.35,
+                                            duration: 0.3,
+                                            type: "spring",
+                                            stiffness: 200,
+                                            damping: 20
+                                        }}
+                                    >
+                                        <label htmlFor="message">Message</label>
+                                        <textarea
+                                            className={"shadowed"}
+                                            id="message"
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            placeholder=""
+                                            required
+                                        />
+                                    </motion.div>
+                                    <motion.button
+                                        id="form-submit-btn"
+                                        type="submit"
+                                        className="shadowed"
+                                        initial={{opacity: 0, scale: 0.9}}
+                                        animate={{opacity: 1, scale: 1}}
+                                        transition={{
+                                            delay: 0.5,
+                                            duration: 0.3,
+                                            type: "spring",
+                                            stiffness: 200,
+                                            damping: 20
+                                        }}
+                                        whileHover={{scale: 1.02}}
+                                        whileTap={{scale: 0.98}}
+                                    >
+                                        {contactFormContent.send}
+                                        &nbsp;&nbsp;&#x27A4;&nbsp;
+                                    </motion.button>
+                                </form>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

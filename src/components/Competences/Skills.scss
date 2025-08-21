@@ -1,13 +1,21 @@
 @import "../../config";
 
+@media(min-width: 1111px) {
+  .skills-section {
+    padding: 3rem 6vw;
+  }
+}
+
+@media(min-width: 1700px) {
+  .skills-section {
+    padding: 14vh 12vw 32vh;
+    padding-bottom: 0;
+    padding-top: 54vh;
+  }
+}
+
 .skills-section {
   overflow: hidden;
-  padding: 3rem 6vw;
-  z-index: 1;
-
-  @media(min-width: 1366px) {
-    //padding: 20vh 10vw 12vh;
-  }
 }
 
 .skills-container {
@@ -81,13 +89,13 @@ h2.skills-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 1rem;
+  //padding-bottom: 1rem;
+  padding-bottom: 12px;
 }
 
 .skill-icon {
   width: 48px;
   height: 48px;
-  //margin-bottom: 0.5rem;
   transition: transform 0.3s ease;
 }
 
@@ -126,7 +134,8 @@ p.skill-name {
   font-size: 1rem;
   color: #555;
   text-align: center;
-  padding-top: 0.5rem;
+  //padding-top: 0.5rem;
+  padding-top: 4px;
   font-weight: 500;
   transition: transform 0.3s ease;
 }
@@ -134,7 +143,7 @@ p.skill-name {
 .skill-category-icon {
   width: 32px;
   height: 32px;
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 @media(max-width: 622px) {
@@ -154,11 +163,14 @@ p.skill-name {
   .skills-section {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 64vh;
+
   }
 
   .skillsList-container {
     gap: 0;
   }
+
   div.skills-container {
     width: 50vw;
   }

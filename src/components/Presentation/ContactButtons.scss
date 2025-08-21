@@ -61,11 +61,11 @@
 }
 
 .cv-btn:hover {
-  width: 128px;
+  width: 136px;
 }
 
 .cv-btn:hover .header-contact-button-icon{
-  transform: translateX(-17px);
+  transform: translateX(-22px);
 }
 
 .presentation-button-text {
@@ -91,7 +91,6 @@
 
 
 @media (max-width: 1200px) {
-
   .header-contact-button:hover .header-contact-button-icon {
     transform: translateX(-55px);
   }

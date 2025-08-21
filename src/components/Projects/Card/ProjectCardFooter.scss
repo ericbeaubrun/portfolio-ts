@@ -1,5 +1,12 @@
 @import "../../../config.scss";
 
+$btn_color: #4998ff;
+$btn_color_hover: #f6f5f2;
+
+$btn_bg_color: #3a3a3a;
+$btn_bg_color_hover: #3a3a3a;
+
+
 .project-card__footer {
   display: flex;
   justify-content: space-between;
@@ -9,38 +16,58 @@
   padding: 49px 5px 40px;
 }
 
-.project-card__button {
+.project-card-demo-btn {
+  background: $btn_bg_color;
+  color: #f6f5f2;
+}
+
+.project-card-gh-btn {
+  background: $btn_bg_color;
+  color: #f6f5f2;
+}
+
+.project-card-demo-btn, .project-card-gh-btn {
+  font-family: $font;
+  font-size: 1.05rem;
   display: flex;
   align-items: center;
-  background: #333333;
-  color: $component_color;
   text-decoration: none;
   padding: 8px 12px;
   font-weight: 500;
-  font-size: 1.25rem;
   border-radius: 7px;
   transition: background 0.3s;
   align-content: center;
   justify-content: center;
+
   &:hover {
-    background-color: #383838;
+    color: $btn_color_hover;
+    background-color: lighten($btn_bg_color_hover, 3%);
   }
 }
 
 .project-card-link__icon {
-  margin-right: 8px;
+  margin-right: 4px;
   width: 24px;
   height: 24px;
   stroke: currentColor;
   fill: none;
-  stroke-width: 2;
+  stroke-width: 1.75;
 }
 
-#github-icon {
-  height: 20px;
-  width: 20px;
-  margin-right: 8px;
+.project-card-github__icon {
+  margin-right: 4px;
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+  fill: currentColor;
+  stroke-width: 1;
 }
+
+//#github-icon {
+//  margin-right: 4px;
+//  height: 20px;
+//  width: 20px;
+//}
 
 
 @media (max-width: 600px) {
@@ -51,10 +78,10 @@
   }
 
   .project-card__footer {
-    padding: 16px;
+    padding: 0;
   }
 
-  .project-card__button {
+  .project-card-demo-btn, .project-card-gh-btn {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;

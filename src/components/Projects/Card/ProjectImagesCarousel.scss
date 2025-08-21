@@ -11,31 +11,31 @@
     img {
       width: 100%;
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.3s ease;
+
       &:hover {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       }
     }
   }
 
-
-
-
   .slick-slide {
     opacity: 0.3;
-    transform: scale(0.65);
+    transform: scale(0.75);
     transition: all 0.4s ease;
+
     &:hover {
-      transform: scale(0.70);
+      transform: scale(0.77);
     }
   }
 
   .slick-center {
     opacity: 1;
-    transform: scale(0.95);
+    transform: scale(0.97);
     z-index: 2;
+
     &:hover {
       transform: scale(1);
     }
@@ -83,13 +83,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
 
 
-  .modal-content {
+  .modal-container {
+
     max-width: 100%;
     max-height: 100%;
+    z-index: 100;
+
     img {
+      z-index: 100;
+
       width: auto;
       height: auto;
       max-width: 100%;

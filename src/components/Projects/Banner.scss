@@ -71,10 +71,6 @@
 
   .banner-title-container {
     font-size: 2.5rem;
-    padding: 15px 30px;
-  }
-
-  .banner-title-container {
     padding: 100px;
   }
 }
@@ -104,8 +100,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.01);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
+@media(min-width: 1111px) {
+  .banner-letter {
+    font-size: 4rem;
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .letters-row {
+    gap: 10px;
+  }
+}
+
+@media(min-width: 899px) {
+  .banner-letter {
+
+  }
+}
+
+@media(max-width: 899px) {
+  .odd-letter {
+    background-color: #212121;
+  }
+  .even-letter {
+    background-color: #2a2a2a;
+  }
+}
 
 @media (max-width: 600px) {
   .banner-letter {

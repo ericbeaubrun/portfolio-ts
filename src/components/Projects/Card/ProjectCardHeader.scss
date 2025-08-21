@@ -37,11 +37,19 @@
   color: #aaa;
 }
 
+
 .project-card__description {
   font-size: 1.25rem;
   color: #ddd;
   margin: 0;
   line-height: 1.75;
+}
+
+@media (min-width: 900px) {
+  .project-card__description, .project-card__date {
+    padding-right: 2.5vw;
+    padding-left: 2.5vw;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -57,9 +65,8 @@
   .project-card__title {
     font-size: 24px;
     padding-bottom: 0;
-
   }
   .project-card__header {
-    padding: 16px;
+    padding: 0;
   }
 }

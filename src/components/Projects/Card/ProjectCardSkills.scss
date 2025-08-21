@@ -12,6 +12,13 @@
   padding-top: 29px;
 }
 
+@media (min-width: 900px) {
+  .project-card__badge-container {
+    padding-right: 2.5vw;
+    padding-left: 2.5vw;
+  }
+}
+
 .project-card__badge {
   color: rgba(0, 0, 0, 0.87);
   height: 30px;

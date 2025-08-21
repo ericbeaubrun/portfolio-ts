@@ -1,9 +1,8 @@
 import "./Footer.scss";
 import {FaMapMarkerAlt} from 'react-icons/fa';
-import {FaEnvelope, FaPhone, FaGithub, FaLinkedin, FaInfoCircle} from 'react-icons/fa';
+import {FaEnvelope, FaGithub, FaLinkedin, FaInfoCircle} from 'react-icons/fa';
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import {useState} from "react";
-import {motion} from "framer-motion";
 
 interface FooterBlock0 {
     title: string;
@@ -56,47 +55,19 @@ const Footer = () => {
                         </h3>
 
                         <ul>
-                            <motion.li 
-                                className="footer-coord"
-                                initial={{ x: -30, opacity: 1 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                whileHover={{ 
-                                    x: 6,
-                                    transition: { duration: 0 }
-                                }}
-                                transition={{ duration: 0.075, delay: 0}}
-                                viewport={{ once: false }}
-                            >
+                            <li className="footer-coord">
                                 <FaEnvelope className="coord-icon"/>
                                 <a id="footer-email" className="footer-content">{footer[0].email}</a>
-                            </motion.li>
+                            </li>
 
-                            <motion.li 
-                                className="footer-coord"
-                                initial={{ x: -30, opacity: 1 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                whileHover={{ 
-                                    x: 6,
-                                    transition: { duration: 0 }
-                                }}
-                                transition={{ duration: 0.075, delay: 0.1 }}
-                                viewport={{ once: false }}
-                            >
-                                <FaPhone className="coord-icon"/>
-                                <a id="footer-tel" className="footer-content">{footer[0].tel}</a>
-                            </motion.li>
+                            {/*<li */}
+                            {/*    className="footer-coord"*/}
+                            {/*>*/}
+                            {/*    <FaPhone className="coord-icon"/>*/}
+                            {/*    <a id="footer-tel" className="footer-content">{footer[0].tel}</a>*/}
+                            {/*</li>*/}
 
-                            <motion.li 
-                                className="footer-coord"
-                                initial={{ x: -30, opacity: 1 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                whileHover={{ 
-                                    x: 6,
-                                    transition: { duration: 0 }
-                                }}
-                                transition={{ duration: 0.075, delay: 0.2 }}
-                                viewport={{ once: false }}
-                            >
+                            <li className="footer-coord">
                                 <FaGithub className="coord-icon"/>
                                 <a href="https://github.com/ericbeaubrun"
                                    target="_blank"
@@ -106,19 +77,9 @@ const Footer = () => {
                                 >
                                     {footer[0].github}
                                 </a>
-                            </motion.li>
+                            </li>
 
-                            <motion.li 
-                                className="footer-coord"
-                                initial={{ x: -30, opacity: 1 }}
-                                whileInView={{ x: 0, opacity: 1 }}
-                                whileHover={{ 
-                                    x: 6,
-                                    transition: { duration: 0 }
-                                }}
-                                transition={{ duration: 0.075, delay: 0.3 }}
-                                viewport={{ once: false }}
-                            >
+                            <li className="footer-coord">
                                 <FaLinkedin className="coord-icon"/>
                                 <a href="https://www.linkedin.com/in/eric-adelaide-beaubrun/"
                                    target="_blank"
@@ -128,7 +89,7 @@ const Footer = () => {
                                 >
                                     {footer[0].linkedin}
                                 </a>
-                            </motion.li>
+                            </li>
                         </ul>
                     </div>
 
@@ -163,7 +124,11 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+                <div className="footer__bottom">
+                    <p>{footer[2].paragraph}</p>
+                </div>
             </div>
+
         </footer>
     );
 };

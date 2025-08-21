@@ -1,10 +1,4 @@
-.next-arrow {
-  right: 10px;
-}
-
-.prev-arrow {
-  left: 10px;
-}
+@import "./config.scss";
 
 .slick-dots {
   text-align: center;
@@ -36,7 +30,7 @@
   gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .slick-dots li {
@@ -45,7 +39,7 @@
 
 .slick-dots li button {
   border: none;
-  background-color: #ddd;
+  background-color: #c3c3c3;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -54,17 +48,17 @@
 }
 
 .slick-dots li.slick-active button {
-  background-color: #564f49;
+  background-color: #3f3f3f;
   transform: scale(1.2);
 }
 
 .slick-dots li button:hover {
-  background-color: scale-color(#ddd, $lightness: -7%);
+  background-color: scale-color(#c3c3c3, $lightness: -7%);
   transform: scale(1.1);
 }
 
 .slick-dots li.slick-active button:hover {
-  background-color: #564f49;
+  background-color: #3f3f3f;
 }
 
 .slick-slider {
@@ -150,11 +144,11 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(87, 79, 73, 0.8);
-  padding: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
   cursor: pointer;
   z-index: 10;
-  height: 60px;
+  height: 76px;
   width: 30px;
   display: flex;
   justify-content: center;
@@ -162,12 +156,15 @@
   border-radius: 4px;
   font-size: 20px;
   font-weight: bold;
-  color: #eae9e5;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+
+.slick-list {
+  border-radius: $BORDER_RADIUS_DEFAULT;
+}
+
 .custom-arrow:hover {
-  background-color: rgba(87, 79, 73, 1);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -184,13 +181,5 @@
     height: 50px;
     width: 25px;
     font-size: 18px;
-  }
-
-  .next-arrow {
-    right: 5px;
-  }
-
-  .prev-arrow {
-    left: 5px;
   }
 }
