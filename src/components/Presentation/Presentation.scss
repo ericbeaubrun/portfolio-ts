@@ -81,7 +81,7 @@
     right: 0;
     width: 26vw;
     height: 250vh;
-    background-color: rgb(33 33 33 / 93%);
+    background-color: rgb(33 33 33 / 95%);
     transform-origin: center;
   }
 }
@@ -125,12 +125,12 @@
   height: 100%;
   object-fit: cover;
   border-radius: 0;
-  transition: transform 0.5s ease, filter 0.5s ease;
+  transition: transform 0.75s ease, filter 0.75s ease;
   display: block;
   filter: brightness(0.94);
 
   &:hover {
-    transform: scale(1.06);
+    transform: scale(1.04);
     filter: brightness(1);
   }
 }

@@ -12,6 +12,7 @@ interface NavItem {
     title: string;
     subtitle: string;
 }
+
 const Navbar = ({lenis}: { lenis: Lenis }) => {
 
     const isMobile = useIsMobile();
@@ -70,6 +71,13 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
                 {isMobile ? (
                     <>
                         <HamburgerButton isOpen={menuOpen} onClick={toggleMenu}/>
+                        {
+                            menuOpen && (
+                                <div className="mobile-language-switcher">
+                                    <LanguageSwitcher/>
+                                </div>
+                            )
+                        }
                         <AnimatePresence>
                             {menuOpen && (
                                 <motion.div

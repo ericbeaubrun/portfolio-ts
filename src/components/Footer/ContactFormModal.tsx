@@ -36,7 +36,12 @@ const ContactFormModal = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        emailjs.sendForm('service_n0ckxdy', 'template_q8yzqaj', e.target as HTMLFormElement, 'mexDdWEEhs-E5pxJW')
+        emailjs.sendForm(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            e.target as HTMLFormElement,
+            import.meta.env.VITE_EMAILJS_USER_ID
+        )
             .then((result) => {
                 console.log(result.text);
                 alert("Messsage envoyé avec succès !");

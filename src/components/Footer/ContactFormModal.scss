@@ -63,7 +63,7 @@
 
       .close-modal-button {
         position: absolute;
-        top: 0px;
+        top: 0;
         right: 5px;
         background: none;
         border: none;
@@ -99,7 +99,7 @@
 
             input, textarea {
               font-family: web-safe, sans-serif;
-              color:#000;
+              color: #000;
               //font-style: italic;
               width: 100%;
               padding: 10px;
@@ -135,7 +135,7 @@
             font-weight: bold;
 
             &:hover {
-              background-color: lighten(#383838, 4%);
+              background-color: #444444;
             }
           }
         }

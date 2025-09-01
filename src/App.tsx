@@ -140,8 +140,9 @@ const App = () => {
                     <section id="competences">
                         <SkillsSection/>
                         <ScrollingText
-                            text={"..............................."}
-                            speed={1.75} direction={'right'}
+                            text={"~~~~~~~~~~~~~~~~~~~~~~~~~~"}
+                            speed={1.75}
+                            direction={'right'}
                         />
                         <ContactFormModal/>
                     </section>

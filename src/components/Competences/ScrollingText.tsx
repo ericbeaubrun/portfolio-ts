@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import './ScrollingText.scss';
 
 interface ScrollingTextProps {
@@ -8,32 +8,32 @@ interface ScrollingTextProps {
 }
 
 const ScrollingText: React.FC<ScrollingTextProps> = ({ text, speed = 50 , direction='right'}) => {
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+    const [cursorPosition,] = useState({ x: 0, y: 0 });
     const [isHovering,] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const animationName = direction === 'left' ? 'scroll-left' : 'scroll-right';
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (wrapperRef.current && isHovering) {
-                const rect = wrapperRef.current.getBoundingClientRect();
-                setCursorPosition({
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                });
-            }
-        };
-
-        if (isHovering) {
-            document.addEventListener('mousemove', handleMouseMove);
-        }
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, [isHovering]);
-
+    // useEffect(() => {
+    //     const handleMouseMove = (e: MouseEvent) => {
+    //         if (wrapperRef.current && isHovering) {
+    //             const rect = wrapperRef.current.getBoundingClientRect();
+    //             setCursorPosition({
+    //                 x: e.clientX - rect.left,
+    //                 y: e.clientY - rect.top
+    //             });
+    //         }
+    //     };
+    //
+    //     if (isHovering) {
+    //         document.addEventListener('mousemove', handleMouseMove);
+    //     }
+    //
+    //     return () => {
+    //         document.removeEventListener('mousemove', handleMouseMove);
+    //     };
+    // }, [isHovering]);
+    //
     // const handleMouseEnter = () => {
     //     setIsHovering(true);
     //     document.body.style.cursor = 'none';
