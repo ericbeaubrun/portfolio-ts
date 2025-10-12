@@ -145,6 +145,12 @@ const App = () => {
                             direction={'right'}
                         />
                         <ContactFormModal/>
+                        <ScrollingText
+                            text={"~~~~~~~~~~~~~~~~~~~~~~~~~~"}
+                            speed={1.75}
+                            direction={'right'}
+                        />
+
                     </section>
                 </Element>
             </main>
