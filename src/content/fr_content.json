@@ -5,27 +5,23 @@
       "subtitle": "Parcours et Objectifs"
     },
     {
-      "title": "Spécialité",
-      "subtitle": "Services Proposés"
+      "title": "À Propos",
+      "subtitle": "Mon Histoire"
     },
     {
       "title": "Projets",
       "subtitle": "Mes Créations"
     },
     {
-      "title": "Compétences",
-      "subtitle": "Technologies Maitrisées"
-    },
-    {
       "title": "Contact",
-      "subtitle": "Me Joindre"
+      "subtitle": "Me Contacter"
     }
   ],
   "title": "Eric ADELAIDE-BEAUBRUN",
   "subtitle": "Développeur Full-Stack (React/Node/Next)",
   "introduction": {
-    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.",
-    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack."
+    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.qerhgbteqhgbqet dhbqethbteq rdwhbeqtwh bnqegwhbnye tqghnbyqtre gwdhnbeqrhnbqre tydhnbq erty whnbqtr eswdhnbeqtrw hnbeqgwdhnbteds whbetqd whg bte qwdghbeqtd",
+    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack.qerthbq efwdhbgtyreq dwshbnyrg tqswhn beqthn bteqhbgteqhg bteqhbteqzh bnqe tdhbgqetwhb eqth bteqhbtehnt"
   },
   "services": [
     {
@@ -73,6 +69,8 @@
     }
   },
   "projects-title": "projets",
+  "projects-more-text": "Vous voulez voir plus de projets ?",
+  "projects-more-button": "Voir plus",
   "projects": [
     {
       "title": "Jeu de Plateau Stratégique Multijoueur",
@@ -81,18 +79,18 @@
       "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
       "gh": "https://github.com/ericbeaubrun/conquete",
       "demo": "",
-      "skills": [
-        "Java",
-        "JUnit",
-        "Intelligence Artificielle",
-        "Conception UI/UX"
-      ],
+      "skills": {
+        "java": "Java",
+        "junit": "JUnit",
+        "ai": "Intelligence Artificielle",
+        "uiux": "Conception UI/UX"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "/assets/conquete.png"
+      "icon": "/assets/project-img-test.png"
     },
     {
       "title": "Application Pédagogique pour les Étudiants",
@@ -101,14 +99,14 @@
       "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
       "demo": "",
-      "skills": [
-        "Python",
-        "PyQT6",
-        "CSS",
-        "JSON",
-        "Conception UI/UX",
-        "Sécurité"
-      ],
+      "skills": {
+        "py": "Python",
+        "pyqt": "PyQT6",
+        "css": "CSS",
+        "json": "JSON",
+        "uiux": "Conception UI/UX",
+        "security": "Sécurité"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
@@ -123,11 +121,11 @@
       "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
       "gh": "https://github.com/ericbeaubrun/aerien",
       "demo": "",
-      "skills": [
-        "Java",
-        "Multithreading",
-        "Conception UI/UX"
-      ],
+      "skills": {
+        "java": "Java",
+        "multithreading": "Multithreading",
+        "uiux": "Conception UI/UX"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
@@ -162,7 +160,7 @@
       "address": "Le Mée-sur-Seine (77350)"
     },
     {
-      "paragraph": "Dernières modifications le 01/09/2025"
+      "paragraph": "Dernières modifications le 09/06/2026"
     }
   ],
   "contact-form": {
@@ -177,7 +175,3 @@
   "hide": "Cacher",
   "read-more": "Lire la suite"
 }
-
-
-
-

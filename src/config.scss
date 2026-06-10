@@ -1,21 +1,21 @@
 $FOOTER-MARGIN: 14vh;
 
 // Background colors
-$background_color: #ede8df; // OK
-$background_color_dark: #e6e1d5; // OK
-$background_color_component: #e8e6e3;
-$background_color_wave:#d9d4cd;
+$background_color: #111111;
+$background_color_dark: #0a0a0a;
+$background_color_component: #1a1a1a;
+$background_color_wave: #111111;
 
 $COLOR: #f0dbbd;
-$component_color: #f6f5f2;
+$component_color: #1a1a1a;
 
-$BACKGROUND_COLOR_BLACK: #383735;
+$BACKGROUND_COLOR_BLACK: #000000;
 
-$background_color_2 :#332e2a;
+$background_color_2: #111111;
 
 // Text colors
-$text_color_dark: #312920; // OK
-$TEXT_COLOR_LIGHT: white;
+$text_color_dark: #ffffff;
+$TEXT_COLOR_LIGHT: #eeeeee;
 
 $FONT_SIZE_SMALL: 1.3rem;
 $FONT_SIZE_MEDIUM: 1.4rem;
@@ -26,7 +26,7 @@ $FONT_SIZE_H2: 1.7rem;
 $FONT_SIZE_H1_RESPONSIVE: 2.2rem;
 $FONT_SIZE_H2_RESPONSIVE: 1.7rem;
 
-$font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$font: 'Poppins', sans-serif;
 //OK
 $projectsColor : white;
 

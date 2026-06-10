@@ -5,16 +5,12 @@
       "subtitle": "Overview"
     },
     {
-      "title": "Specialty",
-      "subtitle": "Services Offered"
+      "title": "About",
+      "subtitle": "My Story"
     },
     {
       "title": "Projects",
       "subtitle": "My Creations"
-    },
-    {
-      "title": "Skills",
-      "subtitle": "My Toolbox"
     },
     {
       "title": "Contact",
@@ -73,6 +69,8 @@
     }
   },
   "projects-title": "projects",
+  "projects-more-text": "Want to see more projects?",
+  "projects-more-button": "View more projects",
   "projects": [
     {
       "title": "Multiplayer Strategy Board Game",
@@ -81,18 +79,18 @@
       "desc": "Creation of a strategic board game in Java, integrating AI for local multiplayer games, save game management, and generation of statistical graphs for the games.",
       "gh": "https://github.com/ericbeaubrun/conquete",
       "demo": "",
-      "skills": [
-        "Java",
-        "JUnit",
-        "Artificial Intelligence",
-        "UI/UX Design"
-      ],
+      "skills": {
+        "java": "Java",
+        "junit": "JUnit",
+        "ai": "Artificial Intelligence",
+        "uiux": "UI/UX Design"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "/assets/conquete.png"
+      "icon": "/assets/project-img-test.png"
     },
     {
       "title": "Educational App for Students",
@@ -101,14 +99,14 @@
       "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
       "gh": "https://github.com/ericbeaubrun/learn_py_app",
       "demo": "",
-      "skills": [
-        "Python",
-        "PyQT6",
-        "CSS",
-        "JSON",
-        "UI/UX Design",
-        "Security"
-      ],
+      "skills": {
+        "py": "Python",
+        "pyqt": "PyQT6",
+        "css": "CSS",
+        "json": "JSON",
+        "uiux": "UI/UX Design",
+        "security": "Security"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
@@ -123,11 +121,11 @@
       "desc": "Development of an air traffic simulator in Java, including a real-time configurable graphical interface and using advanced concepts such as trajectory calculation and collision avoidance (multithreading).",
       "gh": "https://github.com/ericbeaubrun/aerien",
       "demo": "",
-      "skills": [
-        "Java",
-        "Multithreading",
-        "UI/UX Design"
-      ],
+      "skills": {
+        "java": "Java",
+        "multithreading": "Multithreading",
+        "uiux": "UI/UX Design"
+      },
       "features": [
         "Responsive Design",
         "Dark Mode",
@@ -162,7 +160,7 @@
       "address": "Le Mée-sur-Seine (77350)"
     },
     {
-      "paragraph": "Last modified 01/09/2025"
+      "paragraph": "Last modified 09/06/2026"
     }
   ],
   "contact-form": {
@@ -177,7 +175,3 @@
   "hide": "Hide",
   "read-more": "Read More"
 }
-
-
-
-

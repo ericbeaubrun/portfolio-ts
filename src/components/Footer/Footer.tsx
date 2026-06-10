@@ -1,135 +1,125 @@
-import "./Footer.scss";
-import {FaMapMarkerAlt} from 'react-icons/fa';
-import {FaEnvelope, FaGithub, FaLinkedin, FaInfoCircle} from 'react-icons/fa';
-import {useLanguage} from "../Utils/LanguageContext.tsx";
-import {useState} from "react";
+import React, {useLayoutEffect, useRef} from 'react';
+import './Footer.scss';
+import { useLanguage } from "../Utils/LanguageContext.tsx";
+import { FaGithub, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import ContactForm from "./ContactForm.tsx";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-interface FooterBlock0 {
-    title: string;
-    email: string;
-    tel: string;
-    github: string;
-    linkedin: string;
-}
+gsap.registerPlugin(ScrollTrigger);
 
-interface FooterBlock1 {
-    address: string;
-}
+const Footer: React.FC = () => {
+    const { content } = useLanguage();
+    const footerContent = content.footer as any[];
 
-// interface FooterBlock2 {
-//     title: string;
-//     btn: string;
-// }
+    const details = footerContent[0];
+    const modification = footerContent[2];
 
-interface FooterBlock2 {
-    paragraph: string;
-}
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
-type FooterContent = [FooterBlock0, FooterBlock1, FooterBlock2];
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            // This timeline will handle the horizontal move and parallax
+            // Trigger is 'main', and we start when its bottom hits viewport bottom
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "main",
+                    start: "bottom bottom",
+                    end: "+=200%", // Matches the 200vh margin-bottom in App.tsx
+                    scrub: 1,
+                }
+            });
 
+            // Phase 1: Reveal (Wait for the vertical reveal to complete)
+            // The reveal happens over the first 100vh of the 200vh margin
+            tl.to({}, { duration: 1 });
 
-const Footer = () => {
-    const [mapInteractive, setMapInteractive] = useState(false);
-    const {content} = useLanguage();
+            // Phase 2: Horizontal Slide
+            tl.to(wrapperRef.current, {
+                x: '-50%',
+                ease: 'none',
+                duration: 1
+            });
 
-    const footer = (content as { footer: FooterContent }).footer;
+            // Parallax layers
+            const tlBg = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "main",
+                    start: "bottom bottom",
+                    end: "+=200%",
+                    scrub: 1,
+                }
+            });
 
-    const handleMapClick = () => {
-        if (!mapInteractive) {
-            setMapInteractive(true);
-        }
-    };
+            // Parallax reveal during vertical reveal phase
+            tlBg.fromTo('.footer-bg-layer.back', { y: '50%', x: '10%' }, { y: '0%', x: '-10%', duration: 1 });
+            tlBg.fromTo('.footer-bg-layer.front', { y: '100%', x: '20%' }, { y: '0%', x: '-30%', duration: 1 });
+
+            // Horizontal parallax during slide phase
+            tlBg.to('.footer-bg-layer.back', {
+                x: '-20%',
+                ease: 'none',
+                duration: 1
+            });
+
+            tlBg.to('.footer-bg-layer.front', {
+                x: '-60%',
+                ease: 'none',
+                duration: 1
+            }, "<");
+
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <footer className="footer">
-            <div className="footer__parralax">
-                <div className="footer__parralax-secondplan"/>
-                <div className="footer__parralax-premierplan"/>
-            </div>
-            <div className="container">
-                <div className="footer__content">
-                    <div className="footer-links-container">
-                        <h3 className="footer-coord">
-                            <FaInfoCircle className="title-icon"/>
-                            <p className="footer-content">{footer[0].title}</p>
-                        </h3>
+        <section className="footer-pin-section" ref={sectionRef}>
+            <div className="footer-viewport">
+                {/* Background layers for parallax */}
+                <div className="footer-bg-layer back">
+                    <img src="/assets/footer_second_plan.png" alt="" />
+                </div>
+                <div className="footer-bg-layer front">
+                    <img src="/assets/footer_premier_plan.png" alt="" />
+                </div>
 
-                        <ul>
-                            <li className="footer-coord">
-                                <FaEnvelope className="coord-icon"/>
-                                <a id="footer-email" className="footer-content">{footer[0].email}</a>
-                            </li>
-
-                            {/*<li */}
-                            {/*    className="footer-coord"*/}
-                            {/*>*/}
-                            {/*    <FaPhone className="coord-icon"/>*/}
-                            {/*    <a id="footer-tel" className="footer-content">{footer[0].tel}</a>*/}
-                            {/*</li>*/}
-
-                            <li className="footer-coord">
-                                <FaGithub className="coord-icon"/>
-                                <a href="https://github.com/ericbeaubrun"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   id="footer-github"
-                                   className="footer-content"
-                                >
-                                    {footer[0].github}
-                                </a>
-                            </li>
-
-                            <li className="footer-coord">
-                                <FaLinkedin className="coord-icon"/>
-                                <a href="https://www.linkedin.com/in/eric-adelaide-beaubrun/"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   id="footer-linkedin"
-                                   className="footer-content"
-                                >
-                                    {footer[0].linkedin}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="footer-map-container">
-                        <div className="footer-address">
-                            <FaMapMarkerAlt className="map-icon"/>
-                            <h3 className="footer-adr">{footer[1].address}</h3>
-                        </div>
-
-                        <div className="footer-map">
-                            <div className="map-container">
-                                <iframe
-                                    title="Carte de localisation"
-                                     src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21133.12500499004!2d2.609537118366446!3d48.54011847686785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5fa9169e4af3d%3A0x7832f51cfa36179b!2s77350%20Le%20M%C3%A9e-sur-Seine!5e0!3m2!1sfr!2sfr!4v1727944082285!5m2!1sfr!2sfr`}
-                                    width="100%"
-                                    style={{
-                                        border: 0,
-                                        filter: 'invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%)',
-                                        pointerEvents: mapInteractive ? 'auto' : 'none'
-                                    }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                />
-                                {!mapInteractive && (
-                                    <div className="map-overlay" onClick={handleMapClick}>
-                                        <div className="map-overlay-content">
-                                            <span className="click-to-interact-text">Click to interact</span>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
+                <div className="footer-horizontal-wrapper" ref={wrapperRef}>
+                    <div className="footer-section links-section">
+                        <div className="footer-content">
+                            <ul className="footer-list">
+                                <li>
+                                    <a href={`https://${details.github}`} target="_blank" rel="noopener noreferrer">
+                                        <FaGithub className="footer-icon" />
+                                        <span className="footer-text">Github</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`mailto:${details.email}`}>
+                                        <FaEnvelope className="footer-icon" />
+                                        <span className="footer-text">Mail</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`https://${details.linkedin}`} target="_blank" rel="noopener noreferrer">
+                                        <FaLinkedin className="footer-icon" />
+                                        <span className="footer-text">Linkedin</span>
+                                    </a>
+                                </li>
+                                <li className="footer-date">
+                                    {modification.paragraph}
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div className="footer__bottom">
-                    <p>{footer[2].paragraph}</p>
+
+                    <div className="footer-section contact-section">
+                        <ContactForm />
+                    </div>
                 </div>
             </div>
-
-        </footer>
+        </section>
     );
 };
 

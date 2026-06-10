@@ -1,4 +1,5 @@
-import './Navbar.scss';
+import
+    './Navbar.scss';
 import {Link} from 'react-scroll';
 import {useState} from 'react';
 import HamburgerButton from "./HamburgerButton.tsx";
@@ -27,10 +28,9 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
 
     const navItems = [
         {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
-        {target: "services", title: nav[1].title, subtitle: nav[1].subtitle},
-        {target: "projets", title: nav[2].title, subtitle: nav[2].subtitle},
-        {target: "competences", title: nav[3].title, subtitle: nav[3].subtitle},
-        {target: "contact", title: nav[4].title, subtitle: nav[4].subtitle},
+        {target: "about", title: nav[1].title, subtitle: nav[1].subtitle},
+        {target: "projects", title: nav[2].title, subtitle: nav[2].subtitle},
+        {target: "contact", title: nav[3].title, subtitle: nav[3].subtitle},
     ];
 
     const renderNavItems = (closeOnClick: boolean = false) => {

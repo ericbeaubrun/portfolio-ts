@@ -1,0 +1,127 @@
+@import "../../config.scss";
+
+.card-container-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+
+  .card-rows-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    margin-top: 50px;
+  }
+
+  .projects-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    gap: 20px;
+    text-align: center;
+
+    .more-text {
+      font-size: 1.2rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .more-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      font-size: 7rem;
+      font-weight: 600;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 0px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid white;
+      .text {
+        color: white;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        mix-blend-mode: difference;
+      }
+
+      .button-icon {
+        font-size: 5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .wave-btn {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url(/assets/wave3.svg) repeat-x;
+        background-size: 200% 100%;
+        top: 100%;
+        left: 0;
+        animation: wave-btn 2s linear infinite;
+        transition: 0.5s;
+        z-index: 0;
+      }
+
+      &:hover {
+        background-color: #011010;
+
+        .button-icon {
+          transform: translateX(5px);
+        }
+
+        .wave-btn {
+          top: 40%;
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .card-row {
+    display: flex;
+    width: 100%;
+    gap: 60px;
+
+    .card-wrapper {
+      flex: 1;
+      width: 100%;
+      will-change: transform;
+    }
+  }
+}
+
+@keyframes wave-btn {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 200%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card-container-section {
+    .card-row {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+}

@@ -1,4 +1,14 @@
-@import "../../config";
+@import "../../config.scss";
+
+.presentation-button-container {
+  display: flex;
+  z-index: 1;
+  gap: 20px;
+  padding-top: 40px;
+  position: relative;
+  background-color: transparent;
+  justify-content: center;
+}
 
 .header-contact-button {
   display: flex;
@@ -8,64 +18,55 @@
   cursor: pointer;
   width: 82px;
   height: 82px;
-  border-radius: 20px;
+  border-radius: 8px; // "Plus carré"
   border: 2px solid $component_color;
   background-color: $component_color;
-  color: #3e3e3e;
-  transition: width 0.7s;
+  color: #fff;
+  transition: width 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
   overflow: hidden;
-}
+  padding: 0;
 
-.presentation-button-container {
-  display: flex;
-  z-index: 1;
-  gap: 20px;
-  padding-top: 100px;
-  position: relative;
-  background-color: transparent;
-}
-
-.header-contact-button:hover {
-  transition: width 0.65s;
+  &:hover {
+    transition: width 0.65s;
+    
+    .presentation-button-text {
+      opacity: 1;
+      transition: opacity 0.65s;
+      transform: translateX(42px);
+    }
+  }
 }
 
 .header-contact-button-icon {
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   transition: transform 0.5s ease;
   position: relative;
   z-index: 1;
   opacity: 0.75;
-}
-
-.header-contact-button:hover .presentation-button-text {
-  transform: translateX(42px);
+  filter: invert(1);
 }
 
 .linkedin-btn:hover {
   width: 200px;
-}
-
-.linkedin-btn:hover .header-contact-button-icon {
-  transform: translateX(-54px);
+  .header-contact-button-icon {
+    transform: translateX(-54px);
+  }
 }
 
 .github-btn:hover {
   width: 180px;
-}
-
-.github-btn:hover .header-contact-button-icon{
-  transform: translateX(-44px);
-
+  .header-contact-button-icon {
+    transform: translateX(-44px);
+  }
 }
 
 .cv-btn:hover {
   width: 136px;
-}
-
-.cv-btn:hover .header-contact-button-icon{
-  transform: translateX(-22px);
+  .header-contact-button-icon {
+    transform: translateX(-22px);
+  }
 }
 
 .presentation-button-text {
@@ -74,19 +75,16 @@
   width: 100%;
   left: 0;
   text-align: center;
-  font-size: 1.65rem;
+  font-size: 1.2rem;
   transition: transform 1.4s ease;
   font-family: $font;
   padding: 10px 20px 10px 5px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-}
-
-.header-contact-button:hover .presentation-button-text {
-  opacity: 1;
-  transition: opacity 0.65s;
+  white-space: nowrap;
+  color: #fff;
 }
 
 
@@ -104,17 +102,17 @@
     height: 70px;
   }
 
-  .header-contact-button:hover {
-    width: 200px;
-  }
+  .linkedin-btn:hover { width: 190px; }
+  .github-btn:hover { width: 170px; }
+  .cv-btn:hover { width: 130px; }
 
   .header-contact-button-icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   .presentation-button-text {
-    font-size: 1.8rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -124,22 +122,21 @@
     height: 60px;
   }
 
-  .header-contact-button:hover {
-    width: 180px;
-  }
+  .linkedin-btn:hover { width: 180px; }
+  .github-btn:hover { width: 160px; }
+  .cv-btn:hover { width: 120px; }
 
   .header-contact-button-icon {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
   }
 
   .presentation-button-text {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 500px) {
-
   span.presentation-button-text {
     display: none;
   }
@@ -154,26 +151,19 @@
     background-color: scale-color($component_color, $lightness: -5%);
     width: 50px;
     height: 50px;
+    
+    .header-contact-button-icon {
+      transform: none;
+    }
+    
+    .presentation-button-text {
+      transform: none;
+      opacity: 1;
+    }
   }
 
   .header-contact-button-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .presentation-button-text {
-    font-size: 1.4rem;
-    opacity: 1;
-    transform: none;
-  }
-
-  .header-contact-button:hover .header-contact-button-icon {
-    transform: none;
-  }
-
-  .header-contact-button:hover .presentation-button-text {
-    transform: none;
-    opacity: 1;
+    width: 24px;
+    height: 24px;
   }
 }
-

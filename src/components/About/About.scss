@@ -1,0 +1,82 @@
+@import "../../config.scss";
+
+#about {
+  padding: 80px 0;
+  background-color: #0c0c0c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Réduit de 150vh pour être plus raisonnable
+  border-top: 1px solid #3d3d3d;
+
+  .about-container {
+    width: 100%;
+    padding: 0 6%; // Un peu plus de padding latéral
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+
+    .about-text-content {
+      margin-top: 40px;
+      text-align: left;
+      color: $text_color_dark;
+      font-size: 2rem; // Réduit un peu la taille de base
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 85%;
+
+      p {
+        opacity: 1;
+        text-align: justify;
+        word-break: break-word; // Pour éviter les débordements de mots longs
+
+        .word {
+          display: inline-block;
+          transition: color 0.3s ease;
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  #about {
+    min-height: auto; // Laisse le contenu dicter la hauteur sur mobile
+    padding: 60px 0;
+
+    .about-text-content {
+      font-size: 1.5rem;
+      max-width: 95%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #about {
+    .about-text-content {
+      font-size: 1.2rem;
+      margin-top: 30px;
+      
+      p {
+        text-align: left; // Justify est souvent moche sur petit écran
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  #about {
+    .about-container {
+      padding: 0 20px; // Padding fixe pour plus de contrôle
+    }
+
+    .about-text-content {
+      font-size: 1.05rem;
+      gap: 1rem;
+    }
+  }
+}

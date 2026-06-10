@@ -6,17 +6,18 @@
   box-sizing: border-box;
 }
 
-h1, h2 {
-  color: $text_color_dark;
-}
-
 body {
   overflow-x: hidden;
   background-color: $background_color;
   margin: 0;
-  font-family: $font
+  font-family: $font;
+  color: $text_color_dark;
+}
+
+h1, h2 {
+  color: $text_color_dark;
 }
 
 .shadowed {
-  box-shadow: 5px 5px 0 black;
+  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.1);
 }

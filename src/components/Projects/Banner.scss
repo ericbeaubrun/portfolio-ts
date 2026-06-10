@@ -7,7 +7,7 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  margin-bottom: 15vh;
+  margin-bottom: 5vh;
 }
 
 .images-container {
@@ -35,7 +35,7 @@
 }
 
 .banner-image:hover {
-  filter: grayscale(0);
+  //filter: grayscale(0);
 }
 
 @media (max-width: 900px) {
@@ -47,8 +47,6 @@
 @media (min-width: 900px) {
   .banner {
     flex-direction: row;
-    padding-top: 200px;
-    height: 400px;
   }
 
   .banner-title {
@@ -83,79 +81,66 @@
 
 .letters-row {
   display: flex;
-  gap: 7.5px;
+  //gap: 7.5px;
 }
 
 .banner-letter {
   text-transform: uppercase;
-  border-radius: 18px;
+  //border-radius: 18px;
   font-size: 3.5rem;
   font-weight: bold;
   text-align: center;
-  color: $component_color;
-  width: 5.5rem;
-  height: 5.5rem;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  margin: -10px;
+  color: $text_color_dark;
+  //width: 2.5rem;
+  //height: 2.5rem;
+  //box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  //margin: -10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.01);
-  background-color: rgba(0, 0, 0, 0.15);
+  //background-color: rgba(255, 255, 255, 0.01);
+  //background-color: rgba(0, 0, 0, 0.15);
 }
 
 @media(min-width: 1111px) {
   .banner-letter {
     font-size: 4rem;
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 3.1rem;
+    height: 3.1rem;
+    font-size: 10em;
+    width: 7rem;
+    height: 7rem;
   }
 
   .letters-row {
-    gap: 10px;
   }
 }
 
-@media(min-width: 899px) {
-  .banner-letter {
-
-  }
-}
-
-@media(max-width: 899px) {
-  .odd-letter {
-    background-color: #212121;
-  }
-  .even-letter {
-    background-color: #2a2a2a;
-  }
-}
 
 @media (max-width: 600px) {
   .banner-letter {
     text-transform: uppercase;
-    border-radius: 12px;
-    font-size: 2.25rem;
+    font-size: 2rem; // Réduit un peu plus de 2.25rem
     font-weight: bold;
     display: inline-block;
     text-align: center;
     color: white;
-    width: 3.5rem;
-    height: 3.5rem;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    margin: -10px;
   }
 
   .letters-row {
     display: flex;
-    gap: 11px;
+    flex-wrap: wrap; // Permet de passer à la ligne si vraiment trop petit
+    justify-content: center;
   }
 }
 
 @media (max-width: 350px) {
+  .banner-letter {
+    font-size: 1.7rem; // Encore plus petit pour les écrans minuscules
+  }
+  
   .letters-row {
-    display: flex;
-    gap: 4px;
+    gap: 2px;
   }
 }
 

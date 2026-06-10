@@ -10,54 +10,49 @@ import {Link} from "react-scroll";
 const Presentation = () => {
     const refH1 = useRef<HTMLHeadingElement>(null);
     const refH2 = useRef<HTMLHeadingElement>(null);
-    const refP = useRef<HTMLParagraphElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
-    const rectangleRef = useRef<HTMLDivElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+    const contactBtnRef = useRef<HTMLButtonElement>(null);
 
     const {content} = useLanguage();
 
-    const presentationContent = (content as { title:string, subtitle:string, introduction: {p1:string, p2: string}});
+    const presentationContent = (content as {
+        title: string,
+        subtitle: string,
+        introduction: { p1: string, p2: string }
+    });
 
 
     useEffect(() => {
-        // Animation parallax au scroll
         const handleScroll = () => {
             const scrollY = window.scrollY;
 
+            if (imageRef.current) {
+                gsap.to(imageRef.current?.parentElement, {
+                    y: -scrollY * 0.4,
+                    ease: "power2.out",
+                    duration: 0.5,
+                });
+            }
+
             gsap.to(refH1.current, {
-                y: -scrollY * 0.35,
+                y: -scrollY * 0.27,
                 ease: "power2.out",
                 duration: 0.1,
             });
 
             gsap.to(refH2.current, {
-                y: -scrollY * 0.15,
+                y: -scrollY * 0.22,
                 ease: "power2.out",
                 duration: 0.1,
             });
 
-            if (imageRef.current) {
-                gsap.to(imageRef.current?.parentElement, {
-                    x: scrollY * 0.15,
-                    ease: "power2.out",
-                    duration: 0.5,
-                });
-            }
-
-            gsap.to(refP.current, {
-                y: -scrollY * 0.1,
+            gsap.to(contactBtnRef.current, {
+                y: -scrollY * 0.2,
                 ease: "power2.out",
-                duration: 0.5,
+                duration: 0.1,
             });
 
-            if (rectangleRef.current) {
-                gsap.to(rectangleRef.current, {
-                    x: scrollY * 0.15,
-                    ease: "power2.out",
-                    duration: 0.5,
-                });
-            }
 
             if (scrollIndicatorRef.current) {
                 gsap.to(scrollIndicatorRef.current, {
@@ -85,57 +80,60 @@ const Presentation = () => {
 
     return (
         <section id="presentation">
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="background-video"
+            >
+                <source src="/assets/video.mp4" type="video/mp4"/>
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
             <div className="area">
-                <ul className="circles">
-                    {Array.from({length: 10}).map((_, index) => (
-                        <li key={index}></li>
-                    ))}
-                </ul>
-
-                <div className="left-section">
-                    <h1 ref={refH1} id="presentation-title">
-                        {presentationContent.title}
-                    </h1>
-
-                    <h2 ref={refH2} id="presentation-subtitle">
-                        {presentationContent.subtitle}
-                    </h2>
-
-                    <p ref={refP} className="presentation-paragraph">
-                        {presentationContent.introduction.p1}
-                        <br/>
-                        {presentationContent.introduction.p2}
-                    </p>
-
-                    <ContactButtons/>
+                <div className="profile-picture-container">
+                    <img
+                        ref={imageRef}
+                        id="profile-picture"
+                        src={profilePicture}
+                        alt="Photos de profil"
+                    />
                 </div>
 
-                <div className="right-section">
-                    <div className="profile-picture-container">
-                        <img
-                            ref={imageRef}
-                            id="profile-picture"
-                            src={profilePicture}
-                            alt="Photos de profil"
-                        />
-                    </div>
-                </div>
-                <div className="rotating-rectangle" ref={rectangleRef}/>
+                <h1 ref={refH1} id="presentation-title">
+                    {presentationContent.title}
+                </h1>
+
+                <h2 ref={refH2} id="presentation-subtitle">
+                    {presentationContent.subtitle}
+                </h2>
+
+                <Link
+                    to="contact"
+                    smooth={true}
+                    duration={1000}
+                    offset={0}
+                    className="contact-link"
+                >
+                    <button ref={contactBtnRef} className="shadowed contact-me-button">
+                        {(content as any).contact_button || "Contacter"}
+                    </button>
+                </Link>
+
+                <ContactButtons/>
             </div>
 
-            <div className="wave"/>
-
-            <Link
-                to={"services"}
-                smooth={true}
-                duration={1000}
-                offset={0}
-                className=""
-            >
-                <div className="scroll-indicator" ref={scrollIndicatorRef}>
-                    <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>
-                </div>
-            </Link>
+            {/*<Link*/}
+            {/*    to={"services"}*/}
+            {/*    smooth={true}*/}
+            {/*    duration={1000}*/}
+            {/*    offset={0}*/}
+            {/*    className=""*/}
+            {/*>*/}
+            {/*    <div className="scroll-indicator" ref={scrollIndicatorRef}>*/}
+            {/*        <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>*/}
+            {/*    </div>*/}
+            {/*</Link>*/}
         </section>
     );
 };

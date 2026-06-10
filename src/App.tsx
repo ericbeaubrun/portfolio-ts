@@ -4,26 +4,19 @@ import {animateScroll} from 'react-scroll';
 import {MutableRefObject, useEffect, useRef} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
-import Services from "./components/Competences/Services.tsx";
+import About from "./components/About/About.tsx";
+import CardContainer from "./components/Cards/CardContainer.tsx";
 import Lenis from 'lenis';
-import ScrollProgressCircle from "./components/ScrollProgressCircle.tsx";
-import Footer from "./components/Footer/Footer.tsx";
-import ProfileStats from "./components/ProfileStats.tsx";
-import SkillsSection from "./components/Competences/SkillsSection.tsx";
-import "./Carousel.scss";
-import ProjectCardContainer from "./components/Projects/Card/ProjectCardContainer.tsx";
-import ContactFormModal from "./components/Footer/ContactFormModal.tsx";
+import ContactForm from "./components/Footer/ContactForm.tsx";
 import {useIsMobile} from "./components/Utils/MobileContext.tsx";
-import ScrollingText from "./components/Competences/ScrollingText.tsx";
+import {useLanguage} from "./components/Utils/LanguageContext.tsx";
+import Footer from "./components/Footer/Footer.tsx";
 
 const App = () => {
 
     const lenis = new Lenis();
     const isMobile = useIsMobile();
-
-
-    // const {content} = useLanguage();
-    // const scrollingText = (content as { "scrolling-text": string })["scrolling-text"];
+    const {content} = useLanguage();
 
     useEffect(() => {
 
@@ -111,56 +104,31 @@ const App = () => {
     return (
         <div ref={containerRef}>
             <header>
-                {!isMobile && (<ScrollProgressCircle lenis={lenis}/>)}
+                {/*{!isMobile && (<ScrollProgressCircle lenis={lenis}/>)}*/}
                 <Navbar lenis={lenis}/>
             </header>
 
-            <main>
+            <main style={{ position: 'relative', zIndex: 10, backgroundColor: '#0a0a0a', marginBottom: '200vh' }}>
                 <Element name="presentation" className="section">
-                    <section id="presentation">
-                        <Presentation/>
-                    </section>
+                    <Presentation/>
                 </Element>
 
-
-                <Element name="services" className="section">
-                    <section id="services">
-                        <Services/>
-                    </section>
+                <Element name="about" className="section">
+                    <About/>
                 </Element>
 
-                <Element name="projets" className="section">
-                    <section id="projets">
-                        <ProjectCardContainer/>
-                        <ProfileStats/>
-                    </section>
+                <Element name="projects" className="section">
+                    <CardContainer projects={(content as any).projects || []}/>
                 </Element>
 
-                <Element name="competences" className="section">
-                    <section id="competences">
-                        <SkillsSection/>
-                        <ScrollingText
-                            text={"~~~~~~~~~~~~~~~~~~~~~~~~~~"}
-                            speed={1.75}
-                            direction={'right'}
-                        />
-                        <ContactFormModal/>
-                        <ScrollingText
-                            text={"~~~~~~~~~~~~~~~~~~~~~~~~~~"}
-                            speed={1.75}
-                            direction={'right'}
-                        />
-
-                    </section>
+                <Element name="contact" className="section">
+                    {/*<ContactForm/>*/}
                 </Element>
+
             </main>
 
-            <footer>
-                <Element name="contact" className="section">
-                    <section id="contact">
-                        <Footer/>
-                    </section>
-                </Element>
+            <footer style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1 }}>
+                <Footer />
             </footer>
         </div>
     );

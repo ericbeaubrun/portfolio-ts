@@ -1,8 +1,8 @@
 @import "../../config";
 
-$main_text_color: #60524b;
-$secondary_color: #312920;
-$hover_line_color: red;
+$main_text_color: $TEXT_COLOR_LIGHT;
+$secondary_color: $COLOR;
+$hover_line_color: $COLOR;
 $line_width: 3px;
 
 .item {
@@ -10,12 +10,9 @@ $line_width: 3px;
 }
 
 .navbar nav {
-  background: transparent;
+  //background: $background_color_dark;
   font-weight: bold;
   text-align: center;
-  background: $background_color_dark;
-  background: #e6e1d5;
-  background: rgba(225, 223, 216, 1);
   position: fixed;
   left: 50%;
   padding-top: 23px;
@@ -24,12 +21,12 @@ $line_width: 3px;
 
   transform: translateX(-50%);
   width: 100%;
-  z-index: 13;
+  z-index: 100;
 }
 
 @media(max-width: 1111px) {
   .navbar nav {
-    background: rgba(225, 223, 216, 0.95);
+    background: rgba(10, 10, 10, 0.95);
   }
 }
 
@@ -148,7 +145,7 @@ div.setting {
   .mobile-menu {
     display: flex;
     flex-direction: column;
-    background-color: rgba(225, 223, 216, 0.95);
+    background-color: rgba(10, 10, 10, 0.95);
     position: absolute;
     top: 81px;
     left: 0;
@@ -160,7 +157,7 @@ div.setting {
       margin: 10px 0;
 
       .linktext {
-        color: #333;
+        color: $TEXT_COLOR_LIGHT;
         font-size: 18px;
         text-align: center;
       }

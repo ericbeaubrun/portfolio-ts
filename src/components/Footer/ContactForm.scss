@@ -1,0 +1,97 @@
+@import '../../config';
+
+.contact-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  margin-bottom: 0;
+  padding: 0;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .contactForm {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        margin-bottom: 45px;
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+          color: #666; // Un peu plus sombre pour le mode clair
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+
+        input, textarea {
+          font-family: inherit;
+          color: #000; // Texte noir
+          width: 100%;
+          padding: 12px 0;
+          border: none;
+          border-bottom: 1px solid #ddd; // Bordure claire
+          border-radius: 0;
+          font-size: 1.1rem;
+          background-color: transparent;
+          transition: border-bottom-color 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-bottom: 1px solid #000; // Bordure noire au focus
+          }
+        }
+
+        textarea {
+          resize: none;
+          height: 100px;
+          min-height: 100px;
+        }
+      }
+
+      #form-submit-btn {
+        align-self: flex-start;
+        padding: 16px 48px;
+        margin-top: 10px;
+        background-color: transparent;
+        color: #000; // Texte noir
+        border: 1px solid #000; // Bordure noire
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &:hover {
+          background-color: #000;
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          align-self: center;
+        }
+      }
+    }
+  }
+}
