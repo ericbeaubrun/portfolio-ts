@@ -33,12 +33,12 @@
   }
 
   &.back {
-    opacity: 0.1; // Plus léger pour le mode clair
+    opacity: 0.1;
   }
 
   &.front {
     z-index: 4;
-    opacity: 0.15; // Plus léger pour le mode clair
+    opacity: 0.15;
   }
 }
 
@@ -52,30 +52,44 @@
 
 .footer-section {
   width: 50%;
+  width: 100vw;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 80px;
 
   &.links-section {
     background-color: #fff;
+    text-transform: uppercase;
+
   }
 
   &.contact-section {
-    background-color: #fcfcfc; // Très léger gris pour différencier
-    backdrop-filter: blur(10px);
+    background-color: #fff;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 }
 
 .footer-content {
-  color: #333; // Texte sombre
+  color: #333;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
+
 
   .footer-list {
     list-style: none;
@@ -86,15 +100,18 @@
     align-items: flex-start;
     width: 100%;
 
+
     li {
+
       width: 100%;
       display: flex;
       justify-content: flex-start;
 
+
       a {
+
         color: #333;
         text-decoration: none;
-        transition: all 0.4s ease;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -105,6 +122,10 @@
         position: relative;
         text-transform: uppercase;
         letter-spacing: 2px;
+        overflow: hidden;
+        z-index: 1;
+        background-color: transparent;
+        transition: all 0.4s ease;
 
         .footer-icon {
           opacity: 0;
@@ -114,31 +135,79 @@
           transition: all 0.4s ease;
           font-size: 3rem;
           color: #333;
+          flex-shrink: 0;
         }
 
         .footer-text {
-          transition: transform 0.4s ease;
+          transition: all 0.4s ease;
+          white-space: nowrap;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: black;
+          transform: translateX(-100%);
+          transition: all .3s;
+          z-index: -1;
         }
 
         &:hover {
-          color: #000;
-          background-color: rgba(0, 0, 0, 0.03); // Léger fond au survol
+          color: white;
           padding-left: 20px;
+
+          &::before {
+            transform: translateX(0);
+          }
 
           .footer-icon {
             opacity: 1;
             margin-right: 25px;
             width: auto;
             transform: translateX(0);
+            color: white;
+
           }
 
           .footer-text {
+
             transform: translateX(10px);
+            opacity: 0;
+          }
+
+          &::after {
+            content: attr(data-hover);
+            position: absolute;
+            left: 80px;
+            font-size: 1.5rem;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            animation: fadeIn 0.4s forwards;
           }
         }
 
         @media (max-width: 768px) {
           font-size: 2.2rem;
+
+          &:hover::after {
+            font-size: 1rem;
+            left: 60px;
+          }
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(20px);
         }
       }
 

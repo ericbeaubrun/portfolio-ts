@@ -12,32 +12,22 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const animationFrameId = useRef<number>();
+
     const currentTranslateY = useRef(0);
-    const targetVelocity = useRef(0);
-    const currentVelocity = useRef(0);
+    const targetTranslateY = useRef(0);
 
     const updateScroll = () => {
-        const lerpFactor = 0.05;
-        currentVelocity.current += (targetVelocity.current - currentVelocity.current) * lerpFactor;
+        const lerpFactor = 0.025;
 
-        if (Math.abs(currentVelocity.current) < 0.01 && targetVelocity.current === 0) {
-            currentVelocity.current = 0;
+        currentTranslateY.current += (targetTranslateY.current - currentTranslateY.current) * lerpFactor;
+
+        if (Math.abs(targetTranslateY.current - currentTranslateY.current) < 0.1) {
+            currentTranslateY.current = targetTranslateY.current;
+            if (imageRef.current) {
+                imageRef.current.style.transform = `translateY(-${currentTranslateY.current}px)`;
+            }
             animationFrameId.current = undefined;
             return;
-        }
-
-        const containerHeight = containerRef.current?.clientHeight || 0;
-        const imageHeight = imageRef.current?.clientHeight || 0;
-        const maxScroll = Math.max(0, imageHeight - containerHeight);
-
-        currentTranslateY.current += currentVelocity.current;
-
-        if (currentTranslateY.current < 0) {
-            currentTranslateY.current = 0;
-            currentVelocity.current = 0;
-        } else if (currentTranslateY.current > maxScroll) {
-            currentTranslateY.current = maxScroll;
-            currentVelocity.current = 0;
         }
 
         if (imageRef.current) {
@@ -48,24 +38,18 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
     };
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const y = e.clientY - rect.top;
-        const h = rect.height;
-        const triggerZone = 0.3;
+        if (!containerRef.current || !imageRef.current) return;
 
-        const maxSpeed = 1.75;
+        const rect = containerRef.current.getBoundingClientRect();
+        const mouseY = e.clientY - rect.top;
+        const containerHeight = rect.height;
+        const imageHeight = imageRef.current.clientHeight;
 
-        if (y < h * triggerZone) {
-            // Velocity negative for up
-            const intensity = 1 - (y / (h * triggerZone));
-            targetVelocity.current = -intensity * maxSpeed;
-        } else if (y > h * (1 - triggerZone)) {
-            // Velocity positive for down
-            const intensity = (y - h * (1 - triggerZone)) / (h * triggerZone);
-            targetVelocity.current = intensity * maxSpeed;
-        } else {
-            targetVelocity.current = 0;
-        }
+        const maxScroll = Math.max(0, imageHeight - containerHeight);
+
+        const mouseRatio = Math.min(Math.max(mouseY / containerHeight, 0), 1);
+
+        targetTranslateY.current = mouseRatio * maxScroll;
 
         if (!animationFrameId.current) {
             animationFrameId.current = requestAnimationFrame(updateScroll);
@@ -73,7 +57,11 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
     };
 
     const handleMouseLeave = () => {
-        targetVelocity.current = 0;
+        targetTranslateY.current = 0;
+
+        if (!animationFrameId.current) {
+            animationFrameId.current = requestAnimationFrame(updateScroll);
+        }
     };
 
     useEffect(() => {
@@ -97,9 +85,10 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
                     ref={imageRef}
                 />
             </div>
+
             <div className="card-content">
                 <h3 className="card-title">{title}</h3>
-                <p className="card-description">{description}</p>
+
                 <div className="card-stack">
                     {Object.entries(stack).map(([key, skillName]) => (
                         <div key={key} className="stack-item">
@@ -113,6 +102,8 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
                         </div>
                     ))}
                 </div>
+
+                <p className="card-description">{description}</p>
             </div>
         </div>
     );

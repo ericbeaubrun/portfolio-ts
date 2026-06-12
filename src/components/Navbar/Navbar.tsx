@@ -1,5 +1,4 @@
-import
-    './Navbar.scss';
+import './Navbar.scss';
 import {Link} from 'react-scroll';
 import {useState} from 'react';
 import HamburgerButton from "./HamburgerButton.tsx";
@@ -14,7 +13,7 @@ interface NavItem {
     subtitle: string;
 }
 
-const Navbar = ({lenis}: { lenis: Lenis }) => {
+const Navbar = ({lenis}: { lenis: Lenis | null }) => {
 
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -27,7 +26,7 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
     const nav = (content as { nav: NavItem[] }).nav;
 
     const navItems = [
-        {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
+        // {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
         {target: "about", title: nav[1].title, subtitle: nav[1].subtitle},
         {target: "projects", title: nav[2].title, subtitle: nav[2].subtitle},
         {target: "contact", title: nav[3].title, subtitle: nav[3].subtitle},
@@ -36,12 +35,12 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
     const renderNavItems = (closeOnClick: boolean = false) => {
 
         const handleClick = () => {
-            lenis.stop();
+            lenis?.stop();
             if (closeOnClick) {
                 toggleMenu();
             }
             setTimeout(() => {
-                lenis.start();
+                lenis?.start();
             }, DURATION);
         };
 
@@ -95,9 +94,9 @@ const Navbar = ({lenis}: { lenis: Lenis }) => {
                 ) : (
                     <>
                         {renderNavItems()}
-                        <div className="setting">
-                            <LanguageSwitcher/>
-                        </div>
+                        {/*<div className="setting">*/}
+                        {/*    <LanguageSwitcher/>*/}
+                        {/*</div>*/}
                     </>
                 )}
             </nav>

@@ -1,8 +1,8 @@
 @import "../../config";
 
-$main_text_color: $TEXT_COLOR_LIGHT;
-$secondary_color: $COLOR;
-$hover_line_color: $COLOR;
+$main_text_color: white;
+$secondary_color: white;
+$hover_line_color:white;
 $line_width: 3px;
 
 .item {
@@ -22,6 +22,7 @@ $line_width: 3px;
   transform: translateX(-50%);
   width: 100%;
   z-index: 100;
+  mix-blend-mode: difference;
 }
 
 @media(max-width: 1111px) {
@@ -199,7 +200,7 @@ div.setting {
 }
 
 @media(max-width: 1111px) {
-  .navbar nav, {
+  .navbar nav {
     height: 82px;
     padding-top: 0;
   }

@@ -1,32 +1,37 @@
 import './App.scss'
 import {Element} from 'react-scroll';
 import {animateScroll} from 'react-scroll';
-import {MutableRefObject, useEffect, useRef} from "react";
+import {MutableRefObject, useEffect, useRef, useState} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import About from "./components/About/About.tsx";
 import CardContainer from "./components/Cards/CardContainer.tsx";
 import Lenis from 'lenis';
-import ContactForm from "./components/Footer/ContactForm.tsx";
-import {useIsMobile} from "./components/Utils/MobileContext.tsx";
 import {useLanguage} from "./components/Utils/LanguageContext.tsx";
 import Footer from "./components/Footer/Footer.tsx";
 
 const App = () => {
 
-    const lenis = new Lenis();
-    const isMobile = useIsMobile();
+    const [lenis, setLenis] = useState<Lenis | null>(null);
     const {content} = useLanguage();
 
     useEffect(() => {
+        const instance = new Lenis();
+        setLenis(instance);
 
+        let rafId: number;
         const raf = (time: number) => {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
+            instance.raf(time);
+            rafId = requestAnimationFrame(raf);
         };
 
-        requestAnimationFrame(raf)
-    }, [])
+        rafId = requestAnimationFrame(raf);
+
+        return () => {
+            cancelAnimationFrame(rafId);
+            instance.destroy();
+        };
+    }, []);
 
 
     useEffect(() => {
@@ -108,7 +113,7 @@ const App = () => {
                 <Navbar lenis={lenis}/>
             </header>
 
-            <main style={{ position: 'relative', zIndex: 10, backgroundColor: '#0a0a0a', marginBottom: '200vh' }}>
+            <main style={{position: 'relative', zIndex: 10, backgroundColor: '#0a0a0a', marginBottom: '200vh'}}>
                 <Element name="presentation" className="section">
                     <Presentation/>
                 </Element>
@@ -121,14 +126,14 @@ const App = () => {
                     <CardContainer projects={(content as any).projects || []}/>
                 </Element>
 
-                <Element name="contact" className="section">
-                    {/*<ContactForm/>*/}
-                </Element>
+                {/*<Element name="contact" className="section">*/}
+                {/*    <ContactForm/>*/}
+                {/*</Element>*/}
 
             </main>
 
-            <footer style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1 }}>
-                <Footer />
+            <footer style={{position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1}}>
+                <Footer/>
             </footer>
         </div>
     );

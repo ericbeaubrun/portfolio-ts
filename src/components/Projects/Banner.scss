@@ -86,41 +86,25 @@
 
 .banner-letter {
   text-transform: uppercase;
-  //border-radius: 18px;
-  font-size: 3.5rem;
   font-weight: bold;
   text-align: center;
   color: $text_color_dark;
-  //width: 2.5rem;
-  //height: 2.5rem;
-  //box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  //margin: -10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  //background-color: rgba(255, 255, 255, 0.01);
-  //background-color: rgba(0, 0, 0, 0.15);
+
+  width: 3.1rem;
+  height: 3.1rem;
+  font-size: 8em;
+  width: 5.5rem;
 }
 
-@media(min-width: 1111px) {
-  .banner-letter {
-    font-size: 4rem;
-    width: 3.1rem;
-    height: 3.1rem;
-    font-size: 10em;
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .letters-row {
-  }
-}
 
 
 @media (max-width: 600px) {
   .banner-letter {
     text-transform: uppercase;
-    font-size: 2rem; // Réduit un peu plus de 2.25rem
+    font-size: 2rem;
     font-weight: bold;
     display: inline-block;
     text-align: center;
@@ -129,16 +113,16 @@
 
   .letters-row {
     display: flex;
-    flex-wrap: wrap; // Permet de passer à la ligne si vraiment trop petit
+    flex-wrap: wrap;
     justify-content: center;
   }
 }
 
 @media (max-width: 350px) {
   .banner-letter {
-    font-size: 1.7rem; // Encore plus petit pour les écrans minuscules
+    font-size: 1.7rem;
   }
-  
+
   .letters-row {
     gap: 2px;
   }

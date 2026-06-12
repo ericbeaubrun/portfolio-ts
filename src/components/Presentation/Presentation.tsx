@@ -1,11 +1,14 @@
-import {useEffect, useRef} from "react";
-import profilePicture from "/assets/profile_picture0.png";
-import arrowIcon from "/assets/arrow_dark.png";
+import {useLayoutEffect, useRef} from "react";
+const profilePicture = "/assets/profile_picture0.png";
+const arrowIcon = "/assets/arrow_dark.png";
 import "./Presentation.scss";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactButtons from "./ContactButtons.tsx";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import {Link} from "react-scroll";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Presentation = () => {
     const refH1 = useRef<HTMLHeadingElement>(null);
@@ -13,6 +16,7 @@ const Presentation = () => {
     const imageRef = useRef<HTMLImageElement>(null);
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     const contactBtnRef = useRef<HTMLButtonElement>(null);
+    const overlayRef = useRef<HTMLDivElement>(null);
 
     const {content} = useLanguage();
 
@@ -23,46 +27,65 @@ const Presentation = () => {
     });
 
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-
-            if (imageRef.current) {
-                gsap.to(imageRef.current?.parentElement, {
-                    y: -scrollY * 0.4,
-                    ease: "power2.out",
-                    duration: 0.5,
-                });
-            }
-
-            gsap.to(refH1.current, {
-                y: -scrollY * 0.27,
-                ease: "power2.out",
-                duration: 0.1,
-            });
-
-            gsap.to(refH2.current, {
-                y: -scrollY * 0.22,
-                ease: "power2.out",
-                duration: 0.1,
-            });
-
-            gsap.to(contactBtnRef.current, {
-                y: -scrollY * 0.2,
-                ease: "power2.out",
-                duration: 0.1,
-            });
-
-
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
             if (scrollIndicatorRef.current) {
                 gsap.to(scrollIndicatorRef.current, {
-                    autoAlpha: scrollY > 50 ? 0 : 1,
-                    duration: 0.3,
+                    scrollTrigger: {
+                        trigger: "#presentation",
+                        start: "top top",
+                        end: "100px top",
+                        scrub: true,
+                    },
+                    autoAlpha: 0,
+                    ease: "none",
                 });
             }
-        };
 
-        window.addEventListener("scroll", handleScroll);
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#presentation",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            });
+
+            if (imageRef.current?.parentElement) {
+                timeline.to(imageRef.current.parentElement, {
+                    y: () => -window.innerHeight * 0.4,
+                    ease: "none"
+                }, 0);
+            }
+
+            if (refH1.current) {
+                timeline.to(refH1.current, {
+                    y: () => -window.innerHeight * 0.27,
+                    ease: "none"
+                }, 0);
+            }
+
+            if (refH2.current) {
+                timeline.to(refH2.current, {
+                    y: () => -window.innerHeight * 0.22,
+                    ease: "none"
+                }, 0);
+            }
+
+            if (contactBtnRef.current) {
+                timeline.to(contactBtnRef.current, {
+                    y: () => -window.innerHeight * 0.2,
+                    ease: "none"
+                }, 0);
+            }
+
+            if (overlayRef.current) {
+                timeline.to(overlayRef.current, {
+                    opacity: 1,
+                    ease: "none"
+                }, 0);
+            }
+        });
 
         gsap.to(".scroll-indicator-img", {
             y: 7.5,
@@ -73,9 +96,7 @@ const Presentation = () => {
             duration: 1.2,
         });
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
@@ -90,6 +111,7 @@ const Presentation = () => {
                 <source src="/assets/video.mp4" type="video/mp4"/>
                 Votre navigateur ne supporte pas la vidéo.
             </video>
+            <div className="background-overlay" ref={overlayRef}></div>
             <div className="area">
                 <div className="profile-picture-container">
                     <img
@@ -115,25 +137,25 @@ const Presentation = () => {
                     offset={0}
                     className="contact-link"
                 >
-                    <button ref={contactBtnRef} className="shadowed contact-me-button">
-                        {(content as any).contact_button || "Contacter"}
+                    <button ref={contactBtnRef} className="contact-me-button">
+                        <span>{(content as any).contact_button || "Contacter"}</span>
                     </button>
                 </Link>
 
                 <ContactButtons/>
             </div>
 
-            {/*<Link*/}
-            {/*    to={"services"}*/}
-            {/*    smooth={true}*/}
-            {/*    duration={1000}*/}
-            {/*    offset={0}*/}
-            {/*    className=""*/}
-            {/*>*/}
-            {/*    <div className="scroll-indicator" ref={scrollIndicatorRef}>*/}
-            {/*        <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>*/}
-            {/*    </div>*/}
-            {/*</Link>*/}
+            <Link
+                to={"services"}
+                smooth={true}
+                duration={1000}
+                offset={0}
+                className=""
+            >
+                <div className="scroll-indicator" ref={scrollIndicatorRef}>
+                    <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>
+                </div>
+            </Link>
         </section>
     );
 };

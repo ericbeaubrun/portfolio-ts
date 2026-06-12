@@ -16,7 +16,7 @@ const bounceEffect = {
             type: "spring",
             stiffness: 200,
             damping: 11,
-            duration: 0.2,
+            duration: 0.1,
             delay: delay / 2,
         },
     }),
@@ -40,6 +40,10 @@ const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; i
             variants={bounceEffect}
             whileHover={{
                 rotate: -rotation * 2,
+                // translateY: -50,
+                translateY: -30,
+                // transform: "translateY(-10px)",
+
                 // backgroundColor: "rgba(255, 255, 255, 0.11)"
 
             }}

@@ -1,17 +1,19 @@
 @import "../../config.scss";
 
 #about {
-  padding: 80px 0;
-  background-color: #0c0c0c;
+  padding: 0 0;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; // Réduit de 150vh pour être plus raisonnable
-  border-top: 1px solid #3d3d3d;
+  min-height: 150vh;
+  position: relative;
+  box-shadow: 0 -100px 100px -50px #000000;
+  z-index: 2;
 
   .about-container {
     width: 100%;
-    padding: 0 6%; // Un peu plus de padding latéral
+    padding: 0 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +23,7 @@
       margin-top: 40px;
       text-align: left;
       color: $text_color_dark;
-      font-size: 2rem; // Réduit un peu la taille de base
+      font-size: 1.7rem;
       line-height: 1.6;
       display: flex;
       flex-direction: column;
@@ -31,12 +33,13 @@
       p {
         opacity: 1;
         text-align: justify;
-        word-break: break-word; // Pour éviter les débordements de mots longs
+        word-break: break-word;
 
         .word {
           display: inline-block;
-          transition: color 0.3s ease;
           margin-right: 0.25rem;
+          color: #FFFFFF;
+          opacity: 0.2;
         }
       }
     }
@@ -45,7 +48,7 @@
 
 @media (max-width: 1024px) {
   #about {
-    min-height: auto; // Laisse le contenu dicter la hauteur sur mobile
+    min-height: auto;
     padding: 60px 0;
 
     .about-text-content {
@@ -60,9 +63,9 @@
     .about-text-content {
       font-size: 1.2rem;
       margin-top: 30px;
-      
+
       p {
-        text-align: left; // Justify est souvent moche sur petit écran
+        text-align: left;
       }
     }
   }
@@ -71,7 +74,7 @@
 @media (max-width: 400px) {
   #about {
     .about-container {
-      padding: 0 20px; // Padding fixe pour plus de contrôle
+      padding: 0 20px;
     }
 
     .about-text-content {

@@ -6,6 +6,10 @@ import {FaArrowRight} from 'react-icons/fa';
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 
 import {motion} from 'framer-motion';
+import gsap from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
     title: string;
@@ -27,88 +31,84 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
         pairs.push(projects.slice(i, i + 2));
     }
 
-    React.useEffect(() => {
-        const handleScroll = () => {
-            if (!containerRef.current) return;
+    React.useLayoutEffect(() => {
+        if (!containerRef.current) return;
 
-            const cards = containerRef.current.querySelectorAll('.card-wrapper');
-            const windowHeight = window.innerHeight;
-            const isMobile = window.innerWidth <= 1024;
+        const ctx = gsap.context(() => {
+            const cards = containerRef.current?.querySelectorAll('.card-wrapper');
+            if (!cards) return;
 
             cards.forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-
-                const windowHeight = window.innerHeight;
                 const isMobile = window.innerWidth <= 1024;
-
-                // Progression plus rapide : la carte est centrée quand elle a parcouru 60% de l'écran
-                const travelDistance = windowHeight * 0.6;
-                const progress = (windowHeight - rect.top) / travelDistance;
-                const clampedProgress = Math.max(0, Math.min(1, progress));
-
-                if (progress > -0.2 && progress < 1.5) {
-                    let isLeft;
-                    if (isMobile) {
-                        isLeft = index % 2 === 0;
-                    } else {
-                        isLeft = card.classList.contains('card-left');
-                    }
-
-                    // Translation plus grande pour partir de plus loin
-                    const maxOffset = isMobile ? 250 : 500; 
-                    const offset = (1 - clampedProgress) * maxOffset;
-
-                    const xTranslation = isLeft ? -offset : offset;
-
-                    (card as HTMLElement).style.transform = `translateX(${xTranslation}px)`;
-                    (card as HTMLElement).style.opacity = '1';
+                let isLeft;
+                if (isMobile) {
+                    isLeft = index % 2 === 0;
+                } else {
+                    isLeft = card.classList.contains('card-left');
                 }
+
+                const maxOffset = isMobile ? 250 : 500;
+                const initialX = isLeft ? -maxOffset : maxOffset;
+
+                // État de départ hors écran avec opacité 0
+                gsap.set(card, {x: initialX, opacity: 0});
+
+                // Animation ScrollTrigger fluide et optimisée
+                gsap.to(card, {
+                    x: 0,
+                    opacity: 1,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top bottom", // Commence quand le haut de la carte entre en bas de l'écran
+                        end: "top 40%",     // Fini quand la carte atteint 40% du haut de l'écran (soit 60% de défilement)
+                        scrub: true,
+                    }
+                });
             });
-        };
+        }, containerRef);
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        return () => ctx.revert();
+    }, [projects]);
 
     return (
         <section id="projects">
 
-        <div className="card-container-section" ref={containerRef}>
-            <div className="card-rows-container">
-                {pairs.map((pair, index) => (
-                    <div key={index} className="card-row">
-                        {pair.map((project, pIndex) => (
-                            <div key={pIndex} className={`card-wrapper ${pIndex === 0 ? 'card-left' : 'card-right'}`}>
-                                <Card
-                                    title={project.title}
-                                    description={project.desc}
-                                    image={project.icon}
-                                    stack={project.skills}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-            <div className="projects-more">
-                <p className="more-text">{(content as any)["projects-more-text"]}</p>
-                <motion.button 
+            <div className="card-container-section" ref={containerRef}>
+                <div className="card-rows-container">
+                    {pairs.map((pair, index) => (
+                        <div key={index} className="card-row">
+                            {pair.map((project, pIndex) => (
+                                <div key={pIndex}
+                                     className={`card-wrapper ${pIndex === 0 ? 'card-left' : 'card-right'}`}>
+                                    <Card
+                                        title={project.title}
+                                        description={project.desc}
+                                        image={project.icon}
+                                        stack={project.skills}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+                <div className="projects-more">
+                    <p className="more-text">{(content as any)["projects-more-text"]}</p>
+                    <motion.button
                         className="more-button"
                         onClick={() => window.open(`https://${(content as any).footer[0].github}`, '_blank')}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                >
+                        // whileHover={{ scale: 1.05 }}
+                        // whileTap={{ scale: 0.95 }}
+                    >
                     <span className="text">
                         {(content as any)["projects-more-button"]}
                         <FaArrowRight className="button-icon"/>
                     </span>
-                    <div className="wave-btn"></div>
-                </motion.button>
+                        <div className="wave-btn"></div>
+                    </motion.button>
+                </div>
             </div>
-        </div>
-            </section>
+        </section>
 
     );
 };

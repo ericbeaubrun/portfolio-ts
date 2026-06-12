@@ -19,15 +19,14 @@ const About: React.FC = () => {
             const words = containerRef.current?.querySelectorAll('.word');
             
             if (words && words.length > 0) {
-                gsap.fromTo(words, 
-                    { color: 'rgba(255, 255, 255, 0.2)' }, // Couleur de départ (estompée)
+                gsap.to(words, 
                     {
-                        color: '#FFFFFF', // Couleur finale (claire)
+                        opacity: 1,       // Opacité finale (claire)
                         stagger: 0.1,     // Délai entre chaque mot
                         scrollTrigger: {
                             trigger: containerRef.current,
-                            start: "top 80%",   // Début de l'animation quand le haut du texte touche 80% de l'écran
-                            end: "bottom 60%",  // Fin de l'animation
+                            start: "top 95%",   // Commence plus tôt (95% du viewport)
+                            end: "bottom 70%",  // Fini un peu plus tôt aussi
                             scrub: true,        // L'animation suit la progression du scroll
                         }
                     }
@@ -50,7 +49,7 @@ const About: React.FC = () => {
     return (
         <section id="about">
             <div className="about-container">
-                <Banner text="A propos" />
+                <Banner text="à propos" />
                 <div className="about-text-content" ref={containerRef}>
                     <p>{splitText(presentationContent.introduction.p1)}</p>
                     <p>{splitText(presentationContent.introduction.p2)}</p>

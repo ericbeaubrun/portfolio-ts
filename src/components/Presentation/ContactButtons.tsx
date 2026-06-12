@@ -1,6 +1,9 @@
 import './ContactButtons.scss';
 import gsap from "gsap";
-import {useEffect, useRef} from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {useLayoutEffect, useRef} from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactButtons = () => {
 
@@ -15,34 +18,40 @@ const ContactButtons = () => {
 
     const openInTab: boolean = true;
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-
-            gsap.to(refBtnLinkedin.current, {
-                y: -scrollY * 0.2,
-                ease: 'power2.out',
-                duration: 0.5,
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#presentation",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                }
             });
 
-            gsap.to(refBtnGithub.current, {
-                y: -scrollY * 0.15,
-                ease: 'power2.out',
-                duration: 0.5,
-            });
+            if (refBtnLinkedin.current) {
+                timeline.to(refBtnLinkedin.current, {
+                    y: () => -window.innerHeight * 0.2,
+                    ease: "none"
+                }, 0);
+            }
 
-            gsap.to(refBtnCV.current, {
-                y: -scrollY * 0.1,
-                ease: 'power2.out',
-                duration: 0.5,
-            });
-        };
+            if (refBtnGithub.current) {
+                timeline.to(refBtnGithub.current, {
+                    y: () => -window.innerHeight * 0.15,
+                    ease: "none"
+                }, 0);
+            }
 
-        window.addEventListener('scroll', handleScroll);
+            if (refBtnCV.current) {
+                timeline.to(refBtnCV.current, {
+                    y: () => -window.innerHeight * 0.1,
+                    ease: "none"
+                }, 0);
+            }
+        });
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => ctx.revert();
     }, []);
 
     const ROOT = '/assets/';
