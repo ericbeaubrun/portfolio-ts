@@ -1,20 +1,30 @@
 import React, {useRef, useEffect} from 'react';
+import {FaGithub} from 'react-icons/fa';
 import './Card.scss';
 
 interface CardProps {
     title: string;
     description: string;
-    image: string;
+    media: string | string[];
     stack: { [key: string]: string };
+    githubUrl?: string;
 }
 
-const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
+const Card: React.FC<CardProps> = ({title, description, media, stack, githubUrl}) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
+    const mediaWrapperRef = useRef<HTMLDivElement>(null);
     const animationFrameId = useRef<number>();
 
     const currentTranslateY = useRef(0);
     const targetTranslateY = useRef(0);
+
+    const mediaArray = Array.isArray(media) ? media : [media];
+
+    const getMediaType = (src: string) => {
+        const ext = src.split('.').pop()?.toLowerCase();
+        if (ext === 'mp4' || ext === 'webm' || ext === 'ogg') return 'video';
+        return 'image';
+    };
 
     const updateScroll = () => {
         const lerpFactor = 0.025;
@@ -23,29 +33,29 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
 
         if (Math.abs(targetTranslateY.current - currentTranslateY.current) < 0.1) {
             currentTranslateY.current = targetTranslateY.current;
-            if (imageRef.current) {
-                imageRef.current.style.transform = `translateY(-${currentTranslateY.current}px)`;
+            if (mediaWrapperRef.current) {
+                mediaWrapperRef.current.style.transform = `translateY(-${currentTranslateY.current}px)`;
             }
             animationFrameId.current = undefined;
             return;
         }
 
-        if (imageRef.current) {
-            imageRef.current.style.transform = `translateY(-${currentTranslateY.current}px)`;
+        if (mediaWrapperRef.current) {
+            mediaWrapperRef.current.style.transform = `translateY(-${currentTranslateY.current}px)`;
         }
 
         animationFrameId.current = requestAnimationFrame(updateScroll);
     };
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!containerRef.current || !imageRef.current) return;
+        if (!containerRef.current || !mediaWrapperRef.current) return;
 
         const rect = containerRef.current.getBoundingClientRect();
         const mouseY = e.clientY - rect.top;
         const containerHeight = rect.height;
-        const imageHeight = imageRef.current.clientHeight;
+        const mediaHeight = mediaWrapperRef.current.clientHeight;
 
-        const maxScroll = Math.max(0, imageHeight - containerHeight);
+        const maxScroll = Math.max(0, mediaHeight - containerHeight);
 
         const mouseRatio = Math.min(Math.max(mouseY / containerHeight, 0), 1);
 
@@ -78,12 +88,45 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
             >
-                <img
-                    src={image}
-                    alt={title}
-                    className="card-image"
-                    ref={imageRef}
-                />
+                <div className="media-wrapper" ref={mediaWrapperRef}>
+                    {mediaArray.map((src, index) => {
+                        const type = getMediaType(src);
+                        if (type === 'video') {
+                            return (
+                                <video
+                                    key={index}
+                                    src={src}
+                                    className="card-media"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                />
+                            );
+                        }
+                        return (
+                            <img
+                                key={index}
+                                src={src}
+                                alt={`${title} - ${index}`}
+                                className="card-media"
+                            />
+                        );
+                    })}
+                </div>
+
+                {githubUrl && (
+                    <a
+                        href={githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="github-button"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <FaGithub />
+                        <span className="cta-text">GitHub</span>
+                    </a>
+                )}
             </div>
 
             <div className="card-content">
@@ -92,12 +135,6 @@ const Card: React.FC<CardProps> = ({title, description, image, stack}) => {
                 <div className="card-stack">
                     {Object.entries(stack).map(([key, skillName]) => (
                         <div key={key} className="stack-item">
-                            <img
-                                src={`/assets/skills/light/${key}.svg`}
-                                alt={`${skillName} icon`}
-                                className="stack-icon"
-                                onError={(e) => (e.currentTarget.style.display = 'none')}
-                            />
                             <span className="stack-name">{skillName}</span>
                         </div>
                     ))}

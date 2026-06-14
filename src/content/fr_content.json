@@ -20,8 +20,8 @@
   "title": "Eric ADELAIDE-BEAUBRUN",
   "subtitle": "Développeur Full-Stack (React/Node/Next)",
   "introduction": {
-    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.qerhgbteqhgbqet dhbqethbteq rdwhbeqtwh bnqegwhbnye tqghnbyqtre gwdhnbeqrhnbqre tydhnbq erty whnbqtr eswdhnbeqtrw hnbeqgwdhnbteds whbetqd whg bte qwdghbeqtd",
-    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack.qerthbq efwdhbgtyreq dwshbnyrg tqswhn beqthn bteqhbgteqhg bteqhbteqzh bnqe tdhbgqetwhb eqth bteqhbtehnt"
+    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts. Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.",
+    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack."
   },
   "services": [
     {
@@ -77,7 +77,7 @@
       "name": "Conquete",
       "date": "Janvier 2022",
       "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
-      "gh": "https://github.com/ericbeaubrun/conquete",
+      "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
         "java": "Java",
@@ -90,14 +90,17 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "/assets/project-img-test.png"
+      "icon": [
+        "/assets/test2.mp4",
+        "/assets/test3.png"
+      ]
     },
     {
       "title": "Application Pédagogique pour les Étudiants",
       "name": "Librairie",
       "date": "Octobre 2023",
       "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
-      "gh": "https://github.com/ericbeaubrun/learn_py_app",
+      "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
         "py": "Python",
@@ -112,7 +115,12 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "/assets/application_pedagogique.png"
+      "icon": [
+        "/assets/projects/conquete4.gif",
+        "/assets/projects/conquete2.gif",
+        "/assets/projects/conquete3.gif",
+        "/assets/projects/conquete1.gif"
+      ]
     },
     {
       "title": "Simulateur de Trafic Aérien",
@@ -131,7 +139,33 @@
         "Dark Mode",
         "API Integration"
       ],
-      "icon": "/assets/aerien.png"
+      "icon": [
+        "/assets/projects/aerien2.gif",
+        "/assets/projects/aerien3.gif",
+        "/assets/projects/aerien1.gif"
+      ]
+    },
+    {
+      "title": "Simulateur de Trafic Aérien",
+      "name": "Aérien",
+      "date": "Janvier 2024",
+      "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
+      "gh": "https://github.com/ericbeaubrun/aerien",
+      "demo": "",
+      "skills": {
+        "java": "Java",
+        "multithreading": "Multithreading",
+        "uiux": "Conception UI/UX"
+      },
+      "features": [
+        "Responsive Design",
+        "Dark Mode",
+        "API Integration"
+      ],
+      "icon": [
+        "/assets/test1.gif",
+        "/assets/test2.mp4"
+      ]
     }
   ],
   "stats": [
@@ -154,7 +188,7 @@
       "email": "e.adelaide.beaubrun@gmail.com",
       "tel": "+33 6 43 41 40 79",
       "github": "github.com/ericbeaubrun/",
-      "linkedin": "linkedin.com/in/eric-adelaide-beaubrun/"
+      "linkedin": "linkedin.com/in/adelaide-beaubrun"
     },
     {
       "address": "Le Mée-sur-Seine (77350)"

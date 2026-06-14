@@ -14,8 +14,9 @@ gsap.registerPlugin(ScrollTrigger);
 interface Project {
     title: string;
     desc: string;
-    icon: string;
+    icon: string | string[];
     skills: { [key: string]: string };
+    gh?: string;
 }
 
 interface CardContainerProps {
@@ -25,6 +26,7 @@ interface CardContainerProps {
 const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
     const {content} = useLanguage();
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const bandRef = React.useRef<HTMLDivElement>(null);
 
     const pairs = [];
     for (let i = 0; i < projects.length; i += 2) {
@@ -66,14 +68,29 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
                     }
                 });
             });
+
+            // Scrolling band animation
+            if (bandRef.current) {
+                gsap.to(bandRef.current.querySelector('.band-content'), {
+                    xPercent: 15,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: bandRef.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
+                    }
+                });
+            }
         }, containerRef);
 
         return () => ctx.revert();
     }, [projects]);
 
+    const words = ["DEVELOPMENT", "DESIGN", "CYBERSECURITY", "FULL-STACK", "UI/UX", "REACT", "NODE.JS", "NEXT.JS", "TYPESCRIPT", "GSAP", "MOTION", "API"];
+
     return (
         <section id="projects">
-
             <div className="card-container-section" ref={containerRef}>
                 <div className="card-rows-container">
                     {pairs.map((pair, index) => (
@@ -84,8 +101,9 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
                                     <Card
                                         title={project.title}
                                         description={project.desc}
-                                        image={project.icon}
+                                        media={project.icon}
                                         stack={project.skills}
+                                        githubUrl={project.gh}
                                     />
                                 </div>
                             ))}
@@ -106,6 +124,16 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
                     </span>
                         <div className="wave-btn"></div>
                     </motion.button>
+                </div>
+            </div>
+
+            <div className="scrolling-band-container">
+                <div className="scrolling-band" ref={bandRef}>
+                    <div className="band-content">
+                        {Array(4).fill(words).flat().map((word, i) => (
+                            <span key={i} className="band-word">{word}</span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

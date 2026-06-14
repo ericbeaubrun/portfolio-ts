@@ -24,6 +24,10 @@
     max-width: 600px;
     position: relative;
 
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -31,11 +35,19 @@
       div {
         margin-bottom: 45px;
 
+        @media (max-width: 768px) {
+          margin-bottom: 30px;
+        }
+
+        @media (max-width: 480px) {
+          margin-bottom: 22px;
+        }
+
         label {
           display: block;
           margin-bottom: 8px;
           font-weight: 500;
-          color: #666; // Un peu plus sombre pour le mode clair
+          color: #666;
           font-size: 0.9rem;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -43,19 +55,26 @@
 
         input, textarea {
           font-family: inherit;
-          color: #000; // Texte noir
+          color: #000;
           width: 100%;
-          padding: 12px 0;
+          padding: 4px 0;
           border: none;
-          border-bottom: 1px solid #ddd; // Bordure claire
-          border-radius: 0;
+          border-bottom: 2px solid #ddd; // Bordure claire
           font-size: 1.1rem;
           background-color: transparent;
           transition: border-bottom-color 0.3s ease;
 
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 0.95rem;
+          }
+
           &:focus {
             outline: none;
-            border-bottom: 1px solid #000; // Bordure noire au focus
+            border-bottom: 2px solid #000; // Bordure noire au focus
           }
         }
 
@@ -71,20 +90,38 @@
         padding: 16px 48px;
         margin-top: 10px;
         background-color: transparent;
-        color: #000; // Texte noir
-        border: 1px solid #000; // Bordure noire
+        color: #000;
+        border: 2px solid #000;
         border-radius: 0;
         cursor: pointer;
         font-size: 1rem;
-        font-weight: 400;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
         text-transform: uppercase;
         letter-spacing: 2px;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+          transform: translateX(-101%);
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          z-index: -1;
+        }
 
         &:hover {
-          background-color: #000;
           color: #fff;
-          transform: translateY(-2px);
+
+          &::before {
+            transform: translateX(0);
+          }
         }
 
         @media (max-width: 768px) {

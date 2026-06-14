@@ -29,7 +29,7 @@ const Navbar = ({lenis}: { lenis: Lenis | null }) => {
         // {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
         {target: "about", title: nav[1].title, subtitle: nav[1].subtitle},
         {target: "projects", title: nav[2].title, subtitle: nav[2].subtitle},
-        {target: "contact", title: nav[3].title, subtitle: nav[3].subtitle},
+        {target: "footer", title: nav[3].title, subtitle: nav[3].subtitle},
     ];
 
     const renderNavItems = (closeOnClick: boolean = false) => {

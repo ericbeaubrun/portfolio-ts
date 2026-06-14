@@ -48,7 +48,6 @@
       width: 200px;
       height: 200px;
       margin: 0 auto 3rem;
-      transform: rotate(2deg);
       //transition: transform 0.7s
       //cubic-bezier(0.23, 1, 0.32, 1);
 
@@ -164,7 +163,6 @@
       cursor: pointer;
       border: none;
       overflow: hidden;
-      transform: rotate(-2deg);
       //background: linear-gradient(-45deg, #e3e3e3 0%, #ff0f7b 100%);
       background-color: transparent;
       transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
@@ -212,11 +210,6 @@
       transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
 
-    //.contact-me-button:hover {
-    //  box-shadow: 0 0 30px rgba(248, 155, 41, 0.4),
-    //  0 0 30px rgba(255, 15, 123, 0.4);;
-    //}
-
     .contact-me-button:hover:before,
     .contact-me-button:hover:after {
       width: 100%;
@@ -226,24 +219,112 @@
     .contact-me-button:hover span {
       top: 100%;
     }
+  }
 
-    //.contact-me-button:active {
-    //  scale: 0.95;
-    //  box-shadow: 0 0 10px rgba(248, 155, 41, 0.4),
-    //  0 0 10px rgba(255, 15, 123, 0.4);;
-    //}
+  @media (max-width: 768px) {
+    .area {
+      max-width: 100%;
+      padding: 0 24px;
+
+      .profile-picture-container {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 2rem;
+      }
+
+      #presentation-title {
+        font-size: $FONT_SIZE_H1_RESPONSIVE;
+      }
+
+      #presentation-subtitle {
+        font-size: $FONT_SIZE_H2_RESPONSIVE;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-me-button {
+        width: 150px;
+        height: 52px;
+        font-size: 16px;
+        padding: 12px 24px;
+      }
+    }
+
+    .scroll-indicator {
+      bottom: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .area {
+      padding: 0 16px;
+
+      .profile-picture-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+      }
+
+      #presentation-title {
+        font-size: 1.8rem;
+      }
+
+      #presentation-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .contact-me-button {
+        width: 135px;
+        height: 48px;
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    .scroll-indicator {
+      bottom: 30px;
+
+      .scroll-indicator-img {
+        width: 24px;
+      }
+
+      .scroll-text {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+    }
   }
 
   .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.1);
+    }
 
     .scroll-indicator-img {
-      width: 40px;
+      width: 30px;
       filter: invert(1);
+    }
+
+    .scroll-text {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: white;
+      font-weight: 300;
+      text-transform: uppercase;
     }
   }
 }

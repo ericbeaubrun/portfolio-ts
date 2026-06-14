@@ -3,12 +3,22 @@
 #about {
   padding: 0 0;
   background-color: black;
+  box-shadow: 
+    0 -20px 20px rgba(0, 0, 0, 0.2),
+    0 -40px 40px rgba(0, 0, 0, 0.4),
+    0 -80px 80px rgba(0, 0, 0, 0.6),
+    0 -120px 120px rgba(0, 0, 0, 0.8),
+    0 -160px 160px rgba(0, 0, 0, 1);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 150vh;
   position: relative;
-  box-shadow: 0 -100px 100px -50px #000000;
+
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    padding: 50px 0;
+  }
   z-index: 2;
 
   .about-container {
@@ -19,67 +29,60 @@
     align-items: center;
     gap: 0;
 
+    @media (max-width: 1024px) {
+      padding: 0 10%;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 7%;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 5%;
+    }
+
     .about-text-content {
       margin-top: 40px;
-      text-align: left;
+      text-align: center;
       color: $text_color_dark;
       font-size: 1.7rem;
       line-height: 1.6;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      max-width: 85%;
+
+      @media (max-width: 1024px) {
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+        gap: 1rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
 
       p {
         opacity: 1;
-        text-align: justify;
+        //text-align: justify;
         word-break: break-word;
+    text-align: center;
 
         .word {
           display: inline-block;
           margin-right: 0.25rem;
           color: #FFFFFF;
           opacity: 0.2;
+
+          @media (max-width: 480px) {
+            margin-right: 0.15rem;
+          }
         }
       }
     }
   }
 }
 
-@media (max-width: 1024px) {
-  #about {
-    min-height: auto;
-    padding: 60px 0;
-
-    .about-text-content {
-      font-size: 1.5rem;
-      max-width: 95%;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  #about {
-    .about-text-content {
-      font-size: 1.2rem;
-      margin-top: 30px;
-
-      p {
-        text-align: left;
-      }
-    }
-  }
-}
-
-@media (max-width: 400px) {
-  #about {
-    .about-container {
-      padding: 0 20px;
-    }
-
-    .about-text-content {
-      font-size: 1.05rem;
-      gap: 1rem;
-    }
-  }
-}

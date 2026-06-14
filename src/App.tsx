@@ -126,11 +126,9 @@ const App = () => {
                     <CardContainer projects={(content as any).projects || []}/>
                 </Element>
 
-                {/*<Element name="contact" className="section">*/}
-                {/*    <ContactForm/>*/}
-                {/*</Element>*/}
-
             </main>
+
+            <Element name="footer" />
 
             <footer style={{position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1}}>
                 <Footer/>

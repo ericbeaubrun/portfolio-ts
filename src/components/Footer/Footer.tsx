@@ -19,7 +19,11 @@ const Footer: React.FC = () => {
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
+        const isMobile = window.innerWidth <= 768;
+
         const ctx = gsap.context(() => {
+            if (isMobile) return;
+
             // Overall timeline linked to the 200vh margin
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -66,15 +70,17 @@ const Footer: React.FC = () => {
     }, []);
 
     return (
-        <section className="footer-pin-section" ref={sectionRef}>
+        <section id="footer" className="footer-pin-section" ref={sectionRef}>
             <div className="footer-viewport">
                 {/* Background layers for parallax */}
                 {/*<div className="footer-bg-layer back">*/}
                 {/*    <img src="/assets/footer_second_plan.png" alt="" />*/}
                 {/*</div>*/}
-                <div className="footer-bg-layer front">
-                    <img src="/assets/footer_premier_plan.png" alt=""/>
-                </div>
+                {/*<div className="footer-bg-layer front">*/}
+                {/*    {[...Array(80)].map((_, i) => (*/}
+                {/*        <div key={i} className={`footer-shape s${i + 1}`}></div>*/}
+                {/*    ))}*/}
+                {/*</div>*/}
 
                 <div className="footer-horizontal-wrapper" ref={wrapperRef}>
                     <div className="footer-section links-section">
@@ -100,13 +106,13 @@ const Footer: React.FC = () => {
                                         <span className="footer-text">Linkedin</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href={`https://${details.github}`} target="_blank" rel="noopener noreferrer"
-                                       data-hover={`${details.github}`}>
-                                        <FaGithub className="footer-icon"/>
-                                        <span className="footer-text">Github</span>
-                                    </a>
-                                </li>
+                                {/*<li>*/}
+                                {/*    <a href={`https://${details.github}`} target="_blank" rel="noopener noreferrer"*/}
+                                {/*       data-hover={`${details.github}`}>*/}
+                                {/*        <FaGithub className="footer-icon"/>*/}
+                                {/*        <span className="footer-text">Github</span>*/}
+                                {/*    </a>*/}
+                                {/*</li>*/}
 
 
                                 {/*<li className="footer-date">*/}

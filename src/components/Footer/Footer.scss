@@ -6,6 +6,11 @@
   position: relative;
   overflow: hidden;
   background-color: #fff;
+
+  //@media (max-width: 768px) {
+  //  height: auto;
+  //  overflow: visible;
+  //}
 }
 
 .footer-viewport {
@@ -15,6 +20,12 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    //height: auto;
+    overflow: visible;
+    align-items: flex-start;
+  }
 }
 
 .footer-bg-layer {
@@ -29,7 +40,8 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: bottom;
   }
 
   &.back {
@@ -37,8 +49,53 @@
   }
 
   &.front {
-    z-index: 4;
-    opacity: 0.15;
+    z-index: 2;
+    opacity: 1;
+
+    .footer-shape {
+      position: absolute;
+      bottom: 0;
+      background-color: #000;
+      transform-origin: bottom;
+
+      @for $i from 1 through 80 {
+        &.s#{$i} {
+          $width: random(20) + 5 + px;
+          $height: random(8) + 2 + 2%;
+
+          $left: ($i - 1) * 1.25%;
+
+          width: $width;
+          height: $height;
+          left: $left;
+          opacity: random(5) / 10 + 0.05;
+
+          @if $i % 3 == 0 {
+            background-color: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+          }
+
+          @if $i % 7 == 0 {
+            width: 1px;
+            height: random(10) + 5 + 2%;
+            opacity: 0.05;
+          }
+
+          animation: shapeAppear 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation-delay: #{$i * 0.005}s;
+        }
+      }
+    }
+
+    @keyframes shapeAppear {
+      from {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+      to {
+        // L'opacité finale est conservée
+      }
+    }
   }
 }
 
@@ -48,6 +105,13 @@
   height: 100%;
   position: relative;
   z-index: 3;
+
+  @media (max-width: 768px) {
+    //width: 100%;
+    //flex-direction: column;
+    //height: auto;
+    //overflow-y: auto;
+  }
 }
 
 .footer-section {
@@ -59,14 +123,33 @@
   align-items: center;
   padding: 80px;
 
+  @media (max-width: 768px) {
+    //width: 100%;
+    //height: auto;
+    //min-height: 50vh;
+
+  }
+
+  @media (max-width: 1024px) {
+    padding: 60px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 32px 16px;
+  }
+
   &.links-section {
-    background-color: #fff;
+    background-color: transparent;
     text-transform: uppercase;
 
   }
 
   &.contact-section {
-    background-color: #fff;
+    background-color: transparent;
     position: relative;
 
     &::before {
@@ -77,6 +160,10 @@
       height: 70%;
       width: 1px;
       background-color: rgba(0, 0, 0, 0.05);
+
+      @media (max-width: 768px) {
+        //display: none;
+      }
     }
   }
 }
@@ -127,6 +214,22 @@
         background-color: transparent;
         transition: all 0.4s ease;
 
+        @media (max-width: 1024px) {
+          font-size: 2.8rem;
+          padding: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 2rem;
+          padding: 10px 0;
+          letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.5rem;
+          padding: 8px 0;
+        }
+
         .footer-icon {
           opacity: 0;
           margin-right: 0;
@@ -174,7 +277,6 @@
           }
 
           .footer-text {
-
             transform: translateX(10px);
             opacity: 0;
           }
@@ -184,18 +286,36 @@
             position: absolute;
             left: 80px;
             font-size: 1.5rem;
+            font-size: 2.5rem;
+
             text-transform: lowercase;
             letter-spacing: 1px;
             animation: fadeIn 0.4s forwards;
           }
         }
 
+        @media (max-width: 1024px) {
+          &:hover::after {
+            font-size: 2rem;
+            left: 70px;
+          }
+        }
+
         @media (max-width: 768px) {
-          font-size: 2.2rem;
+          font-size: 2rem;
 
           &:hover::after {
-            font-size: 1rem;
-            left: 60px;
+            font-size: 0.9rem;
+            left: 50px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.5rem;
+
+          &:hover::after {
+            font-size: 0.75rem;
+            left: 40px;
           }
         }
       }

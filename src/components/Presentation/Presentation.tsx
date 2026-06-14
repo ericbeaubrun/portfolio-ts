@@ -1,12 +1,13 @@
 import {useLayoutEffect, useRef} from "react";
 const profilePicture = "/assets/profile_picture0.png";
-const arrowIcon = "/assets/arrow_dark.png";
+const arrowIcon = "/assets/fleche-vers-le-bas.png";
 import "./Presentation.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactButtons from "./ContactButtons.tsx";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import {Link} from "react-scroll";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +26,55 @@ const Presentation = () => {
         subtitle: string,
         introduction: { p1: string, p2: string }
     });
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.5,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const profilePictureVariants = {
+        hidden: { opacity: 0, y: 20, rotate: 2 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            rotate: 2,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const contactButtonWrapperVariants = {
+        hidden: { opacity: 0, y: 20, rotate: -2 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            rotate: -2,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut",
+            },
+        },
+    };
 
 
     useLayoutEffect(() => {
@@ -87,13 +137,12 @@ const Presentation = () => {
             }
         });
 
-        gsap.to(".scroll-indicator-img", {
-            y: 7.5,
-            rotation: 2,
+        gsap.to(".scroll-indicator", {
+            y: 20,
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut",
-            duration: 1.2,
+            duration: 1,
         });
 
         return () => ctx.revert();
@@ -112,38 +161,48 @@ const Presentation = () => {
                 Votre navigateur ne supporte pas la vidéo.
             </video>
             <div className="background-overlay" ref={overlayRef}></div>
-            <div className="area">
-                <div className="profile-picture-container">
+            <motion.div
+                className="area"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <motion.div className="profile-picture-container" variants={profilePictureVariants}>
                     <img
                         ref={imageRef}
                         id="profile-picture"
                         src={profilePicture}
                         alt="Photos de profil"
                     />
-                </div>
+                </motion.div>
 
-                <h1 ref={refH1} id="presentation-title">
+
+                <motion.h1 ref={refH1} id="presentation-title" variants={itemVariants}>
                     {presentationContent.title}
-                </h1>
+                </motion.h1>
 
-                <h2 ref={refH2} id="presentation-subtitle">
+                <motion.h2 ref={refH2} id="presentation-subtitle" variants={itemVariants}>
                     {presentationContent.subtitle}
-                </h2>
+                </motion.h2>
 
-                <Link
-                    to="contact"
-                    smooth={true}
-                    duration={1000}
-                    offset={0}
-                    className="contact-link"
-                >
-                    <button ref={contactBtnRef} className="contact-me-button">
-                        <span>{(content as any).contact_button || "Contacter"}</span>
-                    </button>
-                </Link>
+                <motion.div variants={contactButtonWrapperVariants}>
+                    <Link
+                        to="footer"
+                        smooth={true}
+                        duration={1000}
+                        offset={0}
+                        className="contact-link"
+                    >
+                        <button ref={contactBtnRef} className="contact-me-button">
+                            <span>{(content as any).contact_button || "Contacter"}</span>
+                        </button>
+                    </Link>
+                </motion.div>
 
-                <ContactButtons/>
-            </div>
+                <motion.div variants={itemVariants}>
+                    <ContactButtons/>
+                </motion.div>
+            </motion.div>
 
             <Link
                 to={"services"}

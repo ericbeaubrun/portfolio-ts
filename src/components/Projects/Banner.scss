@@ -10,80 +10,6 @@
   margin-bottom: 5vh;
 }
 
-.images-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.images-container.left,
-.images-container.right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.banner-image {
-  filter: grayscale(0.83);
-  margin: -15px;
-  width: 8rem;
-  height: 8rem;
-  object-fit: cover;
-}
-
-.banner-image:hover {
-  //filter: grayscale(0);
-}
-
-@media (max-width: 900px) {
-  .images-row {
-    display: none;
-  }
-}
-
-@media (min-width: 900px) {
-  .banner {
-    flex-direction: row;
-  }
-
-  .banner-title {
-    font-size: 2rem;
-    margin: 0 20px;
-    transform: translateY(10px);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .images-container.left {
-    position: absolute;
-    left: 5%;
-  }
-
-  .images-container.right {
-    position: absolute;
-    right: 5%;
-  }
-
-  .banner-title-container {
-    font-size: 2.5rem;
-    padding: 100px;
-  }
-}
-
-.banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.letters-row {
-  display: flex;
-  //gap: 7.5px;
-}
-
 .banner-letter {
   text-transform: uppercase;
   font-weight: bold;
@@ -92,41 +18,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 3.1rem;
-  height: 3.1rem;
   font-size: 8em;
   width: 5.5rem;
 }
 
+.letters-row {
+  display: flex;
+}
 
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
   .banner-letter {
-    text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: bold;
-    display: inline-block;
-    text-align: center;
-    color: white;
-  }
-
-  .letters-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    font-size: 6em;
+    width: 4rem;
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 650px) {
   .banner-letter {
-    font-size: 1.7rem;
-  }
-
-  .letters-row {
-    gap: 2px;
+    font-size: 5em;
+    width: 3rem;
   }
 }
+
+
+@media (max-width: 450px) {
+  .banner-letter {
+    font-size: 3rem;
+    width: 2rem;
+  }
+}
+
 
 
 
