@@ -1,11 +1,9 @@
 @import "../../config.scss";
 
 
-
 .card-container-section {
   overflow: clip;
   width: 100%;
-  //max-width: 1400px;
   margin: 0 auto;
   padding-top: 150px;
   padding-bottom: 50px;
@@ -15,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px;
+  gap: 0;
   position: relative;
 
   .card-rows-container {
@@ -27,13 +25,11 @@
   }
 
 
-
-
   .projects-more {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 500px;
+    margin-top: 25vh;
     gap: 20px;
     text-align: center;
 
@@ -55,12 +51,12 @@
       background-color: black;
       color: white;
       border: none;
-      border-radius: 0px;
+      border-radius: 0;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
-      border: 2px solid white;
+      transition: all 0.3s ease, transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      //border: 2px solid white;
       transform: rotate(-3deg);
 
       @media (max-width: 1024px) {
@@ -71,13 +67,13 @@
       @media (max-width: 768px) {
         font-size: 3rem;
         padding: 8px 18px;
-        transform: rotate(-2deg); // Réduction de la rotation pour gagner de la place
+        transform: rotate(-2deg);
       }
 
       @media (max-width: 480px) {
         font-size: 2.2rem;
         padding: 6px 15px;
-        width: 90%; // S'assure de tenir sur mobile
+        width: 90%;
         justify-content: center;
       }
 
@@ -122,10 +118,48 @@
         z-index: 0;
       }
 
-      //transform: translateY(-20px);
+      &::before {
+        top: 0;
+        left: 0;
+        border-top: 2px solid #e8e8e8;
+        border-left: 2px solid #e8e8e8;
+      }
+
+      &::after {
+        bottom: 0;
+        right: 0;
+        border-bottom: 2px solid #e8e8e8;
+        border-right: 2px solid #e8e8e8;
+      }
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        @media (max-width: 1024px) {
+          width: 32px;
+          height: 32px;
+        }
+        @media (max-width: 768px) {
+          width: 24px;
+          height: 24px;
+        }
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      }
+
 
       &:hover {
         background-color: black;
+        transform: rotate(-3deg) scale(1.15);
+
+        &::before,
+        &::after {
+          width: 100%;
+          height: 100%;
+        }
 
         .button-icon {
           transform: translateX(5px);
@@ -145,7 +179,6 @@
   .card-row {
     display: flex;
     width: 100%;
-    gap: 60px;
     gap: 20px;
 
     .card-wrapper {
@@ -173,13 +206,8 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
-  overflow-x: clip; // Coupe l'excès de la bande à l'intérieur de 100%/100vw sans élargir la page
+  overflow-x: clip;
   overflow-y: visible;
-
-  //@media (min-width: 1400px) {
-  //  width: 100vw;
-  //  margin-left: calc(-50vw + 50%);
-  //}
 }
 
 .scrolling-band {

@@ -2,7 +2,7 @@
   "nav": [
     {
       "title": "Presentation",
-      "subtitle": "Overview"
+      "subtitle": "Journey and Goals"
     },
     {
       "title": "About",
@@ -14,30 +14,30 @@
     },
     {
       "title": "Contact",
-      "subtitle": "Get in Touch"
+      "subtitle": "Contact Me"
     }
   ],
-  "title": "Full Stack Developer Student",
-  "subtitle": "Eric ADELAIDE-BEAUBRUN",
+  "title": "Eric ADELAIDE-BEAUBRUN",
+  "subtitle": "Software Engineering Student & Full-Stack Developer",
   "introduction": {
-    "p1": "Welcome to my portfolio. Here you will find my personal and academic projects, developed since my early days.",
-    "p2": "I mainly design complete web applications with React, Express.js or Next.js, with the aim of specializing as a full stack developer."
+    "p1": "Welcome to my portfolio! Passionate about computer science and programming, I share here my key projects, developed at university or during my free time.",
+    "p2": "From creating scripts to software, including server and data management, my ambition is to transform this passion into expertise, specializing as a Software Engineer / Full Stack Developer."
   },
   "services": [
     {
       "icon": "uiux-icon",
       "title": "REST API",
-      "p": "Development of systems that allow information to be easily exchanged with other departments."
+      "p": "Developing systems that allow easy information exchange with other services."
     },
     {
       "icon": "webdev-icon",
       "title": "UI/UX Design",
-      "p": "Creating simple, clear and modern designs so users can find what they are looking for in just a few clicks."
+      "p": "Creating simple, clear, and modern designs so users find what they are looking for in just a few clicks."
     },
     {
-      "icon": "webdev-icon",
+      "icon": "appdev-icon",
       "title": "Deployment",
-      "p": "Implementing tools that allow you to easily update a site or app."
+      "p": "Setting up tools that allow easy updates for a website or app."
     }
   ],
   "skills": {
@@ -68,110 +68,192 @@
       "notion": "Notion"
     }
   },
+  "about-title": "about me",
   "projects-title": "projects",
   "projects-more-text": "Want to see more projects?",
-  "projects-more-button": "View more projects",
+  "projects-more-button": "See more",
   "projects": [
     {
-      "title": "Multiplayer Strategy Board Game",
-      "name": "Conquete",
-      "date": "January 2022",
-      "desc": "Creation of a strategic board game in Java, integrating AI for local multiplayer games, save game management, and generation of statistical graphs for the games.",
-      "gh": "https://github.com/ericbeaubrun/conquete",
-      "demo": "",
+      "title": "Website for Dj URYA",
+      "name": "Dj URYA",
+      "date": "",
+      "desc": "This web project allows clients to plan and book a service via a multi-step form with automatic email sending. It integrates a custom CMS with authentication to manage the database and track requests. The admin interface offers complete control over rates, services, and site content.",
+      "gh": "https://github.com/ericbeaubrun/urya",
+      "demo": "https://www.dj-urya.fr/",
       "skills": {
-        "java": "Java",
-        "junit": "JUnit",
-        "ai": "Artificial Intelligence",
-        "uiux": "UI/UX Design"
+        "ts": "typescript",
+        "next": "nextjs",
+        "vercel": "vercel",
+        "mongodb": "mongodb"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
-      "icon": "/assets/project-img-test.png"
+      "icon": [
+        "/assets/projects/urya.png"
+      ]
     },
     {
-      "title": "Educational App for Students",
-      "name": "PythonApp",
-      "date": "October 2023",
-      "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
-      "gh": "https://github.com/ericbeaubrun/learn_py_app",
+      "title": "Multiplayer Strategic Board Game",
+      "name": "Conquete",
+      "date": "",
+      "desc": "Creation of a strategic board game in Java, integrating an AI for local multiplayer games, save management, and generation of statistical graphs for the games.",
+      "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "py": "Python",
-        "pyqt": "PyQT6",
-        "css": "CSS",
-        "json": "JSON",
-        "uiux": "UI/UX Design",
-        "security": "Security"
+        "java": "java",
+        "junit": "junit",
+        "ia": "artificial intelligence",
+        "uiux": "ui/ux conception"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
-      "icon": "/assets/application_pedagogique.png"
+      "icon": [
+        "/assets/projects/conquete4.gif",
+        "/assets/projects/conquete2.gif",
+        "/assets/projects/conquete5.gif",
+        "/assets/projects/conquete3.gif",
+        "/assets/projects/conquete1.gif"
+      ]
     },
     {
       "title": "Air Traffic Simulator",
-      "name": "Aeerial",
-      "date": "January 2024",
-      "desc": "Development of an air traffic simulator in Java, including a real-time configurable graphical interface and using advanced concepts such as trajectory calculation and collision avoidance (multithreading).",
-      "gh": "https://github.com/ericbeaubrun/aerien",
+      "name": "Aerien",
+      "date": "",
+      "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unforeseen events such as aviation emergencies.",
+      "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "",
       "skills": {
-        "java": "Java",
-        "multithreading": "Multithreading",
-        "uiux": "UI/UX Design"
+        "java": "java",
+        "Multithreading": "multithreading",
+        "uiux": "ui/ux conception"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
-      "icon": "/assets/aerien.png"
+      "icon": [
+        "/assets/projects/aerien2.gif",
+        "/assets/projects/aerien3.gif",
+        "/assets/projects/aerien1.gif",
+        "/assets/projects/aerien4.gif"
+      ]
+    },
+    {
+      "title": "Student Attendance Tracking System",
+      "name": "Presence",
+      "date": "",
+      "desc": "This database and networking project is an automated attendance tracking system designed to model and manage student attendance in real-time within an institution. It simulates complex scenarios of badge identification and network communication via a client-server architecture, integrating SQL query management and live error cases.",
+      "gh": "",
+      "demo": "",
+      "skills": {
+        "java": "java",
+        "py": "python",
+        "tcpip": "tcp/ip",
+        "sql": "sql",
+        "postgresql": "postgresql",
+        "securite": "Security"
+      },
+      "features": [
+        ""
+      ],
+      "icon": [
+        "/assets/projects/bdres.png"
+      ]
+    },
+    {
+      "title": "Educational Application for Students",
+      "name": "learnpy",
+      "date": "",
+      "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
+      "gh": "https://github.com/ericbeaubrun/educational-python-app",
+      "demo": "",
+      "skills": {
+        "py": "python",
+        "pyqt6": "pyqt6",
+        "css": "css",
+        "uiux": "UI/UX conception",
+        "securite": "Security"
+      },
+      "features": [
+        ""
+      ],
+      "icon": [
+        "/assets/projects/learn_py2.gif",
+        "/assets/projects/learn_py3.gif",
+        "/assets/projects/learn_py1.gif"
+      ]
+    },
+    {
+      "title": "Online Tournament Generator",
+      "name": "Tournois",
+      "date": "",
+      "desc": "This React development project is an instant tournament manager designed to efficiently model and orchestrate competitions between multiple participants. It integrates automatic tournament tree generation algorithms, real-time score tracking, and data import/export modules to save and load existing tournaments in one click.",
+      "gh": "https://github.com/ericbeaubrun/conquest-game",
+      "demo": "",
+      "skills": {
+        "javascript": "javascript",
+        "react": "react",
+        "vercel": "vercel"
+      },
+      "features": [
+        ""
+      ],
+      "icon": [
+        "/assets/projects/tournament1.png",
+        "/assets/projects/tournament2.png",
+        "/assets/projects/tournament1.png"
+      ]
     }
   ],
   "stats": [
     {
       "num": 3,
-      "text": "Years of code"
+      "text": "Years of training"
     },
     {
       "num": 8,
-      "text": "Projects"
+      "text": "Projects completed"
     },
     {
       "num": 1,
-      "text": "Internships"
+      "text": "Internship completed"
     }
   ],
   "footer": [
     {
-      "title": "Details",
+      "title": "Contact Information",
       "email": "e.adelaide.beaubrun@gmail.com",
       "tel": "+33 6 43 41 40 79",
       "github": "github.com/ericbeaubrun/",
-      "linkedin": "linkedin.com/in/eric-adelaide-beaubrun/"
+      "linkedin": "linkedin.com/in/adelaide-beaubrun",
+      "hover_tel": "Show phone number",
+      "hover_linkedin": "View LinkedIn profile",
+      "hover_mail": "Send an email"
     },
     {
       "address": "Le Mée-sur-Seine (77350)"
     },
     {
-      "paragraph": "Last modified 09/06/2026"
+      "paragraph": "Last modified on 06/09/2026"
     }
   ],
   "contact-form": {
     "title": "Contact Form",
-    "btn": "Contact Me",
-    "send": "Send"
+    "btn": "Contact",
+    "send": "Send",
+    "label_name": "Name",
+    "label_email": "Email",
+    "label_message": "Message",
+    "success_msg": "Message sent successfully!",
+    "error_msg": "An error occurred, please try again."
   },
+  "contact_button": "Contact Me",
+  "contact_button_hover": "Let's talk!",
   "scrolling-text": "ux | Technologies | Frameworks | Libraries | Languages | Environments | Tools | Debugging | Testing | Deployment | Optimization | Content Management | Modeling | ui/",
   "source-code": "Source Code",
-  "see-more": "See More...",
+  "see-more": "Learn more...",
   "see-more-gh": "Contact",
   "hide": "Hide",
-  "read-more": "Read More"
+  "read-more": "Read more"
 }

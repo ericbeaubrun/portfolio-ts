@@ -43,6 +43,49 @@
       pointer-events: none;
     }
 
+    .demo-button {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      padding: 0.4rem 0.6rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: white;
+      font-size: 1rem;
+      z-index: 10;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+
+      .button-icon {
+        width: 18px;
+        height: 18px;
+        transition: filter 0.3s ease;
+      }
+
+      .cta-text {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        background-color: white;
+        color: black;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+        .button-icon {
+          filter: invert(1);
+        }
+      }
+    }
+
     .github-button {
       position: absolute;
       top: 1.2rem;
@@ -97,10 +140,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    //padding: 1rem 0.5rem 0.5rem 0.5rem;
     padding: 1rem;
-    //background: linear-gradient(to top, #000000 85%, rgba(0, 0, 0, 0.95) 100%);
-    background-color: #191919;
     background-color: #111111;
 
     z-index: 3;
@@ -156,6 +196,19 @@
       opacity: 0;
       transition: opacity 0.2s ease, transform 0.2s ease;
       transform: translateY(10px);
+    }
+  }
+}
+
+@media (max-width: 999px) {
+  .card {
+    .card-content {
+      transform: translateY(0);
+
+      .card-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }

@@ -2,12 +2,10 @@ import {useEffect, useState} from 'react';
 import {motion, useScroll, useSpring, useTransform} from 'framer-motion';
 import {Link} from "react-scroll";
 import './ScrollProgressCircle.scss';
-import {useIsMobile} from "./Utils/MobileContext.tsx";
 import Lenis from "lenis";
 
 const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
     const {scrollYProgress} = useScroll();
-    const isMobile = useIsMobile();
     const [isHovered, setIsHovered] = useState(false);
 
     const smoothScrollProgress = useSpring(scrollYProgress, {
@@ -64,7 +62,8 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
                 <motion.div 
                     className="scroll-arrow"
                     initial="hidden"
-                    animate={isHovered || isMobile || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON ? "visible" : "hidden"}
+                    // animate={isHovered || isMobile || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON ? "visible" : "hidden"}
+                    animate={isHovered || 100 - scrollYValue * 100 <= AUTO_DISPLAY_ICON ? "visible" : "hidden"}
                     variants={{
                         hidden: { opacity: 0, scale: 0.9, y: 10 },
                         visible: {

@@ -2,7 +2,7 @@
 
 $main_text_color: white;
 $secondary_color: white;
-$hover_line_color:white;
+$hover_line_color: white;
 $line_width: 3px;
 
 .item {
@@ -10,7 +10,6 @@ $line_width: 3px;
 }
 
 .navbar nav {
-  //background: $background_color_dark;
   font-weight: bold;
   text-align: center;
   position: fixed;
@@ -27,6 +26,7 @@ $line_width: 3px;
 
 @media(max-width: 1111px) {
   .navbar nav {
+    mix-blend-mode: normal;
     background: rgba(10, 10, 10, 0.95);
   }
 }
@@ -91,13 +91,29 @@ $line_width: 3px;
 
 div.setting {
   position: absolute;
-  right: 4vw;
   display: inline-block;
-  margin-left: 6vw;
-  transform: translateY(-5px);
   background: transparent;
   text-transform: uppercase;
   z-index: 2;
+}
+
+div.setting-left {
+  left: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+div.setting-right {
+  right: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+
+  .scroll-progress-circle {
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: relative;
+  }
 }
 
 .navbar .item.active .linktext:before {
@@ -171,6 +187,13 @@ div.setting {
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
+
+    .scroll-progress-circle {
+      width: 50px;
+      height: 50px;
+      display: block;
+      position: relative;
+    }
   }
 }
 

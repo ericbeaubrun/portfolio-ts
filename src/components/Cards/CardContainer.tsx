@@ -17,6 +17,7 @@ interface Project {
     icon: string | string[];
     skills: { [key: string]: string };
     gh?: string;
+    demo?: string;
 }
 
 interface CardContainerProps {
@@ -87,7 +88,7 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
         return () => ctx.revert();
     }, [projects]);
 
-    const words = ["DEVELOPMENT", "DESIGN", "CYBERSECURITY", "FULL-STACK", "UI/UX", "REACT", "NODE.JS", "NEXT.JS", "TYPESCRIPT", "GSAP", "MOTION", "API"];
+    const words = ["EXPRESS.JS", "DESIGN", "FULL-STACK", "REACT", "NODE.JS", "NEXT.JS", "TYPESCRIPT", "DATABASE", "API"];
 
     return (
         <section id="projects">
@@ -104,6 +105,7 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
                                         media={project.icon}
                                         stack={project.skills}
                                         githubUrl={project.gh}
+                                        demoUrl={project.demo}
                                     />
                                 </div>
                             ))}
@@ -114,7 +116,7 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
                     <p className="more-text">{(content as any)["projects-more-text"]}</p>
                     <motion.button
                         className="more-button"
-                        onClick={() => window.open(`https://${(content as any).footer[0].github}`, '_blank')}
+                        onClick={() => window.open(`https://github.com/ericbeaubrun?tab=repositories`, '_blank')}
                         // whileHover={{ scale: 1.05 }}
                         // whileTap={{ scale: 0.95 }}
                     >

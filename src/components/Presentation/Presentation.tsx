@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef} from "react";
 const profilePicture = "/assets/profile_picture0.png";
-const arrowIcon = "/assets/fleche-vers-le-bas.png";
+const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,8 @@ import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Presentation = () => {
+const
+    Presentation = () => {
     const refH1 = useRef<HTMLHeadingElement>(null);
     const refH2 = useRef<HTMLHeadingElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
@@ -193,7 +194,11 @@ const Presentation = () => {
                         offset={0}
                         className="contact-link"
                     >
-                        <button ref={contactBtnRef} className="contact-me-button">
+                        <button 
+                            ref={contactBtnRef} 
+                            className="contact-me-button"
+                            style={{ "--hover-text": `"${(content as any).contact_button_hover || "Échangeons !"}"` } as React.CSSProperties}
+                        >
                             <span>{(content as any).contact_button || "Contacter"}</span>
                         </button>
                     </Link>
@@ -205,10 +210,10 @@ const Presentation = () => {
             </motion.div>
 
             <Link
-                to={"services"}
+                to={"about"}
                 smooth={true}
                 duration={1000}
-                offset={0}
+                offset={300}
                 className=""
             >
                 <div className="scroll-indicator" ref={scrollIndicatorRef}>

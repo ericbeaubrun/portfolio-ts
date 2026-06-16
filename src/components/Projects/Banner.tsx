@@ -43,9 +43,7 @@ const BannerLetter = ({letter, delay, index}: { letter: string; delay: number; i
                 // translateY: -50,
                 translateY: -30,
                 // transform: "translateY(-10px)",
-
                 // backgroundColor: "rgba(255, 255, 255, 0.11)"
-
             }}
             style={{
                 // backgroundColor: backgroundColor,

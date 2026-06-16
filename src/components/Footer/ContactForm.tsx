@@ -11,8 +11,14 @@ type FormData = {
 };
 
 interface ContactFormProps {
+    title: string;
     btn: string;
     send: string;
+    label_name: string;
+    label_email: string;
+    label_message: string;
+    success_msg: string;
+    error_msg: string;
 }
 
 const ContactForm = () => {
@@ -43,10 +49,10 @@ const ContactForm = () => {
         )
             .then((result) => {
                 console.log(result.text);
-                alert("Message envoyé avec succès !");
+                alert(contactFormContent.success_msg);
             }, (error) => {
                 console.log(error.text);
-                alert("Une erreur s'est produite, veuillez réessayer.");
+                alert(contactFormContent.error_msg);
             });
 
         setFormData({name: '', email: '', message: ''});
@@ -71,7 +77,7 @@ const ContactForm = () => {
                             duration: 0.5,
                         }}
                     >
-                        <label htmlFor="name">Nom</label>
+                        <label htmlFor="name">{contactFormContent.label_name}</label>
                         <input
                             type="text"
                             id="name"
@@ -91,7 +97,7 @@ const ContactForm = () => {
                             duration: 0.5,
                         }}
                     >
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">{contactFormContent.label_email}</label>
                         <input
                             type="email"
                             id="email"
@@ -111,7 +117,7 @@ const ContactForm = () => {
                             duration: 0.5,
                         }}
                     >
-                        <label htmlFor="message">Message</label>
+                        <label htmlFor="message">{contactFormContent.label_message}</label>
                         <textarea
                             id="message"
                             name="message"
@@ -134,7 +140,7 @@ const ContactForm = () => {
                         whileTap={{scale: 0.98}}
                     >
                         {contactFormContent.send}
-                        &nbsp;&nbsp;&#x27A4;&nbsp;
+                        {/*<img src="/assets/fleche-droite.svg" alt="→" style={{marginLeft: '8px', height: '0.8em', verticalAlign: 'middle'}} />*/}
                     </motion.button>
                 </form>
             </motion.div>

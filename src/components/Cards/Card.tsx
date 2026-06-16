@@ -8,9 +8,10 @@ interface CardProps {
     media: string | string[];
     stack: { [key: string]: string };
     githubUrl?: string;
+    demoUrl?: string;
 }
 
-const Card: React.FC<CardProps> = ({title, description, media, stack, githubUrl}) => {
+const Card: React.FC<CardProps> = ({title, description, media, stack, githubUrl, demoUrl}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const mediaWrapperRef = useRef<HTMLDivElement>(null);
     const animationFrameId = useRef<number>();
@@ -114,6 +115,19 @@ const Card: React.FC<CardProps> = ({title, description, media, stack, githubUrl}
                         );
                     })}
                 </div>
+
+                {demoUrl && (
+                    <a
+                        href={demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="demo-button"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <img src="/assets/external-link.svg" alt="External Link" className="button-icon" />
+                        <span className="cta-text">Demo</span>
+                    </a>
+                )}
 
                 {githubUrl && (
                     <a

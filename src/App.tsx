@@ -40,6 +40,8 @@ const App = () => {
         const handleScroll = () => {
             let maxVisibleSectionId = '';
             let maxVisibleArea = 0;
+            const mainElement = document.querySelector('main');
+            const mainRect = mainElement?.getBoundingClientRect();
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
@@ -48,9 +50,14 @@ const App = () => {
 
                 const sectionId = sectionElement?.getAttribute('id') || '';
 
-                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-
-                const visibleArea = Math.max(0, visibleHeight);
+                let visibleArea: number;
+                if (sectionId === 'footer' && mainRect) {
+                    // Le footer est révélé quand le contenu du main remonte
+                    visibleArea = Math.max(0, window.innerHeight - mainRect.bottom);
+                } else {
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    visibleArea = Math.max(0, visibleHeight);
+                }
 
                 if (visibleArea > maxVisibleArea) {
                     maxVisibleArea = visibleArea;
@@ -105,11 +112,9 @@ const App = () => {
     }, []);
 
     const containerRef: MutableRefObject<null> = useRef(null);
-
     return (
         <div ref={containerRef}>
             <header>
-                {/*{!isMobile && (<ScrollProgressCircle lenis={lenis}/>)}*/}
                 <Navbar lenis={lenis}/>
             </header>
 
@@ -128,11 +133,11 @@ const App = () => {
 
             </main>
 
-            <Element name="footer" />
-
-            <footer style={{position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1}}>
-                <Footer/>
-            </footer>
+            <Element name="footer" className="section">
+                <footer style={{position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1}}>
+                    <Footer/>
+                </footer>
+            </Element>
         </div>
     );
 };

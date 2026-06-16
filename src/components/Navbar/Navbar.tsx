@@ -7,6 +7,7 @@ import {useLanguage} from "../Utils/LanguageContext.tsx";
 import LanguageSwitcher from "../Utils/LanguageSwitcher.tsx";
 import {useIsMobile} from "../Utils/MobileContext.tsx";
 import Lenis from "lenis";
+import ScrollProgressCircle from "../ScrollProgressCircle.tsx";
 
 interface NavItem {
     title: string;
@@ -71,11 +72,15 @@ const Navbar = ({lenis}: { lenis: Lenis | null }) => {
                     <>
                         <HamburgerButton isOpen={menuOpen} onClick={toggleMenu}/>
                         {
-                            menuOpen && (
+                            menuOpen ? (
                                 <div className="mobile-language-switcher">
                                     <LanguageSwitcher/>
                                 </div>
-                            )
+                            ) : lenis ? (
+                                <div className="mobile-language-switcher">
+                                    <ScrollProgressCircle lenis={lenis}/>
+                                </div>
+                            ) : null
                         }
                         <AnimatePresence>
                             {menuOpen && (
@@ -93,10 +98,13 @@ const Navbar = ({lenis}: { lenis: Lenis | null }) => {
                     </>
                 ) : (
                     <>
+                        <div className="setting setting-left">
+                            <LanguageSwitcher/>
+                        </div>
                         {renderNavItems()}
-                        {/*<div className="setting">*/}
-                        {/*    <LanguageSwitcher/>*/}
-                        {/*</div>*/}
+                        <div className="setting setting-right">
+                            {lenis && <ScrollProgressCircle lenis={lenis}/>}
+                        </div>
                     </>
                 )}
             </nav>

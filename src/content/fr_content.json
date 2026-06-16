@@ -18,10 +18,10 @@
     }
   ],
   "title": "Eric ADELAIDE-BEAUBRUN",
-  "subtitle": "Développeur Full-Stack (React/Node/Next)",
+  "subtitle": "Étudiant Ingénieur Logiciel & Développement Full-Stack",
   "introduction": {
-    "p1": "Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts. Bienvenue sur mon portfolio. Vous y trouverez mes projets personnels et académiques, développés depuis mes débuts.",
-    "p2": "Je conçois principalement des applications web complètes avec React, Express.js ou Next.js, dans l’objectif de me spécialiser en tant que développeur full stack."
+    "p1": "Bienvenue sur mon portfolio ! Passionné d'informatique et de programmation, je partage ici mes projets marquants, développés à l'université ou sur mon temps libre.",
+    "p2": "De la création de scripts aux logiciels, en passant par la gestion de serveurs et de données, mon ambition est de transformer cette passion  en expertise, en me spécialisant comme Software Engineer / Développeur Full Stack."
   },
   "services": [
     {
@@ -68,103 +68,141 @@
       "notion": "Notion"
     }
   },
+  "about-title": "à propos",
   "projects-title": "projets",
   "projects-more-text": "Vous voulez voir plus de projets ?",
   "projects-more-button": "Voir plus",
   "projects": [
     {
-      "title": "Jeu de Plateau Stratégique Multijoueur",
-      "name": "Conquete",
-      "date": "Janvier 2022",
-      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties\nmultijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques\ndes parties.",
-      "gh": "https://github.com/ericbeaubrun/conquest-game",
-      "demo": "",
+      "title": "Site Web pour Dj URYA",
+      "name": "Dj URYA",
+      "date": "",
+      "desc": "Ce projet web permet aux clients de planifier et réserver une prestation via un formulaire en plusieurs étapes avec envoi de mails automatiques. Elle intègre un CMS sur mesure avec authentification pour gérer la base de données et le suivi des demandes. L'interface administrateur offre un contrôle complet sur les tarifs, les services et le contenu du site.",
+      "gh": "https://github.com/ericbeaubrun/urya",
+      "demo": "https://www.dj-urya.fr/",
       "skills": {
-        "java": "Java",
-        "junit": "JUnit",
-        "ai": "Intelligence Artificielle",
-        "uiux": "Conception UI/UX"
+        "ts": "typescript",
+        "next": "nextjs",
+        "vercel": "vercel",
+        "mongodb": "mongodb"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
       "icon": [
-        "/assets/test2.mp4",
-        "/assets/test3.png"
+        "/assets/projects/urya.png"
       ]
     },
     {
-      "title": "Application Pédagogique pour les Étudiants",
-      "name": "Librairie",
-      "date": "Octobre 2023",
-      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
+      "title": "Jeu de Plateau Stratégique Multijoueur",
+      "name": "Conquete",
+      "date": "",
+      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "py": "Python",
-        "pyqt": "PyQT6",
-        "css": "CSS",
-        "json": "JSON",
-        "uiux": "Conception UI/UX",
-        "security": "Sécurité"
+        "java": "java",
+        "junit": "junit",
+        "ia": "intelligence artificielle",
+        "uiux": "conception ui/ux"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
       "icon": [
         "/assets/projects/conquete4.gif",
         "/assets/projects/conquete2.gif",
+        "/assets/projects/conquete5.gif",
         "/assets/projects/conquete3.gif",
         "/assets/projects/conquete1.gif"
       ]
     },
     {
       "title": "Simulateur de Trafic Aérien",
-      "name": "Aérien",
-      "date": "Janvier 2024",
-      "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
-      "gh": "https://github.com/ericbeaubrun/aerien",
+      "name": "Aerien",
+      "date": "",
+      "desc": "Ce projet de génie logiciel est un simulateur de trafic aérien en temps réel conçu pour modéliser et gérer automatiquement les mouvements d'aéronefs et les opérations aéroportuaires. Il simule des scénarios complexes incluant des vols multiples, des trajectoires de vol en temps réel, la gestion des risques de collision et des événements imprévus tels que les urgences aéronautiques.",
+      "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "",
       "skills": {
-        "java": "Java",
-        "multithreading": "Multithreading",
-        "uiux": "Conception UI/UX"
+        "java": "java",
+        "Multithreading": "multithreading",
+        "uiux": "conception ui/ux"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
       "icon": [
         "/assets/projects/aerien2.gif",
         "/assets/projects/aerien3.gif",
-        "/assets/projects/aerien1.gif"
+        "/assets/projects/aerien1.gif",
+        "/assets/projects/aerien4.gif"
       ]
     },
     {
-      "title": "Simulateur de Trafic Aérien",
-      "name": "Aérien",
-      "date": "Janvier 2024",
-      "desc": "Développement d'un simulateur de trafic aérien en Java, incluant une interface graphique paramétrable en temps réel et utilisant des concepts avancés comme le calcul de trajectoire et l’évitement des collisions (multithreading).",
-      "gh": "https://github.com/ericbeaubrun/aerien",
+      "title": "Système de Suivi de Présence des Étudiants",
+      "name": "Presence",
+      "date": "",
+      "desc": "Ce projet de bases de données et réseaux est un système de suivi automatisé des présences conçu pour modéliser et gérer en temps réel l'assiduité des étudiants au sein d'un établissement. Il simule des scénarios complexes d'identification par badge et de communication réseau via une architecture client-serveur, intégrant la gestion des requêtes SQL et des cas d'erreur en direct.",
+      "gh": "",
       "demo": "",
       "skills": {
-        "java": "Java",
-        "multithreading": "Multithreading",
-        "uiux": "Conception UI/UX"
+        "java": "java",
+        "py": "python",
+        "tcpip": "tcp/ip",
+        "sql": "sql",
+        "postgresql": "postgresql",
+        "securite": "Securité"
       },
       "features": [
-        "Responsive Design",
-        "Dark Mode",
-        "API Integration"
+        ""
       ],
       "icon": [
-        "/assets/test1.gif",
-        "/assets/test2.mp4"
+        "/assets/projects/bdres.png"
+      ]
+    },
+    {
+      "title": "Application Pédagogique pour les Étudiants",
+      "name": "learnpy",
+      "date": "",
+      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
+      "gh": "https://github.com/ericbeaubrun/educational-python-app",
+      "demo": "",
+      "skills": {
+        "py": "python",
+        "pyqt6": "pyqt6",
+        "css": "css",
+        "uiux": "Conception UI/UX",
+        "securite": "Sécurité"
+      },
+      "features": [
+        ""
+      ],
+      "icon": [
+        "/assets/projects/learn_py2.gif",
+        "/assets/projects/learn_py3.gif",
+        "/assets/projects/learn_py1.gif"
+      ]
+    },
+    {
+      "title": "Génerateur de Tournois en Ligne",
+      "name": "Tournois",
+      "date": "",
+      "desc": "Ce projet de développement React est un gestionnaire de tournois instantané conçu pour modéliser et orchestrer efficacement des compétitions entre plusieurs participants. Il intègre des algorithmes de génération automatique d'arbres de tournois, le suivi des scores en temps réel, ainsi que des modules d'importation et d'exportation de données pour sauvegarder et charger des tournois existants en un clic.",
+      "gh": "https://github.com/ericbeaubrun/conquest-game",
+      "demo": "",
+      "skills": {
+        "javascript": "javascript",
+        "react": "react",
+        "vercel": "vercel"
+      },
+      "features": [
+        ""
+      ],
+      "icon": [
+        "/assets/projects/tournament1.png",
+        "/assets/projects/tournament2.png",
+        "/assets/projects/tournament1.png"
       ]
     }
   ],
@@ -188,7 +226,10 @@
       "email": "e.adelaide.beaubrun@gmail.com",
       "tel": "+33 6 43 41 40 79",
       "github": "github.com/ericbeaubrun/",
-      "linkedin": "linkedin.com/in/adelaide-beaubrun"
+      "linkedin": "linkedin.com/in/adelaide-beaubrun",
+      "hover_tel": "Afficher le numéro",
+      "hover_linkedin": "Afficher le profil",
+      "hover_mail": "Envoyer un e-mail"
     },
     {
       "address": "Le Mée-sur-Seine (77350)"
@@ -200,8 +241,15 @@
   "contact-form": {
     "title": "Formulaire de Contact",
     "btn": "Contacter",
-    "send": "Envoyer"
+    "send": "Envoyer",
+    "label_name": "Nom",
+    "label_email": "Email",
+    "label_message": "Message",
+    "success_msg": "Message envoyé avec succès !",
+    "error_msg": "Une erreur s'est produite, veuillez réessayer."
   },
+  "contact_button": "Contacter",
+  "contact_button_hover": "Échangeons !",
   "scrolling-text": "ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/",
   "source-code": "Code Source",
   "see-more": "En savoir plus...",
