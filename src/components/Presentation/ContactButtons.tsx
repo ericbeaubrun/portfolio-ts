@@ -7,9 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ContactButtons = () => {
 
-    const CV_URL = '/cv.pdf';
+    const CV_URL = '';
     const GH_URL = 'https://github.com/ericbeaubrun';
-    const LINKEDIN_URL = 'https://www.linkedin.com/in/eric-adelaide-beaubrun/';
+    const LINKEDIN_URL = 'https://www.linkedin.com/in/adelaide-beaubrun/';
 
     const refBtnLinkedin = useRef<HTMLButtonElement>(null);
     const refBtnGithub = useRef<HTMLButtonElement>(null);

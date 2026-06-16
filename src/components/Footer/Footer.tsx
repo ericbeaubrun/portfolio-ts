@@ -38,11 +38,7 @@ const Footer: React.FC = () => {
     };
 
     useLayoutEffect(() => {
-        const isMobile = window.innerWidth <= 768;
-
         const ctx = gsap.context(() => {
-            if (isMobile) return;
-
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "main",

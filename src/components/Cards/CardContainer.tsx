@@ -73,7 +73,7 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
             // Scrolling band animation
             if (bandRef.current) {
                 gsap.to(bandRef.current.querySelector('.band-content'), {
-                    xPercent: 15,
+                    xPercent: -20, // Déplacement vers la gauche
                     ease: "none",
                     scrollTrigger: {
                         trigger: bandRef.current,
@@ -132,7 +132,7 @@ const CardContainer: React.FC<CardContainerProps> = ({projects}) => {
             <div className="scrolling-band-container">
                 <div className="scrolling-band" ref={bandRef}>
                     <div className="band-content">
-                        {Array(4).fill(words).flat().map((word, i) => (
+                        {Array(10).fill(words).flat().map((word, i) => (
                             <span key={i} className="band-word">{word}</span>
                         ))}
                     </div>

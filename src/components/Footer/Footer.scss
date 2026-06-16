@@ -17,9 +17,8 @@
   overflow: hidden;
 
   @media (max-width: 768px) {
-    overflow: visible;
-    align-items: flex-start;
-    //align-items: center;
+    overflow: hidden;
+    align-items: center;
   }
 }
 

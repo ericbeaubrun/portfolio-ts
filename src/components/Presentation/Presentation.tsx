@@ -19,6 +19,7 @@ const
     const scrollIndicatorRef = useRef<HTMLDivElement>(null);
     const contactBtnRef = useRef<HTMLButtonElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     const {content} = useLanguage();
 
@@ -79,6 +80,14 @@ const
 
 
     useLayoutEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.defaultMuted = true;
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(error => {
+                console.log("Autoplay bloqué par le navigateur :", error);
+            });
+        }
+
         const ctx = gsap.context(() => {
             if (scrollIndicatorRef.current) {
                 gsap.to(scrollIndicatorRef.current, {
@@ -152,6 +161,7 @@ const
     return (
         <section id="presentation">
             <video
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
