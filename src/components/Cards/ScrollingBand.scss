@@ -1,0 +1,67 @@
+@import "../../config.scss";
+
+.scrolling-band-container {
+  transform: translateY(100px);
+  width: 100%;
+  position: relative;
+  margin-top: 100px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.scrolling-band {
+  position: absolute;
+  width: 150vw;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  background-color: black;
+  padding: 60px 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+
+  .band-content {
+    display: flex;
+    white-space: nowrap;
+    gap: 50px;
+    will-change: transform;
+
+    .band-word {
+      font-size: 7rem;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      transition: all 0.3s ease;
+
+      &:nth-child(odd) {
+        -webkit-text-stroke: 1px white;
+        color: transparent;
+      }
+
+      &:hover {
+        color: white;
+        -webkit-text-stroke: 0;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+    width: 200vw;
+    .band-content {
+      .band-word {
+        font-size: 3rem;
+      }
+    }
+  }
+}
