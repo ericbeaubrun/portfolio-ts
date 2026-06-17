@@ -167,7 +167,7 @@ const
                 muted
                 playsInline
                 className="background-video"
-                src="/assets/video.mp4"
+                src="/assets/background.webm"
             >
                 Votre navigateur ne supporte pas la vidéo.
             </video>
