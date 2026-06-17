@@ -196,7 +196,6 @@ const
                         />
                     </motion.div>
 
-
                     <motion.h1 ref={refH1} id="presentation-title" variants={itemVariants}>
                         {presentationContent.title}
                     </motion.h1>
