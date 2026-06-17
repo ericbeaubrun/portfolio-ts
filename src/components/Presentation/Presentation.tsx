@@ -1,5 +1,5 @@
 import {useLayoutEffect, useRef} from "react";
-const profilePicture = "/assets/profile_picture0.png";
+const profilePicture = "/assets/profile_picture.png";
 const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";

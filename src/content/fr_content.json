@@ -191,7 +191,8 @@
         ""
       ],
       "icon": [
-        "/assets/projects/tournament1.png"
+        "/assets/projects/tournament1.png",
+        "/assets/projects/tournament2.png"
       ]
     }
   ],
@@ -239,7 +240,7 @@
   },
   "contact_button": "Contacter",
   "contact_button_hover": "Échangeons !",
-  "scrolling-text": "ux | Technologies | Frameworks | Libraries | Langages | Environnements | Outils | Débogage | Tests | Déploiement | Optimisation | Gestion de contenu | Modélisation | ui/",
+  "scrolling-text": "ux | Développement | Débogage | Tests | Programmation | Déploiement | Optimisation | Design | Gestion de contenu | Modélisation | ui/",
   "source-code": "Code Source",
   "see-more": "En savoir plus...",
   "see-more-gh": "Contacter",
