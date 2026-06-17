@@ -110,11 +110,7 @@
         ""
       ],
       "icon": [
-        "/assets/projects/conquete4.gif",
-        "/assets/projects/conquete2.gif",
-        "/assets/projects/conquete5.gif",
-        "/assets/projects/conquete3.gif",
-        "/assets/projects/conquete1.gif"
+        "/assets/projects/conquete4.gif"
       ]
     },
     {
@@ -133,10 +129,7 @@
         ""
       ],
       "icon": [
-        "/assets/projects/aerien2.gif",
-        "/assets/projects/aerien3.gif",
-        "/assets/projects/aerien1.gif",
-        "/assets/projects/aerien4.gif"
+        "/assets/projects/aerien2.gif"
       ]
     },
     {
@@ -179,9 +172,7 @@
         ""
       ],
       "icon": [
-        "/assets/projects/learn_py2.gif",
-        "/assets/projects/learn_py3.gif",
-        "/assets/projects/learn_py1.gif"
+        "/assets/projects/learn_py2.gif"
       ]
     },
     {
@@ -200,8 +191,6 @@
         ""
       ],
       "icon": [
-        "/assets/projects/tournament1.png",
-        "/assets/projects/tournament2.png",
         "/assets/projects/tournament1.png"
       ]
     }
