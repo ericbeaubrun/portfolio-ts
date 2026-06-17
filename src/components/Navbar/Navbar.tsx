@@ -14,7 +14,12 @@ interface NavItem {
     subtitle: string;
 }
 
-const Navbar = ({lenis}: { lenis: Lenis | null }) => {
+interface NavbarProps {
+    lenis: Lenis | null;
+    activeSection: string;
+}
+
+const Navbar = ({lenis, activeSection}: NavbarProps) => {
 
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -46,6 +51,7 @@ const Navbar = ({lenis}: { lenis: Lenis | null }) => {
         };
 
         return navItems.map(({target, title, subtitle}) => {
+            const isActive = activeSection === target;
             return (
                 <Link
                     key={target}
@@ -55,7 +61,7 @@ const Navbar = ({lenis}: { lenis: Lenis | null }) => {
                     offset={OFFSET}
                     onClick={handleClick}
                 >
-                    <div className="item" data-target={target}>
+                    <div className={`item ${isActive ? 'active' : ''}`} data-target={target}>
                         <div data-text={subtitle} className="linktext">
                             {title}
                         </div>

@@ -77,7 +77,7 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
                         }
                     }}
                 >
-                    <img src="/assets/arrow.png" alt="arrow top"/>
+                    <img src="/assets/arrow.svg" alt="arrow top"/>
                 </motion.div>
             </motion.div>
         </Link>

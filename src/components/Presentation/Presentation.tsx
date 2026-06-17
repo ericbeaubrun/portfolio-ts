@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef} from "react";
 
-const profilePicture = "/assets/profile_picture.png";
+const profilePicture = "/assets/profile_picture.webp";
 const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
@@ -228,7 +228,7 @@ const
                     className=""
                 >
                     <div className="scroll-indicator" ref={scrollIndicatorRef}>
-                        <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>
+                        <img className="scroll- indicator-img" src={arrowIcon} alt="Arrow down"/>
                     </div>
                 </Link>
             </section>

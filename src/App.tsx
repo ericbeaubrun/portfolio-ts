@@ -14,6 +14,8 @@ const App = () => {
 
     const [lenis, setLenis] = useState<Lenis | null>(null);
     const {content} = useLanguage();
+    const [activeSection, setActiveSection] = useState('presentation');
+    const activeSectionRef = useRef('presentation');
 
     useEffect(() => {
         const instance = new Lenis();
@@ -45,9 +47,7 @@ const App = () => {
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-
                 const sectionElement = section.querySelector('section');
-
                 const sectionId = sectionElement?.getAttribute('id') || '';
 
                 let visibleArea: number;
@@ -65,16 +65,9 @@ const App = () => {
                 }
             });
 
-            const navItems = document.querySelectorAll('[data-target]');
-            navItems.forEach(navItem => {
-                navItem.classList.remove('active');
-            });
-
-            if (maxVisibleSectionId) {
-                const navItem = document.querySelector(`[data-target="${maxVisibleSectionId}"]`);
-                if (navItem) {
-                    navItem.classList.add('active');
-                }
+            if (maxVisibleSectionId && maxVisibleSectionId !== activeSectionRef.current) {
+                activeSectionRef.current = maxVisibleSectionId;
+                setActiveSection(maxVisibleSectionId);
             }
         };
 
@@ -115,7 +108,7 @@ const App = () => {
     return (
         <div ref={containerRef}>
             <header>
-                <Navbar lenis={lenis}/>
+                <Navbar lenis={lenis} activeSection={activeSection}/>
             </header>
 
             <main style={{position: 'relative', zIndex: 10, backgroundColor: '#0a0a0a', marginBottom: '200vh'}}>

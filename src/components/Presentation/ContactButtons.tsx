@@ -63,7 +63,7 @@ const ContactButtons = () => {
                 onClick={() => openInTab ? window.open(LINKEDIN_URL) : window.location.href = LINKEDIN_URL}
                 ref={refBtnLinkedin}
                 className="header-contact-button linkedin-btn">
-                <img src={ROOT + "linkedin.png"} alt="Linkedin Icon" className="header-contact-button-icon "/>
+                <img src={ROOT + "linkedin.webp"} alt="Linkedin Icon" className="header-contact-button-icon "/>
                 <span className="presentation-button-text">LinkedIn</span>
             </button>
 
@@ -71,13 +71,13 @@ const ContactButtons = () => {
                 onClick={() => openInTab ? window.open(GH_URL, '_blank') : window.location.href = GH_URL}
                 ref={refBtnGithub}
                 className="header-contact-button github-btn">
-                <img src={ROOT + "github.png"} alt="Github Icon" className="header-contact-button-icon "/>
+                <img src={ROOT + "github.webp"} alt="Github Icon" className="header-contact-button-icon "/>
                 <span className="presentation-button-text">GitHub</span>
             </button>
 
             <button onClick={() => openInTab ? window.open(CV_URL) : window.location.href = CV_URL} ref={refBtnCV}
                     className="header-contact-button cv-btn">
-                <img src={ROOT + "cv.png"} alt="CV Icon" className="header-contact-button-icon "/>
+                <img src={ROOT + "cv.webp"} alt="CV Icon" className="header-contact-button-icon "/>
                 <span className="presentation-button-text">CV</span>
             </button>
 
