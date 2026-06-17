@@ -7,6 +7,7 @@ import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import ContactButtons from "./ContactButtons.tsx";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
+import {useIsMobile} from "../Utils/MobileContext.tsx";
 import {Link} from "react-scroll";
 import {motion} from "framer-motion";
 
@@ -23,6 +24,7 @@ const
         const videoRef = useRef<HTMLVideoElement>(null);
 
         const {content} = useLanguage();
+        const isMobile = useIsMobile();
 
         const presentationContent = (content as {
             title: string,
@@ -168,18 +170,9 @@ const
                     muted
                     playsInline
                     className="background-video"
-                    src="/assets/video.mp4"
+                    src={isMobile ? "/assets/videoLQ.webm" : "/assets/videoHQ.mp4"}
                     poster="/assets/background.png"
                 />
-                {/*<video*/}
-                {/*    ref={videoRef}*/}
-                {/*    src="/assets/background.webm"*/}
-                {/*    autoPlay*/}
-                {/*    muted*/}
-                {/*    loop*/}
-                {/*    playsInline*/}
-                {/*    className="background-video"*/}
-                {/*/>*/}
                 <div className="background-overlay" ref={overlayRef}></div>
                 <motion.div
                     className="area"
