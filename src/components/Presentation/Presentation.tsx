@@ -166,7 +166,6 @@ const
                 loop
                 muted
                 playsInline
-                defaultMuted
                 className="background-video"
                 src="/assets/video.mp4"
             >
