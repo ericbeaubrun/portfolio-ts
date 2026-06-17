@@ -62,7 +62,7 @@
           width: $width;
           height: $height;
           left: $left;
-          opacity: random(5) / 10 + 0.05;
+          opacity: random(5) * 0.1 + 0.05;
 
           @if $i % 3 == 0 {
             background-color: transparent;
@@ -187,6 +187,15 @@
 
         padding-left: 45vw;
 
+        font-size: 3.5rem;
+        font-weight: 700;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        overflow: hidden;
+        z-index: 1;
+        background-color: transparent;
+        transition: all 0.4s ease;
 
         @media (max-width: 1400px) {
           padding-left: 40vw;
@@ -199,16 +208,6 @@
         @media (max-width: 450px) {
           padding-left: 4vw;
         }
-
-        font-size: 3.5rem;
-        font-weight: 700;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        overflow: hidden;
-        z-index: 1;
-        background-color: transparent;
-        transition: all 0.4s ease;
 
         @media (max-width: 1024px) {
           font-size: 2.8rem;
@@ -229,16 +228,17 @@
         .footer-arrow {
           width: 2rem;
           height: 2rem;
-          @media (max-width: 756px) {
-            width: 1rem;
-            height: 1rem;
-          }
           object-fit: contain;
           margin-right: 15px;
           flex-shrink: 0;
           opacity: 1;
           transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
           filter: invert(0);
+
+          @media (max-width: 756px) {
+            width: 1rem;
+            height: 1rem;
+          }
         }
 
         .footer-icon {

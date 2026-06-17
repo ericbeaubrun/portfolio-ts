@@ -138,6 +138,9 @@
         position: absolute;
         width: 64px;
         height: 64px;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+
         @media (max-width: 1024px) {
           width: 32px;
           height: 32px;
@@ -146,8 +149,6 @@
           width: 24px;
           height: 24px;
         }
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
       }
 
 

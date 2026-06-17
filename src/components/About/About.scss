@@ -1,4 +1,4 @@
-﻿@import "../../config.scss";
+@import "../../config.scss";
 
 #about {
   padding: 0 0;
@@ -15,11 +15,12 @@
   min-height: 150vh;
   position: relative;
 
+  z-index: 2;
+
   @media (max-width: 768px) {
     min-height: 100vh;
     padding: 50px 0;
   }
-  z-index: 2;
 
   .about-container {
     width: 100%;
