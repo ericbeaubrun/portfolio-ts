@@ -18,16 +18,18 @@ const ScrollingBand: React.FC<ScrollingBandProps> = ({
         if (!bandRef.current) return;
 
         const ctx = gsap.context(() => {
-            gsap.to(bandRef.current?.querySelector('.band-content'), {
-                xPercent: -4,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: bandRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                }
-            });
+            const target = bandRef.current?.querySelector('.band-content');
+            if (target) {
+                gsap.to(target, {
+                    xPercent: -4, ease: "none",
+                    scrollTrigger: {
+                        trigger: bandRef.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
+                    }
+                });
+            }
         }, bandRef);
 
         return () => ctx.revert();
