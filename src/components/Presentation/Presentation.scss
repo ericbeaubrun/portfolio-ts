@@ -8,6 +8,7 @@
   align-items: center;
   position: relative;
   background-color: #0a0a0a;
+  //background: #fff ;
   overflow: hidden;
 
   .background-video {
@@ -111,10 +112,15 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: grayscale(30%) contrast(1.1);
+        //filter: grayscale(0%);
+        //filter: grayscale(40%);
+        filter: grayscale(50%) contrast(1.25);
+
         transition: filter 0.5s ease;
 
         &:hover {
+          //filter: grayscale(50%) contrast(1.1);
+          //filter: grayscale(50%) contrast(1.25);
           filter: grayscale(0%);
         }
       }

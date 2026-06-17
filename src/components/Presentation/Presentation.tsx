@@ -166,9 +166,10 @@ const
                 loop
                 muted
                 playsInline
+                defaultMuted
                 className="background-video"
+                src="/assets/video.mp4"
             >
-                <source src="/assets/video.mp4" type="video/mp4"/>
                 Votre navigateur ne supporte pas la vidéo.
             </video>
             <div className="background-overlay" ref={overlayRef}></div>
