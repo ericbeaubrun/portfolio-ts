@@ -90,7 +90,8 @@
         ""
       ],
       "icon": [
-        "/assets/projects/urya.mp4"
+        "/assets/projects/urya.mp4",
+        "/assets/projects/urya2.mp4"
       ]
     },
     {
@@ -110,7 +111,8 @@
         ""
       ],
       "icon": [
-        "/assets/projects/conquete.webm"
+        "/assets/projects/conquete.webm",
+        "/assets/projects/conquete2.webm"
       ]
     },
     {
@@ -129,7 +131,8 @@
         ""
       ],
       "icon": [
-        "/assets/projects/aerien.webm"
+        "/assets/projects/aerien.webm",
+        "/assets/projects/aerien2.webm"
       ]
     },
     {
@@ -172,7 +175,8 @@
         ""
       ],
       "icon": [
-        "/assets/projects/learn_py.webm"
+        "/assets/projects/learn_py.webm",
+        "/assets/projects/learn_py2.webm"
       ]
     },
     {

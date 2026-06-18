@@ -228,7 +228,7 @@ const
                     className=""
                 >
                     <div className="scroll-indicator" ref={scrollIndicatorRef}>
-                        <img className="scroll- indicator-img" src={arrowIcon} alt="Arrow down"/>
+                        <img className="scroll-indicator-img" src={arrowIcon} alt="Arrow down"/>
                     </div>
                 </Link>
             </section>
