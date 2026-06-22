@@ -18,7 +18,7 @@
     }
   ],
   "title": "Eric ADELAIDE-BEAUBRUN",
-  "subtitle": "Étudiant Ingénieur Logiciel & Développement Full-Stack",
+  "subtitle": "Étudiant Ingénieur Logiciel & Développeur Full-Stack",
   "introduction": {
     "p1": "Bienvenue sur mon portfolio ! Passionné d'informatique et de programmation, je partage ici mes projets marquants, développés sur mon temps libre ou à l'université.",
     "p2": "De la création de scripts aux logiciels, en passant par la gestion de serveurs et de données, mon ambition est de transformer cette passion en expertise, en me spécialisant comme Software Engineer ou Dev Full Stack."
@@ -249,5 +249,10 @@
   "see-more": "En savoir plus...",
   "see-more-gh": "Contacter",
   "hide": "Cacher",
-  "read-more": "Lire la suite"
+  "read-more": "Lire la suite",
+  "overlay": {
+    "copy": "Copier",
+    "copied": "Copié !",
+    "open": "Ouvrir"
+  }
 }

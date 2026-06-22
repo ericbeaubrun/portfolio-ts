@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {FaCopy, FaTimes, FaCheck, FaExternalLinkAlt} from 'react-icons/fa';
 import './ContactOverlay.scss';
+import {useLanguage} from '../Utils/LanguageContext.tsx';
 
 interface ContactOverlayProps {
     isOpen: boolean;
@@ -13,6 +14,12 @@ interface ContactOverlayProps {
 
 const ContactOverlay: React.FC<ContactOverlayProps> = ({isOpen, onClose, title, value, themeColor = '#000'}) => {
     const [copied, setCopied] = useState(false);
+    const {content} = useLanguage();
+    const overlayTranslation = (content.overlay as { copy: string; copied: string; open: string }) || {
+        copy: 'Copier',
+        copied: 'Copié !',
+        open: 'Ouvrir'
+    };
 
     useEffect(() => {
         if (isOpen) {
@@ -112,7 +119,7 @@ const ContactOverlay: React.FC<ContactOverlayProps> = ({isOpen, onClose, title, 
                                     whileTap={{scale: 0.95}}
                                 >
                                     {copied ? <FaCheck/> : <FaCopy/>}
-                                    <span>{copied ? 'Copié !' : 'Copier'}</span>
+                                    <span>{copied ? overlayTranslation.copied : overlayTranslation.copy}</span>
                                 </motion.button>
 
                                 <motion.a
@@ -127,7 +134,7 @@ const ContactOverlay: React.FC<ContactOverlayProps> = ({isOpen, onClose, title, 
                                     whileTap={{scale: 0.95}}
                                 >
                                     <FaExternalLinkAlt/>
-                                    <span>Ouvrir</span>
+                                    <span>{overlayTranslation.open}</span>
                                 </motion.a>
                             </div>
                         </div>

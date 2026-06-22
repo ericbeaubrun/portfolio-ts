@@ -249,5 +249,10 @@
   "see-more": "Learn more...",
   "see-more-gh": "Contact",
   "hide": "Hide",
-  "read-more": "Read more"
+  "read-more": "Read more",
+  "overlay": {
+    "copy": "Copy",
+    "copied": "Copied!",
+    "open": "Open"
+  }
 }
