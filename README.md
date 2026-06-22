@@ -1,83 +1,113 @@
 # Portfolio - Eric ADELAIDE-BEAUBRUN
 
-Bienvenue sur le dépôt du portfolio d'**Eric ADELAIDE-BEAUBRUN**, Étudiant Ingénieur Logiciel & Développeur Full-Stack (Java/React). 
+Welcome to the portfolio repository of **Eric ADELAIDE-BEAUBRUN**, Software Engineering Student & Full-Stack Developer (Java/React).
 
-Ce portfolio moderne et dynamique a été conçu pour présenter mes projets phares développés sur mon temps libre ou dans le cadre de mes études.
-
----
-
-## Technologies Utilisées
-
-Ce projet repose sur une stack moderne axée sur la performance et l'expérience utilisateur :
-
-- **Framework principal** : [React](https://react.dev/) (v18.3.1) avec [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool** : [Vite](https://vite.dev/) (v8) pour un développement et un build ultra-rapides
-- **Stylisation** : [SASS (SCSS)](https://sass-lang.com/) pour une architecture CSS propre et modulaire
-- **Animations & Expérience utilisateur** :
-  - [Lenis](https://lenis.darkroom.engineering/) pour un défilement fluide (*smooth scrolling*)
-  - [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/) pour des transitions et des micro-animations interactives
-  - [React Scroll](https://github.com/fessonia/react-scroll) pour la navigation ancrée
-- **Formulaire de contact** : [EmailJS](https://www.emailjs.com/) pour la réception directe d'emails depuis le site
-- **Qualité de code** : [ESLint](https://eslint.org/) pour le linting TypeScript/React
+This modern and dynamic portfolio was designed to showcase my flagship projects, developed both during my studies and in my personal time.
 
 ---
 
-## Fonctionnalités Clés
+## Technologies Used
 
-1. **Multilingue (Bilingue FR/EN)** : 
-   - Système de traduction fait maison via un `LanguageContext` réutilisable.
-   - Les textes et données sont séparés du code dans des fichiers JSON (`en_content.json` & `fr_content.json`) pour faciliter la maintenance.
-2. **Défilement Fluide & Mémoire de Scroll** :
-   - Intégration de **Lenis Scroll** pour une sensation de glissement fluide.
-   - Sauvegarde de la position de défilement dans le `sessionStorage` pour conserver la position exacte de l'utilisateur même après un rafraîchissement de la page.
-3. **Parallax Footer Reveal** :
-   - Effet moderne où le pied de page (Footer) est révélé en arrière-plan lorsque l'utilisateur atteint le bas du contenu principal.
-4. **Indicateur de Progression de Défilement** :
-   - Un cercle de progression dessiné en SVG dynamique suit la lecture de l'utilisateur.
-5. **Adaptabilité Mobile** :
-   - Utilisation d'un `MobileContext` personnalisé pour adapter les comportements de défilement et l'UI en temps réel sur les écrans tactiles et mobiles.
+This project is built on a modern technology stack focused on performance and user experience:
+
+* **Main Framework**: React (v18.3.1) with TypeScript
+* **Build Tool**: Vite (v8) for ultra-fast development and production builds
+* **Styling**: SASS (SCSS) for a clean and modular CSS architecture
+* **Animations & User Experience**:
+
+  * Lenis for smooth scrolling
+  * Framer Motion & GSAP for interactive transitions and micro-animations
+  * React Scroll for anchor-based navigation
+* **Contact Form**: EmailJS for direct email delivery from the website
+* **Code Quality**: ESLint for TypeScript and React linting
+
+---
+
+## Key Features
+
+### 1. Multilingual Support (French / English)
+
+* Custom-built translation system using a reusable `LanguageContext`.
+* Content and text are separated from the application logic and stored in JSON files (`en_content.json` and `fr_content.json`) for easier maintenance and scalability.
+
+### 2. Smooth Scrolling & Scroll Position Persistence
+
+* Integration of **Lenis Scroll** for a fluid scrolling experience.
+* Scroll position is saved in `sessionStorage`, allowing users to keep their exact position even after refreshing the page.
+
+### 3. Parallax Footer Reveal
+
+* Modern visual effect where the footer is progressively revealed in the background as the user reaches the bottom of the main content.
+
+### 4. Scroll Progress Indicator
+
+* A dynamic SVG-based circular progress indicator that tracks the user's reading progress throughout the page.
+
+### 5. Mobile Responsiveness
+
+* Uses a custom `MobileContext` to dynamically adapt scrolling behavior and UI interactions across mobile and touch devices.
 
 ---
 
 ## Installation
 
-### 1. Cloner le dépôt
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/ericbeaubrun/portfolio-ts.git
 cd portfolio-ts
 ```
 
-### 2. Installer les dépendances
+### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
-### 3. Configurer les variables d'environnement
-Créez un fichier `.env` à la racine du projet et ajoutez-y vos clés EmailJS :
+### 3. Configure Environment Variables
+
+Create a `.env` file at the root of the project and add your EmailJS credentials:
+
 ```env
-VITE_EMAILJS_SERVICE_ID=votre_service_id
-VITE_EMAILJS_TEMPLATE_ID=votre_template_id
-VITE_EMAILJS_PUBLIC_KEY=votre_cle_publique
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 ---
 
-## Aperçu des Projets Présentés
+## Featured Projects
 
-Le portfolio met en valeur plusieurs réalisations clés :
-- **Dj URYA** : Un site web événementiel complet avec CMS sur mesure sous Next.js et MongoDB.
-- **Conquête** : Un jeu de plateau stratégique écrit en Java incluant une IA personnalisée.
-- **Simulateur de Trafic Aérien** : Un outil de génie logiciel en Java modélisant des flux de vol en temps réel (Multithreading).
-- **Suivi de Présence** : Système client-serveur (Java/Python) d'assiduité universitaire avec base PostgreSQL.
-- **LearnPy** : Une application pédagogique interactive PyQt6 pour enseigner la programmation Python.
-- **Générateur de Tournois** : Une application React pour orchestrer des tournois avec arbres de qualification en temps réel.
+This portfolio highlights several key projects:
+
+### Dj URYA
+
+A complete event management website featuring a custom CMS built with Next.js and MongoDB.
+
+### Conquête
+
+A strategic board game developed in Java, featuring a custom-built AI opponent.
+
+### Air Traffic Simulator
+
+A software engineering project written in Java that models real-time air traffic flows using multithreading.
+
+### Attendance Tracking System
+
+A client-server application (Java/Python) for university attendance management, backed by a PostgreSQL database.
+
+### LearnPy
+
+An interactive educational application built with PyQt6 to teach Python programming concepts.
+
+### Tournament Generator
+
+A React application designed to manage tournaments with real-time bracket generation and progression tracking.
 
 ---
 
 ## Contact
 
-- **Nom** : Eric ADELAIDE-BEAUBRUN
-- **Localisation** : Le Mée-sur-Seine (77350), France
-- **Email** : [e.adelaide.beaubrun@gmail.com](mailto:e.adelaide.beaubrun@gmail.com)
-- **LinkedIn** : [linkedin.com/in/adelaide-beaubrun](https://linkedin.com/in/adelaide-beaubrun)
-- **GitHub** : [github.com/ericbeaubrun](https://github.com/ericbeaubrun)
+* **Location**: Le Mée-sur-Seine (77350), France
+* **Email**: [e.adelaide.beaubrun@gmail.com](mailto:e.adelaide.beaubrun@gmail.com)
+* **LinkedIn**: https://linkedin.com/in/adelaide-beaubrun
