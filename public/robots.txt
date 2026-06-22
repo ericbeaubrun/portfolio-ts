@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ericbeaubrun.github.io/portfolio-ts/sitemap.xml

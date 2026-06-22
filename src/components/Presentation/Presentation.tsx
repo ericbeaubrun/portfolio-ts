@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef} from "react";
 
-const profilePicture = "/assets/profile_picture.webp";
+const profilePicture = "/assets/eric-adelaide-beaubrun.webp";
 const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
@@ -29,6 +29,7 @@ const
         const presentationContent = (content as {
             title: string,
             subtitle: string,
+            profile_picture_alt: string,
             introduction: { p1: string, p2: string }
         });
 
@@ -185,7 +186,7 @@ const
                             ref={imageRef}
                             id="profile-picture"
                             src={profilePicture}
-                            alt="Photos de profil"
+                            alt={presentationContent.profile_picture_alt || "Photo de profil de Eric Adelaide Beaubrun"}
                         />
                     </motion.div>
 
