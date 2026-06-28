@@ -1,6 +1,4 @@
-# Portfolio - Eric ADELAIDE-BEAUBRUN
-
-Welcome to the portfolio repository of **Eric ADELAIDE-BEAUBRUN**, Software Engineering Student & Full-Stack Developer (Java/React).
+# Portfolio
 
 This modern and dynamic portfolio was designed to showcase my projects, developed both during my studies and in my personal time.
 
