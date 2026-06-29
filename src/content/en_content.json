@@ -75,7 +75,7 @@
   "projects-more-button": "See more",
   "projects": [
     {
-      "title": "Website for Dj URYA",
+      "title": "DJ URYA Booking Website",
       "name": "Dj URYA",
       "date": "",
       "desc": "This project consists of developing and updating the showcase and commercial website dj-urya.fr to allow clients to directly book musical performances online. It integrates a synchronized availability calendar with automated email confirmation via Resend, as well as a secure admin space and a custom CMS for dynamic content and database management.",
@@ -105,15 +105,14 @@
       "title": "Multiplayer Strategic Board Game",
       "name": "Conquete",
       "date": "",
-      "desc": "Creation of a strategic board game in Java, featuring an AI for local multiplayer games, save management, and the generation of statistical match charts.",
+      "desc": "Creation of a strategic board game in Java, featuring a bot for local multiplayer games, save management, and the generation of statistical match charts.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
         "java": "Java",
         "junit": "JUnit",
         "swing": "Java Swing",
-        "jfreechart": "jFreeChart",
-        "ia": "Artificial Intelligence"
+        "jfreechart": "jFreeChart"
       },
       "features": [
         "Artificial Intelligence for local matches",
@@ -162,10 +161,9 @@
         "gradle": "Gradle",
         "postgresql": "PostgreSQL",
         "jpa": "Spring Data JPA",
-        "flyway": "Flyway",
         "docker": "Docker",
         "python": "Python",
-        "nfc": "NFC (ACR122U)"
+        "nfc": "NFC"
       },
       "features": [
         "Automated attendance tracking via NFC smart cards",

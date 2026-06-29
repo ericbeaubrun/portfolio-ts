@@ -75,7 +75,7 @@
   "projects-more-button": "Voir plus",
   "projects": [
     {
-      "title": "Site Web pour Dj URYA",
+      "title": "Site de Réservation de Prestations pour DJ URYA",
       "name": "Dj URYA",
       "date": "",
       "desc": "Ce projet consiste à développer et mettre à jour le site vitrine et marchand dj-urya.fr afin de permettre aux clients de réserver directement des prestations musicales en ligne. Il intègre un calendrier de disponibilités synchronisé avec confirmation automatisée par e-mail via Resend, ainsi qu'un espace administrateur sécurisé et un CMS personnalisé pour la gestion dynamique des contenus et de la base de données.",
@@ -105,15 +105,14 @@
       "title": "Jeu de Plateau Stratégique Multijoueur",
       "name": "Conquete",
       "date": "",
-      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une intelligence artificielle pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
+      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant un bot pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
         "java": "Java",
         "junit": "JUnit",
         "swing": "Java Swing",
-        "jfreechart": "jFreeChart",
-        "ia": "Intelligence Artificielle"
+        "jfreechart": "jFreeChart"
       },
       "features": [
         "Intelligence artificielle pour parties locales",
@@ -163,10 +162,9 @@
         "gradle": "Gradle",
         "postgresql": "PostgreSQL",
         "jpa": "Spring Data JPA",
-        "flyway": "Flyway",
         "docker": "Docker",
         "python": "Python",
-        "nfc": "NFC (ACR122U)"
+        "nfc": "NFC"
       },
       "features": [
         "Vérification automatisée des présences par cartes à puce NFC",
