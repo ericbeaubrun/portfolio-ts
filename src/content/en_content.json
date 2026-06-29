@@ -78,17 +78,23 @@
       "title": "Website for Dj URYA",
       "name": "Dj URYA",
       "date": "",
-      "desc": "This web project allows clients to plan and book a service via a multi-step form with automatic email sending. It integrates a custom CMS with authentication to manage the database and track requests. The admin interface offers complete control over rates, services, and site content.",
+      "desc": "This project consists of developing and updating the showcase and commercial website dj-urya.fr to allow clients to directly book musical performances online. It integrates a synchronized availability calendar with automated email confirmation via Resend, as well as a secure admin space and a custom CMS for dynamic content and database management.",
       "gh": "https://github.com/ericbeaubrun/urya",
       "demo": "https://www.dj-urya.fr/",
       "skills": {
-        "ts": "typescript",
-        "next": "nextjs",
-        "vercel": "vercel",
-        "mongodb": "mongodb"
+        "ts": "TypeScript",
+        "next": "Next.js",
+        "vercel": "Vercel",
+        "resend": "Resend",
+        "mongodb": "MongoDB",
+        "nosql": "NoSQL"
       },
       "features": [
-        ""
+        "Online booking for musical performances",
+        "Synchronized availability calendar",
+        "Automated email confirmation via Resend",
+        "Secure admin area and custom CMS",
+        "Dynamic content and database management"
       ],
       "icon": [
         "/assets/projects/urya.mp4",
@@ -99,17 +105,21 @@
       "title": "Multiplayer Strategic Board Game",
       "name": "Conquete",
       "date": "",
-      "desc": "Creation of a strategic board game in Java, integrating an AI for local multiplayer games, save management, and generation of statistical graphs for the games.",
+      "desc": "Creation of a strategic board game in Java, featuring an AI for local multiplayer games, save management, and the generation of statistical match charts.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "java": "java",
-        "junit": "junit",
-        "ia": "artificial intelligence",
-        "uiux": "ui/ux conception"
+        "java": "Java",
+        "junit": "JUnit",
+        "swing": "Java Swing",
+        "jfreechart": "jFreeChart",
+        "ia": "Artificial Intelligence"
       },
       "features": [
-        ""
+        "Artificial Intelligence for local matches",
+        "Local multiplayer mode",
+        "Save game management and loading",
+        "Statistical match charts generation"
       ],
       "icon": [
         "/assets/projects/conquete.webm",
@@ -120,39 +130,48 @@
       "title": "Air Traffic Simulator",
       "name": "Aerien",
       "date": "",
-      "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unforeseen events such as aviation emergencies.",
+      "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unexpected events such as aviation emergencies.",
       "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "",
       "skills": {
-        "java": "java",
-        "Multithreading": "multithreading",
-        "uiux": "ui/ux conception"
+        "java": "Java",
+        "multithreading": "Multithreading"
       },
       "features": [
-        ""
+        "Real-time simulation of aircraft movements",
+        "Flight path and airport operations modeling",
+        "Automated collision risk management",
+        "Aviation emergency and unexpected event handling"
       ],
       "icon": [
         "/assets/projects/aerien.webm",
-        "/assets/projects/aerien.webm2"
+        "/assets/projects/aerien2.webm"
       ]
     },
     {
       "title": "Student Attendance Tracking System",
       "name": "Presence",
       "date": "",
-      "desc": "This database and networking project is an automated attendance tracking system designed to model and manage student attendance in real-time within an institution. It simulates complex scenarios of badge identification and network communication via a client-server architecture, integrating SQL query management and live error cases.",
+      "desc": "This project aims to design an automated attendance verification and management system using NFC smart cards for students or employees. It connects a Python hardware client reading badges via an ACR122U reader, a secure Spring Boot backend server validating schedules and preventing duplicates, and an admin web interface to manage history and attendance data.",
       "gh": "",
       "demo": "",
       "skills": {
-        "java": "java",
-        "py": "python",
-        "tcpip": "tcp/ip",
-        "sql": "sql",
-        "postgresql": "postgresql",
-        "securite": "Security"
+        "java": "Java",
+        "springboot": "Spring Boot",
+        "security": "Spring Security",
+        "gradle": "Gradle",
+        "postgresql": "PostgreSQL",
+        "jpa": "Spring Data JPA",
+        "flyway": "Flyway",
+        "docker": "Docker",
+        "python": "Python",
+        "nfc": "NFC (ACR122U)"
       },
       "features": [
-        ""
+        "Automated attendance tracking via NFC smart cards",
+        "Python hardware client for badge scanning",
+        "Secure Spring Boot backend preventing duplicate entries",
+        "Web admin interface for history and logs management"
       ],
       "icon": [
         "/assets/projects/bdres.png"
@@ -162,18 +181,19 @@
       "title": "Educational Application for Students",
       "name": "learnpy",
       "date": "",
-      "desc": "Development of an interactive Python application to teach programming to students. The application includes a code editor, real-time feedback generation, and storage of student statistics.",
+      "desc": "Development of an interactive Python application to teach programming to students. The application includes a custom code editor, real-time feedback generation, and student statistics storage.",
       "gh": "https://github.com/ericbeaubrun/educational-python-app",
       "demo": "",
       "skills": {
-        "py": "python",
-        "pyqt6": "pyqt6",
-        "css": "css",
-        "uiux": "UI/UX conception",
-        "securite": "Security"
+        "py": "Python",
+        "pyqt6": "PyQt6",
+        "css": "CSS",
+        "uiux": "UI/UX Design"
       },
       "features": [
-        ""
+        "Custom code editor",
+        "Real-time corrective feedback generation",
+        "Student progress and statistics storage"
       ],
       "icon": [
         "/assets/projects/learn_py.webm",
@@ -184,23 +204,29 @@
       "title": "Online Tournament Generator",
       "name": "Tournois",
       "date": "",
-      "desc": "This React development project is an instant tournament manager designed to efficiently model and orchestrate competitions between multiple participants. It integrates automatic tournament tree generation algorithms, real-time score tracking, and data import/export modules to save and load existing tournaments in one click.",
+      "desc": "This project consists of developing a full-stack instant tournament management application capable of modeling competitions. It combines a React frontend in JavaScript for real-time score display and bracket generation with a secure REST API under Node.js/Express that handles user authentication, the favorites system, and data modification permissions.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "javascript": "javascript",
-        "react": "react",
-        "vercel": "vercel"
+        "javascript": "JavaScript",
+        "react": "React",
+        "node": "Node.js",
+        "express": "Express.js",
+        "mongodb": "MongoDB",
+        "docker": "Docker"
       },
       "features": [
-        ""
+        "Automatic and dynamic tournament bracket generation",
+        "Real-time score display and tracking",
+        "Secure REST API with authentication and role-based permissions",
+        "Competition bookmarking and favorites system"
       ],
       "icon": [
         "/assets/projects/tournament1.png",
         "/assets/projects/tournament2.png"
       ]
     }
-  ],
+  ]
   "stats": [
     {
       "num": 3,

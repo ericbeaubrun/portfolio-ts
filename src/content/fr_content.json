@@ -78,17 +78,23 @@
       "title": "Site Web pour Dj URYA",
       "name": "Dj URYA",
       "date": "",
-      "desc": "Ce projet web permet aux clients de planifier et réserver une prestation via un formulaire en plusieurs étapes avec envoi de mails automatiques. Elle intègre un CMS sur mesure avec authentification pour gérer la base de données et le suivi des demandes. L'interface administrateur offre un contrôle complet sur les tarifs, les services et le contenu du site.",
+      "desc": "Ce projet consiste à développer et mettre à jour le site vitrine et marchand dj-urya.fr afin de permettre aux clients de réserver directement des prestations musicales en ligne. Il intègre un calendrier de disponibilités synchronisé avec confirmation automatisée par e-mail via Resend, ainsi qu'un espace administrateur sécurisé et un CMS personnalisé pour la gestion dynamique des contenus et de la base de données.",
       "gh": "https://github.com/ericbeaubrun/urya",
       "demo": "https://www.dj-urya.fr/",
       "skills": {
-        "ts": "typescript",
-        "next": "nextjs",
-        "vercel": "vercel",
-        "mongodb": "mongodb"
+        "ts": "TypeScript",
+        "next": "Next.js",
+        "vercel": "Vercel",
+        "resend": "Resend",
+        "mongodb": "MongoDB",
+        "nosql": "NoSQL"
       },
       "features": [
-        ""
+        "Réservation de prestations musicales en ligne",
+        "Calendrier de disponibilités synchronisé",
+        "Confirmation automatisée par e-mail via Resend",
+        "Espace administrateur sécurisé et CMS personnalisé",
+        "Gestion dynamique des contenus et de la base de données"
       ],
       "icon": [
         "/assets/projects/urya.mp4",
@@ -99,17 +105,21 @@
       "title": "Jeu de Plateau Stratégique Multijoueur",
       "name": "Conquete",
       "date": "",
-      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une IA pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
+      "desc": "Création d'un jeu de plateau stratégique en Java, intégrant une intelligence artificielle pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "java": "java",
-        "junit": "junit",
-        "ia": "intelligence artificielle",
-        "uiux": "conception ui/ux"
+        "java": "Java",
+        "junit": "JUnit",
+        "swing": "Java Swing",
+        "jfreechart": "jFreeChart",
+        "ia": "Intelligence Artificielle"
       },
       "features": [
-        ""
+        "Intelligence artificielle pour parties locales",
+        "Mode multijoueur local",
+        "Gestion et chargement des sauvegardes",
+        "Génération de graphiques statistiques des parties"
       ],
       "icon": [
         "/assets/projects/conquete.webm",
@@ -124,12 +134,15 @@
       "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "",
       "skills": {
-        "java": "java",
-        "Multithreading": "multithreading",
-        "uiux": "conception ui/ux"
+        "java": "Java",
+        "multithreading": "Multithreading",
+        "uiux": "Conception UI/UX"
       },
       "features": [
-        ""
+        "Simulation en temps réel des mouvements d'aéronefs",
+        "Modélisation des trajectoires de vol et opérations aéroportuaires",
+        "Gestion automatisée des risques de collision",
+        "Gestion d'événements imprévus et urgences aéronautiques"
       ],
       "icon": [
         "/assets/projects/aerien.webm",
@@ -140,19 +153,26 @@
       "title": "Système de Suivi de Présence des Étudiants",
       "name": "Presence",
       "date": "",
-      "desc": "Ce projet de bases de données et réseaux est un système de suivi automatisé des présences conçu pour modéliser et gérer en temps réel l'assiduité des étudiants au sein d'un établissement. Il simule des scénarios complexes d'identification par badge et de communication réseau via une architecture client-serveur, intégrant la gestion des requêtes SQL et des cas d'erreur en direct.",
+      "desc": "Ce projet vise à concevoir un système automatisé de gestion et de vérification des présences par cartes à puce NFC pour les étudiants ou les employés. Il articule un client matériel Python lisant les badges via un lecteur ACR122U, un serveur backend Spring Boot sécurisé qui valide les horaires et évite les doublons, ainsi qu'une interface web d'administration permettant de gérer l'historique et les données de présence.",
       "gh": "",
       "demo": "",
       "skills": {
-        "java": "java",
-        "py": "python",
-        "tcpip": "tcp/ip",
-        "sql": "sql",
-        "postgresql": "postgresql",
-        "securite": "Securité"
+        "java": "Java",
+        "springboot": "Spring Boot",
+        "security": "Spring Security",
+        "gradle": "Gradle",
+        "postgresql": "PostgreSQL",
+        "jpa": "Spring Data JPA",
+        "flyway": "Flyway",
+        "docker": "Docker",
+        "python": "Python",
+        "nfc": "NFC (ACR122U)"
       },
       "features": [
-        ""
+        "Vérification automatisée des présences par cartes à puce NFC",
+        "Client matériel Python pour la lecture de badges",
+        "Backend Spring Boot sécurisé évitant les doublons",
+        "Interface web d'administration pour la gestion de l'historique"
       ],
       "icon": [
         "/assets/projects/bdres.png"
@@ -162,18 +182,18 @@
       "title": "Application Pédagogique pour les Étudiants",
       "name": "learnpy",
       "date": "",
-      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
+      "desc": "Développement d'une application interactive en Python pour enseigner la programmation aux étudiants. L'application inclut un éditeur de code personnalisé, la génération de feedbacks en temps réel, et le stockage des statistiques des étudiants.",
       "gh": "https://github.com/ericbeaubrun/educational-python-app",
       "demo": "",
       "skills": {
-        "py": "python",
-        "pyqt6": "pyqt6",
-        "css": "css",
-        "uiux": "Conception UI/UX",
-        "securite": "Sécurité"
+        "py": "Python",
+        "pyqt6": "PyQt6",
+        "css": "CSS"
       },
       "features": [
-        ""
+        "Éditeur de code personnalisé",
+        "Génération de feedbacks correctifs en temps réel",
+        "Suivi et stockage des statistiques de progression des étudiants"
       ],
       "icon": [
         "/assets/projects/learn_py.webm",
@@ -181,19 +201,25 @@
       ]
     },
     {
-      "title": "Génerateur de Tournois en Ligne",
+      "title": "Générateur de Tournois en Ligne",
       "name": "Tournois",
       "date": "",
-      "desc": "Ce projet de développement React est un gestionnaire de tournois instantané conçu pour modéliser et orchestrer efficacement des compétitions entre plusieurs participants. Il intègre des algorithmes de génération automatique d'arbres de tournois, le suivi des scores en temps réel, ainsi que des modules d'importation et d'exportation de données pour sauvegarder et charger des tournois existants en un clic.",
+      "desc": "Ce projet consiste à développer une application full-stack de gestion instantanée de tournois, capable de modéliser des compétitions. Elle combine un frontend React en JavaScript pour l'affichage en temps réel des scores et la génération d'arbres, à une API REST sécurisée sous Node.js/Express qui gère l'authentification des utilisateurs, le système de favoris et les permissions de modification des données.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
       "demo": "",
       "skills": {
-        "javascript": "javascript",
-        "react": "react",
-        "vercel": "vercel"
+        "javascript": "JavaScript",
+        "react": "React",
+        "node": "Node.js",
+        "express": "Express.js",
+        "mongodb": "MongoDB",
+        "docker": "Docker"
       },
       "features": [
-        ""
+        "Génération automatique et dynamique d'arbres de tournois",
+        "Affichage et suivi des scores en temps réel",
+        "API REST sécurisée avec authentification et gestion des permissions",
+        "Système de mise en favoris des compétitions"
       ],
       "icon": [
         "/assets/projects/tournament1.png",
