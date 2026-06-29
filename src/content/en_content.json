@@ -153,7 +153,7 @@
       "name": "Presence",
       "date": "",
       "desc": "This project aims to design an automated attendance verification and management system using NFC smart cards for students or employees. It connects a Python hardware client reading badges via an ACR122U reader, a secure Spring Boot backend server validating schedules and preventing duplicates, and an admin web interface to manage history and attendance data.",
-      "gh": "",
+      "gh": "https://github.com/ericbeaubrun/presence-system",
       "demo": "",
       "skills": {
         "java": "Java",
@@ -205,7 +205,7 @@
       "name": "Tournois",
       "date": "",
       "desc": "This project consists of developing a full-stack instant tournament management application capable of modeling competitions. It combines a React frontend in JavaScript for real-time score display and bracket generation with a secure REST API under Node.js/Express that handles user authentication, the favorites system, and data modification permissions.",
-      "gh": "https://github.com/ericbeaubrun/conquest-game",
+      "gh": "https://github.com/ericbeaubrun/tournament-generator-server",
       "demo": "",
       "skills": {
         "javascript": "JavaScript",
@@ -226,7 +226,7 @@
         "/assets/projects/tournament2.png"
       ]
     }
-  ]
+  ],
   "stats": [
     {
       "num": 3,

@@ -154,7 +154,7 @@
       "name": "Presence",
       "date": "",
       "desc": "Ce projet vise à concevoir un système automatisé de gestion et de vérification des présences par cartes à puce NFC pour les étudiants ou les employés. Il articule un client matériel Python lisant les badges via un lecteur ACR122U, un serveur backend Spring Boot sécurisé qui valide les horaires et évite les doublons, ainsi qu'une interface web d'administration permettant de gérer l'historique et les données de présence.",
-      "gh": "",
+      "gh": "https://github.com/ericbeaubrun/presence-system",
       "demo": "",
       "skills": {
         "java": "Java",
@@ -205,7 +205,7 @@
       "name": "Tournois",
       "date": "",
       "desc": "Ce projet consiste à développer une application full-stack de gestion instantanée de tournois, capable de modéliser des compétitions. Elle combine un frontend React en JavaScript pour l'affichage en temps réel des scores et la génération d'arbres, à une API REST sécurisée sous Node.js/Express qui gère l'authentification des utilisateurs, le système de favoris et les permissions de modification des données.",
-      "gh": "https://github.com/ericbeaubrun/conquest-game",
+      "gh": "https://github.com/ericbeaubrun/tournament-generator-server",
       "demo": "",
       "skills": {
         "javascript": "JavaScript",
