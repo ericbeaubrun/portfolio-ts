@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef} from "react";
 
-const profilePicture = "/assets/eric-adelaide-beaubrun.webp";
+const profilePicture = "/assets/eric-adelaide-beaubrun.png";
 const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
@@ -9,6 +9,7 @@ import ContactButtons from "./ContactButtons.tsx";
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import {useIsMobile} from "../Utils/MobileContext.tsx";
 import {Link} from "react-scroll";
+
 import {motion} from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);

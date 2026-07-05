@@ -42,32 +42,31 @@
     }
   ],
   "skills": {
-    "Languages": {
-      "ts": "Typescript",
-      "java": "Java",
-      "py": "Python"
-    },
-    "Front-End": {
-      "react": "React",
-      "next": "Next.js"
-    },
-    "Back-End": {
-      "nodejs": "Node.js",
-      "express": "Express.js"
-    },
-    "Databases": {
-      "postgres": "PostgreSQL",
-      "mysql": "MySQL",
-      "mongodb": "MongoDB"
-    },
-    "Design": {
-      "ps": "Photoshop",
-      "figma": "Figma"
-    },
-    "Other Tools": {
-      "git": "Git",
-      "notion": "Notion"
-    }
+    "title": "Skills",
+    "year": "yr",
+    "years": "yrs",
+    "categories": [
+      {
+        "name": "Front-End",
+        "skills": [
+          { "icon": "ts", "name": "TypeScript", "years": 2 },
+          { "icon": "js", "name": "JavaScript", "years": 3 },
+          { "icon": "react", "name": "React", "years": 2 },
+          { "icon": "nextjs", "name": "Next.js", "years": 1 }
+        ]
+      },
+      {
+        "name": "Back-End",
+        "skills": [
+          { "icon": "java", "name": "Java", "years": 3 },
+          { "icon": "py", "name": "Python", "years": 3 },
+          { "icon": "spring", "name": "Spring", "years": 1 },
+          { "icon": "nodejs", "name": "Node.js", "years": 2 },
+          { "icon": "express", "name": "Express", "years": 2 },
+          { "icon": "docker", "name": "Docker", "years": 1 }
+        ]
+      }
+    ]
   },
   "about-title": "about me",
   "projects-title": "projects",

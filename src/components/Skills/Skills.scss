@@ -1,0 +1,109 @@
+@import "../../config.scss";
+
+.skills {
+  width: 100%;
+  margin-top: 25vh;
+  color: $text_color_dark;
+
+  .skills-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 45px;
+    text-transform: capitalize;
+  }
+
+  .skills-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  .skills-category-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 22px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 16px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: $BORDER_RADIUS_DEFAULT;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background-color: rgb(255 255 255 / 0.08);
+      border-color: rgb(222 222 222 / 0.4);
+    }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .skill-name {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .skill-years {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 55px;
+
+    .skills-title {
+      font-size: 1.6rem;
+      margin-bottom: 32px;
+    }
+
+    .skills-categories {
+      gap: 32px;
+    }
+
+    .skills-category-title {
+      font-size: 1.2rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+      gap: 14px;
+    }
+
+    .skill-item {
+      padding: 18px 12px;
+      gap: 8px;
+
+      .skill-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .skill-name {
+        font-size: 0.9rem;
+      }
+
+      .skill-years {
+        font-size: 0.78rem;
+      }
+    }
+  }
+}

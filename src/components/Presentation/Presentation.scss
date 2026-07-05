@@ -105,7 +105,7 @@
       }
 
       #profile-picture {
-        border-radius: 4px;
+        border-radius: 6px;
         position: relative;
         z-index: 1;
         width: 100%;
@@ -114,14 +114,14 @@
         display: block;
         //filter: grayscale(0%);
         //filter: grayscale(40%);
-        filter: grayscale(50%) contrast(1.25);
+        filter: grayscale(65%) contrast(1.65);
 
         transition: filter 0.5s ease;
 
         &:hover {
           //filter: grayscale(50%) contrast(1.1);
           //filter: grayscale(50%) contrast(1.25);
-          filter: grayscale(0%);
+          filter: grayscale(35%) contrast(1.4);
         }
       }
     }

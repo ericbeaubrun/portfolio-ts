@@ -1,5 +1,6 @@
 ﻿import React, { useLayoutEffect, useRef } from 'react';
 import Banner from '../Projects/Banner.tsx';
+import Skills from '../Skills/Skills.tsx';
 import './About.scss';
 import { useLanguage } from "../Utils/LanguageContext.tsx";
 import gsap from 'gsap';
@@ -51,6 +52,7 @@ const About: React.FC = () => {
                     <p>{splitText(presentationContent.introduction.p1)}</p>
                     <p>{splitText(presentationContent.introduction.p2)}</p>
                 </div>
+                <Skills />
             </div>
         </section>
     );
