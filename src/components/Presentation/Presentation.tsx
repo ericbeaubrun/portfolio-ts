@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef} from "react";
 
-const profilePicture = "/assets/eric-adelaide-beaubrun.png";
+const profilePicture = "/assets/eric-adelaide-beaubrun.webp";
 const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
@@ -24,7 +24,7 @@ const
         const overlayRef = useRef<HTMLDivElement>(null);
         const videoRef = useRef<HTMLVideoElement>(null);
 
-        const {content} = useLanguage();
+        const {content, language, toggleLanguage} = useLanguage();
         const isMobile = useIsMobile();
 
         const presentationContent = (content as {
@@ -189,6 +189,20 @@ const
                             src={profilePicture}
                             alt={presentationContent.profile_picture_alt || "Photo de profil de Eric Adelaide Beaubrun"}
                         />
+                        <button
+                            type="button"
+                            className="flag-switch"
+                            onClick={toggleLanguage}
+                            aria-label={language === "fr" ? "Passer en anglais" : "Switch to French"}
+                            title={language === "fr" ? "Passer en anglais" : "Switch to French"}
+                        >
+                            <img
+                                className="flag-switch-img"
+                                src={`https://flagcdn.com/w160/${language === "fr" ? "fr" : "gb"}.png`}
+                                alt={language === "fr" ? "Drapeau français" : "United Kingdom flag"}
+                            />
+                            <span className="flag-switch-label">{language.toUpperCase()}</span>
+                        </button>
                     </motion.div>
 
                     <motion.h1 ref={refH1} id="presentation-title" variants={itemVariants}>

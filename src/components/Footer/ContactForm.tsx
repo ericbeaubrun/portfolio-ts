@@ -19,6 +19,7 @@ interface ContactFormProps {
     label_message: string;
     success_msg: string;
     error_msg: string;
+    rgpd: string;
 }
 
 const ContactForm = () => {
@@ -142,6 +143,18 @@ const ContactForm = () => {
                         {contactFormContent.send}
                         {/*<img src="/assets/fleche-droite.svg" alt="→" style={{marginLeft: '8px', height: '0.8em', verticalAlign: 'middle'}} />*/}
                     </motion.button>
+                    <motion.p
+                        className="rgpd-notice"
+                        initial={{opacity: 0}}
+                        whileInView={{opacity: 1}}
+                        viewport={{once: true}}
+                        transition={{
+                            delay: 0.5,
+                            duration: 0.5,
+                        }}
+                    >
+                        {contactFormContent.rgpd}
+                    </motion.p>
                 </form>
             </motion.div>
         </div>

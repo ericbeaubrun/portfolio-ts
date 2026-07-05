@@ -129,6 +129,19 @@
           align-self: center;
         }
       }
+
+      .rgpd-notice {
+        margin: 18px 0 0;
+        color: #999;
+        font-size: 0.78rem;
+        line-height: 1.4;
+        letter-spacing: 0.02em;
+
+        @media (max-width: 768px) {
+          text-align: center;
+          font-size: 0.75rem;
+        }
+      }
     }
   }
 }

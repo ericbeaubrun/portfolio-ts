@@ -264,7 +264,8 @@
     "label_email": "Email",
     "label_message": "Message",
     "success_msg": "Message sent successfully!",
-    "error_msg": "An error occurred, please try again."
+    "error_msg": "An error occurred, please try again.",
+    "rgpd": "This form is only used to contact me. Your data is neither stored nor used for any other purpose."
   },
   "contact_button": "Contact Me",
   "contact_button_hover": "Let's talk!",

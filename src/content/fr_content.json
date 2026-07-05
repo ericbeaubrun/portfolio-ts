@@ -264,7 +264,8 @@
     "label_email": "Email",
     "label_message": "Message",
     "success_msg": "Message envoyé avec succès !",
-    "error_msg": "Une erreur s'est produite, veuillez réessayer."
+    "error_msg": "Une erreur s'est produite, veuillez réessayer.",
+    "rgpd": "Ce formulaire sert uniquement à me contacter. Vos données ne sont ni conservées ni utilisées à d'autres fins."
   },
   "contact_button": "Contacter",
   "contact_button_hover": "Échangeons !",

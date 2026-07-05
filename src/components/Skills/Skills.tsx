@@ -21,49 +21,52 @@ interface SkillsContent {
     categories: SkillCategory[];
 }
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.08 },
-    },
-};
-
 const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+    hidden: { opacity: 0, y: 24, scale: 0.9 },
+    visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: "easeOut" },
-    },
+        scale: 1,
+        transition: { duration: 0.45, ease: "easeOut", delay: i * 0.09 },
+    }),
 };
 
 const Skills: React.FC = () => {
     const { content } = useLanguage();
     const skillsContent = (content as { skills: SkillsContent }).skills;
 
+    // Running index shared across every category so the icons cascade in one
+    // continuous sequence instead of each category appearing all at once.
+    let order = 0;
+
     return (
         <div className="skills">
             {/*<h3 className="skills-title">{skillsContent.title}</h3>*/}
 
-            <div className="skills-categories">
+            <motion.div
+                className="skills-categories"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
+            >
                 {skillsContent.categories.map((category) => (
                     <div key={category.name} className="skills-category">
-                        <h4 className="skills-category-title">{category.name}</h4>
-
-                        <motion.div
-                            className="skills-grid"
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.2 }}
+                        <motion.h4
+                            className="skills-category-title"
+                            variants={itemVariants}
+                            custom={order++}
                         >
+                            {category.name}
+                        </motion.h4>
+
+                        <div className="skills-grid">
                             {category.skills.map((skill) => (
                                 <motion.div
                                     key={skill.icon}
                                     className="skill-item"
                                     variants={itemVariants}
-                                    whileHover={{ y: -6 }}
+                                    custom={order++}
+                                    whileHover={{ y: -6, scale: 1.03 }}
                                 >
                                     <img
                                         className="skill-icon"
@@ -77,10 +80,10 @@ const Skills: React.FC = () => {
                                     </span>
                                 </motion.div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
                 ))}
-            </div>
+            </motion.div>
         </div>
     );
 };
