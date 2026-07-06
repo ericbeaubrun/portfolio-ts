@@ -14,12 +14,6 @@
   position: relative;
 
   z-index: 2;
-
-  @media (max-width: 768px) {
-    min-height: 100vh;
-    padding: 50px 0;
-  }
-
   padding: 25vh 0 0;
 
   .about-container {
@@ -79,5 +73,13 @@
         }
       }
     }
+  }
+}
+
+
+@media (max-width: 768px) {
+  #about {
+    min-height: 100vh;
+    padding: 50px 0;
   }
 }

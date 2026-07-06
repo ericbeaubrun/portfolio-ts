@@ -2,7 +2,6 @@
 
 .skills {
   width: 100%;
-  margin-top: 25vh;
   margin-top: 100vh;
   color: $text_color_dark;
 
@@ -69,7 +68,7 @@
   }
 
   @media (max-width: 768px) {
-    margin-top: 55px;
+    margin-top: 25vh;
 
     .skills-title {
       font-size: 1.6rem;
