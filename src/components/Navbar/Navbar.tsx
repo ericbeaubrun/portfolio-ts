@@ -58,7 +58,7 @@ const Navbar = ({lenis, activeSection}: NavbarProps) => {
                     to={target}
                     smooth={true}
                     duration={DURATION}
-                    offset={OFFSET}
+                    offset={target === "projects" ? OFFSET + 500 : OFFSET}
                     onClick={handleClick}
                 >
                     <div className={`item ${isActive ? 'active' : ''}`} data-target={target}>
@@ -104,9 +104,9 @@ const Navbar = ({lenis, activeSection}: NavbarProps) => {
                     </>
                 ) : (
                     <>
-                        <div className="setting setting-left">
-                            <LanguageSwitcher/>
-                        </div>
+                        {/*<div className="setting setting-left">*/}
+                        {/*    <LanguageSwitcher/>*/}
+                        {/*</div>*/}
                         {renderNavItems()}
                         <div className="setting setting-right">
                             {lenis && <ScrollProgressCircle lenis={lenis}/>}

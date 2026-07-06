@@ -49,21 +49,61 @@
       {
         "name": "Front-End",
         "skills": [
-          { "icon": "ts", "name": "TypeScript", "years": 2 },
-          { "icon": "js", "name": "JavaScript", "years": 3 },
-          { "icon": "react", "name": "React", "years": 2 },
-          { "icon": "nextjs", "name": "Next.js", "years": 1 }
+          {
+            "icon": "js",
+            "name": "JavaScript",
+            "years": 3
+          },
+          {
+            "icon": "ts",
+            "name": "TypeScript",
+            "years": 2
+          },
+          {
+            "icon": "react",
+            "name": "React",
+            "years": 2
+          },
+          {
+            "icon": "nextjs",
+            "name": "Next.js",
+            "years": 1
+          }
         ]
       },
       {
         "name": "Back-End",
         "skills": [
-          { "icon": "java", "name": "Java", "years": 3 },
-          { "icon": "py", "name": "Python", "years": 3 },
-          { "icon": "spring", "name": "Spring", "years": 1 },
-          { "icon": "nodejs", "name": "Node.js", "years": 2 },
-          { "icon": "express", "name": "Express", "years": 2 },
-          { "icon": "docker", "name": "Docker", "years": 1 }
+          {
+            "icon": "java",
+            "name": "Java",
+            "years": 3
+          },
+          {
+            "icon": "py",
+            "name": "Python",
+            "years": 3
+          },
+          {
+            "icon": "spring",
+            "name": "Spring",
+            "years": 1
+          },
+          {
+            "icon": "nodejs",
+            "name": "Node.js",
+            "years": 2
+          },
+          {
+            "icon": "express",
+            "name": "Express",
+            "years": 2
+          },
+          {
+            "icon": "docker",
+            "name": "Docker",
+            "years": 1
+          }
         ]
       }
     ]
@@ -244,7 +284,7 @@
       "email": "e.adelaide.beaubrun@gmail.com",
       "tel": "+33 6 43 41 40 79",
       "github": "github.com/ericbeaubrun/",
-      "linkedin": "linkedin.com/in/adelaide-beaubrun",
+      "linkedin": "linkedin.com/in/eric-adelaide-beaubrun",
       "hover_tel": "Show phone number",
       "hover_linkedin": "View LinkedIn profile",
       "hover_mail": "Send an email"
