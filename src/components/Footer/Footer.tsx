@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const [overlayConfig, setOverlayConfig] = useState({
-        isOpen: false,k
+        isOpen: false,
         title: '',
         value: '',
         themeColor: '#000'
