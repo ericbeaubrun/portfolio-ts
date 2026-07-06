@@ -22,12 +22,16 @@ interface SkillsContent {
 }
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 24, scale: 0.9 },
+    hidden: { opacity: 0, y: 60 },
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        scale: 1,
-        transition: { duration: 0.45, ease: "easeOut", delay: i * 0.09 },
+        transition: {
+            delay: i * 0.09,
+            type: "spring",
+            stiffness: 260,
+            damping: 22,
+        },
     }),
 };
 
