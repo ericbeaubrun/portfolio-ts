@@ -41,33 +41,6 @@
       "p": "Mise en place des outils qui permettent de mettre à jour un site ou une app facilement."
     }
   ],
-  "skills": {
-    "title": "Compétences",
-    "year": "an",
-    "years": "ans",
-    "categories": [
-      {
-        "name": "Front-End",
-        "skills": [
-          { "icon": "js", "name": "JavaScript", "years": 3 },
-          { "icon": "ts", "name": "TypeScript", "years": 2 },
-          { "icon": "react", "name": "React", "years": 2 },
-          { "icon": "nextjs", "name": "Next.js", "years": 1 }
-        ]
-      },
-      {
-        "name": "Back-End",
-        "skills": [
-          { "icon": "java", "name": "Java", "years": 3 },
-          { "icon": "py", "name": "Python", "years": 3 },
-          { "icon": "spring", "name": "Spring", "years": 1 },
-          { "icon": "nodejs", "name": "Node.js", "years": 2 },
-          { "icon": "express", "name": "Express", "years": 2 },
-          { "icon": "docker", "name": "Docker", "years": 1 }
-        ]
-      }
-    ]
-  },
   "about-title": "à propos",
   "projects-title": "projets",
   "projects-more-text": "Vous voulez voir plus de projets ?",
@@ -97,7 +70,22 @@
       ],
       "icon": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.mp4"
+        "/assets/projects/urya2.png"
+      ],
+      "year": "2025",
+      "role": "Conception, développement full-stack et mise en production",
+      "type": "Projet client",
+      "status": "En ligne et maintenu",
+      "context": "DJ URYA gérait ses réservations par messages privés, sans visibilité sur ses disponibilités ni trace des demandes. Le site remplace cet échange manuel par un parcours de réservation complet : le client choisit une date libre, décrit sa prestation et reçoit une confirmation automatique, pendant que l'artiste pilote son agenda et ses contenus depuis un back-office dédié.",
+      "challenges": [
+        "Éviter les doubles réservations sur une même date : verrouillage côté serveur au moment de la validation plutôt que simple contrôle d'affichage",
+        "Fiabiliser l'envoi des e-mails transactionnels (file de reprise et journalisation des échecs Resend)",
+        "Modéliser un CMS assez souple pour éditer textes, tarifs et galeries sans redéploiement",
+        "Tenir un score Lighthouse élevé malgré les médias lourds : images responsives et chargement différé"
+      ],
+      "gallery": [
+        "/assets/projects/urya.mp4",
+        "/assets/projects/urya2.png"
       ]
     },
     {
@@ -106,7 +94,7 @@
       "date": "",
       "desc": "Création d'un jeu de plateau stratégique en Java, intégrant un bot pour des parties multijoueur locales, la gestion des sauvegardes et la génération de graphiques statistiques des parties.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
-      "demo": "",
+      "demo": "https://conquete.xyz",
       "skills": {
         "java": "Java",
         "junit": "JUnit",
@@ -120,6 +108,21 @@
         "Génération de graphiques statistiques des parties"
       ],
       "icon": [
+        "/assets/projects/conquete.webm",
+        "/assets/projects/conquete2.webm"
+      ],
+      "year": "2023",
+      "role": "Développement du moteur de jeu et de l'IA, en binôme",
+      "type": "Projet académique",
+      "status": "Terminé",
+      "context": "Jeu de plateau au tour par tour inspiré des jeux de conquête territoriale. L'objectif pédagogique était de produire une architecture testable : le moteur de règles est totalement découplé de l'interface Swing, ce qui permet de rejouer une partie entière sans afficher une seule fenêtre.",
+      "challenges": [
+        "Séparer strictement moteur de règles et interface pour rendre les parties rejouables en test",
+        "Concevoir une IA lisible : évaluation pondérée des territoires plutôt qu'un arbre de recherche coûteux",
+        "Sérialiser une partie complète (plateau, joueurs, historique) dans un format relisible entre versions",
+        "Générer les statistiques de fin de partie sans figer l'interface pendant le calcul"
+      ],
+      "gallery": [
         "/assets/projects/conquete.webm",
         "/assets/projects/conquete2.webm"
       ]
@@ -143,6 +146,21 @@
         "Gestion d'événements imprévus et urgences aéronautiques"
       ],
       "icon": [
+        "/assets/projects/aerien.webm",
+        "/assets/projects/aerien2.webm"
+      ],
+      "year": "2023",
+      "role": "Architecture logicielle et simulation temps réel, en équipe de quatre",
+      "type": "Projet de génie logiciel",
+      "status": "Terminé",
+      "context": "Simulateur de contrôle aérien : des dizaines d'aéronefs suivent des plans de vol, entrent et sortent de l'espace surveillé, et déclenchent des alertes lorsque deux trajectoires convergent. Le radar affiche l'état courant pendant que la simulation avance sur son propre rythme.",
+      "challenges": [
+        "Faire cohabiter la boucle de simulation et le rendu du radar sans blocage ni scintillement",
+        "Détecter les conflits de trajectoire suffisamment tôt pour laisser une marge de manœuvre",
+        "Injecter des événements imprévus (urgence, déroutement, météo) sans casser l'état de la simulation",
+        "Garder une simulation déterministe pour rejouer un scénario à l'identique"
+      ],
+      "gallery": [
         "/assets/projects/aerien.webm",
         "/assets/projects/aerien2.webm"
       ]
@@ -173,6 +191,20 @@
       ],
       "icon": [
         "/assets/projects/bdres.png"
+      ],
+      "year": "2024",
+      "role": "Backend Spring Boot, client NFC Python et interface d'administration",
+      "type": "Projet académique",
+      "status": "Prototype fonctionnel",
+      "context": "Chaîne complète de suivi de présence : un lecteur NFC posé en salle lit les badges, un serveur valide le pointage au regard de l'emploi du temps, et une interface web permet aux responsables de corriger, exporter et auditer l'historique.",
+      "challenges": [
+        "Ignorer les lectures répétées d'un même badge sans perdre un pointage légitime",
+        "Sécuriser l'appairage entre le lecteur physique et le serveur (jeton de poste, pas de compte utilisateur)",
+        "Rester utilisable en cas de coupure réseau : mise en file locale puis synchronisation",
+        "Rendre l'installation reproductible via Docker pour une démonstration en salle"
+      ],
+      "gallery": [
+        "/assets/projects/bdres.png"
       ]
     },
     {
@@ -193,6 +225,21 @@
         "Suivi et stockage des statistiques de progression des étudiants"
       ],
       "icon": [
+        "/assets/projects/learn_py.webm",
+        "/assets/projects/learn_py2.webm"
+      ],
+      "year": "2024",
+      "role": "Conception pédagogique et développement",
+      "type": "Projet personnel",
+      "status": "En cours",
+      "context": "Plateforme d'apprentissage de Python par la pratique : chaque notion s'accompagne d'exercices corrigés automatiquement, avec un retour immédiat sur l'erreur plutôt qu'une simple sanction juste/faux.",
+      "challenges": [
+        "Exécuter du code utilisateur sans exposer la machine hôte (bac à sable et limites de temps)",
+        "Traduire les erreurs Python brutes en messages compréhensibles par un débutant",
+        "Suivre la progression et proposer l'exercice suivant selon les notions déjà acquises",
+        "Garder l'éditeur réactif sur un poste modeste"
+      ],
+      "gallery": [
         "/assets/projects/learn_py.webm",
         "/assets/projects/learn_py2.webm"
       ]
@@ -219,6 +266,21 @@
         "Système de mise en favoris des compétitions"
       ],
       "icon": [
+        "/assets/projects/tournament1.png",
+        "/assets/projects/tournament2.png"
+      ],
+      "year": "2023",
+      "role": "Développement full-stack",
+      "type": "Projet personnel",
+      "status": "Terminé",
+      "context": "Outil de gestion de tournois : création des équipes, génération automatique des arbres de rencontres, saisie des scores et classement mis à jour en direct pour les participants comme pour les organisateurs.",
+      "challenges": [
+        "Générer un arbre équilibré quel que soit le nombre d'équipes, y compris hors puissance de deux",
+        "Propager un score corrigé dans tout l'arbre sans recalculer le tournoi entier",
+        "Diffuser le classement en direct à plusieurs écrans simultanément",
+        "Gérer les cas limites : forfait, égalité, disqualification en cours de tournoi"
+      ],
+      "gallery": [
         "/assets/projects/tournament1.png",
         "/assets/projects/tournament2.png"
       ]
@@ -279,5 +341,23 @@
     "copy": "Copier",
     "copied": "Copié !",
     "open": "Ouvrir"
+  },
+  "project-overlay": {
+    "open": "Voir le projet",
+    "eyebrow": "Étude de cas",
+    "overview": "Le projet",
+    "features": "Fonctionnalités clés",
+    "stack": "Stack technique",
+    "challenges": "Défis techniques",
+    "gallery": "Aperçus",
+    "links": "Liens",
+    "site": "Site en ligne",
+    "code": "Code source",
+    "close": "Fermer",
+    "role": "Rôle",
+    "year": "Année",
+    "type": "Nature",
+    "status": "Statut",
+    "noLink": "Pas de démo publique"
   }
 }

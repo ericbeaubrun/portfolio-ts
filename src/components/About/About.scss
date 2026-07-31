@@ -69,8 +69,37 @@
 
         .word {
           display: inline-block;
+          position: relative;
           color: #FFFFFF;
           opacity: 0.2;
+          transition: opacity 0.35s ease, text-shadow 0.35s ease;
+
+          // Réserve la largeur du mot final : le texte brouillé se superpose
+          // sans provoquer de reflow pendant le déchiffrage.
+          .word-ghost {
+            opacity: 0;
+          }
+
+          .word-render {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: pre;
+          }
+
+          &.is-revealed {
+            opacity: 1;
+          }
+
+          &.is-decrypting {
+            opacity: 1;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.55);
+
+            .word-render {
+              color: #FFFFFF;
+            }
+          }
         }
       }
     }

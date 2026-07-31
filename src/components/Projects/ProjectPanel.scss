@@ -1,0 +1,344 @@
+@import "../../config.scss";
+
+// Mêmes valeurs que l'accordéon de contacts du footer : le mouvement doit être
+// identique d'une section à l'autre.
+$panel-ease: cubic-bezier(0.16, 1, 0.3, 1);
+$panel-duration: 0.65s;
+
+.ppanel-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  .ppanel-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity $panel-duration ease;
+  }
+
+  &.is-open .ppanel-backdrop {
+    opacity: 1;
+  }
+}
+
+// Le panneau démarre exactement sur le cadre de la carte : seules des valeurs
+// interpolables changent, la course est donc continue à l'aller comme au retour.
+.ppanel {
+  position: fixed;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  border-radius: $BORDER_RADIUS_COMPONENT;
+  transition: top $panel-duration $panel-ease,
+  left $panel-duration $panel-ease,
+  width $panel-duration $panel-ease,
+  height $panel-duration $panel-ease,
+  border-radius $panel-duration $panel-ease;
+
+  .is-open & {
+    border-radius: 0;
+  }
+
+  .ppanel-scroll {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // Le scroll est natif ici (voir `data-lenis-prevent`) : sans confinement,
+    // arriver en bas propagerait la molette à la page derrière le panneau.
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 12vh 6vw 10vh;
+
+    // Tant que le panneau n'est pas arrivé, le contenu ne doit ni s'afficher
+    // ni provoquer de scroll : il apparaît une fois la géométrie stabilisée.
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition: opacity 0.4s ease 0.15s, transform $panel-duration $panel-ease 0.15s;
+  }
+
+  .is-open & .ppanel-scroll {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.ppanel-close {
+  position: absolute;
+  top: 3vh;
+  right: 3vw;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.5s $panel-ease, background-color 0.3s ease, color 0.3s ease;
+
+  .is-open & {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1) rotate(90deg);
+  }
+}
+
+.ppanel-head {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .ppanel-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+
+    svg {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+  }
+
+  .ppanel-name {
+    margin-top: 1.2rem;
+    font-size: clamp(2.4rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+
+  .ppanel-title {
+    margin-top: 1rem;
+    max-width: 60ch;
+    font-size: clamp(1rem, 1.8vw, 1.6rem);
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .ppanel-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    dt {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    dd {
+      margin: 0.5rem 0 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+.ppanel-hero {
+  max-width: 1400px;
+  margin: 5vh auto 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: $BORDER_RADIUS_COMPONENT;
+  background: #111;
+
+  video, img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.ppanel-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5vh 4vw;
+  max-width: 1400px;
+  margin: 6vh auto 0;
+}
+
+.ppanel-block {
+  &--wide {
+    grid-column: 1 / -1;
+  }
+
+  .ppanel-block-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 1rem;
+    margin-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .ppanel-text {
+    max-width: 62ch;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+
+    + .ppanel-text {
+      margin-top: 1.2rem;
+    }
+  }
+
+  .ppanel-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    li {
+      position: relative;
+      padding-left: 1.6rem;
+      max-width: 62ch;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 0.6rem;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  .ppanel-stack {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: $BORDER_RADIUS_COMPONENT;
+      padding: 0.45rem 0.75rem;
+    }
+  }
+
+  .ppanel-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    .ppanel-link-label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: #fff;
+      text-decoration: none;
+      word-break: break-all;
+
+      // Même trait que les actions de l'accordéon de contacts.
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.3rem;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s $panel-ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+
+    .ppanel-link-empty {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  .ppanel-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+
+    figure {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: $BORDER_RADIUS_COMPONENT;
+      background: #111;
+
+      video, img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .ppanel .ppanel-scroll {
+    padding: 10vh 7vw 8vh;
+  }
+
+  .ppanel-body {
+    grid-template-columns: 1fr;
+  }
+
+  .ppanel-hero {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ppanel-block .ppanel-gallery {
+    grid-template-columns: 1fr;
+  }
+}

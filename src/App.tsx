@@ -5,7 +5,7 @@ import {MutableRefObject, useEffect, useRef, useState} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import About from "./components/About/About.tsx";
-import CardContainer from "./components/Cards/CardContainer.tsx";
+import ProjectsGrid from "./components/Projects/ProjectsGrid.tsx";
 import Lenis from 'lenis';
 import {useLanguage} from "./components/Utils/LanguageContext.tsx";
 import Footer from "./components/Footer/Footer.tsx";
@@ -121,14 +121,18 @@ const App = () => {
                 </Element>
 
                 <Element name="projects" className="section">
-                    <CardContainer projects={(content as any).projects || []}/>
+                    <ProjectsGrid
+                        projects={(content as any).projects || []}
+                        title={(content as any)["projects-title"] || "projets"}
+                        lenis={lenis}
+                    />
                 </Element>
 
             </main>
 
             <Element name="footer" className="section">
                 <footer style={{position: 'fixed', bottom: 0, left: 0, width: '100%', height: '100vh', zIndex: 1}}>
-                    <Footer/>
+                    <Footer lenis={lenis}/>
                 </footer>
             </Element>
         </div>

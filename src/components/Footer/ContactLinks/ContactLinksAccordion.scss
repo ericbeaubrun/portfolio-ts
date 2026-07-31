@@ -1,0 +1,363 @@
+@import "../../../config.scss";
+
+$acc-ease: cubic-bezier(0.16, 1, 0.3, 1);
+$acc-duration: 0.65s;
+
+.cacc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 88vw;
+  max-width: 1500px;
+  height: 72vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  // Le conteneur est centré par .footer-section : le passer à 100vw/100vh le
+  // fait grandir symétriquement, sans saut de position.
+  transition: width $acc-duration $acc-ease,
+  max-width $acc-duration $acc-ease,
+  height $acc-duration $acc-ease,
+  gap $acc-duration $acc-ease;
+
+  .cacc-item {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    // Toute l'animation tient ici : du survol (3 parts) jusqu'au plein écran.
+    transition: flex-grow $acc-duration $acc-ease, opacity 0.4s ease;
+  }
+
+  .cacc-panel {
+    position: relative;
+    flex: 1;
+    display: grid;
+    // Trois rangées dans les deux états : seules des valeurs interpolables
+    // changent (max-height, font-size), donc jamais de saut de gabarit.
+    grid-template-columns: 5rem 1fr auto;
+    grid-template-rows: 1fr auto auto;
+    align-items: center;
+    gap: 0 2rem;
+    padding: 0 3rem;
+    text-decoration: none;
+    color: #111;
+    background: rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: background-color $acc-duration $acc-ease,
+    color $acc-duration $acc-ease,
+    padding $acc-duration $acc-ease;
+  }
+
+  // Surcouche transparente qui rend tout le panneau cliquable au repos.
+  // Neutralisée à l'ouverture pour laisser passer les clics vers les actions.
+  .cacc-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .cacc-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  // Les éléments interactifs doivent rester au-dessus du déclencheur.
+  .cacc-close,
+  .cacc-actions {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cacc-num {
+    grid-row: 1;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: rgba(0, 0, 0, 0.4);
+    transition: color $acc-duration ease;
+  }
+
+  .cacc-label {
+    grid-row: 1;
+    font-size: clamp(2rem, 6vw, 5.5rem);
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    transition: font-size $acc-duration $acc-ease, opacity $acc-duration ease;
+  }
+
+  .cacc-icons {
+    grid-row: 1;
+    justify-self: end;
+    position: relative;
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+
+    // Les deux glyphes se superposent et se croisent en fondu.
+    > * {
+      grid-area: 1 / 1;
+      font-size: 2.2rem;
+      line-height: 1;
+      transition: opacity 0.35s ease, transform 0.5s $acc-ease;
+    }
+  }
+
+  .cacc-arrow {
+    opacity: 0.25;
+    transform: translate(-10px, 10px);
+  }
+
+  .cacc-close {
+    font-family: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
+  }
+
+  // Rangée 2 : repliée tant que le panneau n'est ni survolé ni ouvert.
+  .cacc-value {
+    grid-row: 2;
+    grid-column: 2 / -1;
+    font-size: clamp(0.9rem, 1.6vw, 1.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.75);
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: max-height $acc-duration $acc-ease,
+    font-size $acc-duration $acc-ease,
+    letter-spacing $acc-duration $acc-ease,
+    opacity 0.4s ease,
+    transform $acc-duration $acc-ease,
+    padding-bottom $acc-duration $acc-ease;
+  }
+
+  // Rangée 3 : n'existe qu'à l'état ouvert.
+  .cacc-actions {
+    grid-row: 3;
+    grid-column: 2 / -1;
+    display: flex;
+    gap: 2.5rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height $acc-duration $acc-ease,
+    opacity 0.35s ease,
+    padding-bottom $acc-duration $acc-ease;
+  }
+
+  .cacc-action {
+    font-family: inherit;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    padding: 0 0 0.3rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+
+    // Trait qui se dessine de gauche à droite.
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s $acc-ease;
+    }
+
+    &:hover {
+      color: #fff;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.is-done {
+      color: #fff;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  // ── Survol ────────────────────────────────────────────────────────────────
+  // Neutralisé dès qu'un panneau est ouvert, sinon survoler un panneau replié
+  // le ferait ressurgir.
+  &:not(.has-open) .cacc-item:hover {
+    flex-grow: 3;
+
+    .cacc-panel {
+      background: #000;
+      color: #fff;
+    }
+
+    .cacc-num {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .cacc-arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .cacc-value {
+      max-height: 5rem;
+      opacity: 1;
+      transform: translateY(0);
+      padding-bottom: 2.5rem;
+    }
+  }
+
+  // ── Ouvert ────────────────────────────────────────────────────────────────
+  &.has-open {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    gap: 0;
+
+    .cacc-item:not(.is-open) {
+      flex-grow: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cacc-item.is-open {
+      flex-grow: 1;
+
+      .cacc-panel {
+        background: #000;
+        color: #fff;
+        // Padding vertical indispensable : sans lui, la valeur et les actions
+        // se retrouvent collées au bord bas de l'écran.
+        padding: 7vh 6vw;
+      }
+
+      .cacc-trigger {
+        pointer-events: none;
+      }
+
+      .cacc-num {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      // Le libellé recule au rang de légende, la valeur prend sa place.
+      .cacc-label {
+        font-size: clamp(1rem, 2vw, 1.8rem);
+        opacity: 0.45;
+      }
+
+      .cacc-arrow {
+        opacity: 0;
+        transform: translate(10px, -10px);
+      }
+
+      .cacc-close {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+
+        &:hover {
+          transform: scale(1) rotate(90deg);
+        }
+      }
+
+      .cacc-value {
+        max-height: 40vh;
+        font-size: clamp(1.6rem, 6vw, 6rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        text-transform: none;
+        color: #fff;
+        opacity: 1;
+        transform: translateY(0);
+        padding-bottom: 2rem;
+      }
+
+      .cacc-actions {
+        max-height: 4rem;
+        opacity: 1;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px), (hover: none) {
+  .cacc {
+    width: 90vw;
+    height: auto;
+    gap: 4px;
+
+    // Sans survol, chaque panneau est ouvert : la valeur est toujours lisible.
+    .cacc-item {
+      flex: none;
+    }
+
+    .cacc-panel {
+      grid-template-columns: 2.5rem 1fr auto;
+      gap: 0 1rem;
+      padding: 1.6rem 1.2rem;
+    }
+
+    .cacc-label {
+      font-size: clamp(1.6rem, 8vw, 3rem);
+    }
+
+    .cacc-arrow {
+      opacity: 1;
+      transform: none;
+      font-size: 1.4rem;
+    }
+
+    .cacc-value {
+      max-height: none;
+      opacity: 1;
+      transform: none;
+      color: rgba(0, 0, 0, 0.55);
+      margin-top: 0.6rem;
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    &.has-open {
+      height: 100vh;
+
+      .cacc-item.is-open .cacc-panel {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .cacc-item.is-open .cacc-value {
+        color: #fff;
+      }
+    }
+  }
+}

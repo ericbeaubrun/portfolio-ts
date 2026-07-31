@@ -41,73 +41,6 @@
       "p": "Setting up tools that allow easy updates for a website or app."
     }
   ],
-  "skills": {
-    "title": "Skills",
-    "year": "yr",
-    "years": "yrs",
-    "categories": [
-      {
-        "name": "Front-End",
-        "skills": [
-          {
-            "icon": "js",
-            "name": "JavaScript",
-            "years": 3
-          },
-          {
-            "icon": "ts",
-            "name": "TypeScript",
-            "years": 2
-          },
-          {
-            "icon": "react",
-            "name": "React",
-            "years": 2
-          },
-          {
-            "icon": "nextjs",
-            "name": "Next.js",
-            "years": 1
-          }
-        ]
-      },
-      {
-        "name": "Back-End",
-        "skills": [
-          {
-            "icon": "java",
-            "name": "Java",
-            "years": 3
-          },
-          {
-            "icon": "py",
-            "name": "Python",
-            "years": 3
-          },
-          {
-            "icon": "spring",
-            "name": "Spring",
-            "years": 1
-          },
-          {
-            "icon": "nodejs",
-            "name": "Node.js",
-            "years": 2
-          },
-          {
-            "icon": "express",
-            "name": "Express",
-            "years": 2
-          },
-          {
-            "icon": "docker",
-            "name": "Docker",
-            "years": 1
-          }
-        ]
-      }
-    ]
-  },
   "about-title": "about me",
   "projects-title": "projects",
   "projects-more-text": "Want to see more projects?",
@@ -137,7 +70,22 @@
       ],
       "icon": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.mp4"
+        "/assets/projects/urya2.png"
+      ],
+      "year": "2025",
+      "role": "Design, full-stack development and production release",
+      "type": "Client project",
+      "status": "Live and maintained",
+      "context": "DJ URYA handled bookings through private messages, with no visibility on availability and no record of past requests. The site replaces that manual back-and-forth with a complete booking flow: clients pick an open date, describe the event and get an automatic confirmation, while the artist manages the calendar and site content from a dedicated back-office.",
+      "challenges": [
+        "Preventing double bookings on the same date through server-side locking at validation time, not just UI checks",
+        "Making transactional e-mail reliable (retry queue and logging of Resend failures)",
+        "Designing a CMS flexible enough to edit copy, pricing and galleries without redeploying",
+        "Keeping Lighthouse scores high despite heavy media: responsive images and deferred loading"
+      ],
+      "gallery": [
+        "/assets/projects/urya.mp4",
+        "/assets/projects/urya2.png"
       ]
     },
     {
@@ -146,7 +94,7 @@
       "date": "",
       "desc": "Creation of a strategic board game in Java, featuring a bot for local multiplayer games, save management, and the generation of statistical match charts.",
       "gh": "https://github.com/ericbeaubrun/conquest-game",
-      "demo": "",
+      "demo": "https://conquete.xyz",
       "skills": {
         "java": "Java",
         "junit": "JUnit",
@@ -160,6 +108,21 @@
         "Statistical match charts generation"
       ],
       "icon": [
+        "/assets/projects/conquete.webm",
+        "/assets/projects/conquete2.webm"
+      ],
+      "year": "2023",
+      "role": "Game engine and AI development, in a pair",
+      "type": "Academic project",
+      "status": "Completed",
+      "context": "Turn-based board game inspired by territory conquest classics. The teaching goal was a testable architecture: the rules engine is fully decoupled from the Swing interface, so a whole game can be replayed in tests without opening a single window.",
+      "challenges": [
+        "Strictly separating rules engine from interface so games stay replayable in tests",
+        "Designing a readable AI: weighted territory scoring rather than a costly search tree",
+        "Serialising a full game (board, players, history) in a format readable across versions",
+        "Computing end-of-game statistics without freezing the interface"
+      ],
+      "gallery": [
         "/assets/projects/conquete.webm",
         "/assets/projects/conquete2.webm"
       ]
@@ -182,6 +145,21 @@
         "Aviation emergency and unexpected event handling"
       ],
       "icon": [
+        "/assets/projects/aerien.webm",
+        "/assets/projects/aerien2.webm"
+      ],
+      "year": "2023",
+      "role": "Software architecture and real-time simulation, team of four",
+      "type": "Software engineering project",
+      "status": "Completed",
+      "context": "Air traffic control simulator: dozens of aircraft follow flight plans, enter and leave the monitored airspace, and raise alerts when two trajectories converge. The radar renders the current state while the simulation advances at its own pace.",
+      "challenges": [
+        "Running the simulation loop and radar rendering together without blocking or flicker",
+        "Detecting trajectory conflicts early enough to leave room to react",
+        "Injecting unplanned events (emergency, diversion, weather) without corrupting simulation state",
+        "Keeping the simulation deterministic so a scenario can be replayed identically"
+      ],
+      "gallery": [
         "/assets/projects/aerien.webm",
         "/assets/projects/aerien2.webm"
       ]
@@ -212,6 +190,20 @@
       ],
       "icon": [
         "/assets/projects/bdres.png"
+      ],
+      "year": "2024",
+      "role": "Spring Boot backend, Python NFC client and admin interface",
+      "type": "Academic project",
+      "status": "Working prototype",
+      "context": "End-to-end attendance tracking: an NFC reader in the room scans badges, a server validates each check-in against the timetable, and a web interface lets staff correct, export and audit the history.",
+      "challenges": [
+        "Ignoring repeated reads of the same badge without dropping a legitimate check-in",
+        "Securing the pairing between physical reader and server (device token, no user account)",
+        "Staying usable during network outages: local queue then synchronisation",
+        "Making the setup reproducible through Docker for classroom demos"
+      ],
+      "gallery": [
+        "/assets/projects/bdres.png"
       ]
     },
     {
@@ -233,6 +225,21 @@
         "Student progress and statistics storage"
       ],
       "icon": [
+        "/assets/projects/learn_py.webm",
+        "/assets/projects/learn_py2.webm"
+      ],
+      "year": "2024",
+      "role": "Learning design and development",
+      "type": "Personal project",
+      "status": "In progress",
+      "context": "A hands-on platform for learning Python: every concept comes with automatically graded exercises that explain what went wrong instead of returning a bare pass/fail.",
+      "challenges": [
+        "Running user code without exposing the host machine (sandbox and time limits)",
+        "Turning raw Python errors into messages a beginner can act on",
+        "Tracking progress and suggesting the next exercise based on concepts already mastered",
+        "Keeping the editor responsive on modest hardware"
+      ],
+      "gallery": [
         "/assets/projects/learn_py.webm",
         "/assets/projects/learn_py2.webm"
       ]
@@ -259,6 +266,21 @@
         "Competition bookmarking and favorites system"
       ],
       "icon": [
+        "/assets/projects/tournament1.png",
+        "/assets/projects/tournament2.png"
+      ],
+      "year": "2023",
+      "role": "Full-stack development",
+      "type": "Personal project",
+      "status": "Completed",
+      "context": "Tournament management tool: team registration, automatic bracket generation, score entry and a live standing shared by players and organisers alike.",
+      "challenges": [
+        "Generating a balanced bracket for any team count, including non powers of two",
+        "Propagating a corrected score through the bracket without recomputing the whole tournament",
+        "Broadcasting the live standing to several screens at once",
+        "Handling edge cases: forfeit, draw, mid-tournament disqualification"
+      ],
+      "gallery": [
         "/assets/projects/tournament1.png",
         "/assets/projects/tournament2.png"
       ]
@@ -319,5 +341,23 @@
     "copy": "Copy",
     "copied": "Copied!",
     "open": "Open"
+  },
+  "project-overlay": {
+    "open": "View project",
+    "eyebrow": "Case study",
+    "overview": "The project",
+    "features": "Key features",
+    "stack": "Tech stack",
+    "challenges": "Technical challenges",
+    "gallery": "Previews",
+    "links": "Links",
+    "site": "Live site",
+    "code": "Source code",
+    "close": "Close",
+    "role": "Role",
+    "year": "Year",
+    "type": "Type",
+    "status": "Status",
+    "noLink": "No public demo"
   }
 }

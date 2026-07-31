@@ -104,9 +104,9 @@ const Navbar = ({lenis, activeSection}: NavbarProps) => {
                     </>
                 ) : (
                     <>
-                        {/*<div className="setting setting-left">*/}
-                        {/*    <LanguageSwitcher/>*/}
-                        {/*</div>*/}
+                        <div className="setting setting-left">
+                            <LanguageSwitcher/>
+                        </div>
                         {renderNavItems()}
                         <div className="setting setting-right">
                             {lenis && <ScrollProgressCircle lenis={lenis}/>}

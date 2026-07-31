@@ -1,14 +1,20 @@
-import React, {useLayoutEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import './Footer.scss';
 import {useLanguage} from "../Utils/LanguageContext.tsx";
 import ContactForm from "./ContactForm.tsx";
-import ContactOverlay from "./ContactOverlay.tsx";
+import ContactLinksAccordion from "./ContactLinks/ContactLinksAccordion.tsx";
+import {buildContactItems} from "./ContactLinks/contactItems.ts";
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import type Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    lenis: Lenis | null;
+}
+
+const Footer: React.FC<FooterProps> = ({lenis}) => {
     const {content, language} = useLanguage();
     const footerContent = content.footer as any[];
 
@@ -16,26 +22,7 @@ const Footer: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    const [overlayConfig, setOverlayConfig] = useState({
-        isOpen: false,
-        title: '',
-        value: '',
-        themeColor: '#000'
-    });
-
-    const openOverlay = (e: React.MouseEvent, title: string, value: string, themeColor: string) => {
-        e.preventDefault();
-        setOverlayConfig({
-            isOpen: true,
-            title,
-            value,
-            themeColor
-        });
-    };
-
-    const closeOverlay = () => {
-        setOverlayConfig(prev => ({...prev, isOpen: false}));
-    };
+    const contactItems = buildContactItems(details, language);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -79,53 +66,15 @@ const Footer: React.FC = () => {
         <section id="footer" className="footer-pin-section" ref={sectionRef}>
             <div className="footer-viewport">
                 <div className="footer-horizontal-wrapper" ref={wrapperRef}>
-                    <div className="footer-section links-section">
-                        <div className="footer-content">
-                            <ul className="footer-list">
-                                <li>
-                                    <a href={`tel:${details.tel}`}
-                                       onClick={(e) => openOverlay(e, language === 'fr' ? 'Téléphone' : 'Phone', details.tel, '#3dce6e')}
-                                    >
-                                        <img src="/assets/fleche-droite.svg" className="footer-arrow" alt=""/>
-                                        <span
-                                            className="footer-text">{language === 'fr' ? 'WhatsApp' : 'Phone'}</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={`https://${details.linkedin}`}
-                                       target="_blank"
-                                       rel="noopener noreferrer"
-                                       onClick={(e) => openOverlay(e, 'Linkedin', details.linkedin, '#0077b5')}
-                                    >
-                                        <img src="/assets/fleche-droite.svg" className="footer-arrow" alt=""/>
-                                        <span className="footer-text">Linkedin</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={`mailto:${details.email}`}
-                                       onClick={(e) => openOverlay(e, 'Email', details.email, '#e63946')}
-                                    >
-                                        <img src="/assets/fleche-droite.svg" className="footer-arrow" alt=""/>
-                                        <span className="footer-text">Mail</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
                     <div className="footer-section contact-section">
                         <ContactForm/>
                     </div>
+
+                    <div className="footer-section links-section">
+                        <ContactLinksAccordion items={contactItems} lenis={lenis}/>
+                    </div>
                 </div>
             </div>
-
-            <ContactOverlay
-                isOpen={overlayConfig.isOpen}
-                onClose={closeOverlay}
-                title={overlayConfig.title}
-                value={overlayConfig.value}
-                themeColor={overlayConfig.themeColor}
-            />
         </section>
     );
 };

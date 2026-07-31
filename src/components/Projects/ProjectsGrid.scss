@@ -1,0 +1,459 @@
+@import "../../config.scss";
+
+.projects-grid {
+  background-color: #000;
+  padding: 0 0 10vh;
+  position: relative;
+  z-index: 2;
+
+  // Seule la grille est gouttiérée : « voir plus » et la bande de skills sont
+  // des enfants directs de la section, donc pleine largeur.
+  .pgrid-inner {
+    padding: 18vh 6vw 0;
+  }
+
+  .pgrid-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 1.2rem;
+    margin-bottom: 6vh;
+
+    .pgrid-title {
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+      font-weight: 600;
+    }
+
+    .pgrid-count {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+  }
+
+  .pgrid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 2vw;
+    row-gap: 4vh;
+  }
+
+  .pgrid-item {
+    .pgrid-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .pgrid-frame {
+      position: relative;
+      overflow: hidden;
+      background: #111;
+      border-radius: $BORDER_RADIUS_COMPONENT;
+      width: 100%;
+    }
+
+    // 140% de hauteur : la marge sert au parallax vertical (±13%).
+    .pgrid-media {
+      position: absolute;
+      inset: -20% 0;
+      will-change: transform;
+
+      // Wrapper piloté par GSAP au survol (zoom + translation suivant le
+      // curseur) : séparé de .pgrid-media qui porte le parallax de scroll.
+      .pgrid-media-inner {
+        position: absolute;
+        inset: 0;
+        will-change: transform;
+      }
+
+      video, img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: filter 0.5s ease;
+        filter: grayscale(0.35) contrast(1.05);
+      }
+    }
+
+    // Surcouche transparente : tout le cadre ouvre le panneau, sauf la pastille
+    // GitHub qui reste au-dessus.
+    .pgrid-open {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .pgrid-cta {
+      position: absolute;
+      left: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 2;
+      padding: 0.55rem 1rem;
+      background: #fff;
+      color: #000;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: $BORDER_RADIUS_COMPONENT;
+      opacity: 0;
+      transform: translateY(10px);
+      // Décoratif : le clic doit atteindre la surcouche placée dessous.
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    // Pastille GitHub, en haut à droite du cadre.
+    .pgrid-gh {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.3s ease, color 0.3s ease;
+
+      svg {
+        font-size: 1.2rem;
+      }
+
+      &:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      // Sans survol possible, la pastille reste visible en permanence.
+      @media (hover: none) {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .pgrid-content {
+      padding-top: 1.4rem;
+    }
+
+    // Masque par ligne : le contenu monte depuis le bas au reveal.
+    .pgrid-line {
+      overflow: hidden;
+    }
+
+    .pgrid-name {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: clamp(1.4rem, 2.4vw, 2.6rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      font-weight: 600;
+
+      // Remplace l'ancienne numérotation : un pictogramme par projet.
+      .pgrid-icon {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        align-self: center;
+        width: 2.6rem;
+        height: 2.6rem;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.75);
+        transition: color 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+
+        svg {
+          font-size: 1.15rem;
+        }
+      }
+
+      // Adresse du site en ligne, affichée à la place du nom du projet.
+      .pgrid-url {
+        color: inherit;
+        text-decoration: none;
+        text-transform: none;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.1em;
+          width: 100%;
+          height: 2px;
+          background: currentColor;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        &:hover::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    .pgrid-desc {
+      margin-top: 0.6rem;
+      max-width: 46ch;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.55);
+
+      // La desc du JSON fait parfois 5 lignes : on coupe à 2 ici.
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .pgrid-stack {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+
+      li {
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: $BORDER_RADIUS_COMPONENT;
+        padding: 0.35rem 0.6rem;
+        transition: border-color 0.3s ease, color 0.3s ease;
+      }
+    }
+
+    &:hover {
+      .pgrid-media video,
+      .pgrid-media img {
+        filter: grayscale(0) contrast(1);
+      }
+
+      .pgrid-cta,
+      .pgrid-gh {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .pgrid-stack li {
+        border-color: rgba(255, 255, 255, 0.5);
+        color: #fff;
+      }
+
+      .pgrid-icon {
+        background: #fff;
+        border-color: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  // Bloc « voir plus » — repris tel quel de l'ancienne section projets.
+  .projects-more {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 22vh;
+    gap: 20px;
+    text-align: center;
+
+    .more-text {
+      font-size: 1.2rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .more-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 25px;
+      font-family: inherit;
+      font-size: 7rem;
+      font-weight: 600;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease, transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      transform: rotate(-3deg);
+
+      @media (max-width: 1024px) {
+        font-size: 5rem;
+        padding: 10px 20px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 3rem;
+        padding: 8px 18px;
+        transform: rotate(-2deg);
+      }
+
+      @media (max-width: 480px) {
+        font-size: 2.2rem;
+        padding: 6px 15px;
+        width: 90%;
+        justify-content: center;
+      }
+
+      .text {
+        color: white;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        mix-blend-mode: difference;
+      }
+
+      .button-icon {
+        font-size: 5rem;
+        transition: transform 0.3s ease;
+
+        @media (max-width: 1024px) {
+          font-size: 3.5rem;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 2.2rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.8rem;
+        }
+      }
+
+      .wave-btn {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url(/assets/wave3.svg) repeat-x;
+        background-size: 200% 100%;
+        top: 100%;
+        left: 0;
+        animation: wave-btn 2s linear infinite;
+        transition: 0.5s;
+        z-index: 0;
+      }
+
+      &::before {
+        top: 0;
+        left: 0;
+        border-top: 2px solid #e8e8e8;
+        border-left: 2px solid #e8e8e8;
+      }
+
+      &::after {
+        bottom: 0;
+        right: 0;
+        border-bottom: 2px solid #e8e8e8;
+        border-right: 2px solid #e8e8e8;
+      }
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+        @media (max-width: 1024px) {
+          width: 32px;
+          height: 32px;
+        }
+
+        @media (max-width: 768px) {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &:hover {
+        background-color: black;
+        transform: rotate(-3deg) scale(1.15);
+
+        &::before,
+        &::after {
+          width: 100%;
+          height: 100%;
+        }
+
+        .button-icon {
+          transform: translateX(5px);
+        }
+
+        .wave-btn {
+          top: 40%;
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Portées par CardContainer.scss auparavant, qui n'est plus chargé.
+@keyframes wave-btn {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 200%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    padding: 0 0 8vh;
+
+    .pgrid-inner {
+      padding: 12vh 6vw 0;
+    }
+
+    .pgrid {
+      grid-template-columns: 1fr;
+      row-gap: 6vh;
+    }
+
+    .pgrid-item {
+      grid-column: 1 / -1 !important;
+      margin-top: 0 !important;
+
+      .pgrid-frame {
+        aspect-ratio: 16 / 10 !important;
+      }
+    }
+  }
+}
