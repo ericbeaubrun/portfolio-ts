@@ -2,12 +2,13 @@ import './ContactButtons.scss';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {useLayoutEffect, useRef} from "react";
+import {publicAssetUrl} from "../Utils/publicAssetUrl.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactButtons = () => {
 
-    const CV_URL = '/cv.pdf';
+    const CV_URL = publicAssetUrl('cv.pdf');
     const GH_URL = 'https://github.com/ericbeaubrun';
     const LINKEDIN_URL = 'https://www.linkedin.com/in/eric-adelaide-beaubrun/';
 
@@ -26,6 +27,7 @@ const ContactButtons = () => {
                     start: "top top",
                     end: "bottom top",
                     scrub: true,
+                    invalidateOnRefresh: true,
                 }
             });
 
@@ -54,7 +56,7 @@ const ContactButtons = () => {
         return () => ctx.revert();
     }, []);
 
-    const ROOT = '/assets/';
+    const ROOT = publicAssetUrl('assets/');
 
     return (
         <div className="presentation-button-container">

@@ -1,15 +1,18 @@
-@import "../../config.scss";
+@use "../../config" as *;
 
 .projects-grid {
   background-color: #000;
   padding: 0 0 10vh;
   position: relative;
   z-index: 2;
+  // Les cartes entrent depuis hors-cadre : on coupe le débord horizontal sans
+  // créer de conteneur de scroll (clip et non hidden).
+  overflow-x: clip;
 
   // Seule la grille est gouttiérée : « voir plus » et la bande de skills sont
   // des enfants directs de la section, donc pleine largeur.
   .pgrid-inner {
-    padding: 18vh 6vw 0;
+    padding: 34vh 6vw 0;
   }
 
   .pgrid-head {
@@ -20,12 +23,12 @@
     padding-bottom: 1.2rem;
     margin-bottom: 6vh;
 
-    .pgrid-title {
-      font-size: clamp(2.5rem, 6vw, 6rem);
-      text-transform: uppercase;
-      letter-spacing: -0.03em;
-      line-height: 0.9;
-      font-weight: 600;
+    // Le Banner est centré et pleine largeur dans « à propos ». Ici le titre
+    // garde sa place d'origine : calé à gauche, le compteur face à lui.
+    .banner {
+      width: auto;
+      align-items: flex-start;
+      margin-bottom: 0;
     }
 
     .pgrid-count {
@@ -62,23 +65,21 @@
     .pgrid-media {
       position: absolute;
       inset: -20% 0;
-      will-change: transform;
 
       // Wrapper piloté par GSAP au survol (zoom + translation suivant le
       // curseur) : séparé de .pgrid-media qui porte le parallax de scroll.
       .pgrid-media-inner {
         position: absolute;
         inset: 0;
-        will-change: transform;
       }
 
+      // Pas de filtre au repos ni au survol : le grayscale est piloté par le
+      // scroll (GSAP), une fois la carte passée au-dessus du viewport.
       video, img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: filter 0.5s ease;
-        filter: grayscale(0.35) contrast(1.05);
       }
     }
 
@@ -94,23 +95,48 @@
       cursor: pointer;
     }
 
+    // Pastille collée au bord gauche du cadre : elle sort de la tranche et
+    // glisse vers la droite au survol, le texte suivant en décalé.
     .pgrid-cta {
       position: absolute;
-      left: 1.2rem;
-      bottom: 1.2rem;
+      left: 0;
+      bottom: 1.6rem;
       z-index: 2;
-      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem 0.85rem 1.4rem;
       background: #fff;
       color: #000;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      border-radius: $BORDER_RADIUS_COMPONENT;
-      opacity: 0;
-      transform: translateY(10px);
+      white-space: nowrap;
+      border-radius: 0 999px 999px 0;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      // Sort du cadre par la gauche : 101% évite un liseré résiduel.
+      transform: translateX(-101%);
       // Décoratif : le clic doit atteindre la surcouche placée dessous.
       pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+      // Le contenu part légèrement en retard sur la pastille : elle semble
+      // « tirer » son texte plutôt que le porter d'un bloc.
+      .pgrid-cta-label,
+      .pgrid-cta-arrow {
+        display: block;
+        opacity: 0;
+        transform: translateX(-0.8rem);
+        transition: opacity 0.4s ease 0.12s,
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+      }
+
+      .pgrid-cta-arrow {
+        font-size: 1.05rem;
+        line-height: 1;
+        transition-delay: 0.2s;
+      }
     }
 
     // Pastille GitHub, en haut à droite du cadre.
@@ -248,15 +274,19 @@
     }
 
     &:hover {
-      .pgrid-media video,
-      .pgrid-media img {
-        filter: grayscale(0) contrast(1);
-      }
-
-      .pgrid-cta,
       .pgrid-gh {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      .pgrid-cta {
+        transform: translateX(0);
+
+        .pgrid-cta-label,
+        .pgrid-cta-arrow {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
 
       .pgrid-stack li {
@@ -355,7 +385,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: url(/assets/wave3.svg) repeat-x;
+        background-repeat: repeat-x;
         background-size: 200% 100%;
         top: 100%;
         left: 0;

@@ -3,16 +3,11 @@ import {Link} from 'react-scroll';
 import {useState} from 'react';
 import HamburgerButton from "./HamburgerButton.tsx";
 import {AnimatePresence, motion} from "framer-motion";
-import {useLanguage} from "../Utils/LanguageContext.tsx";
+import {useLanguage} from "../Utils/useLanguage.ts";
 import LanguageSwitcher from "../Utils/LanguageSwitcher.tsx";
-import {useIsMobile} from "../Utils/MobileContext.tsx";
+import {useIsMobile} from "../Utils/useIsMobile.ts";
 import Lenis from "lenis";
 import ScrollProgressCircle from "../ScrollProgressCircle.tsx";
-
-interface NavItem {
-    title: string;
-    subtitle: string;
-}
 
 interface NavbarProps {
     lenis: Lenis | null;
@@ -29,7 +24,7 @@ const Navbar = ({lenis, activeSection}: NavbarProps) => {
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
 
-    const nav = (content as { nav: NavItem[] }).nav;
+    const nav = content.nav;
 
     const navItems = [
         // {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},

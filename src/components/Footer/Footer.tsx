@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useRef} from 'react';
 import './Footer.scss';
-import {useLanguage} from "../Utils/LanguageContext.tsx";
+import {useLanguage} from "../Utils/useLanguage.ts";
+import {isContactDetails} from '../../content/content.types.ts';
 import ContactForm from "./ContactForm.tsx";
 import ContactLinksAccordion from "./ContactLinks/ContactLinksAccordion.tsx";
 import {buildContactItems} from "./ContactLinks/contactItems.ts";
@@ -16,13 +17,11 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({lenis}) => {
     const {content, language} = useLanguage();
-    const footerContent = content.footer as any[];
-
-    const details = footerContent[0];
+    const details = content.footer.find(isContactDetails);
     const sectionRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    const contactItems = buildContactItems(details, language);
+    const contactItems = details ? buildContactItems(details, language) : [];
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {

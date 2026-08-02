@@ -1,13 +1,13 @@
 import './App.scss'
 import {Element} from 'react-scroll';
 import {animateScroll} from 'react-scroll';
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Navbar from "./components/Navbar/Navbar.tsx";
 import Presentation from "./components/Presentation/Presentation.tsx";
 import About from "./components/About/About.tsx";
 import ProjectsGrid from "./components/Projects/ProjectsGrid.tsx";
 import Lenis from 'lenis';
-import {useLanguage} from "./components/Utils/LanguageContext.tsx";
+import {useLanguage} from "./components/Utils/useLanguage.ts";
 import Footer from "./components/Footer/Footer.tsx";
 
 const App = () => {
@@ -19,10 +19,13 @@ const App = () => {
 
     useEffect(() => {
         const instance = new Lenis();
-        setLenis(instance);
-
         let rafId: number;
+        let isPublished = false;
         const raf = (time: number) => {
+            if (!isPublished) {
+                isPublished = true;
+                setLenis(instance);
+            }
             instance.raf(time);
             rafId = requestAnimationFrame(raf);
         };
@@ -104,9 +107,8 @@ const App = () => {
         }
     }, []);
 
-    const containerRef: MutableRefObject<null> = useRef(null);
     return (
-        <div ref={containerRef}>
+        <div>
             <header>
                 <Navbar lenis={lenis} activeSection={activeSection}/>
             </header>
@@ -122,8 +124,8 @@ const App = () => {
 
                 <Element name="projects" className="section">
                     <ProjectsGrid
-                        projects={(content as any).projects || []}
-                        title={(content as any)["projects-title"] || "projets"}
+                        projects={content.projects}
+                        title={content["projects-title"]}
                         lenis={lenis}
                     />
                 </Element>

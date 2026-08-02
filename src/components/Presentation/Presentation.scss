@@ -1,4 +1,4 @@
-@import "../../config.scss";
+@use "../../config" as *;
 
 #presentation {
   height: 105vh;
@@ -166,7 +166,10 @@
       border: none;
       overflow: hidden;
       background-color: transparent;
-      transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      // Ne jamais transitionner `transform` : GSAP l'écrit à chaque frame pour
+      // le parallax, une transition dessus fait traîner puis bloquer le bouton.
+      transition: color 0.3s cubic-bezier(0.215, 0.610, 0.355, 1),
+      background-color 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
 
     .contact-me-button span, .contact-me-button span::before {
@@ -179,7 +182,7 @@
       align-items: center;
       pointer-events: none;
       justify-content: center;
-      transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      transition: top 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
 
     .contact-me-button span::before {
@@ -208,7 +211,8 @@
       width: 24px;
       height: 24px;
       pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+      transition: width 0.3s cubic-bezier(0.215, 0.610, 0.355, 1),
+      height 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     }
 
     .contact-me-button:hover:before,

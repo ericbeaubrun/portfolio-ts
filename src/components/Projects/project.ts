@@ -1,4 +1,5 @@
 import type {IconType} from 'react-icons';
+import {publicAssetUrl} from '../Utils/publicAssetUrl.ts';
 import {
     FaChessKnight,
     FaCode,
@@ -14,7 +15,7 @@ export interface Project {
     name: string;
     desc: string;
     icon: string | string[];
-    skills: { [key: string]: string };
+    skills: Record<string, string | undefined>;
     gh?: string;
     demo?: string;
     /** Points clés listés dans le panneau détaillé. */
@@ -33,21 +34,39 @@ export interface Project {
 }
 
 const VIDEO_EXT = ['mp4', 'webm', 'ogg'];
+const RESPONSIVE_IMAGE_WIDTHS: Record<string, number[]> = {
+    'bdres-1920.webp': [640, 1280, 1920],
+    'tournament1-1920.webp': [640, 1280, 1920],
+    'tournament2-1920.webp': [640, 1280, 1920],
+    'urya2-1887.webp': [640, 1280, 1887],
+};
 
 export const isVideo = (src: string) =>
     VIDEO_EXT.includes(src.split('.').pop()?.toLowerCase() ?? '');
 
 /** Premier média du projet : `icon` est tantôt une string, tantôt un tableau. */
 export const mainMedia = (icon: string | string[]) =>
-    Array.isArray(icon) ? icon[0] : icon;
+    publicAssetUrl(Array.isArray(icon) ? icon[0] : icon);
 
 /** Tous les médias du projet, sous forme de tableau dans les deux cas. */
 export const mediaList = (icon: string | string[]) =>
-    Array.isArray(icon) ? icon : [icon];
+    (Array.isArray(icon) ? icon : [icon]).map((path) => publicAssetUrl(path));
+
+/** Variantes WebP générées pour les captures statiques les plus lourdes. */
+export const projectImageSrcSet = (src: string) => {
+    const filename = src.split('/').pop();
+    if (!filename) return undefined;
+
+    const widths = RESPONSIVE_IMAGE_WIDTHS[filename];
+    if (!widths) return undefined;
+
+    const basePath = src.slice(0, -filename.length) + filename.replace(/-\d+\.webp$/i, '');
+    return widths.map((width) => `${basePath}-${width}.webp ${width}w`).join(', ');
+};
 
 /** Les labels de `skills` sont déjà lisibles, on les passe juste en capitales. */
-export const skillLabels = (skills: { [key: string]: string }) =>
-    Object.values(skills);
+export const skillLabels = (skills: Record<string, string | undefined>) =>
+    Object.values(skills).filter((skill): skill is string => typeof skill === 'string');
 
 /**
  * Icônes de remplacement : un pictogramme par projet, à échanger plus tard.

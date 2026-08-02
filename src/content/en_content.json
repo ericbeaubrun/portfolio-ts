@@ -70,7 +70,7 @@
       ],
       "icon": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.png"
+        "/assets/projects/urya2-1887.webp"
       ],
       "year": "2025",
       "role": "Design, full-stack development and production release",
@@ -85,7 +85,7 @@
       ],
       "gallery": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.png"
+        "/assets/projects/urya2-1887.webp"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Web admin interface for history and logs management"
       ],
       "icon": [
-        "/assets/projects/bdres.png"
+        "/assets/projects/bdres-1920.webp"
       ],
       "year": "2024",
       "role": "Spring Boot backend, Python NFC client and admin interface",
@@ -203,7 +203,7 @@
         "Making the setup reproducible through Docker for classroom demos"
       ],
       "gallery": [
-        "/assets/projects/bdres.png"
+        "/assets/projects/bdres-1920.webp"
       ]
     },
     {
@@ -266,8 +266,8 @@
         "Competition bookmarking and favorites system"
       ],
       "icon": [
-        "/assets/projects/tournament1.png",
-        "/assets/projects/tournament2.png"
+        "/assets/projects/tournament1-1920.webp",
+        "/assets/projects/tournament2-1920.webp"
       ],
       "year": "2023",
       "role": "Full-stack development",
@@ -281,8 +281,8 @@
         "Handling edge cases: forfeit, draw, mid-tournament disqualification"
       ],
       "gallery": [
-        "/assets/projects/tournament1.png",
-        "/assets/projects/tournament2.png"
+        "/assets/projects/tournament1-1920.webp",
+        "/assets/projects/tournament2-1920.webp"
       ]
     }
   ],
@@ -340,10 +340,11 @@
   "overlay": {
     "copy": "Copy",
     "copied": "Copied!",
-    "open": "Open"
+    "open": "Open",
+    "close": "Close"
   },
   "project-overlay": {
-    "open": "View project",
+    "open": "Click to view",
     "eyebrow": "Case study",
     "overview": "The project",
     "features": "Key features",
@@ -358,6 +359,8 @@
     "year": "Year",
     "type": "Type",
     "status": "Status",
-    "noLink": "No public demo"
+    "noLink": "No public demo",
+    "prev": "Previous",
+    "next": "Next"
   }
 }

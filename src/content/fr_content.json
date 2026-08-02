@@ -70,7 +70,7 @@
       ],
       "icon": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.png"
+        "/assets/projects/urya2-1887.webp"
       ],
       "year": "2025",
       "role": "Conception, développement full-stack et mise en production",
@@ -85,7 +85,7 @@
       ],
       "gallery": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2.png"
+        "/assets/projects/urya2-1887.webp"
       ]
     },
     {
@@ -190,7 +190,7 @@
         "Interface web d'administration pour la gestion de l'historique"
       ],
       "icon": [
-        "/assets/projects/bdres.png"
+        "/assets/projects/bdres-1920.webp"
       ],
       "year": "2024",
       "role": "Backend Spring Boot, client NFC Python et interface d'administration",
@@ -204,7 +204,7 @@
         "Rendre l'installation reproductible via Docker pour une démonstration en salle"
       ],
       "gallery": [
-        "/assets/projects/bdres.png"
+        "/assets/projects/bdres-1920.webp"
       ]
     },
     {
@@ -266,8 +266,8 @@
         "Système de mise en favoris des compétitions"
       ],
       "icon": [
-        "/assets/projects/tournament1.png",
-        "/assets/projects/tournament2.png"
+        "/assets/projects/tournament1-1920.webp",
+        "/assets/projects/tournament2-1920.webp"
       ],
       "year": "2023",
       "role": "Développement full-stack",
@@ -281,8 +281,8 @@
         "Gérer les cas limites : forfait, égalité, disqualification en cours de tournoi"
       ],
       "gallery": [
-        "/assets/projects/tournament1.png",
-        "/assets/projects/tournament2.png"
+        "/assets/projects/tournament1-1920.webp",
+        "/assets/projects/tournament2-1920.webp"
       ]
     }
   ],
@@ -340,10 +340,11 @@
   "overlay": {
     "copy": "Copier",
     "copied": "Copié !",
-    "open": "Ouvrir"
+    "open": "Ouvrir",
+    "close": "Fermer"
   },
   "project-overlay": {
-    "open": "Voir le projet",
+    "open": "Cliquez pour voir",
     "eyebrow": "Étude de cas",
     "overview": "Le projet",
     "features": "Fonctionnalités clés",
@@ -358,6 +359,8 @@
     "year": "Année",
     "type": "Nature",
     "status": "Statut",
-    "noLink": "Pas de démo publique"
+    "noLink": "Pas de démo publique",
+    "prev": "Précédent",
+    "next": "Suivant"
   }
 }

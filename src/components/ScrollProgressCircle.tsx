@@ -3,6 +3,7 @@ import {motion, useScroll, useSpring, useTransform} from 'framer-motion';
 import {Link} from "react-scroll";
 import './ScrollProgressCircle.scss';
 import Lenis from "lenis";
+import {publicAssetUrl} from "./Utils/publicAssetUrl.ts";
 
 const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
     const {scrollYProgress} = useScroll();
@@ -77,7 +78,7 @@ const ScrollProgressCircle = ({lenis}: { lenis: Lenis }) => {
                         }
                     }}
                 >
-                    <img src="/assets/arrow.svg" alt="arrow top"/>
+                    <img src={publicAssetUrl("assets/arrow.svg")} alt="arrow top"/>
                 </motion.div>
             </motion.div>
         </Link>

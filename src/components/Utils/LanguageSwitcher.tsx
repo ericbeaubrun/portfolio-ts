@@ -1,5 +1,5 @@
 import React from "react";
-import { useLanguage } from "./LanguageContext.tsx";
+import { useLanguage } from "./useLanguage.ts";
 import "./LanguageSwitcher.scss";
 
 const LanguageSwitcher: React.FC = () => {

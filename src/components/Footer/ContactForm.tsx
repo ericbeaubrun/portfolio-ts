@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './ContactForm.scss';
-import emailjs from 'emailjs-com';
-import {useLanguage} from "../Utils/LanguageContext.tsx";
+import emailjs from '@emailjs/browser';
+import {useLanguage} from "../Utils/useLanguage.ts";
 import {motion} from 'framer-motion';
 
 type FormData = {
@@ -10,54 +10,52 @@ type FormData = {
     message: string;
 };
 
-interface ContactFormProps {
-    title: string;
-    btn: string;
-    send: string;
-    label_name: string;
-    label_email: string;
-    label_message: string;
-    success_msg: string;
-    error_msg: string;
-    rgpd: string;
-}
+type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const ContactForm = () => {
     const {content} = useLanguage();
-    const contactFormContent = content["contact-form"] as ContactFormProps;
+    const contactFormContent = content["contact-form"];
 
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
         message: ''
     });
+    const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>('idle');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData((currentFormData) => ({
+            ...currentFormData,
+            [name]: value,
+        }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        emailjs.sendForm(
-            import.meta.env.VITE_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-            e.target as HTMLFormElement,
-            import.meta.env.VITE_EMAILJS_USER_ID
-        )
-            .then((result) => {
-                console.log(result.text);
-                alert(contactFormContent.success_msg);
-            }, (error) => {
-                console.log(error.text);
-                alert(contactFormContent.error_msg);
-            });
+        setSubmissionStatus('sending');
 
-        setFormData({name: '', email: '', message: ''});
+        try {
+            await emailjs.sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                e.currentTarget,
+                {publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY},
+            );
+            setFormData({name: '', email: '', message: ''});
+            setSubmissionStatus('success');
+        } catch {
+            setSubmissionStatus('error');
+        }
     };
+
+    // Décalage commun à tous les champs : la même cascade que les autres sections.
+    const reveal = (delay: number) => ({
+        initial: {opacity: 0, y: 20},
+        whileInView: {opacity: 1, y: 0},
+        viewport: {once: true},
+        transition: {delay, duration: 0.5},
+    });
 
     return (
         <div className="contact-form-container">
@@ -69,15 +67,7 @@ const ContactForm = () => {
                 transition={{duration: 0.6}}
             >
                 <form onSubmit={handleSubmit}>
-                    <motion.div
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        transition={{
-                            delay: 0.1,
-                            duration: 0.5,
-                        }}
-                    >
+                    <motion.div {...reveal(0.1)}>
                         <label htmlFor="name">{contactFormContent.label_name}</label>
                         <input
                             type="text"
@@ -89,15 +79,7 @@ const ContactForm = () => {
                             required
                         />
                     </motion.div>
-                    <motion.div
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        transition={{
-                            delay: 0.2,
-                            duration: 0.5,
-                        }}
-                    >
+                    <motion.div {...reveal(0.2)}>
                         <label htmlFor="email">{contactFormContent.label_email}</label>
                         <input
                             type="email"
@@ -109,15 +91,7 @@ const ContactForm = () => {
                             required
                         />
                     </motion.div>
-                    <motion.div
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        transition={{
-                            delay: 0.3,
-                            duration: 0.5,
-                        }}
-                    >
+                    <motion.div {...reveal(0.3)}>
                         <label htmlFor="message">{contactFormContent.label_message}</label>
                         <textarea
                             id="message"
@@ -131,6 +105,7 @@ const ContactForm = () => {
                     <motion.button
                         id="form-submit-btn"
                         type="submit"
+                        disabled={submissionStatus === 'sending'}
                         initial={{opacity: 0, y: 20}}
                         whileInView={{opacity: 1, y: 0}}
                         viewport={{once: true}}
@@ -140,9 +115,15 @@ const ContactForm = () => {
                         }}
                         whileTap={{scale: 0.98}}
                     >
-                        {contactFormContent.send}
-                        {/*<img src="/assets/fleche-droite.svg" alt="→" style={{marginLeft: '8px', height: '0.8em', verticalAlign: 'middle'}} />*/}
+                        {submissionStatus === 'sending' ? `${contactFormContent.send}…` : contactFormContent.send}
                     </motion.button>
+                    {submissionStatus === 'success' && (
+                        <p className="form-status is-success" role="status"
+                           aria-live="polite">{contactFormContent.success_msg}</p>
+                    )}
+                    {submissionStatus === 'error' && (
+                        <p className="form-status is-error" role="alert">{contactFormContent.error_msg}</p>
+                    )}
                     <motion.p
                         className="rgpd-notice"
                         initial={{opacity: 0}}

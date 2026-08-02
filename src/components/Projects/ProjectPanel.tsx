@@ -1,17 +1,17 @@
 import React, {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {FaGithub} from 'react-icons/fa';
+import {FaArrowDown} from 'react-icons/fa6';
 import type Lenis from 'lenis';
-import {isVideo, mediaList, prettyUrl, Project, projectIcon, skillLabels} from './project.ts';
-import {useLanguage} from '../Utils/LanguageContext.tsx';
+import {isVideo, mediaList, prettyUrl, Project, projectIcon, projectImageSrcSet, skillLabels} from './project.ts';
+import {useLanguage} from '../Utils/useLanguage.ts';
 import './ProjectPanel.scss';
 
-/** Doit rester aligné sur `$panel-duration` dans ProjectPanel.scss. */
-const PANEL_DURATION_MS = 650;
+/** Doit rester aligné sur `$panel-close-duration` dans ProjectPanel.scss. */
+const PANEL_CLOSE_DURATION_MS = 420;
 
 interface Props {
     project: Project;
-    index: number;
     /** Position de la carte cliquée : point de départ et d'arrivée du panneau. */
     origin: DOMRect;
     onClose: () => void;
@@ -19,34 +19,40 @@ interface Props {
 }
 
 interface Labels {
-    eyebrow: string;
     overview: string;
     features: string;
     stack: string;
     challenges: string;
-    gallery: string;
     links: string;
     site: string;
     code: string;
     close: string;
-    role: string;
     year: string;
     type: string;
-    status: string;
     noLink: string;
+    prev: string;
+    next: string;
 }
 
 const FALLBACK_LABELS: Labels = {
-    eyebrow: 'Étude de cas', overview: 'Le projet', features: 'Fonctionnalités clés',
-    stack: 'Stack technique', challenges: 'Défis techniques', gallery: 'Aperçus',
+    overview: 'Le projet', features: 'Fonctionnalités clés',
+    stack: 'Stack technique', challenges: 'Défis techniques',
     links: 'Liens', site: 'Site en ligne', code: 'Code source', close: 'Fermer',
-    role: 'Rôle', year: 'Année', type: 'Nature', status: 'Statut', noLink: 'Pas de démo publique',
+    year: 'Année', type: 'Nature', noLink: 'Pas de démo publique',
+    prev: 'Précédent', next: 'Suivant',
 };
 
 const Media: React.FC<{ src: string; alt: string }> = ({src, alt}) => (
     isVideo(src)
         ? <video src={src} autoPlay muted loop playsInline preload="metadata"/>
-        : <img src={src} alt={alt} loading="lazy"/>
+        : <img
+            src={src}
+            srcSet={projectImageSrcSet(src)}
+            sizes="(max-width: 1628px) 86vw, 1400px"
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+        />
 );
 
 /**
@@ -56,17 +62,36 @@ const Media: React.FC<{ src: string; alt: string }> = ({src, alt}) => (
  * le panneau démarre exactement sur le cadre de la carte (position fixe), puis
  * transitionne vers `0 / 0 / 100vw / 100vh`. La fermeture rejoue l'inverse.
  */
-const ProjectPanel: React.FC<Props> = ({project, index, origin, onClose, lenis}) => {
+const ProjectPanel: React.FC<Props> = ({project, origin, onClose, lenis}) => {
     const {content} = useLanguage();
-    const labels = {...FALLBACK_LABELS, ...((content as any)['project-overlay'] || {})} as Labels;
+    const labels: Labels = {...FALLBACK_LABELS, ...content['project-overlay']};
 
     // 'start' : posé sur la carte. 'open' : plein écran. 'closing' : retour.
     const [phase, setPhase] = useState<'start' | 'open' | 'closing'>('start');
     const closeTimer = useRef<number>();
 
     const Icon = projectIcon(project.name);
-    const medias = project.gallery?.length ? project.gallery : mediaList(project.icon);
-    const [hero, ...rest] = medias;
+
+    const medias = mediaList(project.gallery?.length ? project.gallery : project.icon);
+
+    // Carousel : tous les médias passent par le hero, il n'y a plus de galerie.
+    const [slide, setSlide] = useState(0);
+    const heroRef = useRef<HTMLDivElement>(null);
+
+    const go = useCallback((next: number) => {
+        setSlide((next + medias.length) % medias.length);
+    }, [medias.length]);
+
+    // Une seule vidéo doit tourner à la fois : les autres sont mises en pause
+    // pour ne pas empiler des décodages hors écran.
+    useEffect(() => {
+        heroRef.current?.querySelectorAll('.ppanel-slide').forEach((el, index) => {
+            const video = el.querySelector('video');
+            if (!video) return;
+            if (index === slide) video.play().catch(() => undefined);
+            else video.pause();
+        });
+    }, [slide, medias]);
 
     useLayoutEffect(() => {
         // Deux frames : la première pose la géométrie de départ, la seconde
@@ -98,39 +123,58 @@ const ProjectPanel: React.FC<Props> = ({project, index, origin, onClose, lenis})
         closingRef.current = true;
         setPhase('closing');
         // Le démontage attend la fin du retour vers la carte.
-        closeTimer.current = window.setTimeout(onClose, PANEL_DURATION_MS);
+        closeTimer.current = window.setTimeout(onClose, PANEL_CLOSE_DURATION_MS);
     }, [onClose]);
 
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') startClose();
+            if (e.key === 'ArrowLeft') go(slide - 1);
+            if (e.key === 'ArrowRight') go(slide + 1);
         };
         window.addEventListener('keydown', onKeyDown);
         return () => window.removeEventListener('keydown', onKeyDown);
-    }, [startClose]);
+    }, [startClose, go, slide]);
 
     // Au démontage seulement : purger le timer ici reviendrait sinon à annuler
     // la fermeture que l'on vient de déclencher.
     useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
-    const collapsed = phase !== 'open';
-    const geometry: React.CSSProperties = collapsed
+    // Seule l'ouverture part du cadre de la carte. À la fermeture le panneau
+    // garde sa géométrie plein écran et s'échappe par le bas (voir `is-closing`) :
+    // rejouer le FLIP inverse le ferait rétrécir vers une carte souvent hors vue.
+    const geometry: React.CSSProperties = phase === 'start'
         ? {top: origin.top, left: origin.left, width: origin.width, height: origin.height}
         : {top: 0, left: 0, width: '100vw', height: '100vh'};
 
     const meta = [
         {label: labels.year, value: project.year},
         {label: labels.type, value: project.type},
-        {label: labels.role, value: project.role},
-        {label: labels.status, value: project.status},
+        {
+            label: labels.site,
+            value: project.demo
+                ? <a href={project.demo} target="_blank" rel="noopener noreferrer">{prettyUrl(project.demo)} ↗</a>
+                : labels.noLink,
+        },
+        {
+            label: labels.code,
+            value: project.gh
+                ? <a href={project.gh} target="_blank" rel="noopener noreferrer"><FaGithub aria-hidden="true"/> {prettyUrl(project.gh)} ↗</a>
+                : null,
+        },
     ].filter((item) => item.value);
 
+    // `is-open` couvre aussi la fermeture : le contenu doit rester intact
+    // pendant que le panneau descend, au lieu de se replier d'abord.
     return createPortal(
-        <div className={`ppanel-root ${phase === 'open' ? 'is-open' : ''}`}>
+        <div className={`ppanel-root ${phase !== 'start' ? 'is-open' : ''} ${phase === 'closing' ? 'is-closing' : ''}`}>
             <div className="ppanel-backdrop" onClick={startClose}/>
 
             <article className="ppanel" style={geometry}>
+                {/* Même bouton que la croix de l'accordéon de contacts : rouge,
+                    libellé « fermer » à gauche du glyphe. */}
                 <button type="button" className="ppanel-close" onClick={startClose} aria-label={labels.close}>
+                    <span className="ppanel-close-label">{labels.close}</span>
                     ✕
                 </button>
 
@@ -139,12 +183,10 @@ const ProjectPanel: React.FC<Props> = ({project, index, origin, onClose, lenis})
                     est testé avant ce blocage : le scroll interne redevient natif. */}
                 <div className="ppanel-scroll" data-lenis-prevent>
                     <header className="ppanel-head">
-                        <span className="ppanel-eyebrow">
-                            <Icon aria-hidden="true"/>
-                            {labels.eyebrow} — {String(index + 1).padStart(2, '0')}
-                        </span>
-
-                        <h2 className="ppanel-name">{project.name}</h2>
+                        <h2 className="ppanel-name">
+                            <Icon className="ppanel-name-icon" aria-hidden="true"/>
+                            <span>{project.name}</span>
+                        </h2>
                         <p className="ppanel-title">{project.title}</p>
 
                         {meta.length > 0 && (
@@ -159,9 +201,49 @@ const ProjectPanel: React.FC<Props> = ({project, index, origin, onClose, lenis})
                         )}
                     </header>
 
-                    <figure className="ppanel-hero">
-                        <Media src={hero} alt={project.name}/>
-                    </figure>
+                    <div className="ppanel-hero" ref={heroRef}>
+                        <div className="ppanel-track" style={{transform: `translateX(-${slide * 100}%)`}}>
+                            {medias.map((src) => (
+                                <figure key={src} className="ppanel-slide">
+                                    <Media src={src} alt={project.name}/>
+                                </figure>
+                            ))}
+                        </div>
+
+                        {medias.length > 1 && (
+                            <>
+                                <button
+                                    type="button"
+                                    className="ppanel-nav ppanel-nav--prev"
+                                    onClick={() => go(slide - 1)}
+                                    aria-label={labels.prev}
+                                >
+                                    ‹
+                                </button>
+                                <button
+                                    type="button"
+                                    className="ppanel-nav ppanel-nav--next"
+                                    onClick={() => go(slide + 1)}
+                                    aria-label={labels.next}
+                                >
+                                    ›
+                                </button>
+
+                                <div className="ppanel-dots">
+                                    {medias.map((src, index) => (
+                                        <button
+                                            key={src}
+                                            type="button"
+                                            className={`ppanel-dot ${index === slide ? 'is-active' : ''}`}
+                                            onClick={() => go(index)}
+                                            aria-label={`${index + 1} / ${medias.length}`}
+                                            aria-current={index === slide}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                    </div>
 
                     <div className="ppanel-body">
                         <section className="ppanel-block">
@@ -194,43 +276,12 @@ const ProjectPanel: React.FC<Props> = ({project, index, origin, onClose, lenis})
                                 {skillLabels(project.skills).map((skill) => <li key={skill}>{skill}</li>)}
                             </ul>
                         </section>
-
-                        <section className="ppanel-block">
-                            <h3 className="ppanel-block-title">{labels.links}</h3>
-                            <ul className="ppanel-links">
-                                <li>
-                                    <span className="ppanel-link-label">{labels.site}</span>
-                                    {project.demo
-                                        ? <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                                            {prettyUrl(project.demo)} ↗
-                                        </a>
-                                        : <span className="ppanel-link-empty">{labels.noLink}</span>}
-                                </li>
-                                {project.gh && (
-                                    <li>
-                                        <span className="ppanel-link-label">{labels.code}</span>
-                                        <a href={project.gh} target="_blank" rel="noopener noreferrer">
-                                            <FaGithub aria-hidden="true"/>
-                                            {prettyUrl(project.gh)} ↗
-                                        </a>
-                                    </li>
-                                )}
-                            </ul>
-                        </section>
-
-                        {rest.length > 0 && (
-                            <section className="ppanel-block ppanel-block--wide">
-                                <h3 className="ppanel-block-title">{labels.gallery}</h3>
-                                <div className="ppanel-gallery">
-                                    {rest.map((src) => (
-                                        <figure key={src}>
-                                            <Media src={src} alt={project.name}/>
-                                        </figure>
-                                    ))}
-                                </div>
-                            </section>
-                        )}
                     </div>
+
+                    <button type="button" className="ppanel-close-bottom" onClick={startClose}>
+                        {labels.close}
+                        <FaArrowDown aria-hidden="true"/>
+                    </button>
                 </div>
             </article>
         </div>,

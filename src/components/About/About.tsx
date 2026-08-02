@@ -1,26 +1,28 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import Banner from '../Projects/Banner.tsx';
 import './About.scss';
-import { useLanguage } from "../Utils/LanguageContext.tsx";
+import { useLanguage } from "../Utils/useLanguage.ts";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SCRAMBLE_CHARS = '&$*à%#@!?§µ£¤/\\|<>[]{}=+~^0101';
-const SCRAMBLE_DURATION = 900;
+const SCRAMBLE_DURATION = 1450;
+// Les glyphes aléatoires n'ont pas besoin d'être redessinés à 60 fps : on
+// plafonne le défilement à 30 fps, ce qui divise les écritures DOM par deux.
+const SCRAMBLE_FRAME_INTERVAL = 1000 / 30;
 // Au-delà de ce nombre de mots révélés dans la même frame (scroll rapide),
 // on affiche directement le texte final au lieu de lancer un déchiffrage.
-const MAX_CONCURRENT_SCRAMBLES = 10;
+const MAX_CONCURRENT_SCRAMBLES = 6;
 
 const randomChar = () => SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
 
 const About: React.FC = () => {
     const { content } = useLanguage();
-    const presentationContent = (content as { introduction: { p1: string, p2: string } });
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { p1, p2 } = presentationContent.introduction;
+    const { p1, p2 } = content.introduction;
 
     useLayoutEffect(() => {
         const container = containerRef.current;
@@ -29,9 +31,13 @@ const About: React.FC = () => {
         const words = Array.from(container.querySelectorAll<HTMLElement>('.word'));
         if (words.length === 0) return;
 
-        // État de chaque mot + frame de déchiffrage en cours.
+        // État de chaque mot + un unique ticker partagé pour tous les
+        // déchiffrages en cours (au lieu d'un rAF par mot).
         const revealed = words.map(() => false);
-        const frames: (number | null)[] = words.map(() => null);
+        const startedAt: number[] = words.map(() => 0);
+        const active = new Set<number>();
+        let frame: number | null = null;
+        let lastPaint = 0;
 
         const targets = words.map(word => ({
             word,
@@ -39,45 +45,46 @@ const About: React.FC = () => {
             text: word.dataset.text ?? '',
         }));
 
-        const stopScramble = (index: number) => {
-            const frame = frames[index];
-            if (frame !== null) {
-                cancelAnimationFrame(frame);
-                frames[index] = null;
-            }
-        };
-
         const settle = (index: number) => {
             const { word, render, text } = targets[index];
-            stopScramble(index);
+            active.delete(index);
             render.textContent = text;
             word.classList.remove('is-decrypting');
         };
 
-        const scramble = (index: number) => {
-            const { word, render, text } = targets[index];
-            stopScramble(index);
-            word.classList.add('is-decrypting');
+        const tick = (now: number) => {
+            // Throttle : on ne réécrit les glyphes qu'à intervalle fixe, mais on
+            // termine toujours les mots arrivés au bout de leur durée.
+            const paint = now - lastPaint >= SCRAMBLE_FRAME_INTERVAL;
+            if (paint) lastPaint = now;
 
-            const start = performance.now();
-            const tick = () => {
-                const progress = Math.min((performance.now() - start) / SCRAMBLE_DURATION, 1);
+            for (const index of Array.from(active)) {
+                const { render, text } = targets[index];
+                const progress = Math.min((now - startedAt[index]) / SCRAMBLE_DURATION, 1);
+
+                if (progress >= 1) {
+                    settle(index);
+                    continue;
+                }
+                if (!paint) continue;
+
                 const settledCount = Math.floor(text.length * progress);
-
                 let output = text.slice(0, settledCount);
                 for (let i = settledCount; i < text.length; i++) {
                     output += randomChar();
                 }
                 render.textContent = output;
+            }
 
-                if (progress < 1) {
-                    frames[index] = requestAnimationFrame(tick);
-                } else {
-                    settle(index);
-                }
-            };
+            frame = active.size > 0 ? requestAnimationFrame(tick) : null;
+        };
 
-            tick();
+        const scramble = (index: number) => {
+            const { word } = targets[index];
+            word.classList.add('is-decrypting');
+            startedAt[index] = performance.now();
+            active.add(index);
+            if (frame === null) frame = requestAnimationFrame(tick);
         };
 
         const applyProgress = (progress: number) => {
@@ -129,9 +136,9 @@ const About: React.FC = () => {
         applyProgress(trigger.progress);
 
         return () => {
-            frames.forEach((frame, index) => {
-                if (frame !== null) cancelAnimationFrame(frame);
-                targets[index].render.textContent = targets[index].text;
+            if (frame !== null) cancelAnimationFrame(frame);
+            targets.forEach(({ render, text }) => {
+                render.textContent = text;
             });
             trigger.kill();
         };
@@ -151,7 +158,7 @@ const About: React.FC = () => {
     return (
         <section id="about">
             <div className="about-container">
-                <Banner text={(content as any)["about-title"]} />
+                <Banner text={content["about-title"]} />
                 <div className="about-text-content" ref={containerRef}>
                     <p>{splitText(p1)}</p>
                     <p>{splitText(p2)}</p>

@@ -1,9 +1,14 @@
-@import "../../config.scss";
+@use "../../config" as *;
 
 // Mêmes valeurs que l'accordéon de contacts du footer : le mouvement doit être
 // identique d'une section à l'autre.
 $panel-ease: cubic-bezier(0.16, 1, 0.3, 1);
 $panel-duration: 0.65s;
+// Fermeture : plus courte que l'ouverture et franchement accélérante — le
+// panneau décroche tout de suite et tombe, au lieu de s'attarder à mi-course.
+// `$panel-close-duration` doit rester alignée sur `PANEL_CLOSE_DURATION_MS`.
+$panel-close-duration: 0.42s;
+$panel-ease-in: cubic-bezier(0.5, 0, 0.9, 0.2);
 
 .ppanel-root {
   position: fixed;
@@ -21,6 +26,12 @@ $panel-duration: 0.65s;
   &.is-open .ppanel-backdrop {
     opacity: 1;
   }
+
+  // Le voile s'efface pendant que le panneau s'échappe.
+  &.is-closing .ppanel-backdrop {
+    opacity: 0;
+    transition: opacity $panel-close-duration ease;
+  }
 }
 
 // Le panneau démarre exactement sur le cadre de la carte : seules des valeurs
@@ -28,8 +39,8 @@ $panel-duration: 0.65s;
 .ppanel {
   position: fixed;
   overflow: hidden;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   border-radius: $BORDER_RADIUS_COMPONENT;
   transition: top $panel-duration $panel-ease,
   left $panel-duration $panel-ease,
@@ -39,6 +50,16 @@ $panel-duration: 0.65s;
 
   .is-open & {
     border-radius: 0;
+  }
+
+  // Fermeture : la géométrie reste plein écran, seul un glissement vertical
+  // fait sortir le panneau. Les coins du haut se réarrondissent au passage,
+  // comme une feuille qu'on tire hors du cadre.
+  .is-closing & {
+    transform: translateY(105%);
+    border-radius: $BORDER_RADIUS_COMPONENT $BORDER_RADIUS_COMPONENT 0 0;
+    transition: transform $panel-close-duration $panel-ease-in,
+    border-radius $panel-close-duration $panel-ease-in;
   }
 
   .ppanel-scroll {
@@ -66,27 +87,31 @@ $panel-duration: 0.65s;
   }
 }
 
+// Repris tel quel de `.cacc-close` (accordéon de contacts) : croix rouge sans
+// fond, précédée du libellé « fermer ».
 .ppanel-close {
   position: absolute;
   top: 3vh;
   right: 3vw;
   z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 2.8rem;
+  font-weight: 900;
+  -webkit-text-stroke: 2px currentColor;
   line-height: 1;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
+  color: #ff3b30;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
   opacity: 0;
   transform: scale(0.6);
+  transform-origin: right center;
   pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.5s $panel-ease, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.25s $panel-ease, opacity 0.25s ease, color 0.25s ease;
 
   .is-open & {
     opacity: 1;
@@ -95,9 +120,46 @@ $panel-duration: 0.65s;
   }
 
   &:hover {
-    background: #fff;
-    color: #000;
-    transform: scale(1) rotate(90deg);
+    transform: scale(1.2);
+    color: #ff6b60;
+  }
+}
+
+.ppanel-close-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  -webkit-text-stroke: 0;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.ppanel-close-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin: 6vh auto 0;
+  padding: 0.9rem 1.8rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s $panel-ease, background-color 0.3s ease;
+
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s $panel-ease;
+  }
+
+  &:hover {
+    transform: scale(1.08);
+    background: #1a1a1a;
   }
 }
 
@@ -112,21 +174,32 @@ $panel-duration: 0.65s;
     font-size: 0.75rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 0.45);
 
     svg {
       font-size: 1.1rem;
-      color: #fff;
+      color: #000;
     }
   }
 
   .ppanel-name {
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
     margin-top: 1.2rem;
-    font-size: clamp(2.4rem, 7vw, 6.5rem);
+    font-size: clamp(3.2rem, 11vw, 11rem);
     line-height: 0.95;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.03em;
+    // Le nom peut être long : il descend sous l'icône plutôt que de déborder.
+    flex-wrap: wrap;
+
+    // Dimensionnée en `em` : l'icône suit le titre à toutes les tailles d'écran.
+    .ppanel-name-icon {
+      flex: none;
+      font-size: 0.78em;
+    }
   }
 
   .ppanel-title {
@@ -134,7 +207,7 @@ $panel-duration: 0.65s;
     max-width: 60ch;
     font-size: clamp(1rem, 1.8vw, 1.6rem);
     line-height: 1.35;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
   }
 
   .ppanel-meta {
@@ -143,37 +216,124 @@ $panel-duration: 0.65s;
     gap: 1.5rem 2rem;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
 
     dt {
       font-size: 0.7rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(0, 0, 0, 0.4);
     }
 
     dd {
       margin: 0.5rem 0 0;
       font-size: 0.95rem;
       line-height: 1.4;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(0, 0, 0, 0.9);
     }
   }
 }
 
 .ppanel-hero {
+  position: relative;
   max-width: 1400px;
   margin: 5vh auto 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: $BORDER_RADIUS_COMPONENT;
-  background: #111;
+  background: #f0f0f0;
 
-  video, img {
-    width: 100%;
+  // Une seule diapo est visible : la piste défile d'un cadre entier à la fois.
+  .ppanel-track {
+    display: flex;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    transition: transform 0.7s $panel-ease;
+  }
+
+  .ppanel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    margin: 0;
+
+    video, img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // Les contrôles passent au-dessus de n'importe quel média : fond clair opaque
+  // plutôt qu'une teinte translucide, qui deviendrait illisible sur une image
+  // claire.
+  .ppanel-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    transform: translateY(-50%);
+    font-family: inherit;
+    font-size: 2rem;
+    line-height: 1;
+    color: #000;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+
+    &--prev {
+      left: 1.5rem;
+    }
+
+    &--next {
+      right: 1.5rem;
+    }
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  // Les flèches n'apparaissent qu'au survol du cadre : au repos, rien ne vient
+  // manger le média.
+  &:hover .ppanel-nav,
+  .ppanel-nav:focus-visible {
+    opacity: 1;
+  }
+
+  .ppanel-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 1.2rem;
+    z-index: 2;
+    display: flex;
+    gap: 0.5rem;
+    transform: translateX(-50%);
+    padding: 0.5rem 0.8rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+  }
+
+  .ppanel-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s $panel-ease;
+
+    &.is-active {
+      width: 1.4rem;
+      border-radius: 999px;
+      background: #000;
+    }
   }
 }
 
@@ -194,17 +354,17 @@ $panel-duration: 0.65s;
     font-size: 0.75rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 0.4);
     padding-bottom: 1rem;
     margin-bottom: 1.6rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .ppanel-text {
     max-width: 62ch;
     font-size: 1rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7);
 
     + .ppanel-text {
       margin-top: 1.2rem;
@@ -223,7 +383,7 @@ $panel-duration: 0.65s;
       max-width: 62ch;
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
 
       &::before {
         content: "";
@@ -232,7 +392,7 @@ $panel-duration: 0.65s;
         top: 0.65em;
         width: 0.6rem;
         height: 1px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -247,8 +407,8 @@ $panel-duration: 0.65s;
       font-size: 0.7rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.25);
       border-radius: $BORDER_RADIUS_COMPONENT;
       padding: 0.45rem 0.75rem;
     }
@@ -265,7 +425,7 @@ $panel-duration: 0.65s;
       font-size: 0.7rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(0, 0, 0, 0.4);
       margin-bottom: 0.5rem;
     }
 
@@ -275,7 +435,7 @@ $panel-duration: 0.65s;
       gap: 0.6rem;
       position: relative;
       font-size: clamp(1rem, 2vw, 1.5rem);
-      color: #fff;
+      color: #000;
       text-decoration: none;
       word-break: break-all;
 
@@ -300,29 +460,10 @@ $panel-duration: 0.65s;
 
     .ppanel-link-empty {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(0, 0, 0, 0.35);
     }
   }
 
-  .ppanel-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-
-    figure {
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      border-radius: $BORDER_RADIUS_COMPONENT;
-      background: #111;
-
-      video, img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-    }
-  }
 }
 
 @media (max-width: 1024px) {
@@ -338,7 +479,20 @@ $panel-duration: 0.65s;
     aspect-ratio: 4 / 3;
   }
 
-  .ppanel-block .ppanel-gallery {
-    grid-template-columns: 1fr;
+  // Comme dans l'accordéon de contacts : le libellé prend trop de place à côté
+  // du titre, la croix seule suffit (le bouton porte déjà un aria-label).
+  .ppanel-close {
+    font-size: 2rem;
+  }
+
+  .ppanel-close-label {
+    display: none;
+  }
+}
+
+// Sans survol, les flèches doivent être visibles en permanence.
+@media (hover: none) {
+  .ppanel-hero .ppanel-nav {
+    opacity: 1;
   }
 }

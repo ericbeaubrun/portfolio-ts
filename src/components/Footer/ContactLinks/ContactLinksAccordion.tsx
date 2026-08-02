@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ContactItem, ContactLinksProps} from './contactItems.ts';
-import {useLanguage} from '../../Utils/LanguageContext.tsx';
+import type {ContactItem, ContactLinksProps} from './contactItems.ts';
+import {useLanguage} from '../../Utils/useLanguage.ts';
 import './ContactLinksAccordion.scss';
 
 const COPIED_FEEDBACK_MS = 2000;
@@ -13,8 +13,7 @@ const COPIED_FEEDBACK_MS = 2000;
  */
 const ContactLinksAccordion: React.FC<ContactLinksProps> = ({items, lenis}) => {
     const {content} = useLanguage();
-    const labels = (content.overlay as { copy: string; copied: string; open: string })
-        || {copy: 'Copier', copied: 'Copié !', open: 'Ouvrir'};
+    const labels = content.overlay;
 
     const [openKey, setOpenKey] = useState<ContactItem['key'] | null>(null);
     const [copied, setCopied] = useState(false);
@@ -87,8 +86,9 @@ const ContactLinksAccordion: React.FC<ContactLinksProps> = ({items, lenis}) => {
                                     className="cacc-close"
                                     onClick={handleClose}
                                     tabIndex={isOpen ? 0 : -1}
-                                    aria-label="Fermer"
+                                    aria-label={labels.close}
                                 >
+                                    <span className="cacc-close-label">{labels.close}</span>
                                     ✕
                                 </button>
                             </span>

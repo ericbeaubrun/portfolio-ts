@@ -3,10 +3,21 @@ import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {FaArrowRight, FaGithub} from 'react-icons/fa';
 import type Lenis from 'lenis';
-import {isVideo, mainMedia, prettyUrl, Project, projectIcon, skillLabels} from './project.ts';
+import {
+    isVideo,
+    mainMedia,
+    prettyUrl,
+    Project,
+    projectIcon,
+    projectImageSrcSet,
+    skillLabels,
+} from './project.ts';
 import ScrollingBand from './ScrollingBand.tsx';
+import Banner from './Banner.tsx';
 import ProjectPanel from './ProjectPanel.tsx';
-import {useLanguage} from '../Utils/LanguageContext.tsx';
+import ProjectsNav from './ProjectsNav.tsx';
+import {useLanguage} from '../Utils/useLanguage.ts';
+import {publicAssetUrl} from '../Utils/publicAssetUrl.ts';
 import './ProjectsGrid.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,11 +53,17 @@ const LAYOUTS = [
 const HOVER_SHIFT = 7;
 const HOVER_SCALE = 1.18;
 
+// Contre-glissement du média à l'entrée. Le zoom doit couvrir la course des
+// deux côtés (marge = (scale - 1) / 2), sinon le fond du cadre apparaît en
+// bande sur toute la durée du scrub.
+const ENTER_SHIFT = 7;
+const ENTER_SCALE = 1 + (ENTER_SHIFT * 2) / 100;
+
 const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
     const sectionRef = useRef<HTMLElement>(null);
     const {content} = useLanguage();
     const [open, setOpen] = useState<OpenState | null>(null);
-    const openLabel = (content as any)['project-overlay']?.open ?? 'Voir le projet';
+    const openLabel = content['project-overlay'].open;
 
     // Le panneau part du cadre cliqué : on relève sa position à l'instant du clic.
     const openProject = (index: number, frame: HTMLElement | null) => {
@@ -66,16 +83,41 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                 const inner = item.querySelector<HTMLElement>('.pgrid-media-inner');
                 const lines = item.querySelectorAll<HTMLElement>('.pgrid-line > *');
 
-                // Reveal : le cadre se dévoile par le bas (masque), le média
-                // contre-glisse pour éviter l'effet « rideau » plat.
+                // Chaque carte entre par son propre bord (gauche ou droite selon sa
+                // colonne) et la course est pilotée par le scroll — pas une simple
+                // apparition déclenchée au passage.
+                const fromLeft = item.dataset.side !== 'right';
+                const sign = fromLeft ? -1 : 1;
+
                 if (frame && media) {
-                    gsap.timeline({scrollTrigger: {trigger: item, start: 'top 85%'}})
+                    gsap.timeline({
+                        scrollTrigger: {trigger: item, start: 'top 92%', end: 'top 45%', scrub: 0.6},
+                    })
+                        // Le masque s'ouvre depuis le même bord que la translation :
+                        // la carte semble sortir de la tranche de l'écran.
                         .fromTo(frame,
-                            {clipPath: 'inset(100% 0% 0% 0%)'},
-                            {clipPath: 'inset(0% 0% 0% 0%)', duration: 0.9, ease: 'expo.out'})
-                        .from(media, {scale: 1.25, duration: 1.1, ease: 'expo.out'}, 0)
-                        .from(lines, {yPercent: 110, duration: 0.7, stagger: 0.06, ease: 'expo.out'}, 0.25);
+                            {clipPath: fromLeft ? 'inset(0% 100% 0% 0%)' : 'inset(0% 0% 0% 100%)'},
+                            {clipPath: 'inset(0% 0% 0% 0%)', ease: 'none'}, 0)
+                        .fromTo(item,
+                            {xPercent: sign * 55, autoAlpha: 0.2},
+                            {xPercent: 0, autoAlpha: 1, ease: 'none'}, 0)
+                        // Contre-glissement du média : il rattrape son cadre, ce qui
+                        // évite l'effet « bloc qui translate d'un seul tenant ».
+                        // `x: 0` explicite : un remontage laisse un translate en px
+                        // dans le style inline, qui s'ajouterait à xPercent et
+                        // doublerait la course.
+                        .fromTo(media,
+                            {x: 0, xPercent: -sign * ENTER_SHIFT, scale: ENTER_SCALE},
+                            {x: 0, xPercent: 0, scale: 1, ease: 'none'}, 0);
                 }
+
+                gsap.from(lines, {
+                    yPercent: 110,
+                    duration: 0.7,
+                    stagger: 0.06,
+                    ease: 'expo.out',
+                    scrollTrigger: {trigger: item, start: 'top 70%'},
+                });
 
                 // Parallax interne : le média fait 140% de la hauteur du cadre,
                 // soit ±14% de course avant de découvrir un bord.
@@ -130,11 +172,14 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
 
     return (
         <section id="projects" className="projects-grid" ref={sectionRef}>
+            <ProjectsNav projects={projects} lenis={lenis} hidden={!!open}/>
             {/* Le padding vit ici et pas sur la section : le bloc « voir plus »
                 et la bande de skills doivent rester pleine largeur. */}
             <div className="pgrid-inner">
                 <header className="pgrid-head">
-                    <h2 className="pgrid-title">{title}</h2>
+                    {/* Même composant que le titre « à propos » : taille, graisse,
+                        espacement et animation d'apparition sont ainsi partagés. */}
+                    <Banner text={title}/>
                     <span className="pgrid-count">{String(projects.length).padStart(2, '0')} projets</span>
                 </header>
 
@@ -142,12 +187,15 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                     {projects.map((project, index) => {
                         const layout = LAYOUTS[index % LAYOUTS.length];
                         const src = mainMedia(project.icon);
-                        const Icon = projectIcon(project.name);
+                        const icon = React.createElement(projectIcon(project.name));
 
                         return (
                             <article
                                 key={project.name}
                                 className="pgrid-item"
+                                // Colonne de départ : au-delà de la moitié de la grille,
+                                // la carte est à droite et entrera donc par la droite.
+                                data-side={parseInt(layout.col, 10) >= 7 ? 'right' : 'left'}
                                 style={{gridColumn: layout.col, marginTop: `${layout.offset}vh`}}
                             >
                                 {/* div et non <a> : le cadre ouvre le panneau, et il
@@ -159,7 +207,14 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                                 {isVideo(src)
                                                     ? <video src={src} autoPlay muted loop playsInline
                                                              preload="metadata"/>
-                                                    : <img src={src} alt={project.name} loading="lazy"/>}
+                                                    : <img
+                                                        src={src}
+                                                        srcSet={projectImageSrcSet(src)}
+                                                        sizes="(max-width: 1024px) 88vw, 52vw"
+                                                        alt={project.name}
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    />}
                                             </div>
                                         </div>
 
@@ -184,13 +239,18 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                                 <FaGithub/>
                                             </a>
                                         )}
-                                        <span className="pgrid-cta">{openLabel} ↗</span>
+                                        {/* Pastille qui glisse depuis le bord gauche du
+                                            cadre : le texte suit avec un léger retard. */}
+                                        <span className="pgrid-cta" aria-hidden="true">
+                                            <span className="pgrid-cta-label">{openLabel}</span>
+                                            <span className="pgrid-cta-arrow">↗</span>
+                                        </span>
                                     </div>
 
                                     <div className="pgrid-content">
                                         <div className="pgrid-line">
                                             <h3 className="pgrid-name">
-                                                <span className="pgrid-icon" aria-hidden="true"><Icon/></span>
+                                                <span className="pgrid-icon" aria-hidden="true">{icon}</span>
                                                 {/* Quand le projet est en ligne, son adresse
                                                     remplace le titre et devient cliquable. */}
                                                 {project.demo
@@ -225,16 +285,19 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
             </div>
 
             <div className="projects-more">
-                <p className="more-text">{(content as any)["projects-more-text"]}</p>
+                <p className="more-text">{content["projects-more-text"]}</p>
                 <button
                     className="more-button"
                     onClick={() => window.open('https://github.com/ericbeaubrun?tab=repositories', '_blank')}
                 >
                     <span className="text">
-                        {(content as any)["projects-more-button"]}
+                        {content["projects-more-button"]}
                         <FaArrowRight className="button-icon"/>
                     </span>
-                    <div className="wave-btn"></div>
+                    <div
+                        className="wave-btn"
+                        style={{backgroundImage: `url(${publicAssetUrl('assets/wave3.svg')})`}}
+                    />
                 </button>
             </div>
 
@@ -243,7 +306,6 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
             {open && projects[open.index] && (
                 <ProjectPanel
                     project={projects[open.index]}
-                    index={open.index}
                     origin={open.origin}
                     onClose={() => setOpen(null)}
                     lenis={lenis}

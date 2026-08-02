@@ -1,16 +1,23 @@
 import {useLayoutEffect, useRef} from "react";
-
-const profilePicture = "/assets/eric-adelaide-beaubrun.webp";
-const arrowIcon = "/assets/fleche-vers-le-bas.svg";
 import "./Presentation.scss";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import ContactButtons from "./ContactButtons.tsx";
-import {useLanguage} from "../Utils/LanguageContext.tsx";
-import {useIsMobile} from "../Utils/MobileContext.tsx";
+import {useLanguage} from "../Utils/useLanguage.ts";
+import {useIsMobile} from "../Utils/useIsMobile.ts";
 import {Link} from "react-scroll";
 
 import {motion} from "framer-motion";
+import {publicAssetUrl} from "../Utils/publicAssetUrl.ts";
+import StarCursor from "./StarCursor.tsx";
+
+const profilePicture = publicAssetUrl("assets/eric-adelaide-beaubrun.webp");
+const profilePictureSrcSet = [
+    `${publicAssetUrl("assets/eric-adelaide-beaubrun-160.webp")} 160w`,
+    `${publicAssetUrl("assets/eric-adelaide-beaubrun-320.webp")} 320w`,
+    `${profilePicture} 500w`,
+].join(', ');
+const arrowIcon = publicAssetUrl("assets/fleche-vers-le-bas.svg");
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,12 +34,7 @@ const
         const {content} = useLanguage();
         const isMobile = useIsMobile();
 
-        const presentationContent = (content as {
-            title: string,
-            subtitle: string,
-            profile_picture_alt: string,
-            introduction: { p1: string, p2: string }
-        });
+        const presentationContent = content;
 
         const containerVariants = {
             hidden: {opacity: 0},
@@ -113,6 +115,7 @@ const
                         start: "top top",
                         end: "bottom top",
                         scrub: true,
+                        invalidateOnRefresh: true,
                     }
                 });
 
@@ -172,10 +175,11 @@ const
                     muted
                     playsInline
                     className="background-video"
-                    src={isMobile ? "/assets/videoLQ.webm" : "/assets/videoHQ.mp4"}
-                    poster="/assets/background.png"
+                    src={publicAssetUrl(isMobile ? "assets/videoLQ.webm" : "assets/videoHQ.mp4")}
+                    poster={publicAssetUrl("assets/background.png")}
                 />
                 <div className="background-overlay" ref={overlayRef}></div>
+                <StarCursor/>
                 <motion.div
                     className="area"
                     variants={containerVariants}
@@ -187,6 +191,11 @@ const
                             ref={imageRef}
                             id="profile-picture"
                             src={profilePicture}
+                            srcSet={profilePictureSrcSet}
+                            sizes="(max-width: 480px) 120px, (max-width: 768px) 150px, 200px"
+                            width="500"
+                            height="500"
+                            decoding="async"
                             alt={presentationContent.profile_picture_alt || "Photo de profil de Eric Adelaide Beaubrun"}
                         />
                     </motion.div>
@@ -210,9 +219,9 @@ const
                             <button
                                 ref={contactBtnRef}
                                 className="contact-me-button"
-                                style={{"--hover-text": `"${(content as any).contact_button_hover || "Échangeons !"}"`} as React.CSSProperties}
+                                style={{"--hover-text": `"${content.contact_button_hover}"`} as React.CSSProperties}
                             >
-                                <span>{(content as any).contact_button || "Contacter"}</span>
+                                <span>{content.contact_button}</span>
                             </button>
                         </Link>
                     </motion.div>

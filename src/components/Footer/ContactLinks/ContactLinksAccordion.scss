@@ -1,4 +1,4 @@
-@import "../../../config.scss";
+@use "../../../config" as *;
 
 $acc-ease: cubic-bezier(0.16, 1, 0.3, 1);
 $acc-duration: 0.65s;
@@ -118,15 +118,30 @@ $acc-duration: 0.65s;
   }
 
   .cacc-close {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-family: inherit;
+    font-size: 2.8rem;
+    font-weight: 900;
+    -webkit-text-stroke: 2px currentColor;
     background: none;
     border: none;
     padding: 0;
-    color: inherit;
+    color: #ff3b30;
     cursor: pointer;
     opacity: 0;
     transform: scale(0.6);
     pointer-events: none;
+    transition: transform 0.25s $acc-ease, opacity 0.25s ease, color 0.25s ease;
+  }
+
+  .cacc-close-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    -webkit-text-stroke: 0;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
 
   // Rangée 2 : repliée tant que le panneau n'est ni survolé ni ouvert.
@@ -136,7 +151,7 @@ $acc-duration: 0.65s;
     font-size: clamp(0.9rem, 1.6vw, 1.5rem);
     line-height: 1.1;
     letter-spacing: 0.12em;
-    text-transform: uppercase;
+    text-transform: none;
     white-space: nowrap;
     color: rgba(255, 255, 255, 0.75);
     max-height: 0;
@@ -286,7 +301,8 @@ $acc-duration: 0.65s;
         pointer-events: auto;
 
         &:hover {
-          transform: scale(1) rotate(90deg);
+          transform: scale(1.2);
+          color: #ff6b60;
         }
       }
 
@@ -300,6 +316,8 @@ $acc-duration: 0.65s;
         opacity: 1;
         transform: translateY(0);
         padding-bottom: 2rem;
+        white-space: normal;
+        overflow-wrap: break-word;
       }
 
       .cacc-actions {
@@ -312,14 +330,40 @@ $acc-duration: 0.65s;
 }
 
 @media (max-width: 1024px), (hover: none) {
+  // Le padding de la section empêcherait le panneau ouvert d'atteindre les
+  // bords de l'écran : il se retrouverait en carré avec des gouttières.
+  .footer-section:has(.cacc.has-open) {
+    padding: 0;
+  }
+
   .cacc {
     width: 90vw;
     height: auto;
     gap: 4px;
+    // La liste ne doit jamais être rétrécie par la boîte de contenu de la
+    // section, sinon la largeur s'accroche pendant l'ouverture/fermeture.
+    flex-shrink: 0;
+    // Centrée au repos comme le fait déjà la section, mais une fois ouverte
+    // elle est plus large que la zone visible (100vw inclut la barre de
+    // défilement) : les marges auto retombent alors à 0 et la collent au bord
+    // au lieu de laisser un filet blanc d'un côté. Horizontalement seulement :
+    // sur l'axe vertical elles prendraient le pas sur le centrage de la
+    // section, et la liste sauterait de 32px à la fermeture.
+    margin-inline: auto;
 
     // Sans survol, chaque panneau est ouvert : la valeur est toujours lisible.
     .cacc-item {
-      flex: none;
+      flex: 0 0 auto;
+      // Ici les panneaux sont dimensionnés par leur contenu, donc `flex-grow`
+      // ne les fait ni grandir ni se replier. Ce sont ces deux bornes, toutes
+      // deux interpolables, qui portent l'animation : `min-height` étire le
+      // panneau ouvert, `max-height` replie ses voisins.
+      min-height: 0;
+      max-height: 18rem;
+      overflow: hidden;
+      transition: min-height $acc-duration $acc-ease,
+      max-height $acc-duration $acc-ease,
+      opacity 0.4s ease;
     }
 
     .cacc-panel {
@@ -338,6 +382,16 @@ $acc-duration: 0.65s;
       font-size: 1.4rem;
     }
 
+    // Le libellé « fermer » déborde de la case des icônes et se fait rogner par
+    // le panneau : la croix seule suffit, le bouton porte déjà un aria-label.
+    .cacc-close {
+      font-size: 2rem;
+    }
+
+    .cacc-close-label {
+      display: none;
+    }
+
     .cacc-value {
       max-height: none;
       opacity: 1;
@@ -349,14 +403,35 @@ $acc-duration: 0.65s;
     }
 
     &.has-open {
-      height: 100vh;
+      // La largeur reste celle du cas général (100vw) : un pourcentage se
+      // recalculerait sur la section redevenue padded à la fermeture, et la
+      // largeur sauterait avant même de commencer à s'animer.
+      // Surtout pas de hauteur explicite non plus : `auto` → `100%` ne
+      // s'interpole pas, la liste sauterait d'un coup au plein écran. Elle suit
+      // la hauteur du panneau ouvert, qui grandit, lui, de façon continue.
+      height: auto;
 
-      .cacc-item.is-open .cacc-panel {
-        padding: 1.6rem 1.2rem;
+      .cacc-item:not(.is-open) {
+        max-height: 0;
       }
 
-      .cacc-item.is-open .cacc-value {
-        color: #fff;
+      .cacc-item.is-open {
+        min-height: 100vh;
+        max-height: 100vh;
+
+        .cacc-panel {
+          // Marge haute suffisante pour passer sous la navbar fixe, marge basse
+          // pour décoller les actions du bord de l'écran.
+          padding: 12vh 1.5rem 10vh;
+        }
+
+        .cacc-value {
+          color: #fff;
+          // `break-all` couperait l'adresse mail au milieu d'un mot une fois
+          // qu'elle passe en gros caractères.
+          word-break: normal;
+          overflow-wrap: anywhere;
+        }
       }
     }
   }

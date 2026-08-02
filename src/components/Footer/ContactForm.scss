@@ -1,4 +1,8 @@
-@import '../../config';
+@use "../../config" as *;
+
+// Pas de l'escalier : chaque champ démarre plus à gauche que le précédent, les
+// bords droits restant alignés — « Message » est donc le plus long des trois.
+$cf-step: 64px;
 
 .contact-form-container {
   display: flex;
@@ -21,7 +25,9 @@
 
   .contactForm {
     width: 100%;
-    max-width: 600px;
+    // Le formulaire occupe désormais la largeur utile de la section, plafonnée
+    // pour que les lignes de saisie restent lisibles.
+    max-width: min(880px, 82vw);
     position: relative;
 
     @media (max-width: 768px) {
@@ -33,43 +39,66 @@
       flex-direction: column;
 
       div {
-        margin-bottom: 45px;
+        // Resserré : la section est épinglée en 100vh, le formulaire agrandi
+        // doit tenir sans déborder sur les petits écrans.
+        margin-bottom: 46px;
 
+        // « Nom » part du bord gauche, chaque champ suivant est plus en retrait.
+        &:nth-of-type(2) {
+          margin-left: $cf-step;
+        }
+
+        &:nth-of-type(3) {
+          margin-left: $cf-step * 2;
+        }
+
+        // L'escalier est réservé au desktop : en dessous, la largeur utile
+        // manque et tous les champs repartent du même bord.
         @media (max-width: 768px) {
-          margin-bottom: 30px;
+          margin-bottom: 34px;
+
+          &:nth-of-type(2),
+          &:nth-of-type(3) {
+            margin-left: 0;
+          }
         }
 
         @media (max-width: 480px) {
-          margin-bottom: 22px;
+          margin-bottom: 28px;
         }
 
         label {
           display: block;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
           font-weight: 500;
           color: #666;
-          font-size: 0.9rem;
+          font-size: 1.05rem;
           text-transform: uppercase;
-          letter-spacing: 2px;
+          letter-spacing: 3px;
+
+          @media (max-width: 768px) {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+          }
         }
 
         input, textarea {
           font-family: inherit;
           color: #000;
           width: 100%;
-          padding: 4px 0;
+          padding: 10px 0;
           border: none;
           border-bottom: 2px solid #ddd; // Bordure claire
-          font-size: 1.1rem;
+          font-size: 1.45rem;
           background-color: transparent;
           transition: border-bottom-color 0.3s ease;
 
           @media (max-width: 768px) {
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
 
           @media (max-width: 480px) {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
           }
 
           &:focus {
@@ -80,21 +109,29 @@
 
         textarea {
           resize: none;
-          height: 100px;
-          min-height: 100px;
+          height: 130px;
+          min-height: 130px;
+          line-height: 1.5;
+
+          @media (max-width: 480px) {
+            height: 120px;
+            min-height: 120px;
+          }
         }
       }
 
       #form-submit-btn {
         align-self: flex-start;
-        padding: 16px 48px;
-        margin-top: 10px;
+        // Le bouton prolonge l'escalier : il repart du bord gauche de « Message ».
+        margin-left: $cf-step * 2;
+        padding: 18px 72px;
+        margin-top: 14px;
         background-color: transparent;
         color: #000;
         border: 2px solid #000;
         border-radius: 0;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1.15rem;
         position: relative;
         overflow: hidden;
         z-index: 1;
@@ -126,20 +163,44 @@
 
         @media (max-width: 768px) {
           width: 100%;
-          align-self: center;
+          margin-left: 0;
+          align-self: flex-start;
+        }
+      }
+
+      // Statuts : repris de la palette du site, noir plein / rouge de l'accordéon.
+      .form-status {
+        margin: 26px 0 0 $cf-step * 2;
+        padding: 16px 24px;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        @media (max-width: 768px) {
+          margin-left: 0;
+        }
+
+        &.is-success {
+          background: #000;
+          color: #fff;
+        }
+
+        &.is-error {
+          color: #ff3b30;
+          border: 1px solid currentColor;
         }
       }
 
       .rgpd-notice {
-        margin: 18px 0 0;
+        margin: 28px 0 0;
         color: #999;
-        font-size: 0.78rem;
-        line-height: 1.4;
+        font-size: 0.9rem;
+        line-height: 1.5;
         letter-spacing: 0.02em;
 
         @media (max-width: 768px) {
           text-align: center;
-          font-size: 0.75rem;
+          font-size: 0.82rem;
         }
       }
     }

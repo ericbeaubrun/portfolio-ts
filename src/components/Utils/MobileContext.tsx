@@ -1,16 +1,11 @@
-import React, { createContext, useContext } from 'react';
+import type {ReactNode} from 'react';
 import { useMediaQuery } from 'react-responsive';
+import {MobileContext} from './mobile-context.ts';
 
-const MOBILE_PX_VALUE: number = 1111;
+const MOBILE_PX_VALUE = 1111;
 
-const MobileContext = createContext<boolean>(false);
-
-export const MobileProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const MobileProvider = ({children}: { children: ReactNode }) => {
     const isMobile = useMediaQuery({ query: `(max-width: ${MOBILE_PX_VALUE}px)` });
 
     return <MobileContext.Provider value={isMobile}>{children}</MobileContext.Provider>;
-};
-
-export const useIsMobile = () => {
-    return useContext(MobileContext);
 };

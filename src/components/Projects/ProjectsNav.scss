@@ -1,0 +1,159 @@
+@use "../../config" as *;
+
+// Hauteur d'une ligne du rail : sert aussi à positionner la fiche en face du
+// projet survolé (`--row` porte l'index).
+$PNAV_ROW: 16px;
+$PNAV_TICK: 32px;
+
+.pnav {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+
+  // Hors section, le rail ne doit pas capter la souris.
+  &:not(.is-in) {
+    pointer-events: none;
+  }
+
+  .pnav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pnav-item {
+    display: flex;
+    align-items: center;
+    width: $PNAV_TICK;
+    height: $PNAV_ROW;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    // La barre est l'élément visible : le bouton reste une zone de clic large.
+    // Au repos elle attend hors champ, à gauche (cf. états du rail plus bas).
+    .pnav-tick {
+      display: block;
+      width: 18px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      transform: translateX(-1.4rem);
+      transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.3s ease,
+      opacity 0.4s ease,
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover .pnav-tick,
+    &:focus-visible .pnav-tick {
+      width: $PNAV_TICK;
+      background: #fff;
+    }
+
+    // Le projet courant garde une barre longue, mais moins vive qu'au survol.
+    &.is-active .pnav-tick {
+      width: 25px;
+      background: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  // Entrée : les barres arrivent par la gauche, en cascade du haut vers le bas.
+  &.is-in .pnav-tick {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: calc(var(--i, 0) * 55ms);
+  }
+
+  // Sortie : elles repartent par la droite — on quitte la section « vers
+  // l'avant », le rail ne rembobine pas son entrée.
+  &.is-out .pnav-tick {
+    opacity: 0;
+    transform: translateX(1.4rem);
+    transition-delay: calc(var(--i, 0) * 45ms);
+  }
+
+  // Fiche unique qui coulisse d'une ligne à l'autre : `--row` est l'index du
+  // projet affiché, la demi-ligne recentre la fiche sur sa barre.
+  .pnav-card {
+    position: absolute;
+    left: calc(#{$PNAV_TICK} + 1.1rem);
+    top: calc(var(--row, 0) * #{$PNAV_ROW} + #{$PNAV_ROW * 0.5});
+    width: 17rem;
+    padding: 0.9rem 1.1rem 1rem;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: $BORDER_RADIUS_COMPONENT;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+    // Décoratif : le clic doit rester sur les barres.
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-0.6rem, -50%);
+    transition: opacity 0.35s ease,
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .pnav-card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0 0 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+
+      // Même pictogramme que sous la carte du projet, en plus petit.
+      .pnav-card-icon {
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        width: 1.7rem;
+        height: 1.7rem;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.85);
+
+        svg {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    .pnav-card-desc {
+      margin: 0;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.5);
+
+      // Les descriptions du JSON vont jusqu'à cinq lignes.
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  // La fiche n'existe que pendant le survol d'une barre précise : l'état vient
+  // du composant (`is-shown`) et non d'un `:hover` sur tout le rail, sinon elle
+  // resterait affichée entre deux barres.
+  .pnav-card.is-shown {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+// Rail réservé au pointeur fin : sur mobile la grille est déjà en une colonne.
+@media (max-width: 1024px), (hover: none) {
+  .pnav {
+    display: none;
+  }
+}

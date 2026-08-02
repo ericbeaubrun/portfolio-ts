@@ -1,11 +1,12 @@
-@import "../../config.scss";
+@use "../../config" as *;
 
 .scrolling-band-container {
   transform: translateY(100px);
   width: 100%;
   position: relative;
   margin-top: 100px;
-  height: 150px;
+  //height: 150px;
+  height: 30px; // à conserver pour l'instant, donne l'effet penché
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +33,6 @@
     display: flex;
     white-space: nowrap;
     gap: 50px;
-    will-change: transform;
 
     .band-word {
       font-size: 7rem;

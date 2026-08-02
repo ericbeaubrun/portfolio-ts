@@ -1,47 +1,38 @@
-import React, {createContext, useContext, useState, useEffect, ReactNode} from "react";
-import frContent from "../../content/fr_content.json";
-import enContent from "../../content/en_content.json";
+import {useEffect, useState, type ReactNode} from 'react';
+import frContent from '../../content/fr_content.json';
+import enContent from '../../content/en_content.json';
+import type {Language, PortfolioContent} from '../../content/content.types.ts';
+import {LanguageContext} from './language-context.ts';
 
-type Language = "fr" | "en";
+const DEFAULT_LANGUAGE: Language = 'fr';
+const CONTENT_BY_LANGUAGE: Record<Language, PortfolioContent> = {
+    fr: frContent,
+    en: enContent,
+};
 
-interface LanguageContextProps {
-    language: Language;
-    content: Record<string, unknown>;
-    toggleLanguage: () => void;
-}
+const isLanguage = (value: string | null): value is Language =>
+    value === 'fr' || value === 'en';
 
-const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
-
-const DEFAULT_LANGUAGE: Language = "fr";
-
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({children}) => {
+export const LanguageProvider = ({children}: { children: ReactNode }) => {
     const [language, setLanguage] = useState<Language>(() => {
-        const savedLanguage = localStorage.getItem("language");
-        return (savedLanguage as Language) || DEFAULT_LANGUAGE;
+        const savedLanguage = localStorage.getItem('language');
+        return isLanguage(savedLanguage) ? savedLanguage : DEFAULT_LANGUAGE;
     });
 
     useEffect(() => {
-        localStorage.setItem("language", language);
+        localStorage.setItem('language', language);
+        document.documentElement.lang = language;
     }, [language]);
 
     const toggleLanguage = () => {
-        setLanguage((prevLang) => (prevLang === "fr" ? "en" : "fr"));
+        setLanguage((previousLanguage) => previousLanguage === 'fr' ? 'en' : 'fr');
     };
 
-    const content = language === "fr" ? frContent : enContent;
+    const content = CONTENT_BY_LANGUAGE[language];
 
     return (
-        <LanguageContext.Provider
-            value={{language, content, toggleLanguage}}>
+        <LanguageContext.Provider value={{language, content, toggleLanguage}}>
             {children}
         </LanguageContext.Provider>
     );
-};
-
-export const useLanguage = () => {
-    const context = useContext(LanguageContext);
-    if (!context) {
-        throw new Error("useLanguage must be used within a LanguageProvider");
-    }
-    return context;
 };
