@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import type {ContactItem, ContactLinksProps} from './contactItems.ts';
 import {useLanguage} from '../../Utils/useLanguage.ts';
+import ArrowUpRight from '../../Utils/ArrowUpRight.tsx';
 import './ContactLinksAccordion.scss';
 
 const COPIED_FEEDBACK_MS = 2000;
@@ -80,7 +81,7 @@ const ContactLinksAccordion: React.FC<ContactLinksProps> = ({items, lenis}) => {
                             <span className="cacc-label">{item.label}</span>
 
                             <span className="cacc-icons">
-                                <span className="cacc-arrow" aria-hidden="true">↗</span>
+                                <ArrowUpRight className="cacc-arrow"/>
                                 <button
                                     type="button"
                                     className="cacc-close"

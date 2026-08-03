@@ -70,7 +70,7 @@
       ],
       "icon": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2-1887.webp"
+        "/assets/projects/urya-presentation-1887.webp"
       ],
       "year": "2025",
       "role": "Design, full-stack development and production release",
@@ -85,83 +85,64 @@
       ],
       "gallery": [
         "/assets/projects/urya.mp4",
-        "/assets/projects/urya2-1887.webp"
+        "/assets/projects/urya-presentation-1887.webp",
+        "/assets/projects/urya-reservation-1920.webp",
+        "/assets/projects/urya-admin-calendrier-1920.webp",
+        "/assets/projects/urya-admin-cms-1920.webp"
       ]
     },
     {
-      "title": "Multiplayer Strategic Board Game",
+      "title": "Online Multiplayer Strategy Game",
       "name": "Conquete",
       "date": "",
-      "desc": "Creation of a strategic board game in Java, featuring a bot for local multiplayer games, save management, and the generation of statistical match charts.",
-      "gh": "https://github.com/ericbeaubrun/conquest-game",
+      "desc": "Conquest is a turn-based strategy game built on a deterministic engine shared by the React client and Node.js server. This architecture powers both configurable local games and server-authoritative online lobbies without duplicating rules. On hexagonal maps, players expand their territory, manage an economy, develop their army and unlock specialised heroes.",
+      "gh": "https://github.com/ericbeaubrun/conquest-online-game",
       "demo": "https://conquete.xyz",
       "skills": {
-        "java": "Java",
-        "junit": "JUnit",
-        "swing": "Java Swing",
-        "jfreechart": "jFreeChart"
+        "javascript": "JavaScript",
+        "react": "React",
+        "vite": "Vite",
+        "node": "Node.js",
+        "express": "Express.js",
+        "socketio": "Socket.IO",
+        "mongodb": "MongoDB",
+        "sass": "Sass",
+        "recharts": "Recharts",
+        "java": "Java"
       },
       "features": [
-        "Artificial Intelligence for local matches",
-        "Local multiplayer mode",
-        "Save game management and loading",
-        "Statistical match charts generation"
+        "Shared deterministic engine for local and server-authoritative online games",
+        "Hexagonal territory conquest for two to four players, with three victory modes",
+        "Economy, buildings, upkeep, five troop ranks and simultaneous combat",
+        "Twenty heroes unlocked through challenges, plus affinities and summoned creatures",
+        "Strategic bots, persistent lobbies, reconnection and local browser saves",
+        "Configurable rules, integrated codex and interactive match statistics"
       ],
       "icon": [
-        "/assets/projects/conquete.webm",
-        "/assets/projects/conquete2.webm"
+        "/assets/projects/conquete-home-1920.webp",
+        "/assets/projects/conquete-map-1920.webp"
       ],
-      "year": "2023",
-      "role": "Game engine and AI development, in a pair",
-      "type": "Academic project",
-      "status": "Completed",
-      "context": "Turn-based board game inspired by territory conquest classics. The teaching goal was a testable architecture: the rules engine is fully decoupled from the Swing interface, so a whole game can be replayed in tests without opening a single window.",
+      "year": "2026",
+      "role": "Game design, full-stack architecture, game engine, bot AI, multiplayer networking and UI/UX",
+      "type": "Personal full-stack project",
+      "status": "Live and actively developed",
+      "context": "Conquest is the web evolution of an earlier Java board game. Its monorepo separates a pure shared rules engine, a React interface and an Express/Socket.IO server, allowing the same actions to be replayed identically offline and online. The gameplay combines territorial expansion, economy, troop merging, hero specialisation and an evolving world of forests, treasures and creatures.",
       "challenges": [
-        "Strictly separating rules engine from interface so games stay replayable in tests",
-        "Designing a readable AI: weighted territory scoring rather than a costly search tree",
-        "Serialising a full game (board, players, history) in a format readable across versions",
-        "Computing end-of-game statistics without freezing the interface"
+        "Centralising every rule in a pure shared reducer so local, client and server behaviour cannot diverge",
+        "Guaranteeing reproducible games through seeded randomness, state serialisation and golden fingerprint tests",
+        "Combining an optimistic React interface with server validation, rollback, reconnection and MongoDB persistence",
+        "Designing a modular bot that evaluates expansion, threats, combat trades and hero-specific strategies",
+        "Keeping a dense ruleset maintainable and balanced through shared data catalogues, bot simulations and development tools",
+        "Rendering large responsive hexagonal maps with layered terrain, targeting, previews, zoom and camera controls"
       ],
       "gallery": [
-        "/assets/projects/conquete.webm",
-        "/assets/projects/conquete2.webm"
-      ]
-    },
-    {
-      "title": "Air Traffic Simulator",
-      "name": "Aerien",
-      "date": "",
-      "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unexpected events such as aviation emergencies.",
-      "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
-      "demo": "",
-      "skills": {
-        "java": "Java",
-        "multithreading": "Multithreading"
-      },
-      "features": [
-        "Real-time simulation of aircraft movements",
-        "Flight path and airport operations modeling",
-        "Automated collision risk management",
-        "Aviation emergency and unexpected event handling"
-      ],
-      "icon": [
-        "/assets/projects/aerien.webm",
-        "/assets/projects/aerien2.webm"
-      ],
-      "year": "2023",
-      "role": "Software architecture and real-time simulation, team of four",
-      "type": "Software engineering project",
-      "status": "Completed",
-      "context": "Air traffic control simulator: dozens of aircraft follow flight plans, enter and leave the monitored airspace, and raise alerts when two trajectories converge. The radar renders the current state while the simulation advances at its own pace.",
-      "challenges": [
-        "Running the simulation loop and radar rendering together without blocking or flicker",
-        "Detecting trajectory conflicts early enough to leave room to react",
-        "Injecting unplanned events (emergency, diversion, weather) without corrupting simulation state",
-        "Keeping the simulation deterministic so a scenario can be replayed identically"
-      ],
-      "gallery": [
-        "/assets/projects/aerien.webm",
-        "/assets/projects/aerien2.webm"
+        "/assets/projects/conquete-home-1920.webp",
+        "/assets/projects/conquete-map-1920.webp",
+        "/assets/projects/conquete-partie-1920.webp",
+        "/assets/projects/conquete-multijoueur-1920.webp",
+        "/assets/projects/conquete-lobby-1920.webp",
+        "/assets/projects/conquete-codex-1920.webp",
+        "/assets/projects/conquete-stats-1920.webp"
       ]
     },
     {
@@ -207,82 +188,41 @@
       ]
     },
     {
-      "title": "Educational Application for Students",
-      "name": "learnpy",
+      "title": "Air Traffic Simulator",
+      "name": "Aerien",
       "date": "",
-      "desc": "Development of an interactive Python application to teach programming to students. The application includes a custom code editor, real-time feedback generation, and student statistics storage.",
-      "gh": "https://github.com/ericbeaubrun/educational-python-app",
-      "demo": "",
+      "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unexpected events such as aviation emergencies.",
+      "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
+      "demo": "https://aerial-radar.vercel.app/",
       "skills": {
-        "py": "Python",
-        "pyqt6": "PyQt6",
-        "css": "CSS",
-        "uiux": "UI/UX Design"
+        "java": "Java",
+        "multithreading": "Multithreading"
       },
       "features": [
-        "Custom code editor",
-        "Real-time corrective feedback generation",
-        "Student progress and statistics storage"
+        "Real-time simulation of aircraft movements",
+        "Flight path and airport operations modeling",
+        "Automated collision risk management",
+        "Aviation emergency and unexpected event handling"
       ],
       "icon": [
-        "/assets/projects/learn_py.webm",
-        "/assets/projects/learn_py2.webm"
-      ],
-      "year": "2024",
-      "role": "Learning design and development",
-      "type": "Personal project",
-      "status": "In progress",
-      "context": "A hands-on platform for learning Python: every concept comes with automatically graded exercises that explain what went wrong instead of returning a bare pass/fail.",
-      "challenges": [
-        "Running user code without exposing the host machine (sandbox and time limits)",
-        "Turning raw Python errors into messages a beginner can act on",
-        "Tracking progress and suggesting the next exercise based on concepts already mastered",
-        "Keeping the editor responsive on modest hardware"
-      ],
-      "gallery": [
-        "/assets/projects/learn_py.webm",
-        "/assets/projects/learn_py2.webm"
-      ]
-    },
-    {
-      "title": "Online Tournament Generator",
-      "name": "Tournois",
-      "date": "",
-      "desc": "This project consists of developing a full-stack instant tournament management application capable of modeling competitions. It combines a React frontend in JavaScript for real-time score display and bracket generation with a secure REST API under Node.js/Express that handles user authentication, the favorites system, and data modification permissions.",
-      "gh": "https://github.com/ericbeaubrun/tournament-generator-server",
-      "demo": "",
-      "skills": {
-        "javascript": "JavaScript",
-        "react": "React",
-        "node": "Node.js",
-        "express": "Express.js",
-        "mongodb": "MongoDB",
-        "docker": "Docker"
-      },
-      "features": [
-        "Automatic and dynamic tournament bracket generation",
-        "Real-time score display and tracking",
-        "Secure REST API with authentication and role-based permissions",
-        "Competition bookmarking and favorites system"
-      ],
-      "icon": [
-        "/assets/projects/tournament1-1920.webp",
-        "/assets/projects/tournament2-1920.webp"
+        "/assets/projects/aerien-globe.webm",
+        "/assets/projects/aerien-simulation.webm"
       ],
       "year": "2023",
-      "role": "Full-stack development",
-      "type": "Personal project",
+      "role": "Software architecture and real-time simulation, team of four",
+      "type": "Software engineering project",
       "status": "Completed",
-      "context": "Tournament management tool: team registration, automatic bracket generation, score entry and a live standing shared by players and organisers alike.",
+      "context": "Air traffic control simulator: dozens of aircraft follow flight plans, enter and leave the monitored airspace, and raise alerts when two trajectories converge. The radar renders the current state while the simulation advances at its own pace.",
       "challenges": [
-        "Generating a balanced bracket for any team count, including non powers of two",
-        "Propagating a corrected score through the bracket without recomputing the whole tournament",
-        "Broadcasting the live standing to several screens at once",
-        "Handling edge cases: forfeit, draw, mid-tournament disqualification"
+        "Running the simulation loop and radar rendering together without blocking or flicker",
+        "Detecting trajectory conflicts early enough to leave room to react",
+        "Injecting unplanned events (emergency, diversion, weather) without corrupting simulation state",
+        "Keeping the simulation deterministic so a scenario can be replayed identically"
       ],
       "gallery": [
-        "/assets/projects/tournament1-1920.webp",
-        "/assets/projects/tournament2-1920.webp"
+        "/assets/projects/aerien-globe.webm",
+        "/assets/projects/aerien-simulation.webm",
+        "/assets/projects/aerien-carte.webm"
       ]
     }
   ],

@@ -18,6 +18,7 @@ import ProjectPanel from './ProjectPanel.tsx';
 import ProjectsNav from './ProjectsNav.tsx';
 import {useLanguage} from '../Utils/useLanguage.ts';
 import {publicAssetUrl} from '../Utils/publicAssetUrl.ts';
+import ArrowUpRight from '../Utils/ArrowUpRight.tsx';
 import './ProjectsGrid.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -243,7 +244,7 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                             cadre : le texte suit avec un léger retard. */}
                                         <span className="pgrid-cta" aria-hidden="true">
                                             <span className="pgrid-cta-label">{openLabel}</span>
-                                            <span className="pgrid-cta-arrow">↗</span>
+                                            <ArrowUpRight className="pgrid-cta-arrow"/>
                                         </span>
                                     </div>
 

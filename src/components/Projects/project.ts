@@ -38,7 +38,18 @@ const RESPONSIVE_IMAGE_WIDTHS: Record<string, number[]> = {
     'bdres-1920.webp': [640, 1280, 1920],
     'tournament1-1920.webp': [640, 1280, 1920],
     'tournament2-1920.webp': [640, 1280, 1920],
-    'urya2-1887.webp': [640, 1280, 1887],
+    'urya-presentation-1887.webp': [640, 1280, 1887],
+    'urya-reservation-1920.webp': [640, 1280, 1920],
+    'urya-admin-calendrier-1920.webp': [640, 1280, 1920],
+    'urya-admin-cms-1920.webp': [640, 1280, 1920],
+    'conquete-home-1920.webp': [640, 1280, 1920],
+    'conquete-map-1920.webp': [640, 1280, 1920],
+    'conquete-partie-1920.webp': [640, 1280, 1920],
+    'conquete-multijoueur-1920.webp': [640, 1280, 1920],
+    'conquete-lobby-1920.webp': [640, 1280, 1920],
+    'conquete-codex-1920.webp': [640, 1280, 1920],
+    'conquete-stats-1920.webp': [640, 1280, 1920],
+    'aerien-accueil-1792.webp': [640, 1280, 1792],
 };
 
 export const isVideo = (src: string) =>

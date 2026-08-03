@@ -8,10 +8,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const SCRAMBLE_CHARS = '&$*à%#@!?§µ£¤/\\|<>[]{}=+~^0101';
-const SCRAMBLE_DURATION = 1450;
+const SCRAMBLE_DURATION = 1100;
 // Les glyphes aléatoires n'ont pas besoin d'être redessinés à 60 fps : on
-// plafonne le défilement à 30 fps, ce qui divise les écritures DOM par deux.
-const SCRAMBLE_FRAME_INTERVAL = 1000 / 30;
+// plafonne le défilement à 40 fps pour limiter les écritures DOM.
+const SCRAMBLE_FRAME_INTERVAL = 1000 / 40;
 // Au-delà de ce nombre de mots révélés dans la même frame (scroll rapide),
 // on affiche directement le texte final au lieu de lancer un déchiffrage.
 const MAX_CONCURRENT_SCRAMBLES = 6;
