@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import {FaGithub} from 'react-icons/fa';
 import {FaArrowDown} from 'react-icons/fa6';
 import type Lenis from 'lenis';
-import {isVideo, mediaList, prettyUrl, Project, projectIcon, projectImageSrcSet, skillLabels} from './project.ts';
+import {isVideo, mediaList, prettyUrl, Project, projectIcon, projectImageSrcSet, projectLogo, skillLabels} from './project.ts';
 import {useLanguage} from '../Utils/useLanguage.ts';
 import './ProjectPanel.scss';
 
@@ -71,6 +71,7 @@ const ProjectPanel: React.FC<Props> = ({project, origin, onClose, lenis}) => {
     const closeTimer = useRef<number>();
 
     const Icon = projectIcon(project.name);
+    const logo = projectLogo(project.name);
 
     const medias = mediaList(project.gallery?.length ? project.gallery : project.icon);
 
@@ -152,15 +153,18 @@ const ProjectPanel: React.FC<Props> = ({project, origin, onClose, lenis}) => {
         {label: labels.type, value: project.type},
         {
             label: labels.site,
-            value: project.demo
-                ? <a href={project.demo} target="_blank" rel="noopener noreferrer">{prettyUrl(project.demo)} ↗</a>
-                : labels.noLink,
-        },
-        {
-            label: labels.code,
-            value: project.gh
-                ? <a href={project.gh} target="_blank" rel="noopener noreferrer"><FaGithub aria-hidden="true"/> {prettyUrl(project.gh)} ↗</a>
-                : null,
+            value: (project.demo || project.gh) ? (
+                <span className="ppanel-links">
+                    {project.demo
+                        ? <a href={project.demo} target="_blank" rel="noopener noreferrer">{prettyUrl(project.demo)} ↗</a>
+                        : labels.noLink}
+                    {project.gh && (
+                        <a href={project.gh} target="_blank" rel="noopener noreferrer" className="ppanel-gh-link">
+                            <FaGithub aria-hidden="true"/> {labels.code}
+                        </a>
+                    )}
+                </span>
+            ) : labels.noLink,
         },
     ].filter((item) => item.value);
 
@@ -184,7 +188,9 @@ const ProjectPanel: React.FC<Props> = ({project, origin, onClose, lenis}) => {
                 <div className="ppanel-scroll" data-lenis-prevent>
                     <header className="ppanel-head">
                         <h2 className="ppanel-name">
-                            <Icon className="ppanel-name-icon" aria-hidden="true"/>
+                            {logo
+                                ? <img className="ppanel-name-icon" src={logo} alt="" aria-hidden="true"/>
+                                : <Icon className="ppanel-name-icon" aria-hidden="true"/>}
                             <span>{project.name}</span>
                         </h2>
                         <p className="ppanel-title">{project.title}</p>

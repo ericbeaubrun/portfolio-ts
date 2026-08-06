@@ -139,44 +139,6 @@
       }
     }
 
-    // Pastille GitHub, en haut à droite du cadre.
-    .pgrid-gh {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.6rem;
-      height: 2.6rem;
-      border-radius: 50%;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(6px);
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: opacity 0.3s ease,
-      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-      background-color 0.3s ease, color 0.3s ease;
-
-      svg {
-        font-size: 1.2rem;
-      }
-
-      &:hover {
-        background: #fff;
-        color: #000;
-      }
-
-      // Sans survol possible, la pastille reste visible en permanence.
-      @media (hover: none) {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
     .pgrid-content {
       padding-top: 1.4rem;
     }
@@ -196,47 +158,87 @@
       line-height: 1.1;
       font-weight: 600;
 
-      // Remplace l'ancienne numérotation : un pictogramme par projet.
-      .pgrid-icon {
-        display: grid;
-        place-items: center;
+      // Année du projet, affichée avant le nom.
+      .pgrid-year {
         flex: 0 0 auto;
         align-self: center;
-        width: 2.6rem;
-        height: 2.6rem;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 50%;
-        color: rgba(255, 255, 255, 0.75);
-        transition: color 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+        font-size: 0.4em;
+        font-weight: 500;
+        letter-spacing: 0;
+        text-transform: none;
+        color: rgba(255, 255, 255, 0.5);
+        transition: color 0.35s ease;
+      }
+    }
 
-        svg {
-          font-size: 1.15rem;
+    // Site en ligne et dépôt GitHub, affichés sur une même ligne sous le
+    // titre : plus affirmés que la simple desc, pour qu'ils se remarquent
+    // au premier coup d'œil sans prendre deux lignes.
+    .pgrid-line--links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      margin-top: 0.7rem;
+    }
+
+    .pgrid-url {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      transition: opacity 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -0.15em;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.4;
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .pgrid-url-icon {
+        flex: none;
+        width: 0.8em;
+        height: 0.8em;
+      }
+
+      .pgrid-url-arrow {
+        flex: none;
+        width: 0.85em;
+        height: 0.85em;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      &:hover {
+        opacity: 0.75;
+
+        &::after {
+          opacity: 1;
+        }
+
+        .pgrid-url-arrow {
+          transform: translate(0.15em, -0.15em);
         }
       }
 
-      // Adresse du site en ligne, affichée à la place du nom du projet.
-      .pgrid-url {
-        color: inherit;
-        text-decoration: none;
-        text-transform: none;
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -0.1em;
-          width: 100%;
-          height: 2px;
-          background: currentColor;
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        &:hover::after {
-          transform: scaleX(1);
-        }
+      // Repère visuel du lien GitHub : même gabarit, en plus discret pour
+      // qu'on distingue au premier regard le site de la source du projet.
+      &.pgrid-url--gh {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.55);
       }
     }
 
@@ -274,11 +276,6 @@
     }
 
     &:hover {
-      .pgrid-gh {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       .pgrid-cta {
         transform: translateX(0);
 
@@ -294,10 +291,8 @@
         color: #fff;
       }
 
-      .pgrid-icon {
-        background: #fff;
-        border-color: #fff;
-        color: #000;
+      .pgrid-year {
+        color: #fff;
       }
     }
   }

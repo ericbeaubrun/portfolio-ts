@@ -18,10 +18,10 @@ describe('publicAssetUrl', () => {
     });
 
     it('construit les variantes responsives des captures de projets', () => {
-        expect(projectImageSrcSet('/assets/projects/bdres-1920.webp')).toBe(
-            '/assets/projects/bdres-640.webp 640w, '
-            + '/assets/projects/bdres-1280.webp 1280w, '
-            + '/assets/projects/bdres-1920.webp 1920w',
+        expect(projectImageSrcSet('/assets/projects/bdres-overview-1920.webp')).toBe(
+            '/assets/projects/bdres-overview-640.webp 640w, '
+            + '/assets/projects/bdres-overview-1280.webp 1280w, '
+            + '/assets/projects/bdres-overview-1920.webp 1920w',
         );
         expect(projectImageSrcSet('/assets/projects/unknown.png')).toBeUndefined();
     });

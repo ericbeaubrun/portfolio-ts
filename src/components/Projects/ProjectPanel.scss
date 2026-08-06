@@ -200,6 +200,12 @@ $panel-ease-in: cubic-bezier(0.5, 0, 0.9, 0.2);
       flex: none;
       font-size: 0.78em;
     }
+
+    img.ppanel-name-icon {
+      width: 0.78em;
+      height: 0.78em;
+      object-fit: contain;
+    }
   }
 
   .ppanel-title {
@@ -230,6 +236,19 @@ $panel-ease-in: cubic-bezier(0.5, 0, 0.9, 0.2);
       font-size: 0.95rem;
       line-height: 1.4;
       color: rgba(0, 0, 0, 0.9);
+    }
+
+    .ppanel-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+    }
+
+    .ppanel-gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
   }
 }

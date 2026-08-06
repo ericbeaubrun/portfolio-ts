@@ -176,7 +176,7 @@ const
                     playsInline
                     className="background-video"
                     src={publicAssetUrl(isMobile ? "assets/videoLQ.webm" : "assets/videoHQ.mp4")}
-                    poster={publicAssetUrl("assets/background.png")}
+                    poster={publicAssetUrl("assets/background.webp")}
                 />
                 <div className="background-overlay" ref={overlayRef}></div>
                 <StarCursor/>

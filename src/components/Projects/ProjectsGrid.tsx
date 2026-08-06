@@ -1,14 +1,13 @@
 import React, {useLayoutEffect, useRef, useState} from 'react';
 import gsap from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import {FaArrowRight, FaGithub} from 'react-icons/fa';
+import {FaArrowRight, FaGithub, FaGlobe} from 'react-icons/fa';
 import type Lenis from 'lenis';
 import {
     isVideo,
     mainMedia,
     prettyUrl,
     Project,
-    projectIcon,
     projectImageSrcSet,
     skillLabels,
 } from './project.ts';
@@ -65,6 +64,7 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
     const {content} = useLanguage();
     const [open, setOpen] = useState<OpenState | null>(null);
     const openLabel = content['project-overlay'].open;
+    const codeLabel = content['project-overlay'].code;
 
     // Le panneau part du cadre cliqué : on relève sa position à l'instant du clic.
     const openProject = (index: number, frame: HTMLElement | null) => {
@@ -188,7 +188,6 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                     {projects.map((project, index) => {
                         const layout = LAYOUTS[index % LAYOUTS.length];
                         const src = mainMedia(project.icon);
-                        const icon = React.createElement(projectIcon(project.name));
 
                         return (
                             <article
@@ -199,8 +198,9 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                 data-side={parseInt(layout.col, 10) >= 7 ? 'right' : 'left'}
                                 style={{gridColumn: layout.col, marginTop: `${layout.offset}vh`}}
                             >
-                                {/* div et non <a> : le cadre ouvre le panneau, et il
-                                    contient déjà un lien GitHub. */}
+                                {/* div et non <a> : le cadre ouvre le panneau via le
+                                    bouton superposé, les liens site/GitHub vivent sous
+                                    le titre. */}
                                 <div className="pgrid-link">
                                     <div className="pgrid-frame" style={{aspectRatio: layout.ratio}}>
                                         <div className="pgrid-media">
@@ -228,18 +228,6 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                             aria-label={`${project.name} — ${openLabel}`}
                                         />
 
-                                        {project.gh && (
-                                            <a
-                                                className="pgrid-gh"
-                                                href={project.gh}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                aria-label={`${project.name} — GitHub`}
-                                                title={`${project.name} — GitHub`}
-                                            >
-                                                <FaGithub/>
-                                            </a>
-                                        )}
                                         {/* Pastille qui glisse depuis le bord gauche du
                                             cadre : le texte suit avec un léger retard. */}
                                         <span className="pgrid-cta" aria-hidden="true">
@@ -251,22 +239,41 @@ const ProjectsGrid: React.FC<Props> = ({projects, title, lenis}) => {
                                     <div className="pgrid-content">
                                         <div className="pgrid-line">
                                             <h3 className="pgrid-name">
-                                                <span className="pgrid-icon" aria-hidden="true">{icon}</span>
-                                                {/* Quand le projet est en ligne, son adresse
-                                                    remplace le titre et devient cliquable. */}
-                                                {project.demo
-                                                    ? <a
+                                                {project.year && (
+                                                    <span className="pgrid-year" aria-hidden="true">{project.year}</span>
+                                                )}
+                                                {project.name}
+                                            </h3>
+                                        </div>
+                                        {(project.demo || project.gh) && (
+                                            <div className="pgrid-line pgrid-line--links">
+                                                {project.demo && (
+                                                    <a
                                                         className="pgrid-url"
                                                         href={project.demo}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         onClick={(e) => e.stopPropagation()}
                                                     >
+                                                        <FaGlobe className="pgrid-url-icon"/>
                                                         {prettyUrl(project.demo)}
+                                                        <ArrowUpRight className="pgrid-url-arrow"/>
                                                     </a>
-                                                    : project.name}
-                                            </h3>
-                                        </div>
+                                                )}
+                                                {project.gh && (
+                                                    <a
+                                                        className="pgrid-url pgrid-url--gh"
+                                                        href={project.gh}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        <FaGithub className="pgrid-url-icon"/>
+                                                        {codeLabel}
+                                                    </a>
+                                                )}
+                                            </div>
+                                        )}
                                         <div className="pgrid-line">
                                             <p className="pgrid-desc">{project.desc}</p>
                                         </div>

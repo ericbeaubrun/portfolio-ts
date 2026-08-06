@@ -1,10 +1,8 @@
 import type {IconType} from 'react-icons';
 import {publicAssetUrl} from '../Utils/publicAssetUrl.ts';
 import {
-    FaChessKnight,
     FaCode,
     FaIdCardAlt,
-    FaMusic,
     FaPlane,
     FaPython,
     FaTrophy,
@@ -35,7 +33,8 @@ export interface Project {
 
 const VIDEO_EXT = ['mp4', 'webm', 'ogg'];
 const RESPONSIVE_IMAGE_WIDTHS: Record<string, number[]> = {
-    'bdres-1920.webp': [640, 1280, 1920],
+    'bdres-overview-1920.webp': [640, 1280, 1920],
+    'bdres-crud-1920.webp': [640, 1280, 1920],
     'tournament1-1920.webp': [640, 1280, 1920],
     'tournament2-1920.webp': [640, 1280, 1920],
     'urya-presentation-1887.webp': [640, 1280, 1887],
@@ -84,8 +83,6 @@ export const skillLabels = (skills: Record<string, string | undefined>) =>
  * La clé est le `name` du JSON de contenu (identique en FR et EN).
  */
 const ICONS: Record<string, IconType> = {
-    'Dj URYA': FaMusic,
-    'Conquete': FaChessKnight,
     'Aerien': FaPlane,
     'Presence': FaIdCardAlt,
     'learnpy': FaPython,
@@ -93,6 +90,15 @@ const ICONS: Record<string, IconType> = {
 };
 
 export const projectIcon = (name: string): IconType => ICONS[name] ?? FaCode;
+
+/** Projets avec un vrai logo : prime sur le pictogramme de `projectIcon`. */
+const LOGOS: Record<string, string> = {
+    'Conquete': 'assets/logo-conquete.png',
+    'Dj URYA': 'assets/logo-urya.png',
+};
+
+export const projectLogo = (name: string): string | undefined =>
+    LOGOS[name] ? publicAssetUrl(LOGOS[name]) : undefined;
 
 /** `https://www.dj-urya.fr/` → `dj-urya.fr`, pour afficher le lien en clair. */
 export const prettyUrl = (url: string) =>

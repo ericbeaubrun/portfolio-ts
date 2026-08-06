@@ -122,7 +122,7 @@
         "/assets/projects/conquete-home-1920.webp",
         "/assets/projects/conquete-map-1920.webp"
       ],
-      "year": "2026",
+      "year": "2022",
       "role": "Game design, full-stack architecture, game engine, bot AI, multiplayer networking and UI/UX",
       "type": "Personal full-stack project",
       "status": "Live and actively developed",
@@ -151,7 +151,7 @@
       "date": "",
       "desc": "This project aims to design an automated attendance verification and management system using NFC smart cards for students or employees. It connects a Python hardware client reading badges via an ACR122U reader, a secure Spring Boot backend server validating schedules and preventing duplicates, and an admin web interface to manage history and attendance data.",
       "gh": "https://github.com/ericbeaubrun/presence-system",
-      "demo": "",
+      "demo": "https://ericbeaubrun.github.io/presence-system/",
       "skills": {
         "java": "Java",
         "springboot": "Spring Boot",
@@ -170,7 +170,8 @@
         "Web admin interface for history and logs management"
       ],
       "icon": [
-        "/assets/projects/bdres-1920.webp"
+        "/assets/projects/bdres-overview-1920.webp",
+        "/assets/projects/bdres-crud-1920.webp"
       ],
       "year": "2024",
       "role": "Spring Boot backend, Python NFC client and admin interface",
@@ -184,7 +185,8 @@
         "Making the setup reproducible through Docker for classroom demos"
       ],
       "gallery": [
-        "/assets/projects/bdres-1920.webp"
+        "/assets/projects/bdres-overview-1920.webp",
+        "/assets/projects/bdres-crud-1920.webp"
       ]
     },
     {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import type Lenis from 'lenis';
-import {Project, projectIcon} from './project.ts';
+import {Project, projectIcon, projectLogo} from './project.ts';
 import './ProjectsNav.scss';
 
 interface Props {
@@ -88,7 +88,11 @@ const ProjectsNav: React.FC<Props> = ({projects, lenis, hidden}) => {
     // La fiche ne décrit que la barre survolée. On garde le dernier index le
     // temps de la disparition, sinon le contenu se viderait avant le fondu.
     const shown = hover ?? active;
-    const icon = React.createElement(projectIcon(projects[shown]?.name ?? ''));
+    const shownName = projects[shown]?.name ?? '';
+    const logo = projectLogo(shownName);
+    const icon = logo
+        ? <img src={logo} alt=""/>
+        : React.createElement(projectIcon(shownName));
 
     return (
         <nav

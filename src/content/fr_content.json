@@ -122,7 +122,7 @@
         "/assets/projects/conquete-home-1920.webp",
         "/assets/projects/conquete-map-1920.webp"
       ],
-      "year": "2026",
+      "year": "2022",
       "role": "Game design, architecture full-stack, moteur de jeu, IA des bots, réseau multijoueur et UI/UX",
       "type": "Projet personnel full-stack",
       "status": "En ligne et en développement actif",
@@ -151,7 +151,7 @@
       "date": "",
       "desc": "Ce projet vise à concevoir un système automatisé de gestion et de vérification des présences par cartes à puce NFC pour les étudiants ou les employés. Il articule un client matériel Python lisant les badges via un lecteur ACR122U, un serveur backend Spring Boot sécurisé qui valide les horaires et évite les doublons, ainsi qu'une interface web d'administration permettant de gérer l'historique et les données de présence.",
       "gh": "https://github.com/ericbeaubrun/presence-system",
-      "demo": "",
+      "demo": "https://ericbeaubrun.github.io/presence-system/",
       "skills": {
         "java": "Java",
         "springboot": "Spring Boot",
@@ -170,7 +170,8 @@
         "Interface web d'administration pour la gestion de l'historique"
       ],
       "icon": [
-        "/assets/projects/bdres-1920.webp"
+        "/assets/projects/bdres-overview-1920.webp",
+        "/assets/projects/bdres-crud-1920.webp"
       ],
       "year": "2024",
       "role": "Backend Spring Boot, client NFC Python et interface d'administration",
@@ -184,7 +185,8 @@
         "Rendre l'installation reproductible via Docker pour une démonstration en salle"
       ],
       "gallery": [
-        "/assets/projects/bdres-1920.webp"
+        "/assets/projects/bdres-overview-1920.webp",
+        "/assets/projects/bdres-crud-1920.webp"
       ]
     },
     {
