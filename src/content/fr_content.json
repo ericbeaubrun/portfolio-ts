@@ -9,6 +9,10 @@
       "subtitle": "Mon Histoire"
     },
     {
+      "title": "Services",
+      "subtitle": "Ce Que Je Vous Apporte"
+    },
+    {
       "title": "Projets",
       "subtitle": "Mes Créations"
     },
@@ -24,21 +28,112 @@
     "p1": "Bienvenue sur mon portfolio ! Passionné d'informatique et de programmation, je partage ici mes projets marquants, développés sur mon temps libre ou à l'université.",
     "p2": "De la création de scripts aux logiciels, en passant par la gestion de serveurs et de données, mon ambition est de transformer cette passion en expertise, en me spécialisant comme Software Engineer ou Dev Full Stack."
   },
+  "services-title": "services",
+  "services-intro": "Trois leviers pour transformer votre outil digital en avantage concurrentiel : créer ce qui vous manque, automatiser ce qui vous coûte, optimiser ce qui vous rapporte.",
+  "services-labels": {
+    "pillars": "pôles",
+    "expertises": "expertises",
+    "gain": "Ce que vous y gagnez —",
+    "cta-text": "Un besoin précis, ou juste une intuition à challenger ?",
+    "cta-button": "Parlons-en"
+  },
   "services": [
     {
-      "icon": "uiux-icon",
-      "title": "API REST",
-      "p": "Développement de systèmes permettant d’échanger facilement des informations avec d’autres services."
+      "id": "creation",
+      "index": "01",
+      "eyebrow": "Création",
+      "title": "Développement Web & Outils Métiers",
+      "promise": "Un actif digital sur-mesure, à votre image, taillé pour votre façon de travailler.",
+      "items": [
+        {
+          "id": "web",
+          "title": "Sites & interfaces sur-mesure",
+          "desc": "Un site conçu autour de votre identité et de vos visiteurs : design distinctif, navigation évidente, parcours pensé pour transformer la visite en prise de contact."
+        },
+        {
+          "id": "apps",
+          "title": "Applications & outils métiers",
+          "desc": "Back-offices, tableaux de bord et mini-ERP qui rassemblent toute votre gestion au même endroit. Fini les tableurs éparpillés et les chiffres qui ne concordent jamais."
+        },
+        {
+          "id": "sovereign",
+          "title": "Solutions souveraines & Privacy-First",
+          "desc": "Architectures propriétaires auto-hébergées : vos données restent chez vous, conformes RGPD, sans abonnement mensuel ni dépendance à un éditeur tiers."
+        }
+      ]
     },
     {
-      "icon": "webdev-icon",
-      "title": "Conception UI/UX",
-      "p": "Créations de designs simples, clairs et modernes pour que les utilisateurs trouvent ce qu’ils cherchent en quelques clics."
+      "id": "automation",
+      "index": "02",
+      "eyebrow": "Gain de temps",
+      "title": "Automatisation, Data & Productivité",
+      "promise": "Chaque tâche répétitive supprimée, c'est du temps rendu à vos équipes — tous les mois, sans rien redemander.",
+      "items": [
+        {
+          "id": "bpa",
+          "title": "Automatisation des processus (BPA)",
+          "desc": "J'identifie les tâches que vos équipes refont chaque jour et je les confie à des robots. Elles s'exécutent seules, sans oubli ni erreur de saisie."
+        },
+        {
+          "id": "api",
+          "title": "Synchronisation de vos outils (API)",
+          "desc": "Site, CRM, facturation, ERP : vos logiciels se parlent enfin. Une information saisie une seule fois se propage partout et reste à jour en permanence."
+        },
+        {
+          "id": "ai",
+          "title": "Intelligence Artificielle sur-mesure",
+          "desc": "Chatbots qui répondent à vos clients la nuit, rédaction et catégorisation automatisées : un support toujours ouvert, pour une fraction du coût d'un poste dédié."
+        },
+        {
+          "id": "scraping",
+          "title": "Web Scraping & enrichissement de données",
+          "desc": "Des robots d'extraction collectent les données publiques du web pour vous : veille concurrentielle continue et listes de prospects qualifiées, sans achat de fichier."
+        },
+        {
+          "id": "growth",
+          "title": "Growth & automatisation marketing",
+          "desc": "Séquences d'e-mails intelligentes et flux de prospection branchés sur votre CRM : vos relances partent au bon moment, au bon contact, sans intervention."
+        },
+        {
+          "id": "cron",
+          "title": "Routines de maintenance (Cron Jobs)",
+          "desc": "Sauvegardes, nettoyage de données et bilans nocturnes programmés en arrière-plan : votre système s'entretient pendant que vous dormez, sans aucune intervention humaine."
+        }
+      ]
     },
     {
-      "icon": "appdev-icon",
-      "title": "Déploiement",
-      "p": "Mise en place des outils qui permettent de mettre à jour un site ou une app facilement."
+      "id": "performance",
+      "index": "03",
+      "eyebrow": "Génération de revenus",
+      "title": "Optimisation, Performance & Sécurité",
+      "promise": "Le même trafic, converti plus efficacement — et un chiffre d'affaires protégé jour et nuit.",
+      "items": [
+        {
+          "id": "cro",
+          "title": "Optimisation de la conversion (CRO)",
+          "desc": "Analyse et refonte de vos tunnels de vente pour transformer davantage de visiteurs en clients, sans dépenser un euro de publicité supplémentaire."
+        },
+        {
+          "id": "perf",
+          "title": "Performance technique globale",
+          "desc": "Temps de chargement, fluidité, architecture : un site rapide garde ses visiteurs, remonte dans les résultats de recherche et vend davantage."
+        },
+        {
+          "id": "assets",
+          "title": "Sécurisation des actifs numériques",
+          "desc": "Protection avancée de vos images, vidéos et documents exclusifs contre le téléchargement non autorisé et le piratage de vos contenus payants."
+        },
+        {
+          "id": "seo",
+          "title": "Ingénierie SEO (référencement technique)",
+          "desc": "Optimisation structurelle du code et intégration de données enrichies pour plaire aux algorithmes de Google, dominer les résultats et capter un trafic gratuit."
+        },
+        {
+          "id": "monitoring",
+          "title": "Monitoring métier & tests automatisés",
+          "desc": "Des robots invisibles rejouent en continu le parcours de vos clients — panier, paiement, formulaires — et m'alertent au moindre bug avant qu'il ne vous coûte une vente."
+        }
+      ]
     }
   ],
   "about-title": "à propos",
@@ -51,6 +146,7 @@
       "name": "Dj URYA",
       "date": "",
       "desc": "Ce projet consiste à développer et mettre à jour le site vitrine et marchand dj-urya.fr afin de permettre aux clients de réserver directement des prestations musicales en ligne. Il intègre un calendrier de disponibilités synchronisé avec confirmation automatisée par e-mail via Resend, ainsi qu'un espace administrateur sécurisé et un CMS personnalisé pour la gestion dynamique des contenus et de la base de données.",
+      "short": "Site vitrine et de réservation en ligne : calendrier de disponibilités synchronisé, confirmations automatiques par e-mail et back-office CMS sur mesure.",
       "gh": "https://github.com/ericbeaubrun/urya",
       "demo": "https://www.dj-urya.fr/",
       "skills": {
@@ -96,6 +192,7 @@
       "name": "Conquete",
       "date": "",
       "desc": "Conquest est un jeu de stratégie au tour par tour construit autour d'un moteur déterministe partagé entre le client React et le serveur Node.js. Cette architecture alimente les parties locales personnalisables comme les lobbies en ligne contrôlés par le serveur, sans dupliquer les règles. Sur des cartes hexagonales, les joueurs étendent leur territoire, gèrent leur économie, développent leur armée et débloquent des héros spécialisés.",
+      "short": "Jeu de stratégie au tour par tour à moteur déterministe partagé client/serveur : parties locales, lobbies en ligne, cartes hexagonales, économie et héros.",
       "gh": "https://github.com/ericbeaubrun/conquest-online-game",
       "demo": "https://conquete.xyz",
       "skills": {
@@ -150,6 +247,7 @@
       "name": "Presence",
       "date": "",
       "desc": "Ce projet vise à concevoir un système automatisé de gestion et de vérification des présences par cartes à puce NFC pour les étudiants ou les employés. Il articule un client matériel Python lisant les badges via un lecteur ACR122U, un serveur backend Spring Boot sécurisé qui valide les horaires et évite les doublons, ainsi qu'une interface web d'administration permettant de gérer l'historique et les données de présence.",
+      "short": "Suivi de présence par badges NFC : client Python pour le lecteur, backend Spring Boot sécurisé contre les doublons et interface web d'administration.",
       "gh": "https://github.com/ericbeaubrun/presence-system",
       "demo": "https://ericbeaubrun.github.io/presence-system/",
       "skills": {
@@ -194,6 +292,7 @@
       "name": "Aerien",
       "date": "",
       "desc": "Ce projet de génie logiciel est un simulateur de trafic aérien en temps réel conçu pour modéliser et gérer automatiquement les mouvements d'aéronefs et les opérations aéroportuaires. Il simule des scénarios complexes incluant des vols multiples, des trajectoires de vol en temps réel, la gestion des risques de collision et des événements imprévus tels que les urgences aéronautiques.",
+      "short": "Simulateur de trafic aérien temps réel : vols multiples, trajectoires calculées en continu, gestion des risques de collision et situations d'urgence.",
       "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "https://aerial-radar.vercel.app/",
       "skills": {
@@ -305,5 +404,15 @@
     "noLink": "Pas de démo publique",
     "prev": "Précédent",
     "next": "Suivant"
+  },
+  "simple": {
+    "button": "Portfolio simplifié",
+    "button_hover": "L'essentiel",
+    "back": "Version complète",
+    "tagline": "Version condensée : le parcours, les projets et les moyens de me joindre, sans détour.",
+    "stack-title": "stack",
+    "contact-title": "contact",
+    "cv": "Télécharger le CV",
+    "location": "Localisation"
   }
 }

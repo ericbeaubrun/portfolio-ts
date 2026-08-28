@@ -9,6 +9,10 @@
       "subtitle": "My Story"
     },
     {
+      "title": "Services",
+      "subtitle": "What I Bring You"
+    },
+    {
       "title": "Projects",
       "subtitle": "My Creations"
     },
@@ -24,21 +28,112 @@
     "p1": "Welcome to my portfolio! Passionate about computer science and programming, I share here my key projects, developed at university or during my free time.",
     "p2": "From creating scripts to software, including server and data management, my ambition is to transform this passion into expertise, specializing as a Software Engineer / Full Stack Developer."
   },
+  "services-title": "services",
+  "services-intro": "Three levers to turn your digital tooling into a competitive edge: build what you are missing, automate what costs you, optimise what earns you money.",
+  "services-labels": {
+    "pillars": "pillars",
+    "expertises": "expertises",
+    "gain": "What you gain —",
+    "cta-text": "A precise need, or just a hunch worth challenging?",
+    "cta-button": "Let's talk"
+  },
   "services": [
     {
-      "icon": "uiux-icon",
-      "title": "REST API",
-      "p": "Developing systems that allow easy information exchange with other services."
+      "id": "creation",
+      "index": "01",
+      "eyebrow": "Creation",
+      "title": "Web Development & Business Tools",
+      "promise": "A tailor-made digital asset that looks like you and fits the way you actually work.",
+      "items": [
+        {
+          "id": "web",
+          "title": "Bespoke websites & interfaces",
+          "desc": "A site built around your identity and your visitors: distinctive design, obvious navigation, and a journey designed to turn a visit into a conversation."
+        },
+        {
+          "id": "apps",
+          "title": "Applications & business tools",
+          "desc": "Back-offices, dashboards and mini-ERPs that bring your whole operation into one place. No more scattered spreadsheets and figures that never match."
+        },
+        {
+          "id": "sovereign",
+          "title": "Sovereign & privacy-first solutions",
+          "desc": "Proprietary, self-hosted architectures: your data stays with you, GDPR-compliant, with no monthly subscription and no lock-in to a third-party vendor."
+        }
+      ]
     },
     {
-      "icon": "webdev-icon",
-      "title": "UI/UX Design",
-      "p": "Creating simple, clear, and modern designs so users find what they are looking for in just a few clicks."
+      "id": "automation",
+      "index": "02",
+      "eyebrow": "Time saved",
+      "title": "Automation, Data & Productivity",
+      "promise": "Every repetitive task removed is time handed back to your team — every month, without asking twice.",
+      "items": [
+        {
+          "id": "bpa",
+          "title": "Business process automation (BPA)",
+          "desc": "I map the tasks your team redoes every single day and hand them over to robots. They run on their own, with no forgotten step and no typing mistakes."
+        },
+        {
+          "id": "api",
+          "title": "Software ecosystem sync (APIs)",
+          "desc": "Website, CRM, invoicing, ERP: your tools finally talk to each other. Information entered once spreads everywhere and stays permanently up to date."
+        },
+        {
+          "id": "ai",
+          "title": "Custom Artificial Intelligence",
+          "desc": "Chatbots answering your customers overnight, automated writing and categorisation: support that never closes, for a fraction of the cost of a dedicated hire."
+        },
+        {
+          "id": "scraping",
+          "title": "Web scraping & data enrichment",
+          "desc": "Extraction robots collect public web data for you: continuous competitive monitoring and qualified prospect lists, without buying a single contact file."
+        },
+        {
+          "id": "growth",
+          "title": "Growth & marketing automation",
+          "desc": "Smart email sequences and prospecting flows wired straight into your CRM: follow-ups leave at the right moment, to the right contact, unattended."
+        },
+        {
+          "id": "cron",
+          "title": "Maintenance routines (cron jobs)",
+          "desc": "Backups, data cleaning and overnight reports scheduled in the background: your system takes care of itself while you sleep, with no human intervention."
+        }
+      ]
     },
     {
-      "icon": "appdev-icon",
-      "title": "Deployment",
-      "p": "Setting up tools that allow easy updates for a website or app."
+      "id": "performance",
+      "index": "03",
+      "eyebrow": "Revenue growth",
+      "title": "Optimisation, Performance & Security",
+      "promise": "The same traffic, converted more efficiently — and revenue protected around the clock.",
+      "items": [
+        {
+          "id": "cro",
+          "title": "Conversion rate optimisation (CRO)",
+          "desc": "Analysis and redesign of your sales funnels to turn more visitors into customers, without spending an extra euro on advertising."
+        },
+        {
+          "id": "perf",
+          "title": "End-to-end technical performance",
+          "desc": "Loading time, smoothness, architecture: a fast site keeps its visitors, climbs the search results and sells more."
+        },
+        {
+          "id": "assets",
+          "title": "Digital asset protection",
+          "desc": "Advanced protection for your images, videos and exclusive documents against unauthorised downloads and piracy of your paid content."
+        },
+        {
+          "id": "seo",
+          "title": "SEO engineering (technical search)",
+          "desc": "Structural code optimisation and rich data integration to please Google's algorithms, dominate the results page and capture traffic you don't pay for."
+        },
+        {
+          "id": "monitoring",
+          "title": "Business monitoring & automated testing",
+          "desc": "Invisible robots continuously replay your customers' journey — cart, payment, forms — and alert me at the first bug, before it costs you a sale."
+        }
+      ]
     }
   ],
   "about-title": "about me",
@@ -51,6 +146,7 @@
       "name": "Dj URYA",
       "date": "",
       "desc": "This project consists of developing and updating the showcase and commercial website dj-urya.fr to allow clients to directly book musical performances online. It integrates a synchronized availability calendar with automated email confirmation via Resend, as well as a secure admin space and a custom CMS for dynamic content and database management.",
+      "short": "Showcase and online booking website: synced availability calendar, automated email confirmations and a custom CMS back-office.",
       "gh": "https://github.com/ericbeaubrun/urya",
       "demo": "https://www.dj-urya.fr/",
       "skills": {
@@ -96,6 +192,7 @@
       "name": "Conquete",
       "date": "",
       "desc": "Conquest is a turn-based strategy game built on a deterministic engine shared by the React client and Node.js server. This architecture powers both configurable local games and server-authoritative online lobbies without duplicating rules. On hexagonal maps, players expand their territory, manage an economy, develop their army and unlock specialised heroes.",
+      "short": "Turn-based strategy game with a deterministic engine shared by client and server: local games, online lobbies, hex maps, economy and heroes.",
       "gh": "https://github.com/ericbeaubrun/conquest-online-game",
       "demo": "https://conquete.xyz",
       "skills": {
@@ -150,6 +247,7 @@
       "name": "Presence",
       "date": "",
       "desc": "This project aims to design an automated attendance verification and management system using NFC smart cards for students or employees. It connects a Python hardware client reading badges via an ACR122U reader, a secure Spring Boot backend server validating schedules and preventing duplicates, and an admin web interface to manage history and attendance data.",
+      "short": "NFC badge attendance tracking: Python reader client, a secure Spring Boot backend preventing duplicates, and an admin web interface.",
       "gh": "https://github.com/ericbeaubrun/presence-system",
       "demo": "https://ericbeaubrun.github.io/presence-system/",
       "skills": {
@@ -194,6 +292,7 @@
       "name": "Aerien",
       "date": "",
       "desc": "This software engineering project is a real-time air traffic simulator designed to automatically model and manage aircraft movements and airport operations. It simulates complex scenarios including multiple flights, real-time flight paths, collision risk management, and unexpected events such as aviation emergencies.",
+      "short": "Real-time air traffic simulator: multiple flights, continuously computed trajectories, collision-risk management and emergency events.",
       "gh": "https://github.com/ericbeaubrun/aerial-radar-simulator",
       "demo": "https://aerial-radar.vercel.app/",
       "skills": {
@@ -304,5 +403,15 @@
     "noLink": "No public demo",
     "prev": "Previous",
     "next": "Next"
+  },
+  "simple": {
+    "button": "Simplified portfolio",
+    "button_hover": "The essentials",
+    "back": "Full version",
+    "tagline": "Condensed version: background, projects and how to reach me — nothing else.",
+    "stack-title": "stack",
+    "contact-title": "contact",
+    "cv": "Download CV",
+    "location": "Location"
   }
 }

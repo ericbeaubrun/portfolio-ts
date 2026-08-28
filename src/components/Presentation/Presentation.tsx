@@ -9,6 +9,7 @@ import {Link} from "react-scroll";
 
 import {motion} from "framer-motion";
 import {publicAssetUrl} from "../Utils/publicAssetUrl.ts";
+import {navigateTo} from "../Utils/useHashRoute.ts";
 import StarCursor from "./StarCursor.tsx";
 
 const profilePicture = publicAssetUrl("assets/eric-adelaide-beaubrun.webp");
@@ -209,21 +210,14 @@ const
                     </motion.h2>
 
                     <motion.div variants={contactButtonWrapperVariants}>
-                        <Link
-                            to="footer"
-                            smooth={true}
-                            duration={1000}
-                            offset={0}
-                            className="contact-link"
+                        <button
+                            ref={contactBtnRef}
+                            className="contact-me-button"
+                            onClick={() => navigateTo('simple')}
+                            style={{"--hover-text": `"${content.simple.button_hover}"`} as React.CSSProperties}
                         >
-                            <button
-                                ref={contactBtnRef}
-                                className="contact-me-button"
-                                style={{"--hover-text": `"${content.contact_button_hover}"`} as React.CSSProperties}
-                            >
-                                <span>{content.contact_button}</span>
-                            </button>
-                        </Link>
+                            <span>{content.simple.button}</span>
+                        </button>
                     </motion.div>
 
                     <motion.div variants={itemVariants}>

@@ -158,7 +158,12 @@
       text-decoration: none;
       color: #e8e8e8;
       padding: 15px 30px;
-      width: 170px;
+      // Largeur libre : le libellé « Portfolio simplifié » est plus long que
+      // l'ancien « Contacter » et doit rester sur une ligne.
+      // Le `span` est en position absolue : il ne dimensionne pas le bouton,
+      // la largeur doit donc couvrir le libellé le plus long (FR comme EN).
+      min-width: 210px;
+      white-space: nowrap;
       height: 60px;
       font-weight: 600;
       font-size: 18px;

@@ -12,6 +12,8 @@ export interface Project {
     title: string;
     name: string;
     desc: string;
+    /** Résumé d'une ou deux lignes, utilisé par la vue « portfolio simplifié ». */
+    short?: string;
     icon: string | string[];
     skills: Record<string, string | undefined>;
     gh?: string;

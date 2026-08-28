@@ -18,6 +18,12 @@ h1, h2 {
   color: $text_color_dark;
 }
 
+// Écran d'attente entre deux vues lazy : évite un flash blanc le temps du chunk.
+.route-fallback {
+  min-height: 100vh;
+  background-color: $background_color_dark;
+}
+
 .shadowed {
   box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.1);
 }

@@ -1,0 +1,660 @@
+@use "../../config" as *;
+
+// Chaque pôle porte sa propre couleur d'accent, exposée en deux temps :
+// la valeur affichable et son triplet RVB, indispensable pour composer des
+// `rgba()` (une variable CSS ne se glisse pas dans la fonction `rgba` de Sass).
+// Le sable est celui du portfolio ($COLOR), les deux autres l'accompagnent :
+// bleu froid pour la mécanique, vert pour la croissance.
+$svc-accents: (
+  "creation": (#f0dbbd, "240, 219, 189"),
+  "automation": (#9ec5f0, "158, 197, 240"),
+  "performance": (#a8e3b4, "168, 227, 180"),
+);
+
+.services {
+  position: relative;
+  z-index: 2;
+  // Noir mat : aucun dégradé ni halo, c'est la couleur d'accent de chaque
+  // carte qui porte seule le relief.
+  background: #000;
+  padding: 20vh 0 14vh;
+  overflow-x: clip;
+
+  .svc-inner {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+
+  // ---------------------------------------------------------------- en-tête
+
+  .svc-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 1.2rem;
+
+    // Comme dans la grille projets : le titre géant reste calé à gauche.
+    .banner {
+      width: auto;
+      align-items: flex-start;
+      margin-bottom: 0;
+    }
+
+    .svc-count {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+
+      .svc-count-sep {
+        margin: 0 0.6em;
+        color: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+
+  .svc-intro {
+    margin-top: 2.6rem;
+    max-width: 68ch;
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  // ------------------------------------------------------ pile des trois pôles
+
+  .svc-stack {
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12vh;
+  }
+
+  // Neutre hors mode empilé : il n'a de rôle que comme réserve de collage.
+  .svc-stack-spacer {
+    display: none;
+  }
+
+  // Repli si un pôle inconnu apparaissait dans le contenu.
+  .svc-pillar {
+    --svc-accent: #{$COLOR};
+    --svc-accent-rgb: 240, 219, 189;
+  }
+
+  @each $id, $pair in $svc-accents {
+    .svc-pillar[data-pillar="#{$id}"] {
+      --svc-accent: #{nth($pair, 1)};
+      --svc-accent-rgb: #{nth($pair, 2)};
+    }
+  }
+
+  // --- Pose « à la main » ---------------------------------------------------
+  // Cascade : chaque pôle glisse d'un cran vers la droite par rapport au
+  // précédent (`--i` est son rang, posé par le composant), et le collage lui
+  // donne son décalage vertical. Empilés, ils se recouvrent en éventail au
+  // lieu de se superposer bord à bord.
+  // La largeur laisse la place de la cascade : 92 % + 2 × 4 % ramène le dernier
+  // pôle au bord droit, sans jamais le faire déborder.
+  .svc-pillar {
+    --svc-tilt: 0deg;
+    width: 92%;
+    // Le pourcentage de `translateX` se rapporte à la largeur de l'élément.
+    --svc-shift: calc(var(--i) * 4%);
+    transform: rotate(var(--svc-tilt)) translateX(var(--svc-shift));
+  }
+
+  // Angles décroissants avec changement de sens sur le dernier, comme sur le
+  // croquis. Ils restent bien en deçà de ceux d'une esquisse à main levée :
+  // à 8° sur une carte de 1200 px, une ligne de texte descend de 170 px d'un
+  // bout à l'autre et devient illisible.
+  .svc-pillar[data-pillar="creation"] {
+    --svc-tilt: -3.2deg;
+    --svc-index-tilt: 5deg;
+  }
+
+  .svc-pillar[data-pillar="automation"] {
+    --svc-tilt: -1.7deg;
+    --svc-index-tilt: -5.5deg;
+  }
+
+  .svc-pillar[data-pillar="performance"] {
+    --svc-tilt: 1.1deg;
+    --svc-index-tilt: 4deg;
+  }
+
+  // Le collage n'est armé que par le composant, une fois vérifié que chaque
+  // carte tient sous son point d'accroche (cf. `stacked` dans Services.tsx).
+  &.is-stacked {
+    .svc-pillar {
+      position: sticky;
+      top: calc(var(--svc-top) + var(--i) * var(--svc-peek));
+    }
+
+    // Course de collage du dernier pôle. `sticky` borne un élément à la boîte
+    // de contenu de son parent, marges de l'élément comprises : le dernier
+    // pôle en affleure le bas et ne se figerait donc jamais, laissant la pile
+    // incomplète. Ni un padding ni une marge n'y changent quelque chose — il
+    // faut un vrai frère qui allonge la boîte de contenu du conteneur.
+    .svc-stack-spacer {
+      display: block;
+      height: 30vh;
+    }
+
+    // La réserve ci-dessus fait déjà respirer : inutile de l'additionner.
+    .svc-cta {
+      margin-top: 6vh;
+    }
+  }
+
+  .svc-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 2.6rem 3rem 2.4rem;
+    // Aplat mat, sans dégradé : seule la bordure teintée signale le pôle.
+    background: #0a0a0a;
+    border: 1px solid rgba(var(--svc-accent-rgb), 0.16);
+    border-radius: $BORDER_RADIUS_COMPONENT;
+    // Ombre portée vers le haut : la carte qui recouvre la précédente doit se
+    // détacher nettement de celle qui dépasse dessous.
+    box-shadow: 0 -18px 50px rgba(0, 0, 0, 0.85), 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  // Occultation progressive du pôle recouvert par le suivant.
+  .svc-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    // Pas de `transition` ici : GSAP réécrit cette opacité à chaque image
+    // pendant le scroll, une transition CSS la ferait traîner d'un cran.
+  }
+
+  &:not(.is-stacked) .svc-veil {
+    display: none;
+  }
+
+  // Jauge de progression du pôle, sur l'arête haute de la carte.
+  .svc-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.07);
+
+    .svc-progress-bar {
+      display: block;
+      height: 100%;
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: left center;
+      background: linear-gradient(90deg, var(--svc-accent), rgba(var(--svc-accent-rgb), 0.2));
+    }
+  }
+
+  // ------------------------------------------------------------ tête de pôle
+
+  .svc-pillar-head,
+  .svc-list {
+    position: relative;
+    z-index: 1;
+  }
+
+  .svc-pillar-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.8rem;
+  }
+
+  // Numéro géant en contour, teinté par le pôle : présent mais jamais
+  // concurrent du titre.
+  .svc-index {
+    flex: none;
+    font-size: clamp(2.8rem, 4.6vw, 4.6rem);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(var(--svc-accent-rgb), 0.55);
+    // Penché à contresens de sa carte, comme les lettres du Banner : le
+    // désordre se lit jusque dans le détail.
+    transform: rotate(var(--svc-index-tilt, 0deg));
+    transform-origin: 50% 60%;
+  }
+
+  .svc-headings {
+    min-width: 0;
+  }
+
+  // Masque de révélation : le contenu monte depuis le bas au scroll.
+  .svc-mask {
+    display: block;
+    overflow: hidden;
+  }
+
+  .svc-reveal {
+    display: block;
+  }
+
+  .svc-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--svc-accent);
+
+    .svc-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--svc-accent);
+      animation: svc-pulse 2.6s ease-out infinite;
+    }
+  }
+
+  .svc-pillar-title {
+    margin-top: 0.7rem;
+    font-size: clamp(1.35rem, 2.4vw, 2.3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .svc-promise {
+    margin-top: 0.85rem;
+    max-width: 68ch;
+    font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  // ------------------------------------------------------- liste d'expertises
+
+  .svc-list {
+    list-style: none;
+    margin-top: 2.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .svc-row {
+    // Masque de la cascade d'apparition (`.svc-row-inner` monte de 110 %).
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    transition: opacity 0.35s ease;
+  }
+
+  .svc-row-inner {
+    display: block;
+  }
+
+  .svc-row-btn {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.8rem minmax(0, 1fr) 1.1rem;
+    grid-template-areas:
+      "icon title toggle"
+      ".    desc  desc";
+    align-items: center;
+    column-gap: 1.1rem;
+    padding: 0.95rem 0.9rem;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 1px solid rgba(var(--svc-accent-rgb), 0.7);
+      outline-offset: -2px;
+    }
+  }
+
+  // Lavis balayant la ligne depuis la gauche : signale la ligne active sans
+  // recourir à un fond plein qui écraserait le contraste du texte.
+  .svc-row-fill {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(
+        90deg,
+        rgba(var(--svc-accent-rgb), 0.12) 0%,
+        rgba(var(--svc-accent-rgb), 0.035) 45%,
+        transparent 80%
+    );
+  }
+
+  .svc-row-icon {
+    grid-area: icon;
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .svc-row-title {
+    grid-area: title;
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.88);
+    transition: color 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Bascule « + » qui se referme en « — » quand la ligne est dépliée.
+  .svc-row-toggle {
+    grid-area: toggle;
+    position: relative;
+    justify-self: end;
+    width: 0.85rem;
+    height: 0.85rem;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.55);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+    }
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  // Dépliement sans hauteur codée en dur : la piste de grille passe de 0fr à 1fr.
+  .svc-row-desc {
+    grid-area: desc;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .svc-row-desc-clip {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .svc-row-desc-text {
+      display: block;
+      padding: 0.55rem 0 0.35rem;
+      max-width: 78ch;
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.58);
+      opacity: 0;
+      transition: opacity 0.45s ease 0.1s;
+    }
+  }
+
+  // --- États actifs (clic, focus clavier, et survol sur pointeur fin) --------
+
+  .svc-row.is-open,
+  .svc-row:focus-within {
+    .svc-row-desc {
+      grid-template-rows: 1fr;
+    }
+
+    .svc-row-desc-text {
+      opacity: 1;
+    }
+
+    .svc-row-fill {
+      transform: scaleX(1);
+    }
+
+    .svc-row-icon {
+      color: var(--svc-accent);
+      transform: scale(1.12);
+    }
+
+    .svc-row-title {
+      color: #fff;
+    }
+
+    .svc-row-toggle::before,
+    .svc-row-toggle::after {
+      background: var(--svc-accent);
+    }
+  }
+
+  .svc-row.is-open .svc-row-toggle::after {
+    transform: rotate(0deg);
+  }
+
+  // -------------------------------------------------------------------- appel
+
+  .svc-cta {
+    margin-top: 16vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  .svc-cta-text {
+    font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  // Hors des pôles : l'appel garde le sable du portfolio.
+  .svc-cta-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.05rem 2.3rem;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+
+    // Remplissage sable qui monte depuis le bas au survol.
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: $COLOR;
+      transform: translateY(101%);
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .svc-cta-label,
+    .svc-cta-arrow {
+      position: relative;
+      z-index: 1;
+    }
+
+    .svc-cta-arrow {
+      font-size: 0.9rem;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 46px rgba(240, 219, 189, 0.2);
+
+      &::before {
+        transform: translateY(0);
+      }
+
+      .svc-cta-arrow {
+        transform: translate(0.2em, -0.2em);
+      }
+    }
+  }
+}
+
+// Survol : la ligne pointée se déplie, les autres s'effacent pour la laisser
+// lisible. Réservé aux pointeurs fins — sur tactile, le clic fait foi.
+@media (hover: hover) and (pointer: fine) {
+  .services {
+    .svc-list:hover .svc-row:not(:hover) {
+      opacity: 0.38;
+    }
+
+    .svc-row:hover {
+      .svc-row-desc {
+        grid-template-rows: 1fr;
+      }
+
+      .svc-row-desc-text {
+        opacity: 1;
+      }
+
+      .svc-row-fill {
+        transform: scaleX(1);
+      }
+
+      .svc-row-icon {
+        color: var(--svc-accent);
+        transform: scale(1.12);
+      }
+
+      .svc-row-title {
+        color: #fff;
+        transform: translateX(0.25rem);
+      }
+
+      .svc-row-toggle::before,
+      .svc-row-toggle::after {
+        background: var(--svc-accent);
+      }
+    }
+  }
+}
+
+@keyframes svc-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--svc-accent-rgb), 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(var(--svc-accent-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--svc-accent-rgb), 0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .services {
+    padding: 12vh 0 10vh;
+
+    .svc-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .svc-stack {
+      margin-top: 8vh;
+      gap: 6vh;
+    }
+
+    .svc-card {
+      padding: 2rem 1.6rem 1.8rem;
+    }
+
+    // Sans empilement, la cascade n'a plus de rôle et mangerait la largeur :
+    // on garde l'inclinaison seule, qui suffit à casser l'alignement.
+    .svc-pillar {
+      width: 100%;
+      --svc-shift: 0%;
+    }
+
+    .svc-pillar-head {
+      gap: 1.1rem;
+    }
+
+    .svc-cta {
+      margin-top: 12vh;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .services {
+    .svc-row-btn {
+      grid-template-columns: minmax(0, 1fr) 1rem;
+      grid-template-areas:
+        "title  toggle"
+        "desc   desc";
+      column-gap: 0.8rem;
+      padding: 0.9rem 0.2rem;
+    }
+
+    // L'icône disparaît avant le texte : c'est le titre qui doit rester entier.
+    .svc-row-icon {
+      display: none;
+    }
+
+    .svc-cta-button {
+      padding: 0.9rem 1.6rem;
+      font-size: 0.82rem;
+    }
+  }
+}
+
+// Mouvement réduit : le dépliement reste (c'est une information, pas un décor),
+// mais il devient instantané et les boucles décoratives s'arrêtent.
+// Sélecteurs alignés sur ceux des règles de base, sinon la spécificité l'emporte.
+@media (prefers-reduced-motion: reduce) {
+  .services {
+    .svc-row-desc {
+      transition: none;
+
+      .svc-row-desc-text {
+        transition: none;
+      }
+    }
+
+    .svc-eyebrow .svc-eyebrow-dot {
+      animation: none;
+    }
+
+    .svc-row,
+    .svc-row-fill,
+    .svc-row-icon,
+    .svc-row-title,
+    .svc-cta-button,
+    .svc-cta-button::before {
+      transition: none;
+    }
+
+    .svc-row-toggle::before,
+    .svc-row-toggle::after {
+      transition: none;
+    }
+  }
+}

@@ -29,8 +29,10 @@ const Navbar = ({lenis, activeSection}: NavbarProps) => {
     const navItems = [
         // {target: "presentation", title: nav[0].title, subtitle: nav[0].subtitle},
         {target: "about", title: nav[1].title, subtitle: nav[1].subtitle},
-        {target: "projects", title: nav[2].title, subtitle: nav[2].subtitle},
-        {target: "footer", title: nav[3].title, subtitle: nav[3].subtitle},
+        // Section Services débranchée (le contenu et le composant restent en place, cf. App.tsx)
+        // {target: "services", title: nav[2].title, subtitle: nav[2].subtitle},
+        {target: "projects", title: nav[3].title, subtitle: nav[3].subtitle},
+        {target: "footer", title: nav[4].title, subtitle: nav[4].subtitle},
     ];
 
     const renderNavItems = (closeOnClick: boolean = false) => {
